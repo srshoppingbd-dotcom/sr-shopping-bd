@@ -1,107 +1,560 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SR Shopping BD — Premium Backpack</title>
-  <style>
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Arial,"Noto Sans Bengali",sans-serif;background:#f5f6f8;color:#111}
-    .wrap{max-width:520px;margin:auto;background:#fff;min-height:100vh}
-    header{background:#111;color:#fff;padding:18px 20px;text-align:center}
-    header h1{margin:0;font-size:24px}
-    header p{margin:6px 0 0;color:#ddd}
-    .product{padding:18px}
-    .product img{width:100%;display:block;border-radius:14px;background:#fafafa}
-    .badge{display:inline-block;margin-top:15px;padding:7px 12px;border-radius:20px;background:#eaf7ee;color:#137333;font-weight:700}
-    h2{font-size:25px;margin:12px 0 6px}
-    .price{font-size:26px;font-weight:800;margin:6px 0 14px}
-    .features{padding-left:20px;line-height:1.8}
-    .box{margin-top:18px;padding:18px;border:1px solid #e2e5e9;border-radius:14px}
-    .box h3{margin-top:0}
-    label{display:block;font-weight:700;margin:12px 0 6px}
-    input,textarea,select{width:100%;padding:12px;border:1px solid #cfd4da;border-radius:9px;font-size:16px}
-    textarea{min-height:90px;resize:vertical}
-    .order{width:100%;border:0;border-radius:10px;background:#0b8f3c;color:#fff;font-size:20px;font-weight:800;padding:15px;margin-top:18px;cursor:pointer}
-    .small{font-size:13px;color:#666;margin-top:10px;line-height:1.5}
-    footer{text-align:center;color:#666;padding:20px;font-size:13px}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SR Shopping BD</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Arial,"Noto Sans Bengali",sans-serif;
+background:#f5f7fa;
+color:#222;
+}
+
+header{
+background:#111;
+color:#fff;
+text-align:center;
+padding:25px 15px;
+}
+
+header h1{
+margin:0;
+font-size:30px;
+}
+
+header p{
+margin:8px 0 0;
+color:#ddd;
+font-size:16px;
+}
+
+.container{
+max-width:600px;
+margin:auto;
+padding:18px;
+}
+
+.card,.order-box{
+background:#fff;
+border-radius:18px;
+padding:18px;
+margin-bottom:18px;
+box-shadow:0 4px 18px rgba(0,0,0,.08);
+}
+
+.product-image{
+width:100%;
+border-radius:14px;
+display:block;
+margin-bottom:15px;
+}
+
+.badge{
+display:inline-block;
+background:#e8fff0;
+color:#078b3c;
+padding:7px 12px;
+border-radius:20px;
+font-weight:bold;
+font-size:14px;
+}
+
+h2{
+margin:12px 0 5px;
+font-size:25px;
+}
+
+.price{
+font-size:26px;
+font-weight:bold;
+color:#078b3c;
+margin:8px 0 15px;
+}
+
+.features{
+padding-left:20px;
+line-height:1.8;
+}
+
+label{
+display:block;
+font-weight:bold;
+margin-top:15px;
+}
+
+input,select,textarea{
+width:100%;
+padding:14px;
+margin-top:7px;
+border:1px solid #ccc;
+border-radius:10px;
+font-size:16px;
+background:#fff;
+}
+
+textarea{
+min-height:100px;
+resize:vertical;
+}
+
+.product-line{
+border:1px solid #ddd;
+border-radius:12px;
+padding:12px;
+margin-top:12px;
+}
+
+.summary{
+background:#f1f8f4;
+border-radius:12px;
+padding:15px;
+margin-top:18px;
+line-height:1.9;
+}
+
+.total{
+font-size:23px;
+font-weight:bold;
+color:#078b3c;
+border-top:1px solid #ccc;
+margin-top:8px;
+padding-top:8px;
+}
+
+.delivery-note{
+font-size:14px;
+color:#555;
+margin-top:8px;
+}
+
+button{
+width:100%;
+border:0;
+border-radius:12px;
+padding:15px;
+margin-top:16px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.add{
+background:#222;
+color:#fff;
+}
+
+.order{
+background:#079447;
+color:#fff;
+}
+
+.remove{
+background:#ffecec;
+color:#d00000;
+padding:10px;
+font-size:14px;
+}
+
+footer{
+text-align:center;
+padding:25px;
+color:#777;
+font-size:14px;
+}
+</style>
 </head>
+
 <body>
-<div class="wrap">
-  <header>
-    <h1>SR Shopping BD</h1>
-    <p>Quality Products • Fast & Safe Delivery</p>
-  </header>
 
-  <main class="product">
-    <img src="backpack.jpg" alt="Premium Backpack">
-    <span class="badge">Cash on Delivery Available</span>
-    <h2>Premium Backpack</h2>
-    <div class="price">৳ 770</div>
+<header>
+<h1>SR Shopping BD</h1>
+<p>Quality Products • Fast & Safe Delivery</p>
+</header>
 
-    <ul class="features">
-      <li>Stylish & Smart Design</li>
-      <li>Daily Use / College / Office</li>
-      <li>Quality Product</li>
-      <li>সারা বাংলাদেশে Delivery Available</li>
-    </ul>
+<div class="container">
 
-    <div class="box">
-      <h3>🛒 অর্ডার করুন</h3>
-      <form id="orderForm">
-        <label for="name">আপনার নাম *</label>
-        <input id="name" required placeholder="নাম লিখুন">
+<div class="card">
 
-        <label for="phone">মোবাইল নম্বর *</label>
-        <input id="phone" required inputmode="tel" placeholder="01XXXXXXXXX">
+<span class="badge">
+🚚 Cash on Delivery Available
+</span>
 
-        <label for="qty">পরিমাণ *</label>
-        <select id="qty">
-          <option value="1">১টি</option>
-          <option value="2">২টি</option>
-          <option value="3">৩টি</option>
-          <option value="4">৪টি</option>
-          <option value="5">৫টি</option>
-        </select>
+<img src="backpack.jpg"
+class="product-image"
+alt="Premium Backpack">
 
-        <label for="address">সম্পূর্ণ ডেলিভারি ঠিকানা *</label>
-        <textarea id="address" required placeholder="জেলা, উপজেলা/থানা, এলাকা, বাড়ির ঠিকানা"></textarea>
+<h2>Premium Backpack</h2>
 
-        <button class="order" type="submit">ORDER NOW</button>
-        <div class="small">অর্ডার বাটনে ক্লিক করলে আপনার অর্ডারের তথ্য WhatsApp-এ পাঠানোর জন্য প্রস্তুত হবে।</div>
-      </form>
-    </div>
-  </main>
+<div class="price">৳770</div>
 
-  <footer>© SR Shopping BD</footer>
+<ul class="features">
+<li>Stylish & Smart Design</li>
+<li>Daily Use / College / Office</li>
+<li>Quality Product</li>
+<li>সারা বাংলাদেশে Delivery Available</li>
+</ul>
+
 </div>
 
+
+<div class="order-box">
+
+<h2>🛒 অর্ডার করুন</h2>
+
+<div id="products">
+
+<div class="product-line">
+
+<label>পণ্য</label>
+
+<select class="product"
+onchange="calculateTotal()">
+
+<option value="Premium Backpack|770">
+Premium Backpack — ৳770
+</option>
+
+</select>
+
+<label>পরিমাণ</label>
+
+<input
+type="number"
+class="quantity"
+value="1"
+min="1"
+oninput="calculateTotal()">
+
+<button
+class="remove"
+onclick="removeProduct(this)">
+❌ পণ্য বাদ দিন
+</button>
+
+</div>
+
+</div>
+
+
+<button
+class="add"
+onclick="addProduct()">
+➕ আরও পণ্য যোগ করুন
+</button>
+
+
+<label>আপনার নাম *</label>
+
+<input
+id="name"
+type="text"
+placeholder="নাম লিখুন">
+
+
+<label>মোবাইল নম্বর *</label>
+
+<input
+id="phone"
+type="tel"
+placeholder="01XXXXXXXXX">
+
+
+<label>ডেলিভারি এলাকা *</label>
+
+<select
+id="area"
+onchange="calculateTotal()">
+
+<option value="60">
+ঢাকার ভিতরে — ৳60
+</option>
+
+<option value="120">
+ঢাকার বাইরে — ৳120
+</option>
+
+</select>
+
+
+<label>সম্পূর্ণ ডেলিভারি ঠিকানা *</label>
+
+<textarea
+id="address"
+placeholder="জেলা, উপজেলা/থানা, এলাকা, বাড়ির ঠিকানা"></textarea>
+
+
+<div class="summary">
+
+<div>
+পণ্যের মূল্য:
+<strong id="subtotal">৳770</strong>
+</div>
+
+<div>
+ডেলিভারি চার্জ:
+<strong id="delivery">৳60</strong>
+</div>
+
+<div class="total">
+মোট মূল্য:
+<span id="total">৳830</span>
+</div>
+
+<div class="delivery-note">
+ঢাকার ভিতরে: ৳60 | ঢাকার বাইরে: ৳120
+</div>
+
+</div>
+
+
+<button
+class="order"
+onclick="orderNow()">
+📲 ORDER NOW
+</button>
+
+</div>
+
+</div>
+
+
+<footer>
+© 2026 SR Shopping BD • All Rights Reserved
+</footer>
+
+
 <script>
-document.getElementById('orderForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  const name = document.getElementById('name').value.trim();
-  const phone = document.getElementById('phone').value.trim();
-  const qty = document.getElementById('qty').value;
-  const address = document.getElementById('address').value.trim();
 
-  const msg =
-`🛒 *নতুন অর্ডার — SR Shopping BD*
+function calculateTotal(){
 
-পণ্য: Premium Backpack
-দাম: ৳770
-পরিমাণ: ${qty}টি
+let subtotal=0;
 
-👤 নাম: ${name}
-📱 মোবাইল: ${phone}
-📍 ঠিকানা: ${address}
+document
+.querySelectorAll(".product-line")
+.forEach(function(line){
 
-Cash on Delivery চাই।`;
+let product=
+line.querySelector(".product").value.split("|");
 
-  // SR Shopping BD WhatsApp number from the user's page screenshot
-  const wa = "8801774891525";
-  window.open("https://wa.me/" + wa + "?text=" + encodeURIComponent(msg), "_blank");
+let price=
+Number(product[1]);
+
+let quantity=
+Number(line.querySelector(".quantity").value);
+
+if(quantity<1){
+quantity=1;
+}
+
+subtotal += price * quantity;
+
 });
+
+
+let delivery=
+Number(document.getElementById("area").value);
+
+
+document.getElementById("subtotal").innerText=
+"৳"+subtotal;
+
+document.getElementById("delivery").innerText=
+"৳"+delivery;
+
+document.getElementById("total").innerText=
+"৳"+(subtotal+delivery);
+
+}
+
+
+function addProduct(){
+
+let box=
+document.createElement("div");
+
+box.className="product-line";
+
+box.innerHTML=`
+
+<label>পণ্য</label>
+
+<select
+class="product"
+onchange="calculateTotal()">
+
+<option value="Premium Backpack|770">
+Premium Backpack — ৳770
+</option>
+
+</select>
+
+<label>পরিমাণ</label>
+
+<input
+type="number"
+class="quantity"
+value="1"
+min="1"
+oninput="calculateTotal()">
+
+<button
+class="remove"
+onclick="removeProduct(this)">
+❌ পণ্য বাদ দিন
+</button>
+
+`;
+
+document
+.getElementById("products")
+.appendChild(box);
+
+calculateTotal();
+
+}
+
+
+function removeProduct(button){
+
+let products=
+document.querySelectorAll(".product-line");
+
+if(products.length<=1){
+
+alert("কমপক্ষে একটি পণ্য রাখতে হবে।");
+
+return;
+
+}
+
+button.parentElement.remove();
+
+calculateTotal();
+
+}
+
+
+function orderNow(){
+
+let name=
+document.getElementById("name").value.trim();
+
+let phone=
+document.getElementById("phone").value.trim();
+
+let address=
+document.getElementById("address").value.trim();
+
+let area=
+document.getElementById("area");
+
+let delivery=
+Number(area.value);
+
+let areaText=
+area.options[area.selectedIndex].text;
+
+
+if(!name || !phone || !address){
+
+alert(
+"দয়া করে নাম, মোবাইল নম্বর এবং সম্পূর্ণ ঠিকানা দিন।"
+);
+
+return;
+
+}
+
+
+let message=
+"🛒 নতুন অর্ডার — SR Shopping BD\n\n";
+
+message+="📦 পণ্য:\n";
+
+let subtotal=0;
+
+
+document
+.querySelectorAll(".product-line")
+.forEach(function(line){
+
+let product=
+line.querySelector(".product").value.split("|");
+
+let productName=
+product[0];
+
+let price=
+Number(product[1]);
+
+let quantity=
+Number(line.querySelector(".quantity").value);
+
+let itemTotal=
+price*quantity;
+
+subtotal+=itemTotal;
+
+message+=
+"• "+productName+
+" × "+quantity+
+" = ৳"+itemTotal+"\n";
+
+});
+
+
+let total=
+subtotal+delivery;
+
+
+message+="\n";
+
+message+=
+"💰 পণ্যের মূল্য: ৳"+
+subtotal+"\n";
+
+message+=
+"🚚 ডেলিভারি: ৳"+
+delivery+"\n";
+
+message+=
+"💵 মোট মূল্য: ৳"+
+total+"\n\n";
+
+message+=
+"👤 নাম: "+name+"\n";
+
+message+=
+"📱 মোবাইল: "+phone+"\n";
+
+message+=
+"📍 এলাকা: "+areaText+"\n";
+
+message+=
+"🏠 ঠিকানা: "+address+"\n\n";
+
+message+=
+"💵 Cash on Delivery চাই।";
+
+
+let whatsapp=
+"https://wa.me/8801810099875?text="+
+encodeURIComponent(message);
+
+
+window.location.href=whatsapp;
+
+}
+
+
+calculateTotal();
+
 </script>
+
 </body>
 </html>
