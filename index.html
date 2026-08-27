@@ -5,16 +5,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SR Shopping BD - Premium Backpack</title>
+<title>SR Shopping BD - Online Shop</title>
 
 <meta name="description"
-content="Premium Backpack - Price ৳970. Cash on Delivery Available.">
+content="SR Shopping BD - Quality Products • Cash on Delivery Available">
 
 <meta property="og:title"
-content="Premium Backpack - SR Shopping BD">
+content="SR Shopping BD - Online Shop">
 
 <meta property="og:description"
-content="Premium Backpack - Price ৳970 | Cash on Delivery Available">
+content="Quality Products • Cash on Delivery Available">
 
 <meta property="og:image"
 content="backpack.jpg">
@@ -116,14 +116,6 @@ h2{
     margin-bottom:3px;
 }
 
-.product-line{
-    border:1px solid #ddd;
-    border-radius:12px;
-    padding:14px;
-    margin-top:12px;
-    background:#fafafa;
-}
-
 label{
     display:block;
     font-weight:bold;
@@ -171,21 +163,9 @@ button:disabled{
     cursor:not-allowed;
 }
 
-.add{
-    background:#222;
-    color:#fff;
-}
-
 .order{
     background:#079447;
     color:#fff;
-}
-
-.remove{
-    background:#ffecec;
-    color:#d00000;
-    padding:10px;
-    font-size:14px;
 }
 
 .summary{
@@ -292,6 +272,10 @@ footer{
 
 <div class="container">
 
+<!-- ===============================
+     PRODUCT DISPLAY
+================================ -->
+
 <div class="card">
 
 <span class="badge">
@@ -299,85 +283,58 @@ footer{
 </span>
 
 <img
+id="productImage"
 src="backpack.jpg"
 class="product-image"
-alt="Premium Backpack"
+alt="Product"
 onerror="this.style.display='none';"
 >
 
-<h2>👜 Premium Backpack</h2>
+<h2 id="productName">
+👜 Premium Backpack
+</h2>
 
-<div class="price">
+<div class="price" id="productPrice">
 ৳970
 </div>
 
-<ul class="features">
-
-<li>✨ Stylish & Smart Design</li>
-<li>🎒 Daily Use / College / Office</li>
-<li>💯 Quality Product</li>
-<li>🚚 সারা বাংলাদেশে Delivery Available</li>
-<li>📦 Cash on Delivery Available</li>
-
+<ul class="features" id="productFeatures">
 </ul>
 
 </div>
+
+
+<!-- ===============================
+     ORDER BOX
+================================ -->
 
 <div class="order-box">
 
 <h2>🛒 অর্ডার করুন</h2>
 
-<div id="products">
 
-<div class="product-line">
-
-<label>
-পণ্য
+<label for="productSelect">
+পণ্য নির্বাচন করুন
 </label>
 
 <select
-class="product"
-onchange="calculateTotal()">
-
-<option value="Premium Backpack|970">
-Premium Backpack — ৳970
-</option>
-
+id="productSelect"
+onchange="changeProduct()">
 </select>
 
-<label>
+
+<label for="quantity">
 পরিমাণ
 </label>
 
 <input
+id="quantity"
 type="number"
-class="quantity"
 value="1"
 min="1"
-oninput="calculateTotal"
+oninput="calculateTotal()"
 >
 
-<button
-type="button"
-class="remove"
-onclick="removeProduct(this)">
-
-❌ পণ্য বাদ দিন
-
-</button>
-
-</div>
-
-</div>
-
-<button
-type="button"
-class="add"
-onclick="addProduct()">
-
-➕ আরও পণ্য যোগ করুন
-
-</button>
 
 <label for="name">
 আপনার নাম *
@@ -390,6 +347,7 @@ placeholder="আপনার নাম লিখুন"
 autocomplete="name"
 >
 
+
 <label for="phone">
 মোবাইল নম্বর *
 </label>
@@ -401,6 +359,7 @@ placeholder="01XXXXXXXXX"
 inputmode="tel"
 autocomplete="tel"
 >
+
 
 <label for="area">
 ডেলিভারি এলাকা *
@@ -420,6 +379,7 @@ onchange="calculateTotal()">
 
 </select>
 
+
 <label for="address">
 সম্পূর্ণ ডেলিভারি ঠিকানা *
 </label>
@@ -428,6 +388,7 @@ onchange="calculateTotal()">
 id="address"
 placeholder="জেলা, উপজেলা/থানা, এলাকা, বাড়ির ঠিকানা">
 </textarea>
+
 
 <div class="summary">
 
@@ -456,6 +417,7 @@ placeholder="জেলা, উপজেলা/থানা, এলাকা, ব
 
 </div>
 
+
 <div class="notice">
 
 💵 <strong>Cash on Delivery</strong>
@@ -465,6 +427,7 @@ placeholder="জেলা, উপজেলা/থানা, এলাকা, ব
 অর্ডার করার জন্য আপনার নাম, মোবাইল নম্বর এবং সম্পূর্ণ ঠিকানা সঠিকভাবে পূরণ করুন।
 
 </div>
+
 
 <div
 id="successMessage"
@@ -482,6 +445,7 @@ class="success">
 
 </div>
 
+
 <button
 id="orderButton"
 type="button"
@@ -496,11 +460,13 @@ onclick="orderNow()">
 
 </div>
 
+
 <footer>
 
 © 2026 SR Shopping BD • All Rights Reserved
 
 </footer>
+
 
 <script>
 
@@ -512,143 +478,189 @@ const GOOGLE_SCRIPT_URL =
 "https://script.google.com/macros/s/AKfycbxDRW2EBnTP76m2vRAumffxKbFvRAXOTbEp45BfghD5KmpLvrsApMRQzyo7R-UEeSdJ/exec";
 
 
+/* =====================================================
+   ⭐⭐⭐ শুধু এখানেই নতুন পণ্য যোগ করবেন ⭐⭐⭐
+   
+   ভবিষ্যতে নতুন পণ্য যোগ করতে এই অংশে নতুন
+   product লিখবেন।
+===================================================== */
+
+const PRODUCTS = [
+
+    {
+        name: "Premium Backpack",
+        price: 970,
+        image: "backpack.jpg",
+
+        features: [
+            "✨ Stylish & Smart Design",
+            "🎒 Daily Use / College / Office",
+            "💯 Quality Product",
+            "🚚 সারা বাংলাদেশে Delivery Available",
+            "📦 Cash on Delivery Available"
+        ]
+    },
+
+
+    {
+        name: "Pvc Comfy Rfl Rexine",
+        price: 750,
+        image: "Pvc Waterproof Rexine.jpg",
+
+        features: [
+            "💧 100% Waterproof",
+            "💪 টেকসই ও মজবুত",
+            "✨ প্রিমিয়াম Rexine ফিনিশ",
+            "🧼 সহজে পরিষ্কার করা যায়",
+            "🪑 বিভিন্ন ফার্নিচার ও কভার তৈরিতে উপযোগী"
+        ]
+    }
+
+];
+
+
 /* =========================================
-   CALCULATE TOTAL
-   ========================================= */
+   PRODUCT LIST LOAD
+========================================= */
 
-function calculateTotal(){
+function loadProducts(){
 
-    let subtotal = 0;
+    let select =
+        document.getElementById("productSelect");
 
-    document
-    .querySelectorAll(".product-line")
-    .forEach(function(line){
+    select.innerHTML = "";
 
-        let product =
-            line.querySelector(".product").value.split("|");
+    PRODUCTS.forEach(function(product,index){
 
-        let price =
-            Number(product[1]);
+        let option =
+            document.createElement("option");
 
-        let quantity =
-            Number(line.querySelector(".quantity").value);
+        option.value = index;
 
-        if(quantity < 1 || isNaN(quantity)){
-            quantity = 1;
-        }
+        option.textContent =
+            product.name + " — ৳" + product.price;
 
-        subtotal += price * quantity;
+        select.appendChild(option);
 
     });
 
-    let delivery =
-        Number(document.getElementById("area").value);
-
-    document.getElementById("subtotal").innerText =
-        "৳" + subtotal;
-
-    document.getElementById("delivery").innerText =
-        "৳" + delivery;
-
-    document.getElementById("total").innerText =
-        "৳" + (subtotal + delivery);
+    changeProduct();
 }
 
 
 /* =========================================
-   ADD PRODUCT
-   ========================================= */
+   CHANGE PRODUCT
+========================================= */
 
-function addProduct(){
+function changeProduct(){
 
-    let box = document.createElement("div");
-
-    box.className = "product-line";
-
-    box.innerHTML = `
-
-        <label>
-        পণ্য
-        </label>
-
-        <select
-        class="product"
-        onchange="calculateTotal()">
-
-        <option value="Premium Backpack|970">
-        Premium Backpack — ৳970
-        </option>
-
-        </select>
-
-        <label>
-        পরিমাণ
-        </label>
-
-        <input
-        type="number"
-        class="quantity"
-        value="1"
-        min="1"
-        oninput="calculateTotal()"
-        >
-
-        <button
-        type="button"
-        class="remove"
-        onclick="removeProduct(this)">
-
-        ❌ পণ্য বাদ দিন
-
-        </button>
-    `;
-
-    document
-    .getElementById("products")
-    .appendChild(box);
-
-    calculateTotal();
-}
-
-
-/* =========================================
-   REMOVE PRODUCT
-   ========================================= */
-
-function removeProduct(button){
-
-    let products =
-        document.querySelectorAll(".product-line");
-
-    if(products.length <= 1){
-
-        alert(
-            "কমপক্ষে একটি পণ্য রাখতে হবে।"
+    let index =
+        Number(
+            document.getElementById("productSelect").value
         );
 
-        return;
-    }
+    let product =
+        PRODUCTS[index];
 
-    button.parentElement.remove();
+    document.getElementById("productName")
+        .innerText = "🛍️ " + product.name;
+
+    document.getElementById("productPrice")
+        .innerText = "৳" + product.price;
+
+    let image =
+        document.getElementById("productImage");
+
+    image.style.display = "block";
+
+    image.src = product.image;
+
+    image.alt = product.name;
+
+
+    let featureBox =
+        document.getElementById("productFeatures");
+
+    featureBox.innerHTML = "";
+
+    product.features.forEach(function(feature){
+
+        let li =
+            document.createElement("li");
+
+        li.innerText = feature;
+
+        featureBox.appendChild(li);
+
+    });
+
 
     calculateTotal();
+}
+
+
+/* =========================================
+   CALCULATE TOTAL
+========================================= */
+
+function calculateTotal(){
+
+    let index =
+        Number(
+            document.getElementById("productSelect").value
+        );
+
+    let product =
+        PRODUCTS[index];
+
+    let quantity =
+        Number(
+            document.getElementById("quantity").value
+        );
+
+    if(quantity < 1 || isNaN(quantity)){
+        quantity = 1;
+    }
+
+    let subtotal =
+        product.price * quantity;
+
+
+    let delivery =
+        Number(
+            document.getElementById("area").value
+        );
+
+
+    document.getElementById("subtotal")
+        .innerText = "৳" + subtotal;
+
+    document.getElementById("delivery")
+        .innerText = "৳" + delivery;
+
+    document.getElementById("total")
+        .innerText =
+            "৳" + (subtotal + delivery);
 }
 
 
 /* =========================================
    ORDER NOW
-   ========================================= */
+========================================= */
 
 function orderNow(){
 
     let name =
-        document.getElementById("name").value.trim();
+        document.getElementById("name")
+        .value.trim();
 
     let phone =
-        document.getElementById("phone").value.trim();
+        document.getElementById("phone")
+        .value.trim();
 
     let address =
-        document.getElementById("address").value.trim();
+        document.getElementById("address")
+        .value.trim();
 
     let area =
         document.getElementById("area");
@@ -657,7 +669,9 @@ function orderNow(){
         Number(area.value);
 
     let areaText =
-        area.options[area.selectedIndex].text;
+        area.options[
+            area.selectedIndex
+        ].text;
 
 
     /* NAME CHECK */
@@ -721,44 +735,30 @@ function orderNow(){
 
 
     /* =========================================
-       CALCULATE ORDER
-       ========================================= */
+       SELECTED PRODUCT
+    ========================================= */
 
-    let subtotal = 0;
+    let index =
+        Number(
+            document.getElementById("productSelect").value
+        );
 
-    let totalQuantity = 0;
+    let product =
+        PRODUCTS[index];
 
-    let productCodes = [];
+
+    let quantity =
+        Number(
+            document.getElementById("quantity").value
+        );
+
+    if(quantity < 1 || isNaN(quantity)){
+        quantity = 1;
+    }
 
 
-    document
-    .querySelectorAll(".product-line")
-    .forEach(function(line){
-
-        let product =
-            line.querySelector(".product").value.split("|");
-
-        let productName =
-            product[0];
-
-        let price =
-            Number(product[1]);
-
-        let quantity =
-            Number(line.querySelector(".quantity").value);
-
-        if(quantity < 1 || isNaN(quantity)){
-            quantity = 1;
-        }
-
-        subtotal += price * quantity;
-
-        totalQuantity += quantity;
-
-        productCodes.push(productName);
-
-    });
-
+    let subtotal =
+        product.price * quantity;
 
     let total =
         subtotal + delivery;
@@ -766,7 +766,7 @@ function orderNow(){
 
     /* =========================================
        ORDER DATA
-       ========================================= */
+    ========================================= */
 
     let orderData = {
 
@@ -774,22 +774,27 @@ function orderNow(){
 
         phone: cleanPhone,
 
-        address: areaText + " | " + address,
+        address:
+            areaText + " | " + address,
 
-        productCode: productCodes.join(", "),
+        productCode:
+            product.name,
 
-        quantity: totalQuantity,
+        quantity:
+            quantity,
 
-        price: subtotal,
+        price:
+            subtotal,
 
-        total: total
+        total:
+            total
 
     };
 
 
     /* =========================================
        SEND TO GOOGLE SHEETS
-       ========================================= */
+    ========================================= */
 
     let formData =
         new URLSearchParams();
@@ -870,10 +875,10 @@ function orderNow(){
 
 
 /* =========================================
-   INITIAL CALCULATION
-   ========================================= */
+   START WEBSITE
+========================================= */
 
-calculateTotal();
+loadProducts();
 
 </script>
 
