@@ -299,8 +299,6 @@ footer{
 <div class="container">
 
 
-<!-- PRODUCT -->
-
 <div class="card">
 
 <span class="badge">
@@ -341,8 +339,6 @@ onerror="this.style.display='none';"
 </div>
 
 
-
-<!-- ORDER BOX -->
 
 <div class="order-box">
 
@@ -469,8 +465,6 @@ placeholder="জেলা, উপজেলা/থানা, এলাকা, ব
 
 
 
-<!-- SUMMARY -->
-
 <div class="summary">
 
 <div>
@@ -512,8 +506,6 @@ placeholder="জেলা, উপজেলা/থানা, এলাকা, ব
 
 
 
-<!-- SUCCESS MESSAGE -->
-
 <div
 id="successMessage"
 class="success">
@@ -531,8 +523,6 @@ class="success">
 </div>
 
 
-
-<!-- ORDER BUTTON -->
 
 <button
 id="orderButton"
@@ -563,13 +553,20 @@ onclick="orderNow()">
 
 
 /* =========================
+   GOOGLE SHEETS WEB APP URL
+========================= */
+
+const GOOGLE_SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbzD0whXNgd1aFbuKBYObX-_6FB0C6Tfw_oJbxyR-EOt8uYOPjv4smO-1kxryS500h4a/exec";
+
+
+/* =========================
    CALCULATE TOTAL
 ========================= */
 
 function calculateTotal(){
 
     let subtotal = 0;
-
 
     document
     .querySelectorAll(".product-line")
@@ -580,24 +577,19 @@ function calculateTotal(){
             .value
             .split("|");
 
-
         let price =
             Number(product[1]);
-
 
         let quantity =
             Number(
                 line.querySelector(".quantity").value
             );
 
-
         if(quantity < 1 || isNaN(quantity)){
             quantity = 1;
         }
 
-
-        subtotal +=
-            price * quantity;
+        subtotal += price * quantity;
 
     });
 
@@ -855,6 +847,10 @@ function orderNow(){
 
     let subtotal = 0;
 
+    let totalQuantity = 0;
+
+    let productCodes = [];
+
 
     document
     .querySelectorAll(".product-line")
@@ -865,6 +861,10 @@ function orderNow(){
             .querySelector(".product")
             .value
             .split("|");
+
+
+        let productName =
+            product[0];
 
 
         let price =
@@ -887,6 +887,15 @@ function orderNow(){
         subtotal +=
             price * quantity;
 
+
+        totalQuantity +=
+            quantity;
+
+
+        productCodes.push(
+            productName
+        );
+
     });
 
 
@@ -895,93 +904,125 @@ function orderNow(){
 
 
 
-    /* ORDER DATA */
+    /* =========================
+       ORDER DATA
+    ========================= */
 
     let orderData = {
 
-        orderTime:
-            new Date().toLocaleString("bn-BD"),
-
-        product:
-            "Premium Backpack",
-
-        price:
-            subtotal,
-
-        delivery:
-            delivery,
-
-        total:
-            total,
-
-        name:
+        customer:
             name,
 
         phone:
             cleanPhone,
 
-        area:
-            areaText,
-
         address:
-            address
+            areaText + " | " + address,
+
+        productCode:
+            productCodes.join(", "),
+
+        quantity:
+            totalQuantity,
+
+        price:
+            subtotal,
+
+        total:
+            total
 
     };
 
 
 
-    /*
-       TEMPORARILY SAVE ORDER
-       IN CUSTOMER'S BROWSER
-    */
+    /* =========================
+       SEND TO GOOGLE SHEETS
+    ========================= */
 
-    let oldOrders =
-        JSON.parse(
-            localStorage.getItem(
-                "srShoppingOrders"
-            )
-        ) || [];
+    let formData =
+        new URLSearchParams();
 
 
-    oldOrders.push(orderData);
-
-
-    localStorage.setItem(
-        "srShoppingOrders",
-        JSON.stringify(oldOrders)
+    formData.append(
+        "data",
+        JSON.stringify(orderData)
     );
 
 
-
-    /* SHOW SUCCESS */
-
-    document
-    .getElementById("successMessage")
-    .style.display =
-        "block";
+    let button =
+        document
+        .getElementById("orderButton");
 
 
-    document
-    .getElementById("orderButton")
-    .disabled =
+    button.disabled =
         true;
 
 
-    document
-    .getElementById("orderButton")
-    .innerText =
-        "✅ অর্ডার সম্পন্ন হয়েছে";
+    button.innerText =
+        "⏳ অর্ডার পাঠানো হচ্ছে...";
 
 
-    /*
-       SCROLL TO SUCCESS MESSAGE
-    */
+    fetch(
+        GOOGLE_SCRIPT_URL,
+        {
+            method:"POST",
+            body:formData
+        }
+    )
 
-    document
-    .getElementById("successMessage")
-    .scrollIntoView({
-        behavior:"smooth",
-        block:"center"
+    .then(function(response){
+
+        return response.text();
+
+    })
+
+    .then(function(result){
+
+        if(result.indexOf("SUCCESS") === -1){
+
+            throw new Error(
+                "Google Sheet response error"
+            );
+
+        }
+
+
+        document
+        .getElementById("successMessage")
+        .style.display =
+            "block";
+
+
+        button.innerText =
+            "✅ অর্ডার সম্পন্ন হয়েছে";
+
+
+        document
+        .getElementById("successMessage")
+        .scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
+
+    })
+
+    .catch(function(error){
+
+        console.error(error);
+
+
+        button.disabled =
+            false;
+
+
+        button.innerText =
+            "🛒 ORDER NOW";
+
+
+        alert(
+            "অর্ডার পাঠাতে সমস্যা হয়েছে।\n\nদয়া করে আবার চেষ্টা করুন।"
+        );
+
     });
 
 }
@@ -998,4 +1039,4 @@ calculateTotal();
 
 
 </body>
-</html>
+    </html>
