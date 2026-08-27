@@ -3,7 +3,6 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>SR Shopping BD - Premium Backpack</title>
@@ -22,7 +21,6 @@ content="backpack.jpg">
 
 <meta property="og:type"
 content="website">
-
 
 <style>
 
@@ -282,9 +280,7 @@ footer{
 
 </head>
 
-
 <body>
-
 
 <header>
 
@@ -294,17 +290,13 @@ footer{
 
 </header>
 
-
-
 <div class="container">
-
 
 <div class="card">
 
 <span class="badge">
 🚚 Cash on Delivery Available
 </span>
-
 
 <img
 src="backpack.jpg"
@@ -313,47 +305,35 @@ alt="Premium Backpack"
 onerror="this.style.display='none';"
 >
 
-
 <h2>👜 Premium Backpack</h2>
-
 
 <div class="price">
 ৳970
 </div>
 
-
 <ul class="features">
 
 <li>✨ Stylish & Smart Design</li>
-
 <li>🎒 Daily Use / College / Office</li>
-
 <li>💯 Quality Product</li>
-
 <li>🚚 সারা বাংলাদেশে Delivery Available</li>
-
 <li>📦 Cash on Delivery Available</li>
 
 </ul>
 
 </div>
 
-
-
 <div class="order-box">
 
 <h2>🛒 অর্ডার করুন</h2>
 
-
 <div id="products">
-
 
 <div class="product-line">
 
 <label>
 পণ্য
 </label>
-
 
 <select
 class="product"
@@ -365,20 +345,17 @@ Premium Backpack — ৳970
 
 </select>
 
-
 <label>
 পরিমাণ
 </label>
-
 
 <input
 type="number"
 class="quantity"
 value="1"
 min="1"
-oninput="calculateTotal()"
+oninput="calculateTotal"
 >
-
 
 <button
 type="button"
@@ -391,10 +368,7 @@ onclick="removeProduct(this)">
 
 </div>
 
-
 </div>
-
-
 
 <button
 type="button"
@@ -404,8 +378,6 @@ onclick="addProduct()">
 ➕ আরও পণ্য যোগ করুন
 
 </button>
-
-
 
 <label for="name">
 আপনার নাম *
@@ -418,8 +390,6 @@ placeholder="আপনার নাম লিখুন"
 autocomplete="name"
 >
 
-
-
 <label for="phone">
 মোবাইল নম্বর *
 </label>
@@ -431,8 +401,6 @@ placeholder="01XXXXXXXXX"
 inputmode="tel"
 autocomplete="tel"
 >
-
-
 
 <label for="area">
 ডেলিভারি এলাকা *
@@ -452,8 +420,6 @@ onchange="calculateTotal()">
 
 </select>
 
-
-
 <label for="address">
 সম্পূর্ণ ডেলিভারি ঠিকানা *
 </label>
@@ -462,8 +428,6 @@ onchange="calculateTotal()">
 id="address"
 placeholder="জেলা, উপজেলা/থানা, এলাকা, বাড়ির ঠিকানা">
 </textarea>
-
-
 
 <div class="summary">
 
@@ -492,8 +456,6 @@ placeholder="জেলা, উপজেলা/থানা, এলাকা, ব
 
 </div>
 
-
-
 <div class="notice">
 
 💵 <strong>Cash on Delivery</strong>
@@ -503,8 +465,6 @@ placeholder="জেলা, উপজেলা/থানা, এলাকা, ব
 অর্ডার করার জন্য আপনার নাম, মোবাইল নম্বর এবং সম্পূর্ণ ঠিকানা সঠিকভাবে পূরণ করুন।
 
 </div>
-
-
 
 <div
 id="successMessage"
@@ -522,8 +482,6 @@ class="success">
 
 </div>
 
-
-
 <button
 id="orderButton"
 type="button"
@@ -534,12 +492,9 @@ onclick="orderNow()">
 
 </button>
 
-
 </div>
 
 </div>
-
-
 
 <footer>
 
@@ -547,22 +502,19 @@ onclick="orderNow()">
 
 </footer>
 
-
-
 <script>
 
-
-/* =========================
-   GOOGLE SHEETS WEB APP URL
-========================= */
+/* =========================================
+   GOOGLE APPS SCRIPT WEB APP URL
+   ========================================= */
 
 const GOOGLE_SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbzD0whXNgd1aFbuKBYObX-_6FB0C6Tfw_oJbxyR-EOt8uYOPjv4smO-1kxryS500h4a/exec";
+"https://script.google.com/macros/s/AKfycbxDRW2EBnTP76m2vRAumffxKbFvRAXOTbEp45BfghD5KmpLvrsApMRQzyo7R-UEeSdJ/exec";
 
 
-/* =========================
+/* =========================================
    CALCULATE TOTAL
-========================= */
+   ========================================= */
 
 function calculateTotal(){
 
@@ -573,17 +525,13 @@ function calculateTotal(){
     .forEach(function(line){
 
         let product =
-            line.querySelector(".product")
-            .value
-            .split("|");
+            line.querySelector(".product").value.split("|");
 
         let price =
             Number(product[1]);
 
         let quantity =
-            Number(
-                line.querySelector(".quantity").value
-            );
+            Number(line.querySelector(".quantity").value);
 
         if(quantity < 1 || isNaN(quantity)){
             quantity = 1;
@@ -593,49 +541,29 @@ function calculateTotal(){
 
     });
 
-
     let delivery =
-        Number(
-            document
-            .getElementById("area")
-            .value
-        );
+        Number(document.getElementById("area").value);
 
-
-    document
-    .getElementById("subtotal")
-    .innerText =
+    document.getElementById("subtotal").innerText =
         "৳" + subtotal;
 
-
-    document
-    .getElementById("delivery")
-    .innerText =
+    document.getElementById("delivery").innerText =
         "৳" + delivery;
 
-
-    document
-    .getElementById("total")
-    .innerText =
+    document.getElementById("total").innerText =
         "৳" + (subtotal + delivery);
-
 }
 
 
-
-/* =========================
+/* =========================================
    ADD PRODUCT
-========================= */
+   ========================================= */
 
 function addProduct(){
 
-    let box =
-        document.createElement("div");
+    let box = document.createElement("div");
 
-
-    box.className =
-        "product-line";
-
+    box.className = "product-line";
 
     box.innerHTML = `
 
@@ -653,7 +581,6 @@ function addProduct(){
 
         </select>
 
-
         <label>
         পরিমাণ
         </label>
@@ -666,7 +593,6 @@ function addProduct(){
         oninput="calculateTotal()"
         >
 
-
         <button
         type="button"
         class="remove"
@@ -675,31 +601,24 @@ function addProduct(){
         ❌ পণ্য বাদ দিন
 
         </button>
-
     `;
-
 
     document
     .getElementById("products")
     .appendChild(box);
 
-
     calculateTotal();
-
 }
 
 
-
-/* =========================
+/* =========================================
    REMOVE PRODUCT
-========================= */
+   ========================================= */
 
 function removeProduct(button){
 
     let products =
-        document
-        .querySelectorAll(".product-line");
-
+        document.querySelectorAll(".product-line");
 
     if(products.length <= 1){
 
@@ -708,62 +627,37 @@ function removeProduct(button){
         );
 
         return;
-
     }
 
-
-    button
-    .parentElement
-    .remove();
-
+    button.parentElement.remove();
 
     calculateTotal();
-
 }
 
 
-
-/* =========================
+/* =========================================
    ORDER NOW
-========================= */
+   ========================================= */
 
 function orderNow(){
 
     let name =
-        document
-        .getElementById("name")
-        .value
-        .trim();
-
+        document.getElementById("name").value.trim();
 
     let phone =
-        document
-        .getElementById("phone")
-        .value
-        .trim();
-
+        document.getElementById("phone").value.trim();
 
     let address =
-        document
-        .getElementById("address")
-        .value
-        .trim();
-
+        document.getElementById("address").value.trim();
 
     let area =
-        document
-        .getElementById("area");
-
+        document.getElementById("area");
 
     let delivery =
         Number(area.value);
 
-
     let areaText =
-        area.options[
-            area.selectedIndex
-        ].text;
-
+        area.options[area.selectedIndex].text;
 
 
     /* NAME CHECK */
@@ -774,14 +668,10 @@ function orderNow(){
             "দয়া করে আপনার নাম লিখুন।"
         );
 
-        document
-        .getElementById("name")
-        .focus();
+        document.getElementById("name").focus();
 
         return;
-
     }
-
 
 
     /* PHONE CHECK */
@@ -792,12 +682,9 @@ function orderNow(){
             "দয়া করে আপনার মোবাইল নম্বর লিখুন।"
         );
 
-        document
-        .getElementById("phone")
-        .focus();
+        document.getElementById("phone").focus();
 
         return;
-
     }
 
 
@@ -807,22 +694,16 @@ function orderNow(){
         .replace(/-/g,"");
 
 
-    if(
-        !/^01[3-9]\d{8}$/.test(cleanPhone)
-    ){
+    if(!/^01[3-9]\d{8}$/.test(cleanPhone)){
 
         alert(
             "দয়া করে সঠিক ১১ সংখ্যার বাংলাদেশি মোবাইল নম্বর দিন।\n\nউদাহরণ: 01712345678"
         );
 
-        document
-        .getElementById("phone")
-        .focus();
+        document.getElementById("phone").focus();
 
         return;
-
     }
-
 
 
     /* ADDRESS CHECK */
@@ -833,17 +714,15 @@ function orderNow(){
             "দয়া করে সম্পূর্ণ ডেলিভারি ঠিকানা লিখুন।"
         );
 
-        document
-        .getElementById("address")
-        .focus();
+        document.getElementById("address").focus();
 
         return;
-
     }
 
 
-
-    /* CALCULATE ORDER */
+    /* =========================================
+       CALCULATE ORDER
+       ========================================= */
 
     let subtotal = 0;
 
@@ -857,44 +736,26 @@ function orderNow(){
     .forEach(function(line){
 
         let product =
-            line
-            .querySelector(".product")
-            .value
-            .split("|");
-
+            line.querySelector(".product").value.split("|");
 
         let productName =
             product[0];
 
-
         let price =
             Number(product[1]);
 
-
         let quantity =
-            Number(
-                line
-                .querySelector(".quantity")
-                .value
-            );
-
+            Number(line.querySelector(".quantity").value);
 
         if(quantity < 1 || isNaN(quantity)){
             quantity = 1;
         }
 
+        subtotal += price * quantity;
 
-        subtotal +=
-            price * quantity;
+        totalQuantity += quantity;
 
-
-        totalQuantity +=
-            quantity;
-
-
-        productCodes.push(
-            productName
-        );
+        productCodes.push(productName);
 
     });
 
@@ -903,45 +764,35 @@ function orderNow(){
         subtotal + delivery;
 
 
-
-    /* =========================
+    /* =========================================
        ORDER DATA
-    ========================= */
+       ========================================= */
 
     let orderData = {
 
-        customer:
-            name,
+        customer: name,
 
-        phone:
-            cleanPhone,
+        phone: cleanPhone,
 
-        address:
-            areaText + " | " + address,
+        address: areaText + " | " + address,
 
-        productCode:
-            productCodes.join(", "),
+        productCode: productCodes.join(", "),
 
-        quantity:
-            totalQuantity,
+        quantity: totalQuantity,
 
-        price:
-            subtotal,
+        price: subtotal,
 
-        total:
-            total
+        total: total
 
     };
 
 
-
-    /* =========================
+    /* =========================================
        SEND TO GOOGLE SHEETS
-    ========================= */
+       ========================================= */
 
     let formData =
         new URLSearchParams();
-
 
     formData.append(
         "data",
@@ -950,13 +801,9 @@ function orderNow(){
 
 
     let button =
-        document
-        .getElementById("orderButton");
+        document.getElementById("orderButton");
 
-
-    button.disabled =
-        true;
-
+    button.disabled = true;
 
     button.innerText =
         "⏳ অর্ডার পাঠানো হচ্ছে...";
@@ -965,8 +812,8 @@ function orderNow(){
     fetch(
         GOOGLE_SCRIPT_URL,
         {
-            method:"POST",
-            body:formData
+            method: "POST",
+            body: formData
         }
     )
 
@@ -981,16 +828,14 @@ function orderNow(){
         if(result.indexOf("SUCCESS") === -1){
 
             throw new Error(
-                "Google Sheet response error"
+                "Google Sheet response error: " + result
             );
-
         }
 
 
         document
         .getElementById("successMessage")
-        .style.display =
-            "block";
+        .style.display = "block";
 
 
         button.innerText =
@@ -1010,14 +855,10 @@ function orderNow(){
 
         console.error(error);
 
-
-        button.disabled =
-            false;
-
+        button.disabled = false;
 
         button.innerText =
             "🛒 ORDER NOW";
-
 
         alert(
             "অর্ডার পাঠাতে সমস্যা হয়েছে।\n\nদয়া করে আবার চেষ্টা করুন।"
@@ -1028,15 +869,13 @@ function orderNow(){
 }
 
 
-
-/* =========================
+/* =========================================
    INITIAL CALCULATION
-========================= */
+   ========================================= */
 
 calculateTotal();
 
 </script>
 
-
 </body>
-    </html>
+</html>
