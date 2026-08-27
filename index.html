@@ -8,7 +8,7 @@
 <title>SR Shopping BD - Online Shop</title>
 
 <meta name="description"
-content="SR Shopping BD - Quality Products • Cash on Delivery Available">
+content="SR Shopping BD - Quality Products • Cash on Delivery Available.">
 
 <meta property="og:title"
 content="SR Shopping BD - Online Shop">
@@ -76,12 +76,32 @@ header p{
 
 .product-image{
     width:100%;
-    max-height:600px;
+    height:380px;
     object-fit:cover;
     display:block;
     border-radius:14px;
-    margin-bottom:15px;
     background:#eee;
+}
+
+.image-buttons{
+    display:flex;
+    gap:10px;
+    margin-top:10px;
+}
+
+.image-buttons button{
+    margin:0;
+    background:#222;
+    color:#fff;
+    padding:10px;
+    font-size:14px;
+}
+
+.image-count{
+    text-align:center;
+    font-size:14px;
+    color:#666;
+    margin-top:8px;
 }
 
 .badge{
@@ -254,6 +274,10 @@ footer{
         font-size:26px;
     }
 
+    .product-image{
+        height:320px;
+    }
+
 }
 
 </style>
@@ -272,10 +296,6 @@ footer{
 
 <div class="container">
 
-<!-- ===============================
-     PRODUCT DISPLAY
-================================ -->
-
 <div class="card">
 
 <span class="badge">
@@ -287,31 +307,50 @@ id="productImage"
 src="backpack.jpg"
 class="product-image"
 alt="Product"
-onerror="this.style.display='none';"
 >
 
-<h2 id="productName">
-👜 Premium Backpack
-</h2>
+<div class="image-buttons">
 
-<div class="price" id="productPrice">
-৳970
+<button
+type="button"
+onclick="previousImage()">
+◀️ আগের ছবি
+</button>
+
+<button
+type="button"
+onclick="nextImage()">
+পরের ছবি ▶️
+</button>
+
 </div>
 
-<ul class="features" id="productFeatures">
+<div
+id="imageCount"
+class="image-count">
+</div>
+
+<h2 id="productName">
+Product
+</h2>
+
+<div
+class="price"
+id="productPrice">
+৳0
+</div>
+
+<ul
+class="features"
+id="productFeatures">
 </ul>
 
 </div>
 
 
-<!-- ===============================
-     ORDER BOX
-================================ -->
-
 <div class="order-box">
 
 <h2>🛒 অর্ডার করুন</h2>
-
 
 <label for="productSelect">
 পণ্য নির্বাচন করুন
@@ -321,6 +360,18 @@ onerror="this.style.display='none';"
 id="productSelect"
 onchange="changeProduct()">
 </select>
+
+
+<label for="productCode">
+পণ্যের কোড *
+</label>
+
+<input
+id="productCode"
+type="text"
+placeholder="ছবিতে দেওয়া কোড লিখুন"
+autocomplete="off"
+>
 
 
 <label for="quantity">
@@ -394,7 +445,7 @@ placeholder="জেলা, উপজেলা/থানা, এলাকা, ব
 
 <div>
 পণ্যের মূল্য:
-<strong id="subtotal">৳970</strong>
+<strong id="subtotal">৳0</strong>
 </div>
 
 <div>
@@ -404,7 +455,7 @@ placeholder="জেলা, উপজেলা/থানা, এলাকা, ব
 
 <div class="total">
 মোট মূল্য:
-<span id="total">৳1030</span>
+<span id="total">৳0</span>
 </div>
 
 <div class="delivery-note">
@@ -422,9 +473,15 @@ placeholder="জেলা, উপজেলা/থানা, এলাকা, ব
 
 💵 <strong>Cash on Delivery</strong>
 
-<br>
+<br><br>
 
-অর্ডার করার জন্য আপনার নাম, মোবাইল নম্বর এবং সম্পূর্ণ ঠিকানা সঠিকভাবে পূরণ করুন।
+আপনার পছন্দের পণ্যের ছবিতে থাকা
+<strong>Product Code</strong>
+নিচের ঘরে লিখুন।
+
+<br><br>
+
+নাম, মোবাইল নম্বর এবং সম্পূর্ণ ঠিকানা সঠিকভাবে পূরণ করুন।
 
 </div>
 
@@ -471,26 +528,30 @@ onclick="orderNow()">
 <script>
 
 /* =========================================
-   GOOGLE APPS SCRIPT WEB APP URL
-   ========================================= */
+   GOOGLE APPS SCRIPT URL
+========================================= */
 
 const GOOGLE_SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbxDRW2EBnTP76m2vRAumffxKbFvRAXOTbEp45BfghD5KmpLvrsApMRQzyo7R-UEeSdJ/exec";
+"https://script.google.com/macros/s/AKfycbwAeJE8KmqtxywoEymisMDCT8zlhEW2WuE-uHzRubuo2wflpY852r82NaJfBTd-0KKa/exec";
 
 
-/* =====================================================
-   ⭐⭐⭐ শুধু এখানেই নতুন পণ্য যোগ করবেন ⭐⭐⭐
-   
-   ভবিষ্যতে নতুন পণ্য যোগ করতে এই অংশে নতুন
-   product লিখবেন।
-===================================================== */
+/* =========================================
+   ⭐ PRODUCT INFORMATION ⭐
+
+   ভবিষ্যতে নতুন পণ্য যোগ করতে
+   শুধু এই অংশ পরিবর্তন করবেন।
+========================================= */
 
 const PRODUCTS = [
 
     {
         name: "Premium Backpack",
+
         price: 970,
-        image: "backpack.jpg",
+
+        images: [
+            "backpack.jpg"
+        ],
 
         features: [
             "✨ Stylish & Smart Design",
@@ -504,35 +565,42 @@ const PRODUCTS = [
 
     {
         name: "Pvc Comfy Rfl Rexine",
+
         price: 750,
-        image: "Pvc Waterproof Rexine.jpg",
+
+        images: [
+            "Pvc Waterproof Rexine.jpg"
+        ],
 
         features: [
             "💧 100% Waterproof",
             "💪 টেকসই ও মজবুত",
             "✨ প্রিমিয়াম Rexine ফিনিশ",
             "🧼 সহজে পরিষ্কার করা যায়",
-            "🪑 বিভিন্ন ফার্নিচার ও কভার তৈরিতে উপযোগী"
+            "🪑 বিভিন্ন কাজে ব্যবহার উপযোগী"
         ]
     }
 
 ];
 
 
+let currentImage = 0;
+
+
 /* =========================================
-   PRODUCT LIST LOAD
+   LOAD PRODUCTS
 ========================================= */
 
 function loadProducts(){
 
-    let select =
+    const select =
         document.getElementById("productSelect");
 
     select.innerHTML = "";
 
     PRODUCTS.forEach(function(product,index){
 
-        let option =
+        const option =
             document.createElement("option");
 
         option.value = index;
@@ -554,38 +622,33 @@ function loadProducts(){
 
 function changeProduct(){
 
-    let index =
+    const index =
         Number(
             document.getElementById("productSelect").value
         );
 
-    let product =
+    const product =
         PRODUCTS[index];
 
+    currentImage = 0;
+
     document.getElementById("productName")
-        .innerText = "🛍️ " + product.name;
+        .innerText =
+        "🛍️ " + product.name;
 
     document.getElementById("productPrice")
-        .innerText = "৳" + product.price;
-
-    let image =
-        document.getElementById("productImage");
-
-    image.style.display = "block";
-
-    image.src = product.image;
-
-    image.alt = product.name;
+        .innerText =
+        "৳" + product.price;
 
 
-    let featureBox =
+    const featureBox =
         document.getElementById("productFeatures");
 
     featureBox.innerHTML = "";
 
     product.features.forEach(function(feature){
 
-        let li =
+        const li =
             document.createElement("li");
 
         li.innerText = feature;
@@ -594,8 +657,100 @@ function changeProduct(){
 
     });
 
+    showImage();
 
     calculateTotal();
+}
+
+
+/* =========================================
+   SHOW IMAGE
+========================================= */
+
+function showImage(){
+
+    const index =
+        Number(
+            document.getElementById("productSelect").value
+        );
+
+    const product =
+        PRODUCTS[index];
+
+    const image =
+        document.getElementById("productImage");
+
+    image.style.display = "block";
+
+    image.src =
+        product.images[currentImage];
+
+    image.alt =
+        product.name;
+
+    document.getElementById("imageCount")
+        .innerText =
+        "ছবি " +
+        (currentImage + 1) +
+        " / " +
+        product.images.length;
+}
+
+
+/* =========================================
+   NEXT IMAGE
+========================================= */
+
+function nextImage(){
+
+    const index =
+        Number(
+            document.getElementById("productSelect").value
+        );
+
+    const product =
+        PRODUCTS[index];
+
+    if(product.images.length <= 1){
+        return;
+    }
+
+    currentImage++;
+
+    if(currentImage >= product.images.length){
+        currentImage = 0;
+    }
+
+    showImage();
+}
+
+
+/* =========================================
+   PREVIOUS IMAGE
+========================================= */
+
+function previousImage(){
+
+    const index =
+        Number(
+            document.getElementById("productSelect").value
+        );
+
+    const product =
+        PRODUCTS[index];
+
+    if(product.images.length <= 1){
+        return;
+    }
+
+    currentImage--;
+
+    if(currentImage < 0){
+        currentImage =
+            product.images.length - 1;
+    }
+
+    showImage();
 }
 
 
@@ -605,12 +760,12 @@ function changeProduct(){
 
 function calculateTotal(){
 
-    let index =
+    const index =
         Number(
             document.getElementById("productSelect").value
         );
 
-    let product =
+    const product =
         PRODUCTS[index];
 
     let quantity =
@@ -622,25 +777,25 @@ function calculateTotal(){
         quantity = 1;
     }
 
-    let subtotal =
+    const subtotal =
         product.price * quantity;
 
-
-    let delivery =
+    const delivery =
         Number(
             document.getElementById("area").value
         );
 
-
     document.getElementById("subtotal")
-        .innerText = "৳" + subtotal;
+        .innerText =
+        "৳" + subtotal;
 
     document.getElementById("delivery")
-        .innerText = "৳" + delivery;
+        .innerText =
+        "৳" + delivery;
 
     document.getElementById("total")
         .innerText =
-            "৳" + (subtotal + delivery);
+        "৳" + (subtotal + delivery);
 }
 
 
@@ -650,37 +805,37 @@ function calculateTotal(){
 
 function orderNow(){
 
-    let name =
+    const name =
         document.getElementById("name")
         .value.trim();
 
-    let phone =
+    const phone =
         document.getElementById("phone")
         .value.trim();
 
-    let address =
+    const productCode =
+        document.getElementById("productCode")
+        .value.trim();
+
+    const address =
         document.getElementById("address")
         .value.trim();
 
-    let area =
+    const area =
         document.getElementById("area");
 
-    let delivery =
+    const delivery =
         Number(area.value);
 
-    let areaText =
+    const areaText =
         area.options[
             area.selectedIndex
         ].text;
 
 
-    /* NAME CHECK */
-
     if(!name){
 
-        alert(
-            "দয়া করে আপনার নাম লিখুন।"
-        );
+        alert("দয়া করে আপনার নাম লিখুন।");
 
         document.getElementById("name").focus();
 
@@ -688,13 +843,9 @@ function orderNow(){
     }
 
 
-    /* PHONE CHECK */
-
     if(!phone){
 
-        alert(
-            "দয়া করে আপনার মোবাইল নম্বর লিখুন।"
-        );
+        alert("দয়া করে আপনার মোবাইল নম্বর লিখুন।");
 
         document.getElementById("phone").focus();
 
@@ -702,7 +853,7 @@ function orderNow(){
     }
 
 
-    let cleanPhone =
+    const cleanPhone =
         phone
         .replace(/\s+/g,"")
         .replace(/-/g,"");
@@ -720,7 +871,17 @@ function orderNow(){
     }
 
 
-    /* ADDRESS CHECK */
+    if(!productCode){
+
+        alert("দয়া করে পণ্যের কোড লিখুন।");
+
+        document
+        .getElementById("productCode")
+        .focus();
+
+        return;
+    }
+
 
     if(!address){
 
@@ -728,22 +889,20 @@ function orderNow(){
             "দয়া করে সম্পূর্ণ ডেলিভারি ঠিকানা লিখুন।"
         );
 
-        document.getElementById("address").focus();
+        document
+        .getElementById("address")
+        .focus();
 
         return;
     }
 
 
-    /* =========================================
-       SELECTED PRODUCT
-    ========================================= */
-
-    let index =
+    const index =
         Number(
             document.getElementById("productSelect").value
         );
 
-    let product =
+    const product =
         PRODUCTS[index];
 
 
@@ -752,23 +911,20 @@ function orderNow(){
             document.getElementById("quantity").value
         );
 
+
     if(quantity < 1 || isNaN(quantity)){
         quantity = 1;
     }
 
 
-    let subtotal =
+    const subtotal =
         product.price * quantity;
 
-    let total =
+    const total =
         subtotal + delivery;
 
 
-    /* =========================================
-       ORDER DATA
-    ========================================= */
-
-    let orderData = {
+    const orderData = {
 
         customer: name,
 
@@ -777,8 +933,11 @@ function orderNow(){
         address:
             areaText + " | " + address,
 
-        productCode:
+        productName:
             product.name,
+
+        productCode:
+            productCode,
 
         quantity:
             quantity,
@@ -786,17 +945,16 @@ function orderNow(){
         price:
             subtotal,
 
+        delivery:
+            delivery,
+
         total:
             total
 
     };
 
 
-    /* =========================================
-       SEND TO GOOGLE SHEETS
-    ========================================= */
-
-    let formData =
+    const formData =
         new URLSearchParams();
 
     formData.append(
@@ -805,7 +963,7 @@ function orderNow(){
     );
 
 
-    let button =
+    const button =
         document.getElementById("orderButton");
 
     button.disabled = true;
@@ -817,8 +975,8 @@ function orderNow(){
     fetch(
         GOOGLE_SCRIPT_URL,
         {
-            method: "POST",
-            body: formData
+            method:"POST",
+            body:formData
         }
     )
 
@@ -832,15 +990,15 @@ function orderNow(){
 
         if(result.indexOf("SUCCESS") === -1){
 
-            throw new Error(
-                "Google Sheet response error: " + result
-            );
+            throw new Error(result);
+
         }
 
 
         document
         .getElementById("successMessage")
-        .style.display = "block";
+        .style.display =
+        "block";
 
 
         button.innerText =
@@ -850,8 +1008,11 @@ function orderNow(){
         document
         .getElementById("successMessage")
         .scrollIntoView({
+
             behavior:"smooth",
+
             block:"center"
+
         });
 
     })
@@ -875,7 +1036,7 @@ function orderNow(){
 
 
 /* =========================================
-   START WEBSITE
+   START
 ========================================= */
 
 loadProducts();
