@@ -220,6 +220,7 @@ style="display:none;">
 <div id="orderSection"
 style="display:none;">
 
+
 <div class="card">
 
 
@@ -239,13 +240,6 @@ style="display:none;">
 
 
 <form id="orderForm">
-
-
-<input type="hidden"
-id="productNameInput">
-
-<input type="hidden"
-id="productPriceInput">
 
 
 <label>
@@ -402,6 +396,7 @@ class="success">
 আমরা খুব শীঘ্রই আপনার সাথে যোগাযোগ করব।
 </p>
 
+
 <button
 class="success-button"
 onclick="window.location.href='index.html'">
@@ -419,17 +414,17 @@ onclick="window.location.href='index.html'">
 <script>
 
 
-/* ==========================================
-   GOOGLE APPS SCRIPT URL
-   ========================================== */
+// ==========================================
+// APPS SCRIPT URL
+// ==========================================
 
 const API_URL =
 "https://script.google.com/macros/s/AKfycbwEl4AmzhQHDoy0yMqE0_XnUJ2Yj65-PiWnP0FADuC5Wh5Y8d8fej2lUBqndiQC2bN5/exec";
 
 
-/* ==========================================
-   VARIABLES
-   ========================================== */
+// ==========================================
+// VARIABLES
+// ==========================================
 
 let selectedProduct = null;
 
@@ -438,22 +433,23 @@ let dhakaDelivery = 60;
 let outsideDelivery = 120;
 
 
-/* ==========================================
-   GET PRODUCT NAME FROM URL
-   ========================================== */
+// ==========================================
+// PRODUCT FROM URL
+// ==========================================
 
 const urlParams =
 new URLSearchParams(
 window.location.search
 );
 
+
 const productNameFromURL =
 urlParams.get("product");
 
 
-/* ==========================================
-   LOAD PRODUCT
-   ========================================== */
+// ==========================================
+// LOAD PRODUCT
+// ==========================================
 
 function loadProduct() {
 
@@ -469,84 +465,86 @@ function loadProduct() {
 
 
   const callbackName =
-    "orderProductCallback_" +
+    "productCallback_" +
     Date.now();
 
 
   window[callbackName] =
-    function(result) {
+  function(result) {
 
-      try {
+    try {
 
-        delete window[callbackName];
+      delete window[callbackName];
 
+
+      if (
+        !result ||
+        result.success !== true
+      ) {
+
+        showError(
+          result &&
+          result.error
+            ? result.error
+            : "পণ্যের তথ্য পাওয়া যায়নি।"
+        );
+
+        return;
+
+      }
+
+
+      const products =
+        result.products || [];
+
+
+      for (
+        let i = 0;
+        i < products.length;
+        i++
+      ) {
 
         if (
-          !result ||
-          result.success !== true
+          products[i].name ===
+          productNameFromURL
         ) {
 
-          showError(
-            result &&
-            result.error
-              ? result.error
-              : "পণ্যের তথ্য পাওয়া যায়নি।"
-          );
+          selectedProduct =
+            products[i];
+
+
+          showProduct();
+
+
+          loadSettings();
+
 
           return;
 
         }
 
-
-        const products =
-          result.products || [];
-
-
-        for (
-          let i = 0;
-          i < products.length;
-          i++
-        ) {
-
-          if (
-            products[i].name ===
-            productNameFromURL
-          ) {
-
-            selectedProduct =
-            products[i];
-
-            showProduct();
-
-            loadSettings();
-
-            return;
-
-          }
-
-        }
-
-
-        showError(
-          "এই পণ্যটি বর্তমানে পাওয়া যাচ্ছে না।"
-        );
-
-
       }
 
-      catch(error) {
 
-        showError(
-          "পণ্যের তথ্য লোড করতে সমস্যা হয়েছে।"
-        );
+      showError(
+        "এই পণ্যটি বর্তমানে পাওয়া যাচ্ছে না।"
+      );
 
-      }
+    }
 
-    };
+    catch(error) {
+
+      showError(
+        "পণ্যের তথ্য লোড করতে সমস্যা হয়েছে।"
+      );
+
+    }
+
+  };
 
 
   const script =
-  document.createElement("script");
+    document.createElement("script");
 
 
   script.src =
@@ -575,9 +573,9 @@ function loadProduct() {
 }
 
 
-/* ==========================================
-   SHOW PRODUCT
-   ========================================== */
+// ==========================================
+// SHOW PRODUCT
+// ==========================================
 
 function showProduct() {
 
@@ -605,26 +603,14 @@ function showProduct() {
     ).toLocaleString("en-BD");
 
 
-  document
-  .getElementById("productNameInput")
-  .value =
-    selectedProduct.name;
-
-
-  document
-  .getElementById("productPriceInput")
-  .value =
-    selectedProduct.price;
-
-
   updateTotal();
 
 }
 
 
-/* ==========================================
-   LOAD DELIVERY SETTINGS
-   ========================================== */
+// ==========================================
+// LOAD SETTINGS
+// ==========================================
 
 function loadSettings() {
 
@@ -675,7 +661,7 @@ function loadSettings() {
 
 
   const script =
-  document.createElement("script");
+    document.createElement("script");
 
 
   script.src =
@@ -702,9 +688,9 @@ function loadSettings() {
 }
 
 
-/* ==========================================
-   UPDATE TOTAL
-   ========================================== */
+// ==========================================
+// UPDATE TOTAL
+// ==========================================
 
 function updateTotal() {
 
@@ -784,9 +770,9 @@ function updateTotal() {
 }
 
 
-/* ==========================================
-   QUANTITY CHANGE
-   ========================================== */
+// ==========================================
+// INPUT EVENTS
+// ==========================================
 
 document
 .getElementById("quantity")
@@ -796,10 +782,6 @@ document
 );
 
 
-/* ==========================================
-   DELIVERY AREA CHANGE
-   ========================================== */
-
 document
 .getElementById("deliveryArea")
 .addEventListener(
@@ -808,9 +790,9 @@ document
 );
 
 
-/* ==========================================
-   SUBMIT ORDER
-   ========================================== */
+// ==========================================
+// FORM SUBMIT
+// ==========================================
 
 document
 .getElementById("orderForm")
@@ -911,20 +893,20 @@ document
     }
 
 
-    const confirmButton =
+    const button =
       document
-      .getElementById("confirmButton");
+      .getElementById(
+        "confirmButton"
+      );
 
 
-    confirmButton.disabled =
-      true;
+    button.disabled = true;
 
-
-    confirmButton.textContent =
+    button.textContent =
       "অর্ডার পাঠানো হচ্ছে...";
 
 
-    const orderData = {
+    submitOrder({
 
       customerName:
         customerName,
@@ -947,24 +929,20 @@ document
       remarks:
         remarks
 
-    };
-
-
-    submitOrder(orderData);
+    });
 
   }
 );
 
 
-/* ==========================================
-   SEND ORDER TO APPS SCRIPT
-   ========================================== */
+// ==========================================
+// SUBMIT ORDER
+// ==========================================
 
-function submitOrder(orderData) {
-
+function submitOrder(order) {
 
   const callbackName =
-    "orderSubmitCallback_" +
+    "orderCallback_" +
     Date.now();
 
 
@@ -1009,9 +987,7 @@ function submitOrder(orderData) {
       }
 
 
-      button.disabled =
-        false;
-
+      button.disabled = false;
 
       button.textContent =
         "🛒 অর্ডার কনফার্ম করুন";
@@ -1023,8 +999,8 @@ function submitOrder(orderData) {
       )
       .textContent =
         result &&
-        result.message
-          ? result.message
+        (result.error || result.message)
+          ? (result.error || result.message)
           : "অর্ডার পাঠানো যায়নি।";
 
     }
@@ -1037,11 +1013,6 @@ function submitOrder(orderData) {
 
   };
 
-
-  /*
-    Google Apps Script-এ
-    GET request দিয়ে order পাঠানো হচ্ছে।
-  */
 
   const params =
     new URLSearchParams();
@@ -1061,43 +1032,43 @@ function submitOrder(orderData) {
 
   params.append(
     "customerName",
-    orderData.customerName
+    order.customerName
   );
 
 
   params.append(
     "phone",
-    orderData.phone
+    order.phone
   );
 
 
   params.append(
     "address",
-    orderData.address
+    order.address
   );
 
 
   params.append(
     "productName",
-    orderData.productName
+    order.productName
   );
 
 
   params.append(
     "quantity",
-    orderData.quantity
+    order.quantity
   );
 
 
   params.append(
     "deliveryArea",
-    orderData.deliveryArea
+    order.deliveryArea
   );
 
 
   params.append(
     "remarks",
-    orderData.remarks
+    order.remarks
   );
 
 
@@ -1126,9 +1097,9 @@ function submitOrder(orderData) {
 }
 
 
-/* ==========================================
-   SUBMIT ERROR
-   ========================================== */
+// ==========================================
+// SUBMIT ERROR
+// ==========================================
 
 function showSubmitError() {
 
@@ -1139,9 +1110,7 @@ function showSubmitError() {
     );
 
 
-  button.disabled =
-    false;
-
+  button.disabled = false;
 
   button.textContent =
     "🛒 অর্ডার কনফার্ম করুন";
@@ -1157,9 +1126,9 @@ function showSubmitError() {
 }
 
 
-/* ==========================================
-   GENERAL ERROR
-   ========================================== */
+// ==========================================
+// GENERAL ERROR
+// ==========================================
 
 function showError(message) {
 
@@ -1183,14 +1152,14 @@ function showError(message) {
 }
 
 
-/* ==========================================
-   START
-   ========================================== */
+// ==========================================
+// START
+// ==========================================
 
 loadProduct();
 
-
 </script>
+
 
 </body>
 
