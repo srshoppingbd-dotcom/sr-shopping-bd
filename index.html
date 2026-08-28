@@ -1,807 +1,397 @@
 <!DOCTYPE html>
 <html lang="bn">
-
 <head>
-  <meta charset="UTF-8">
-
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-
-  <title>SR Shopping BD</title>
-
-  <style>
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      color: #222;
-    }
-
-    /* HEADER */
-
-    header {
-      background: #111;
-      color: #fff;
-      text-align: center;
-      padding: 20px 15px;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 28px;
-    }
-
-    header p {
-      margin: 6px 0 0;
-      font-size: 14px;
-    }
-
-
-    /* CONTAINER */
-
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 18px;
-    }
-
-
-    /* PRODUCTS */
-
-    .products {
-      display: grid;
-      grid-template-columns:
-        repeat(auto-fit, minmax(180px, 1fr));
-
-      gap: 16px;
-    }
-
-
-    /* PRODUCT CARD */
-
-    .product-card {
-      background: #fff;
-      border-radius: 12px;
-      overflow: hidden;
-
-      box-shadow:
-        0 3px 12px rgba(0,0,0,0.08);
-    }
-
-
-    /* IMAGE */
-
-    .product-image {
-      width: 100%;
-      height: 220px;
-
-      background: #eeeeee;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      overflow: hidden;
-    }
-
-    .product-image img {
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-    }
-
-
-    /* PRODUCT INFORMATION */
-
-    .product-info {
-      padding: 14px;
-    }
-
-    .product-name {
-      font-size: 18px;
-      font-weight: bold;
-
-      margin-bottom: 7px;
-    }
-
-    .product-description {
-      font-size: 14px;
-      line-height: 1.5;
-
-      color: #666;
-
-      margin-bottom: 10px;
-    }
-
-    .product-price {
-      font-size: 21px;
-      font-weight: bold;
-
-      margin-bottom: 12px;
-    }
-
-
-    /* ORDER BUTTON */
-
-    .order-button {
-      width: 100%;
-
-      border: none;
-      border-radius: 8px;
-
-      padding: 13px;
-
-      background: #111;
-      color: #fff;
-
-      font-size: 16px;
-      font-weight: bold;
-
-      cursor: pointer;
-    }
-
-    .order-button:active {
-      transform: scale(0.98);
-    }
-
-
-    /* LOADING */
-
-    #loading {
-      text-align: center;
-      padding: 40px 15px;
-
-      font-size: 16px;
-    }
-
-
-    /* ERROR */
-
-    #error {
-      display: none;
-
-      text-align: center;
-
-      padding: 30px 15px;
-
-      color: #c62828;
-    }
-
-
-    /* EMPTY */
-
-    #empty {
-      display: none;
-
-      text-align: center;
-
-      padding: 40px 15px;
-    }
-
-
-    /* MOBILE */
-
-    @media (max-width: 600px) {
-
-      .container {
-        padding: 10px;
-      }
-
-      .products {
-        grid-template-columns:
-          repeat(2, 1fr);
-
-        gap: 10px;
-      }
-
-      .product-image {
-        height: 170px;
-      }
-
-      .product-info {
-        padding: 10px;
-      }
-
-      .product-name {
-        font-size: 16px;
-      }
-
-      .product-description {
-        font-size: 13px;
-      }
-
-      .product-price {
-        font-size: 18px;
-      }
-
-      .order-button {
-        font-size: 14px;
-        padding: 11px 5px;
-      }
-
-    }
-
-  </style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SR Shopping BD</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f5f5f5;
+  color:#222;
+}
+
+/* COVER PHOTO */
+.cover-header{
+  width:100%;
+  margin:0;
+  padding:0;
+  background:#fff;
+  overflow:hidden;
+  line-height:0;
+}
+
+.cover-header img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+/* PRODUCTS */
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:18px;
+}
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:16px;
+}
+
+.product-card{
+  background:#fff;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+.product-image{
+  width:100%;
+  height:220px;
+  background:#eee;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+.product-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.product-info{
+  padding:14px;
+}
+
+.product-name{
+  font-size:18px;
+  font-weight:bold;
+  margin-bottom:7px;
+}
+
+.product-description{
+  font-size:14px;
+  line-height:1.5;
+  color:#666;
+  margin-bottom:10px;
+}
+
+.product-price{
+  font-size:21px;
+  font-weight:bold;
+  margin-bottom:12px;
+}
+
+.order-button{
+  width:100%;
+  border:none;
+  border-radius:8px;
+  padding:13px;
+  background:#111;
+  color:#fff;
+  font-size:16px;
+  font-weight:bold;
+}
+
+#loading{
+  text-align:center;
+  padding:40px 15px;
+}
+
+#error{
+  display:none;
+  text-align:center;
+  padding:30px 15px;
+  color:#c62828;
+}
+
+#empty{
+  display:none;
+  text-align:center;
+  padding:40px 15px;
+}
+
+@media(max-width:600px){
+  .container{padding:10px}
+
+  .products{
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+  }
+
+  .product-image{height:170px}
+
+  .product-info{padding:10px}
+
+  .product-name{font-size:16px}
+
+  .product-description{font-size:13px}
+
+  .product-price{font-size:18px}
+
+  .order-button{
+    font-size:14px;
+    padding:11px 5px;
+  }
+}
+</style>
 </head>
-
 
 <body>
 
+<!-- COVER PHOTO -->
+<header class="cover-header">
+  <img src="cover.jpg" alt="SR Shopping BD">
+</header>
 
-  <!-- HEADER -->
+<div class="container">
 
-  <header>
+<div id="loading">
+পণ্য লোড হচ্ছে...
+</div>
 
-    <h1>SR Shopping BD</h1>
+<div id="error"></div>
 
-    <p>
-      Quality Products at Best Price
-    </p>
+<div id="empty">
+বর্তমানে কোনো পণ্য পাওয়া যায়নি।
+</div>
 
-  </header>
+<div id="products" class="products"></div>
 
-
-
-  <!-- MAIN -->
-
-  <div class="container">
-
-
-    <!-- LOADING -->
-
-    <div id="loading">
-
-      পণ্য লোড হচ্ছে...
-
-    </div>
-
-
-    <!-- ERROR -->
-
-    <div id="error">
-
-    </div>
-
-
-    <!-- EMPTY -->
-
-    <div id="empty">
-
-      বর্তমানে কোনো পণ্য পাওয়া যায়নি।
-
-    </div>
-
-
-    <!-- PRODUCTS -->
-
-    <div id="products"
-         class="products">
-
-    </div>
-
-
-  </div>
-
-
+</div>
 
 <script>
-
-
-/* ==================================================
-   GOOGLE APPS SCRIPT WEB APP URL
-   ================================================== */
 
 const API_URL =
 "https://script.google.com/macros/s/AKfycbwEl4AmzhQHDoy0yMqE0_XnUJ2Yj65-PiWnP0FADuC5Wh5Y8d8fej2lUBqndiQC2bN5/exec";
 
+function loadProducts(){
 
+const callbackName="productsCallback_"+Date.now();
 
-/* ==================================================
-   LOAD PRODUCTS
-   ================================================== */
+window[callbackName]=function(result){
 
-function loadProducts() {
+try{
 
+delete window[callbackName];
 
-  const callbackName =
-    "productsCallback_" +
-    Date.now();
+document.getElementById("loading").style.display="none";
 
+if(!result || result.success!==true){
 
-  window[callbackName] =
-    function(result) {
+showError(
+result && result.error
+? result.error
+:"পণ্য লোড করা যাচ্ছে না।"
+);
 
+return;
+}
 
-      try {
+const products=result.products || [];
 
+if(products.length===0){
 
-        /* Remove callback */
+document.getElementById("empty").style.display="block";
 
-        delete window[callbackName];
+return;
+}
 
+displayProducts(products);
 
-        /* Hide loading */
+}catch(error){
 
-        document
-          .getElementById("loading")
-          .style.display = "none";
-
-
-        /* Check result */
-
-        if (
-          !result ||
-          result.success !== true
-        ) {
-
-
-          showError(
-            result &&
-            result.error
-              ? result.error
-              : "পণ্য লোড করা যাচ্ছে না।"
-          );
-
-
-          return;
-
-        }
-
-
-        /* Products */
-
-        const products =
-          result.products || [];
-
-
-        if (products.length === 0) {
-
-
-          document
-            .getElementById("empty")
-            .style.display = "block";
-
-
-          return;
-
-        }
-
-
-        /* Display products */
-
-        displayProducts(products);
-
-
-      }
-
-
-      catch (error) {
-
-
-        showError(
-          "পণ্য দেখাতে সমস্যা হয়েছে।"
-        );
-
-      }
-
-    };
-
-
-
-  /* ==================================================
-     CREATE JSONP SCRIPT
-     ================================================== */
-
-  const script =
-    document.createElement("script");
-
-
-  script.src =
-    API_URL +
-    "?action=products" +
-    "&callback=" +
-    callbackName +
-    "&time=" +
-    Date.now();
-
-
-  script.onerror =
-    function() {
-
-
-      delete window[callbackName];
-
-
-      document
-        .getElementById("loading")
-        .style.display = "none";
-
-
-      showError(
-        "Google Sheet থেকে পণ্য আনা যাচ্ছে না।"
-      );
-
-    };
-
-
-  document
-    .body
-    .appendChild(script);
+showError("পণ্য দেখাতে সমস্যা হয়েছে।");
 
 }
 
+};
 
+const script=document.createElement("script");
 
-/* ==================================================
-   DISPLAY PRODUCTS
-   ================================================== */
+script.src=
+API_URL+
+"?action=products"+
+"&callback="+
+callbackName+
+"&time="+
+Date.now();
 
-function displayProducts(products) {
+script.onerror=function(){
 
+delete window[callbackName];
 
-  const container =
-    document.getElementById("products");
+document.getElementById("loading").style.display="none";
 
+showError(
+"Google Sheet থেকে পণ্য আনা যাচ্ছে না।"
+);
 
-  container.innerHTML = "";
+};
 
-
-
-  products.forEach(
-    function(product) {
-
-
-      const card =
-        document.createElement("div");
-
-
-      card.className =
-        "product-card";
-
-
-
-      /* IMAGE */
-
-      let imageHTML = "";
-
-
-      if (product.image1) {
-
-
-        const imageURL =
-          convertImageURL(
-            product.image1
-          );
-
-
-        imageHTML =
-          '<img src="' +
-          escapeHTML(imageURL) +
-          '" ' +
-          'alt="' +
-          escapeHTML(product.name) +
-          '" ' +
-          'onerror="imageError(this)">';
-
-
-      }
-
-
-      else {
-
-
-        imageHTML =
-          '<div style="' +
-          'font-size:14px;' +
-          'color:#888;' +
-          '">ছবি নেই</div>';
-
-      }
-
-
-
-      /* CARD */
-
-      card.innerHTML =
-
-
-        '<div class="product-image">' +
-
-          imageHTML +
-
-        '</div>' +
-
-
-        '<div class="product-info">' +
-
-
-          '<div class="product-name">' +
-
-            escapeHTML(
-              product.name
-            ) +
-
-          '</div>' +
-
-
-          '<div class="product-description">' +
-
-            escapeHTML(
-              product.description || ""
-            ) +
-
-          '</div>' +
-
-
-          '<div class="product-price">' +
-
-            "৳" +
-
-            Number(
-              product.price || 0
-            ).toLocaleString("en-BD") +
-
-          '</div>' +
-
-
-          '<button ' +
-
-            'class="order-button" ' +
-
-            'onclick=\'orderProduct(' +
-
-              JSON.stringify(
-                product.name
-              ) +
-
-            ')\'' +
-
-          '>' +
-
-            "🛒 অর্ডার নাও" +
-
-          '</button>' +
-
-
-        '</div>';
-
-
-
-      container.appendChild(card);
-
-    }
-
-  );
+document.body.appendChild(script);
 
 }
 
+function displayProducts(products){
 
+const container=document.getElementById("products");
 
-/* ==================================================
-   ORDER PRODUCT
-   ================================================== */
+container.innerHTML="";
 
-function orderProduct(productName) {
+products.forEach(function(product){
 
+const card=document.createElement("div");
 
-  const orderPage =
-    "order.html?product=" +
-    encodeURIComponent(
-      productName
-    );
+card.className="product-card";
 
+let imageHTML="";
 
-  window.location.href =
-    orderPage;
+if(product.image1){
 
-}
+const imageURL=convertImageURL(product.image1);
 
+imageHTML=
+'<img src="'+
+escapeHTML(imageURL)+
+'" alt="'+
+escapeHTML(product.name)+
+'" onerror="imageError(this)">';
 
+}else{
 
-/* ==================================================
-   GOOGLE DRIVE IMAGE SUPPORT
-   ================================================== */
-
-function convertImageURL(url) {
-
-
-  if (!url) {
-    return "";
-  }
-
-
-  url =
-    String(url).trim();
-
-
-
-  /* Google Drive /file/d/FILE_ID */
-
-  let match =
-    url.match(
-      /\/file\/d\/([^\/]+)/
-    );
-
-
-  if (
-    match &&
-    match[1]
-  ) {
-
-
-    return (
-      "https://drive.google.com/thumbnail?id=" +
-      match[1] +
-      "&sz=w1000"
-    );
-
-  }
-
-
-
-  /* Google Drive /d/FILE_ID */
-
-  match =
-    url.match(
-      /\/d\/([^\/]+)/
-    );
-
-
-  if (
-    match &&
-    match[1]
-  ) {
-
-
-    return (
-      "https://drive.google.com/thumbnail?id=" +
-      match[1] +
-      "&sz=w1000"
-    );
-
-  }
-
-
-
-  /* Google Drive open?id= */
-
-  match =
-    url.match(
-      /[?&]id=([^&]+)/
-    );
-
-
-  if (
-    url.indexOf(
-      "drive.google.com"
-    ) !== -1 &&
-    match &&
-    match[1]
-  ) {
-
-
-    return (
-      "https://drive.google.com/thumbnail?id=" +
-      match[1] +
-      "&sz=w1000"
-    );
-
-  }
-
-
-
-  /* Normal image URL */
-
-  return url;
+imageHTML=
+'<div style="font-size:14px;color:#888;">ছবি নেই</div>';
 
 }
 
+card.innerHTML=
 
+'<div class="product-image">'+
+imageHTML+
+'</div>'+
 
-/* ==================================================
-   IMAGE ERROR
-   ================================================== */
+'<div class="product-info">'+
 
-function imageError(image) {
+'<div class="product-name">'+
+escapeHTML(product.name)+
+'</div>'+
 
+'<div class="product-description">'+
+escapeHTML(product.description || "")+
+'</div>'+
 
-  image.style.display =
-    "none";
+'<div class="product-price">'+
+"৳"+
+Number(product.price || 0).toLocaleString("en-BD")+
+'</div>'+
 
+'<button class="order-button" onclick=\'orderProduct('+
+JSON.stringify(product.name)+
+')\'>🛒 অর্ডার নাও</button>'+
 
-  const parent =
-    image.parentElement;
+'</div>';
 
+container.appendChild(card);
 
-  parent.innerHTML =
-    '<div style="' +
-    'font-size:14px;' +
-    'color:#888;' +
-    '">ছবি পাওয়া যায়নি</div>';
-
-}
-
-
-
-/* ==================================================
-   ERROR
-   ================================================== */
-
-function showError(message) {
-
-
-  const error =
-    document.getElementById(
-      "error"
-    );
-
-
-  error.innerText =
-    message;
-
-
-  error.style.display =
-    "block";
+});
 
 }
 
+function orderProduct(productName){
 
+const orderPage=
+"order.html?product="+
+encodeURIComponent(productName);
 
-/* ==================================================
-   SECURITY
-   ================================================== */
-
-function escapeHTML(value) {
-
-
-  return String(value || "")
-
-    .replace(
-      /&/g,
-      "&amp;"
-    )
-
-    .replace(
-      /</g,
-      "&lt;"
-    )
-
-    .replace(
-      />/g,
-      "&gt;"
-    )
-
-    .replace(
-      /"/g,
-      "&quot;"
-    )
-
-    .replace(
-      /'/g,
-      "&#039;"
-    );
+window.location.href=orderPage;
 
 }
 
+function convertImageURL(url){
 
+if(!url)return "";
 
-/* ==================================================
-   START
-   ================================================== */
+url=String(url).trim();
+
+let match=url.match(/\/file\/d\/([^\/]+)/);
+
+if(match && match[1]){
+
+return "https://drive.google.com/thumbnail?id="+
+match[1]+"&sz=w1000";
+
+}
+
+match=url.match(/\/d\/([^\/]+)/);
+
+if(match && match[1]){
+
+return "https://drive.google.com/thumbnail?id="+
+match[1]+"&sz=w1000";
+
+}
+
+match=url.match(/[?&]id=([^&]+)/);
+
+if(
+url.indexOf("drive.google.com")!==-1 &&
+match &&
+match[1]
+){
+
+return "https://drive.google.com/thumbnail?id="+
+match[1]+"&sz=w1000";
+
+}
+
+return url;
+
+}
+
+function imageError(image){
+
+image.style.display="none";
+
+const parent=image.parentElement;
+
+parent.innerHTML=
+'<div style="font-size:14px;color:#888;">ছবি পাওয়া যায়নি</div>';
+
+}
+
+function showError(message){
+
+const error=document.getElementById("error");
+
+error.innerText=message;
+
+error.style.display="block";
+
+}
+
+function escapeHTML(value){
+
+return String(value || "")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
 
 loadProducts();
 
-
 </script>
 
-
 </body>
-
 </html>
