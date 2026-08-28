@@ -1,1 +1,420 @@
+<!DOCTYPE html>
+<html lang="bn">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>অর্ডার করুন - SR Shopping BD</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  color: #222;
+}
+
+header {
+  background: #111;
+  color: #fff;
+  text-align: center;
+  padding: 20px 15px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 27px;
+}
+
+header p {
+  margin: 6px 0 0;
+  font-size: 14px;
+}
+
+.container {
+  max-width: 650px;
+  margin: auto;
+  padding: 15px;
+}
+
+.back-button {
+  display: inline-block;
+  margin-bottom: 15px;
+  text-decoration: none;
+  color: #111;
+  font-weight: bold;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+.product-box {
+  background: #f3f3f3;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.product-box h2 {
+  margin: 0 0 8px;
+  font-size: 21px;
+}
+
+.product-price {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+}
+
+textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.summary {
+  background: #f7f7f7;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 7px 0;
+}
+
+.summary-total {
+  border-top: 1px solid #ccc;
+  margin-top: 8px;
+  padding-top: 12px;
+  font-size: 21px;
+  font-weight: bold;
+}
+
+.confirm-button {
+  width: 100%;
+  border: 0;
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 20px;
+  background: #111;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.confirm-button:disabled {
+  opacity: 0.6;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px 15px;
+}
+
+.error {
+  color: #c62828;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.success {
+  display: none;
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px 20px;
+  text-align: center;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+.success h2 {
+  margin-top: 0;
+}
+
+.success-button {
+  width: 100%;
+  border: 0;
+  border-radius: 8px;
+  padding: 14px;
+  margin-top: 20px;
+  background: #111;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<h1>SR Shopping BD</h1>
+
+<p>অর্ডার করুন</p>
+
+</header>
+
+
+<div class="container">
+
+
+<a href="index.html"
+   class="back-button">
+
+← পণ্যের তালিকায় ফিরে যান
+
+</a>
+
+
+<div id="loading"
+     class="loading">
+
+পণ্যের তথ্য লোড হচ্ছে...
+
+</div>
+
+
+<div id="orderSection"
+     style="display:none;">
+
+
+<div class="card">
+
+
+<div class="product-box">
+
+<h2 id="productName">
+পণ্য
+</h2>
+
+<div class="product-price">
+
+৳<span id="productPrice">0</span>
+
+</div>
+
+</div>
+
+
+<form id="orderForm">
+
+
+<input type="hidden"
+       id="productNameInput"
+       name="productName">
+
+
+<input type="hidden"
+       id="productPriceInput"
+       name="productPrice">
+
+
+<label>
+পরিমাণ *
+</label>
+
+<input type="number"
+       id="quantity"
+       name="quantity"
+       value="1"
+       min="1"
+       required>
+
+
+<label>
+আপনার নাম *
+</label>
+
+<input type="text"
+       id="customerName"
+       name="customerName"
+       placeholder="আপনার নাম লিখুন"
+       required>
+
+
+<label>
+মোবাইল নম্বর *
+</label>
+
+<input type="tel"
+       id="phone"
+       name="phone"
+       placeholder="01XXXXXXXXX"
+       inputmode="numeric"
+       required>
+
+
+<label>
+ডেলিভারি এলাকা *
+</label>
+
+<select id="deliveryArea"
+        name="deliveryArea"
+        required>
+
+<option value="ঢাকার ভিতরে">
+ঢাকার ভিতরে
+</option>
+
+<option value="ঢাকার বাইরে">
+ঢাকার বাইরে
+</option>
+
+</select>
+
+
+<label>
+সম্পূর্ণ ঠিকানা *
+</label>
+
+<textarea id="address"
+          name="address"
+          placeholder="বাসা, রোড, এলাকা, থানা/উপজেলা লিখুন"
+          required></textarea>
+
+
+<label>
+অতিরিক্ত তথ্য (ঐচ্ছিক)
+</label>
+
+<textarea id="remarks"
+          name="remarks"
+          placeholder="প্রয়োজন হলে অতিরিক্ত তথ্য লিখুন"></textarea>
+
+
+<div class="summary">
+
+
+<div class="summary-row">
+
+<span>
+পণ্যের মূল্য
+</span>
+
+<span>
+৳<span id="productTotal">0</span>
+</span>
+
+</div>
+
+
+<div class="summary-row">
+
+<span>
+ডেলিভারি চার্জ
+</span>
+
+<span>
+৳<span id="deliveryCharge">0</span>
+</span>
+
+</div>
+
+
+<div class="summary-row summary-total">
+
+<span>
+সর্বমোট
+</span>
+
+<span>
+৳<span id="totalPrice">0</span>
+</span>
+
+</div>
+
+
+</div>
+
+
+<button type="submit"
+        id="confirmButton"
+        class="confirm-button">
+
+🛒 অর্ডার কনফার্ম করুন
+
+</button>
+
+
+<div id="formError"
+     class="error">
+</div>
+
+
+</form>
+
+
+</div>
+
+
+</div>
+
+
+<div id="success"
+     class="success">
+
+<h2>✅ অর্ডার সফল হয়েছে!</h2>
+
+<p>
+আপনার অর্ডারটি সফলভাবে গ্রহণ করা হয়েছে।
+</p>
+
+<p>
+আমরা খুব শীঘ্রই আপনার সাথে যোগাযোগ করব।
+</p>
+
+
+<button class="success-button"
+        onclick="window.location.href='index.html'">
+
+আরও পণ্য দেখুন
+
+</button>
+
+</div>
+
+
+</div>
+
+
+<script>
+
+
+/* =================================
