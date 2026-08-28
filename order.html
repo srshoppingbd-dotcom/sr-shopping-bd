@@ -25,7 +25,7 @@ body {
 
 header {
   background: #111;
-  color: #fff;
+  color: white;
   text-align: center;
   padding: 20px 15px;
 }
@@ -55,7 +55,7 @@ header p {
 }
 
 .card {
-  background: #fff;
+  background: white;
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 3px 12px rgba(0,0,0,0.08);
@@ -129,7 +129,7 @@ textarea {
   padding: 16px;
   margin-top: 20px;
   background: #111;
-  color: #fff;
+  color: white;
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
@@ -146,13 +146,13 @@ textarea {
 
 .error {
   color: #c62828;
-  margin-top: 10px;
+  margin-top: 12px;
   text-align: center;
 }
 
 .success {
   display: none;
-  background: #fff;
+  background: white;
   border-radius: 12px;
   padding: 30px 20px;
   text-align: center;
@@ -170,7 +170,7 @@ textarea {
   padding: 14px;
   margin-top: 20px;
   background: #111;
-  color: #fff;
+  color: white;
   font-size: 16px;
   font-weight: bold;
 }
@@ -196,7 +196,7 @@ textarea {
 
 
 <a href="index.html"
-   class="back-button">
+class="back-button">
 
 ← পণ্যের তালিকায় ফিরে যান
 
@@ -204,16 +204,21 @@ textarea {
 
 
 <div id="loading"
-     class="loading">
+class="loading">
 
 পণ্যের তথ্য লোড হচ্ছে...
 
 </div>
 
 
-<div id="orderSection"
-     style="display:none;">
+<div id="error"
+class="error"
+style="display:none;">
+</div>
 
+
+<div id="orderSection"
+style="display:none;">
 
 <div class="card">
 
@@ -237,57 +242,54 @@ textarea {
 
 
 <input type="hidden"
-       id="productNameInput"
-       name="productName">
-
+id="productNameInput">
 
 <input type="hidden"
-       id="productPriceInput"
-       name="productPrice">
+id="productPriceInput">
 
 
 <label>
 পরিমাণ *
 </label>
 
-<input type="number"
-       id="quantity"
-       name="quantity"
-       value="1"
-       min="1"
-       required>
+<input
+type="number"
+id="quantity"
+value="1"
+min="1"
+required>
 
 
 <label>
 আপনার নাম *
 </label>
 
-<input type="text"
-       id="customerName"
-       name="customerName"
-       placeholder="আপনার নাম লিখুন"
-       required>
+<input
+type="text"
+id="customerName"
+placeholder="আপনার নাম লিখুন"
+required>
 
 
 <label>
 মোবাইল নম্বর *
 </label>
 
-<input type="tel"
-       id="phone"
-       name="phone"
-       placeholder="01XXXXXXXXX"
-       inputmode="numeric"
-       required>
+<input
+type="tel"
+id="phone"
+placeholder="01XXXXXXXXX"
+inputmode="numeric"
+required>
 
 
 <label>
 ডেলিভারি এলাকা *
 </label>
 
-<select id="deliveryArea"
-        name="deliveryArea"
-        required>
+<select
+id="deliveryArea"
+required>
 
 <option value="ঢাকার ভিতরে">
 ঢাকার ভিতরে
@@ -304,19 +306,19 @@ textarea {
 সম্পূর্ণ ঠিকানা *
 </label>
 
-<textarea id="address"
-          name="address"
-          placeholder="বাসা, রোড, এলাকা, থানা/উপজেলা লিখুন"
-          required></textarea>
+<textarea
+id="address"
+placeholder="বাসা, রোড, এলাকা, থানা/উপজেলা লিখুন"
+required></textarea>
 
 
 <label>
 অতিরিক্ত তথ্য (ঐচ্ছিক)
 </label>
 
-<textarea id="remarks"
-          name="remarks"
-          placeholder="প্রয়োজন হলে অতিরিক্ত তথ্য লিখুন"></textarea>
+<textarea
+id="remarks"
+placeholder="প্রয়োজন হলে অতিরিক্ত তথ্য লিখুন"></textarea>
 
 
 <div class="summary">
@@ -342,7 +344,7 @@ textarea {
 </span>
 
 <span>
-৳<span id="deliveryCharge">0</span>
+৳<span id="deliveryCharge">60</span>
 </span>
 
 </div>
@@ -364,9 +366,10 @@ textarea {
 </div>
 
 
-<button type="submit"
-        id="confirmButton"
-        class="confirm-button">
+<button
+type="submit"
+id="confirmButton"
+class="confirm-button">
 
 🛒 অর্ডার কনফার্ম করুন
 
@@ -374,7 +377,7 @@ textarea {
 
 
 <div id="formError"
-     class="error">
+class="error">
 </div>
 
 
@@ -383,12 +386,11 @@ textarea {
 
 </div>
 
-
 </div>
 
 
 <div id="success"
-     class="success">
+class="success">
 
 <h2>✅ অর্ডার সফল হয়েছে!</h2>
 
@@ -400,9 +402,9 @@ textarea {
 আমরা খুব শীঘ্রই আপনার সাথে যোগাযোগ করব।
 </p>
 
-
-<button class="success-button"
-        onclick="window.location.href='index.html'">
+<button
+class="success-button"
+onclick="window.location.href='index.html'">
 
 আরও পণ্য দেখুন
 
@@ -417,4 +419,779 @@ textarea {
 <script>
 
 
-/* =================================
+/* ==========================================
+   GOOGLE APPS SCRIPT URL
+   ========================================== */
+
+const API_URL =
+"https://script.google.com/macros/s/AKfycbwEl4AmzhQHDoy0yMqE0_XnUJ2Yj65-PiWnP0FADuC5Wh5Y8d8fej2lUBqndiQC2bN5/exec";
+
+
+/* ==========================================
+   VARIABLES
+   ========================================== */
+
+let selectedProduct = null;
+
+let dhakaDelivery = 60;
+
+let outsideDelivery = 120;
+
+
+/* ==========================================
+   GET PRODUCT NAME FROM URL
+   ========================================== */
+
+const urlParams =
+new URLSearchParams(
+window.location.search
+);
+
+const productNameFromURL =
+urlParams.get("product");
+
+
+/* ==========================================
+   LOAD PRODUCT
+   ========================================== */
+
+function loadProduct() {
+
+  if (!productNameFromURL) {
+
+    showError(
+      "কোনো পণ্য নির্বাচন করা হয়নি।"
+    );
+
+    return;
+
+  }
+
+
+  const callbackName =
+    "orderProductCallback_" +
+    Date.now();
+
+
+  window[callbackName] =
+    function(result) {
+
+      try {
+
+        delete window[callbackName];
+
+
+        if (
+          !result ||
+          result.success !== true
+        ) {
+
+          showError(
+            result &&
+            result.error
+              ? result.error
+              : "পণ্যের তথ্য পাওয়া যায়নি।"
+          );
+
+          return;
+
+        }
+
+
+        const products =
+          result.products || [];
+
+
+        for (
+          let i = 0;
+          i < products.length;
+          i++
+        ) {
+
+          if (
+            products[i].name ===
+            productNameFromURL
+          ) {
+
+            selectedProduct =
+            products[i];
+
+            showProduct();
+
+            loadSettings();
+
+            return;
+
+          }
+
+        }
+
+
+        showError(
+          "এই পণ্যটি বর্তমানে পাওয়া যাচ্ছে না।"
+        );
+
+
+      }
+
+      catch(error) {
+
+        showError(
+          "পণ্যের তথ্য লোড করতে সমস্যা হয়েছে।"
+        );
+
+      }
+
+    };
+
+
+  const script =
+  document.createElement("script");
+
+
+  script.src =
+    API_URL +
+    "?action=products" +
+    "&callback=" +
+    callbackName +
+    "&time=" +
+    Date.now();
+
+
+  script.onerror =
+  function() {
+
+    delete window[callbackName];
+
+    showError(
+      "Google Sheet থেকে পণ্যের তথ্য পাওয়া যাচ্ছে না।"
+    );
+
+  };
+
+
+  document.body.appendChild(script);
+
+}
+
+
+/* ==========================================
+   SHOW PRODUCT
+   ========================================== */
+
+function showProduct() {
+
+  document
+  .getElementById("loading")
+  .style.display = "none";
+
+
+  document
+  .getElementById("orderSection")
+  .style.display = "block";
+
+
+  document
+  .getElementById("productName")
+  .textContent =
+    selectedProduct.name;
+
+
+  document
+  .getElementById("productPrice")
+  .textContent =
+    Number(
+      selectedProduct.price
+    ).toLocaleString("en-BD");
+
+
+  document
+  .getElementById("productNameInput")
+  .value =
+    selectedProduct.name;
+
+
+  document
+  .getElementById("productPriceInput")
+  .value =
+    selectedProduct.price;
+
+
+  updateTotal();
+
+}
+
+
+/* ==========================================
+   LOAD DELIVERY SETTINGS
+   ========================================== */
+
+function loadSettings() {
+
+  const callbackName =
+    "settingsCallback_" +
+    Date.now();
+
+
+  window[callbackName] =
+  function(result) {
+
+    try {
+
+      delete window[callbackName];
+
+
+      if (
+        result &&
+        result.success === true &&
+        result.settings
+      ) {
+
+        dhakaDelivery =
+          Number(
+            result.settings.dhaka
+          ) || 60;
+
+
+        outsideDelivery =
+          Number(
+            result.settings.outsideDhaka
+          ) || 120;
+
+      }
+
+
+      updateTotal();
+
+    }
+
+    catch(error) {
+
+      updateTotal();
+
+    }
+
+  };
+
+
+  const script =
+  document.createElement("script");
+
+
+  script.src =
+    API_URL +
+    "?action=settings" +
+    "&callback=" +
+    callbackName +
+    "&time=" +
+    Date.now();
+
+
+  script.onerror =
+  function() {
+
+    delete window[callbackName];
+
+    updateTotal();
+
+  };
+
+
+  document.body.appendChild(script);
+
+}
+
+
+/* ==========================================
+   UPDATE TOTAL
+   ========================================== */
+
+function updateTotal() {
+
+  if (!selectedProduct) {
+    return;
+  }
+
+
+  const quantity =
+    Number(
+      document
+      .getElementById("quantity")
+      .value
+    ) || 1;
+
+
+  const productPrice =
+    Number(
+      selectedProduct.price
+    ) || 0;
+
+
+  const productTotal =
+    productPrice *
+    quantity;
+
+
+  const area =
+    document
+    .getElementById("deliveryArea")
+    .value;
+
+
+  let deliveryCharge;
+
+
+  if (
+    area ===
+    "ঢাকার বাইরে"
+  ) {
+
+    deliveryCharge =
+      outsideDelivery;
+
+  }
+
+  else {
+
+    deliveryCharge =
+      dhakaDelivery;
+
+  }
+
+
+  const total =
+    productTotal +
+    deliveryCharge;
+
+
+  document
+  .getElementById("productTotal")
+  .textContent =
+    productTotal.toLocaleString("en-BD");
+
+
+  document
+  .getElementById("deliveryCharge")
+  .textContent =
+    deliveryCharge.toLocaleString("en-BD");
+
+
+  document
+  .getElementById("totalPrice")
+  .textContent =
+    total.toLocaleString("en-BD");
+
+}
+
+
+/* ==========================================
+   QUANTITY CHANGE
+   ========================================== */
+
+document
+.getElementById("quantity")
+.addEventListener(
+  "input",
+  updateTotal
+);
+
+
+/* ==========================================
+   DELIVERY AREA CHANGE
+   ========================================== */
+
+document
+.getElementById("deliveryArea")
+.addEventListener(
+  "change",
+  updateTotal
+);
+
+
+/* ==========================================
+   SUBMIT ORDER
+   ========================================== */
+
+document
+.getElementById("orderForm")
+.addEventListener(
+  "submit",
+  function(event) {
+
+    event.preventDefault();
+
+
+    const customerName =
+      document
+      .getElementById("customerName")
+      .value
+      .trim();
+
+
+    const phone =
+      document
+      .getElementById("phone")
+      .value
+      .trim();
+
+
+    const address =
+      document
+      .getElementById("address")
+      .value
+      .trim();
+
+
+    const quantity =
+      Number(
+        document
+        .getElementById("quantity")
+        .value
+      ) || 1;
+
+
+    const deliveryArea =
+      document
+      .getElementById("deliveryArea")
+      .value;
+
+
+    const remarks =
+      document
+      .getElementById("remarks")
+      .value
+      .trim();
+
+
+    const formError =
+      document
+      .getElementById("formError");
+
+
+    formError.textContent = "";
+
+
+    if (!customerName) {
+
+      formError.textContent =
+        "আপনার নাম লিখুন।";
+
+      return;
+
+    }
+
+
+    if (!phone) {
+
+      formError.textContent =
+        "মোবাইল নম্বর লিখুন।";
+
+      return;
+
+    }
+
+
+    if (!address) {
+
+      formError.textContent =
+        "সম্পূর্ণ ঠিকানা লিখুন।";
+
+      return;
+
+    }
+
+
+    if (quantity < 1) {
+
+      formError.textContent =
+        "পরিমাণ কমপক্ষে ১ হতে হবে।";
+
+      return;
+
+    }
+
+
+    const confirmButton =
+      document
+      .getElementById("confirmButton");
+
+
+    confirmButton.disabled =
+      true;
+
+
+    confirmButton.textContent =
+      "অর্ডার পাঠানো হচ্ছে...";
+
+
+    const orderData = {
+
+      customerName:
+        customerName,
+
+      phone:
+        phone,
+
+      address:
+        address,
+
+      productName:
+        selectedProduct.name,
+
+      quantity:
+        quantity,
+
+      deliveryArea:
+        deliveryArea,
+
+      remarks:
+        remarks
+
+    };
+
+
+    submitOrder(orderData);
+
+  }
+);
+
+
+/* ==========================================
+   SEND ORDER TO APPS SCRIPT
+   ========================================== */
+
+function submitOrder(orderData) {
+
+
+  const callbackName =
+    "orderSubmitCallback_" +
+    Date.now();
+
+
+  window[callbackName] =
+  function(result) {
+
+    try {
+
+      delete window[callbackName];
+
+
+      const button =
+        document
+        .getElementById(
+          "confirmButton"
+        );
+
+
+      if (
+        result &&
+        result.success === true
+      ) {
+
+        document
+        .getElementById(
+          "orderSection"
+        )
+        .style.display =
+          "none";
+
+
+        document
+        .getElementById(
+          "success"
+        )
+        .style.display =
+          "block";
+
+
+        return;
+
+      }
+
+
+      button.disabled =
+        false;
+
+
+      button.textContent =
+        "🛒 অর্ডার কনফার্ম করুন";
+
+
+      document
+      .getElementById(
+        "formError"
+      )
+      .textContent =
+        result &&
+        result.message
+          ? result.message
+          : "অর্ডার পাঠানো যায়নি।";
+
+    }
+
+    catch(error) {
+
+      showSubmitError();
+
+    }
+
+  };
+
+
+  /*
+    Google Apps Script-এ
+    GET request দিয়ে order পাঠানো হচ্ছে।
+  */
+
+  const params =
+    new URLSearchParams();
+
+
+  params.append(
+    "action",
+    "saveOrder"
+  );
+
+
+  params.append(
+    "callback",
+    callbackName
+  );
+
+
+  params.append(
+    "customerName",
+    orderData.customerName
+  );
+
+
+  params.append(
+    "phone",
+    orderData.phone
+  );
+
+
+  params.append(
+    "address",
+    orderData.address
+  );
+
+
+  params.append(
+    "productName",
+    orderData.productName
+  );
+
+
+  params.append(
+    "quantity",
+    orderData.quantity
+  );
+
+
+  params.append(
+    "deliveryArea",
+    orderData.deliveryArea
+  );
+
+
+  params.append(
+    "remarks",
+    orderData.remarks
+  );
+
+
+  const script =
+    document.createElement("script");
+
+
+  script.src =
+    API_URL +
+    "?" +
+    params.toString();
+
+
+  script.onerror =
+  function() {
+
+    delete window[callbackName];
+
+    showSubmitError();
+
+  };
+
+
+  document.body.appendChild(script);
+
+}
+
+
+/* ==========================================
+   SUBMIT ERROR
+   ========================================== */
+
+function showSubmitError() {
+
+  const button =
+    document
+    .getElementById(
+      "confirmButton"
+    );
+
+
+  button.disabled =
+    false;
+
+
+  button.textContent =
+    "🛒 অর্ডার কনফার্ম করুন";
+
+
+  document
+  .getElementById(
+    "formError"
+  )
+  .textContent =
+    "অর্ডার পাঠাতে সমস্যা হয়েছে। আবার চেষ্টা করুন।";
+
+}
+
+
+/* ==========================================
+   GENERAL ERROR
+   ========================================== */
+
+function showError(message) {
+
+  document
+  .getElementById("loading")
+  .style.display =
+    "none";
+
+
+  document
+  .getElementById("error")
+  .style.display =
+    "block";
+
+
+  document
+  .getElementById("error")
+  .textContent =
+    message;
+
+}
+
+
+/* ==========================================
+   START
+   ========================================== */
+
+loadProduct();
+
+
+</script>
+
+</body>
+
+  </html>
