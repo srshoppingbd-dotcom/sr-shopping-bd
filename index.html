@@ -6,7 +6,9 @@
 <title>SR Shopping BD</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
 body{
   margin:0;
@@ -15,7 +17,9 @@ body{
   color:#222;
 }
 
-/* COVER PHOTO */
+/* =========================
+   COVER PHOTO
+========================= */
 .cover-header{
   width:100%;
   margin:0;
@@ -31,13 +35,77 @@ body{
   height:auto;
 }
 
-/* PRODUCTS */
+/* =========================
+   BISSMILLAH SECTION
+========================= */
+.bismillah-box{
+  margin:14px 10px 16px;
+  padding:15px 10px;
+  text-align:center;
+  background:linear-gradient(135deg,#fff7d6,#f5fff5,#fff0f7);
+  border:2px solid #c9a227;
+  border-radius:14px;
+  box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+.bismillah{
+  font-size:22px;
+  font-weight:bold;
+  color:#008000;
+  direction:rtl;
+  margin-bottom:8px;
+}
+
+.allah-vorsa{
+  font-size:20px;
+  font-weight:bold;
+  color:#8a2be2;
+}
+
+/* =========================
+   SHOP TITLE
+========================= */
+.shop-title{
+  margin:15px 10px 18px;
+  padding:16px 10px;
+  background:#fff;
+  border:2px solid #111;
+  border-radius:12px;
+  text-align:center;
+  box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
+
+.shop-title h1{
+  margin:0 0 7px;
+  font-size:26px;
+  font-weight:bold;
+}
+
+.shop-title p{
+  margin:4px 0;
+  font-size:15px;
+  color:#555;
+}
+
+.shop-title .all-products{
+  margin-top:9px;
+  font-size:18px;
+  font-weight:bold;
+  color:#111;
+}
+
+/* =========================
+   CONTAINER
+========================= */
 .container{
   max-width:1100px;
   margin:auto;
-  padding:18px;
+  padding:0 18px 20px;
 }
 
+/* =========================
+   PRODUCTS
+========================= */
 .products{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
@@ -90,6 +158,9 @@ body{
   margin-bottom:12px;
 }
 
+/* =========================
+   ORDER BUTTON
+========================= */
 .order-button{
   width:100%;
   border:none;
@@ -99,13 +170,25 @@ body{
   color:#fff;
   font-size:16px;
   font-weight:bold;
+  cursor:pointer;
 }
 
+.order-button:active{
+  transform:scale(.98);
+}
+
+/* =========================
+   LOADING
+========================= */
 #loading{
   text-align:center;
   padding:40px 15px;
+  font-size:16px;
 }
 
+/* =========================
+   ERROR
+========================= */
 #error{
   display:none;
   text-align:center;
@@ -113,33 +196,159 @@ body{
   color:#c62828;
 }
 
+/* =========================
+   EMPTY
+========================= */
 #empty{
   display:none;
   text-align:center;
   padding:40px 15px;
 }
 
+/* =========================
+   THANK YOU SECTION
+========================= */
+.thank-you{
+  margin:30px 0 10px;
+  padding:24px 16px;
+  background:linear-gradient(135deg,#ffffff,#fffdf4);
+  border:2px solid #111;
+  border-radius:14px;
+  text-align:center;
+  box-shadow:0 3px 12px rgba(0,0,0,.10);
+}
+
+.thank-you h2{
+  margin:0 0 14px;
+  font-size:21px;
+  line-height:1.5;
+}
+
+.thank-you p{
+  margin:9px 0;
+  font-size:15px;
+  line-height:1.8;
+  color:#444;
+}
+
+/* =========================
+   CALL BUTTON
+========================= */
+.call-button{
+  display:inline-block;
+  margin-top:12px;
+  padding:13px 25px;
+  background:#111;
+  color:#fff;
+  text-decoration:none;
+  border-radius:9px;
+  font-size:16px;
+  font-weight:bold;
+}
+
+.call-button:active{
+  transform:scale(.98);
+}
+
+.shop-footer-name{
+  margin-top:20px !important;
+  font-size:20px !important;
+  font-weight:bold;
+  color:#111 !important;
+}
+
+.alhamdulillah{
+  margin-top:8px !important;
+  font-size:19px !important;
+  font-weight:bold;
+  color:#111 !important;
+}
+
+/* =========================
+   MOBILE
+========================= */
 @media(max-width:600px){
-  .container{padding:10px}
+
+  .bismillah-box{
+    margin:12px 8px 14px;
+    padding:13px 8px;
+  }
+
+  .bismillah{
+    font-size:19px;
+  }
+
+  .allah-vorsa{
+    font-size:18px;
+  }
+
+  .shop-title{
+    margin:12px 8px 15px;
+    padding:14px 8px;
+  }
+
+  .shop-title h1{
+    font-size:22px;
+  }
+
+  .shop-title p{
+    font-size:14px;
+  }
+
+  .shop-title .all-products{
+    font-size:17px;
+  }
+
+  .container{
+    padding:0 10px 15px;
+  }
 
   .products{
     grid-template-columns:repeat(2,1fr);
     gap:10px;
   }
 
-  .product-image{height:170px}
+  .product-image{
+    height:170px;
+  }
 
-  .product-info{padding:10px}
+  .product-info{
+    padding:10px;
+  }
 
-  .product-name{font-size:16px}
+  .product-name{
+    font-size:16px;
+  }
 
-  .product-description{font-size:13px}
+  .product-description{
+    font-size:13px;
+  }
 
-  .product-price{font-size:18px}
+  .product-price{
+    font-size:18px;
+  }
 
   .order-button{
     font-size:14px;
     padding:11px 5px;
+  }
+
+  .thank-you{
+    margin-top:25px;
+    padding:19px 12px;
+  }
+
+  .thank-you h2{
+    font-size:19px;
+  }
+
+  .thank-you p{
+    font-size:14px;
+  }
+
+  .call-button{
+    width:100%;
+    font-size:15px;
   }
 }
 </style>
@@ -147,247 +356,525 @@ body{
 
 <body>
 
-<!-- COVER PHOTO -->
+<!-- =========================
+     COVER PHOTO
+========================= -->
 <header class="cover-header">
-  <img src="cover.jpg" alt="SR Shopping BD">
+  <img src="cover.jpg" alt="SR Shopping BD Cover">
 </header>
 
+
+<!-- =========================
+     BISSMILLAH
+========================= -->
+<section class="bismillah-box">
+
+  <div class="bismillah">
+    بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
+  </div>
+
+  <div class="allah-vorsa">
+    🤲 আল্লাহ ভরসা 🤲
+  </div>
+
+</section>
+
+
+<!-- =========================
+     SHOP TITLE
+========================= -->
+<section class="shop-title">
+
+  <h1>🛍️ SR Shopping BD</h1>
+
+  <p>
+    আপনার পছন্দের পণ্যগুলো একসাথে দেখুন
+  </p>
+
+  <div class="all-products">
+    সকল প্রোডাক্ট
+  </div>
+
+</section>
+
+
+<!-- =========================
+     MAIN
+========================= -->
 <div class="container">
 
-<div id="loading">
-পণ্য লোড হচ্ছে...
+  <div id="loading">
+    পণ্য লোড হচ্ছে...
+  </div>
+
+  <div id="error"></div>
+
+  <div id="empty">
+    বর্তমানে কোনো পণ্য পাওয়া যায়নি।
+  </div>
+
+  <div id="products" class="products"></div>
+
+
+  <!-- =========================
+       THANK YOU SECTION
+  ========================= -->
+  <section class="thank-you">
+
+    <h2>
+      ❤️ SR Shopping BD-তে আসার জন্য আপনাকে অসংখ্য ধন্যবাদ।
+    </h2>
+
+    <p>
+      আপনার মূল্যবান সময় দিয়ে আমাদের প্রোডাক্টগুলো
+      দেখার জন্য আন্তরিকভাবে কৃতজ্ঞ।
+    </p>
+
+    <p>
+      আমাদের প্রোডাক্টগুলো দেখার জন্য আপনাকে
+      আন্তরিক ধন্যবাদ। আশা করি আমাদের ওয়েবসাইটের
+      পণ্যগুলো আপনার ভালো লেগেছে।
+    </p>
+
+    <p>
+      আশা করি ভবিষ্যতে আবার আমাদের ওয়েবসাইটে
+      আসবেন এবং আপনার প্রয়োজনীয় পণ্য আমাদের
+      কাছ থেকে সংগ্রহ করবেন।
+    </p>
+
+    <p>
+      কোনো প্রয়োজন বা তথ্য জানতে চাইলে
+      আমাদের সাথে সরাসরি যোগাযোগ করতে পারেন।
+    </p>
+
+    <a
+      class="call-button"
+      href="tel:+8801774891525">
+      📞 সরাসরি কল করুন
+    </a>
+
+    <p class="shop-footer-name">
+      🛍️ SR Shopping BD
+    </p>
+
+    <p class="alhamdulillah">
+      আল্লাহ হাফেজ 🤲
+    </p>
+
+  </section>
+
 </div>
 
-<div id="error"></div>
-
-<div id="empty">
-বর্তমানে কোনো পণ্য পাওয়া যায়নি।
-</div>
-
-<div id="products" class="products"></div>
-
-</div>
 
 <script>
+
+/* ==================================================
+   GOOGLE APPS SCRIPT WEB APP URL
+   ================================================== */
 
 const API_URL =
 "https://script.google.com/macros/s/AKfycbwEl4AmzhQHDoy0yMqE0_XnUJ2Yj65-PiWnP0FADuC5Wh5Y8d8fej2lUBqndiQC2bN5/exec";
 
+
+/* ==================================================
+   LOAD PRODUCTS
+================================================== */
+
 function loadProducts(){
 
-const callbackName="productsCallback_"+Date.now();
+  const callbackName =
+    "productsCallback_" + Date.now();
 
-window[callbackName]=function(result){
+  window[callbackName] =
+    function(result){
 
-try{
+      try{
 
-delete window[callbackName];
+        delete window[callbackName];
 
-document.getElementById("loading").style.display="none";
+        document
+          .getElementById("loading")
+          .style.display = "none";
 
-if(!result || result.success!==true){
 
-showError(
-result && result.error
-? result.error
-:"পণ্য লোড করা যাচ্ছে না।"
-);
+        if(
+          !result ||
+          result.success !== true
+        ){
 
-return;
+          showError(
+            result &&
+            result.error
+              ? result.error
+              : "পণ্য লোড করা যাচ্ছে না।"
+          );
+
+          return;
+        }
+
+
+        const products =
+          result.products || [];
+
+
+        if(products.length === 0){
+
+          document
+            .getElementById("empty")
+            .style.display = "block";
+
+          return;
+        }
+
+
+        displayProducts(products);
+
+      }
+
+      catch(error){
+
+        showError(
+          "পণ্য দেখাতে সমস্যা হয়েছে।"
+        );
+
+      }
+
+    };
+
+
+  const script =
+    document.createElement("script");
+
+
+  script.src =
+    API_URL +
+    "?action=products" +
+    "&callback=" +
+    callbackName +
+    "&time=" +
+    Date.now();
+
+
+  script.onerror =
+    function(){
+
+      delete window[callbackName];
+
+      document
+        .getElementById("loading")
+        .style.display = "none";
+
+      showError(
+        "Google Sheet থেকে পণ্য আনা যাচ্ছে না।"
+      );
+
+    };
+
+
+  document
+    .body
+    .appendChild(script);
+
 }
 
-const products=result.products || [];
 
-if(products.length===0){
-
-document.getElementById("empty").style.display="block";
-
-return;
-}
-
-displayProducts(products);
-
-}catch(error){
-
-showError("পণ্য দেখাতে সমস্যা হয়েছে।");
-
-}
-
-};
-
-const script=document.createElement("script");
-
-script.src=
-API_URL+
-"?action=products"+
-"&callback="+
-callbackName+
-"&time="+
-Date.now();
-
-script.onerror=function(){
-
-delete window[callbackName];
-
-document.getElementById("loading").style.display="none";
-
-showError(
-"Google Sheet থেকে পণ্য আনা যাচ্ছে না।"
-);
-
-};
-
-document.body.appendChild(script);
-
-}
+/* ==================================================
+   DISPLAY PRODUCTS
+================================================== */
 
 function displayProducts(products){
 
-const container=document.getElementById("products");
+  const container =
+    document.getElementById("products");
 
-container.innerHTML="";
 
-products.forEach(function(product){
+  container.innerHTML = "";
 
-const card=document.createElement("div");
 
-card.className="product-card";
+  products.forEach(
+    function(product){
 
-let imageHTML="";
+      const card =
+        document.createElement("div");
 
-if(product.image1){
 
-const imageURL=convertImageURL(product.image1);
+      card.className =
+        "product-card";
 
-imageHTML=
-'<img src="'+
-escapeHTML(imageURL)+
-'" alt="'+
-escapeHTML(product.name)+
-'" onerror="imageError(this)">';
 
-}else{
+      let imageHTML = "";
 
-imageHTML=
-'<div style="font-size:14px;color:#888;">ছবি নেই</div>';
+
+      if(product.image1){
+
+        const imageURL =
+          convertImageURL(
+            product.image1
+          );
+
+
+        imageHTML =
+          '<img src="' +
+          escapeHTML(imageURL) +
+          '" ' +
+          'alt="' +
+          escapeHTML(product.name) +
+          '" ' +
+          'onerror="imageError(this)">';
+
+      }
+
+      else{
+
+        imageHTML =
+          '<div style="' +
+          'font-size:14px;' +
+          'color:#888;' +
+          '">' +
+          'ছবি নেই' +
+          '</div>';
+
+      }
+
+
+      card.innerHTML =
+
+        '<div class="product-image">' +
+          imageHTML +
+        '</div>' +
+
+        '<div class="product-info">' +
+
+          '<div class="product-name">' +
+            escapeHTML(
+              product.name
+            ) +
+          '</div>' +
+
+          '<div class="product-description">' +
+            escapeHTML(
+              product.description || ""
+            ) +
+          '</div>' +
+
+          '<div class="product-price">' +
+            "৳" +
+            Number(
+              product.price || 0
+            ).toLocaleString("en-BD") +
+          '</div>' +
+
+          '<button ' +
+            'class="order-button" ' +
+            'onclick=\'orderProduct(' +
+              JSON.stringify(
+                product.name
+              ) +
+            ')\'>' +
+            "🛒 অর্ডার নাও" +
+          '</button>' +
+
+        '</div>';
+
+
+      container.appendChild(card);
+
+    }
+  );
 
 }
 
-card.innerHTML=
 
-'<div class="product-image">'+
-imageHTML+
-'</div>'+
-
-'<div class="product-info">'+
-
-'<div class="product-name">'+
-escapeHTML(product.name)+
-'</div>'+
-
-'<div class="product-description">'+
-escapeHTML(product.description || "")+
-'</div>'+
-
-'<div class="product-price">'+
-"৳"+
-Number(product.price || 0).toLocaleString("en-BD")+
-'</div>'+
-
-'<button class="order-button" onclick=\'orderProduct('+
-JSON.stringify(product.name)+
-')\'>🛒 অর্ডার নাও</button>'+
-
-'</div>';
-
-container.appendChild(card);
-
-});
-
-}
+/* ==================================================
+   ORDER PRODUCT
+================================================== */
 
 function orderProduct(productName){
 
-const orderPage=
-"order.html?product="+
-encodeURIComponent(productName);
+  const orderPage =
+    "order.html?product=" +
+    encodeURIComponent(
+      productName
+    );
 
-window.location.href=orderPage;
+
+  window.location.href =
+    orderPage;
 
 }
+
+
+/* ==================================================
+   GOOGLE DRIVE IMAGE SUPPORT
+================================================== */
 
 function convertImageURL(url){
 
-if(!url)return "";
+  if(!url){
+    return "";
+  }
 
-url=String(url).trim();
 
-let match=url.match(/\/file\/d\/([^\/]+)/);
+  url =
+    String(url).trim();
 
-if(match && match[1]){
 
-return "https://drive.google.com/thumbnail?id="+
-match[1]+"&sz=w1000";
+  let match =
+    url.match(
+      /\/file\/d\/([^\/]+)/
+    );
+
+
+  if(
+    match &&
+    match[1]
+  ){
+
+    return (
+      "https://drive.google.com/thumbnail?id=" +
+      match[1] +
+      "&sz=w1000"
+    );
+
+  }
+
+
+  match =
+    url.match(
+      /\/d\/([^\/]+)/
+    );
+
+
+  if(
+    match &&
+    match[1]
+  ){
+
+    return (
+      "https://drive.google.com/thumbnail?id=" +
+      match[1] +
+      "&sz=w1000"
+    );
+
+  }
+
+
+  match =
+    url.match(
+      /[?&]id=([^&]+)/
+    );
+
+
+  if(
+    url.indexOf(
+      "drive.google.com"
+    ) !== -1 &&
+    match &&
+    match[1]
+  ){
+
+    return (
+      "https://drive.google.com/thumbnail?id=" +
+      match[1] +
+      "&sz=w1000"
+    );
+
+  }
+
+
+  return url;
 
 }
 
-match=url.match(/\/d\/([^\/]+)/);
 
-if(match && match[1]){
-
-return "https://drive.google.com/thumbnail?id="+
-match[1]+"&sz=w1000";
-
-}
-
-match=url.match(/[?&]id=([^&]+)/);
-
-if(
-url.indexOf("drive.google.com")!==-1 &&
-match &&
-match[1]
-){
-
-return "https://drive.google.com/thumbnail?id="+
-match[1]+"&sz=w1000";
-
-}
-
-return url;
-
-}
+/* ==================================================
+   IMAGE ERROR
+================================================== */
 
 function imageError(image){
 
-image.style.display="none";
+  image.style.display =
+    "none";
 
-const parent=image.parentElement;
 
-parent.innerHTML=
-'<div style="font-size:14px;color:#888;">ছবি পাওয়া যায়নি</div>';
+  const parent =
+    image.parentElement;
+
+
+  parent.innerHTML =
+    '<div style="' +
+    'font-size:14px;' +
+    'color:#888;' +
+    '">' +
+    'ছবি পাওয়া যায়নি' +
+    '</div>';
 
 }
+
+
+/* ==================================================
+   ERROR
+================================================== */
 
 function showError(message){
 
-const error=document.getElementById("error");
+  const error =
+    document.getElementById(
+      "error"
+    );
 
-error.innerText=message;
 
-error.style.display="block";
+  error.innerText =
+    message;
+
+
+  error.style.display =
+    "block";
 
 }
+
+
+/* ==================================================
+   SECURITY
+================================================== */
 
 function escapeHTML(value){
 
-return String(value || "")
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
+  return String(
+    value || ""
+  )
+
+  .replace(
+    /&/g,
+    "&amp;"
+  )
+
+  .replace(
+    /</g,
+    "&lt;"
+  )
+
+  .replace(
+    />/g,
+    "&gt;"
+  )
+
+  .replace(
+    /"/g,
+    "&quot;"
+  )
+
+  .replace(
+    /'/g,
+    "&#039;"
+  );
 
 }
+
+
+/* ==================================================
+   START
+================================================== */
 
 loadProducts();
 
