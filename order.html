@@ -23,6 +23,8 @@ body{
   color:#222;
 }
 
+/* HEADER */
+
 header{
   background:#111;
   color:white;
@@ -40,11 +42,17 @@ header p{
   font-size:14px;
 }
 
+
+/* CONTAINER */
+
 .container{
   max-width:650px;
   margin:auto;
   padding:15px;
 }
+
+
+/* BACK */
 
 .back-button{
   display:inline-block;
@@ -54,6 +62,9 @@ header p{
   font-weight:bold;
 }
 
+
+/* CARD */
+
 .card{
   background:white;
   border-radius:12px;
@@ -62,37 +73,30 @@ header p{
 }
 
 
-/* =========================
-   PRODUCT IMAGE
-========================= */
+/* PRODUCT IMAGE */
 
-.order-product-image{
+.product-photo-box{
   width:100%;
   background:#fff;
   border-radius:12px;
-  margin-bottom:18px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
   overflow:hidden;
+  margin-bottom:18px;
+  text-align:center;
   border:1px solid #eee;
-  padding:6px;
 }
 
-.order-product-image img{
-  display:block;
+.product-photo{
   width:100%;
   height:auto;
-  max-width:100%;
-  max-height:70vh;
+  max-height:500px;
   object-fit:contain;
-  cursor:zoom-in;
+  display:block;
+  background:#fff;
+  cursor:pointer;
 }
 
 
-/* =========================
-   PRODUCT INFO
-========================= */
+/* PRODUCT */
 
 .product-box{
   background:#f3f3f3;
@@ -112,9 +116,7 @@ header p{
 }
 
 
-/* =========================
-   FORM
-========================= */
+/* FORM */
 
 label{
   display:block;
@@ -140,9 +142,7 @@ textarea{
 }
 
 
-/* =========================
-   SUMMARY
-========================= */
+/* SUMMARY */
 
 .summary{
   background:#f7f7f7;
@@ -166,9 +166,7 @@ textarea{
 }
 
 
-/* =========================
-   BUTTON
-========================= */
+/* CONFIRM */
 
 .confirm-button{
   width:100%;
@@ -188,20 +186,16 @@ textarea{
 }
 
 
-/* =========================
-   STATUS
-========================= */
-
-.loading{
-  text-align:center;
-  padding:40px 15px;
-}
+/* ERROR */
 
 .error{
   color:#c62828;
   margin-top:12px;
   text-align:center;
 }
+
+
+/* SUCCESS */
 
 .success{
   display:none;
@@ -229,11 +223,9 @@ textarea{
 }
 
 
-/* =========================
-   IMAGE ZOOM
-========================= */
+/* IMAGE VIEWER */
 
-.zoom-overlay{
+#imageViewer{
   display:none;
   position:fixed;
   z-index:99999;
@@ -241,88 +233,65 @@ textarea{
   top:0;
   width:100%;
   height:100%;
-  background:rgba(0,0,0,.95);
+  background:rgba(0,0,0,.94);
   align-items:center;
   justify-content:center;
-  padding:60px 15px 90px;
-  overflow:hidden;
+  flex-direction:column;
 }
 
-.zoom-overlay.active{
-  display:flex;
-}
-
-.zoom-image{
-  max-width:95%;
-  max-height:85vh;
+#viewerImage{
+  max-width:94%;
+  max-height:78%;
   object-fit:contain;
   transition:transform .2s ease;
-  cursor:grab;
-  user-select:none;
-  -webkit-user-select:none;
 }
 
-.zoom-controls{
-  position:fixed;
-  z-index:100000;
+.viewer-close{
+  position:absolute;
+  top:12px;
+  right:12px;
+  border:0;
+  border-radius:8px;
+  padding:10px 13px;
+  background:#fff;
+  font-weight:bold;
+}
+
+.viewer-controls{
+  position:absolute;
   bottom:20px;
-  left:50%;
-  transform:translateX(-50%);
   display:flex;
-  gap:10px;
+  gap:7px;
 }
 
-.zoom-controls button{
-  width:48px;
-  height:48px;
-  border:none;
-  border-radius:50%;
-  background:white;
+.viewer-controls button{
+  border:0;
+  border-radius:8px;
+  background:#fff;
   color:#111;
-  font-size:24px;
   font-weight:bold;
-}
-
-.zoom-close{
-  position:fixed;
-  z-index:100001;
-  top:15px;
-  right:15px;
-  width:45px;
-  height:45px;
-  border:none;
-  border-radius:50%;
-  background:white;
-  color:#111;
-  font-size:25px;
-  font-weight:bold;
+  padding:10px 12px;
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width:600px){
 
   .container{
-    padding:12px 10px;
+    padding:12px;
   }
 
   .card{
-    padding:14px;
+    padding:15px;
   }
 
-  .order-product-image{
-    padding:4px;
-  }
-
-  .order-product-image img{
-    max-height:65vh;
+  .product-photo{
+    max-height:450px;
   }
 
   header h1{
-    font-size:25px;
+    font-size:24px;
   }
 
 }
@@ -331,67 +300,54 @@ textarea{
 
 </head>
 
+
 <body>
+
 
 <header>
 
-<h1>
-SR Shopping BD
-</h1>
+<h1>SR Shopping BD</h1>
 
-<p>
-অর্ডার করুন
-</p>
+<p>অর্ডার করুন</p>
 
 </header>
 
 
 <div class="container">
 
+
 <a href="index.html"
 class="back-button">
+
 ← পণ্যের তালিকায় ফিরে যান
+
 </a>
 
 
-<div id="loading"
-class="loading">
-পণ্যের তথ্য লোড হচ্ছে...
-</div>
+<!-- ORDER SECTION -->
 
-
-<div id="error"
-class="error"
-style="display:none;">
-</div>
-
-
-<div id="orderSection"
-style="display:none;">
+<div id="orderSection">
 
 <div class="card">
 
 
-<!-- =========================
-     SELECTED PRODUCT IMAGE
-========================= -->
+<!-- PRODUCT IMAGE -->
 
-<div
-class="order-product-image"
-id="productImageBox">
+<div class="product-photo-box"
+id="productPhotoBox"
+style="display:none;">
 
 <img
 id="productImage"
+class="product-photo"
 src=""
 alt="Product"
-onclick="openZoom()">
+onclick="openViewer()">
 
 </div>
 
 
-<!-- =========================
-     PRODUCT INFO
-========================= -->
+<!-- PRODUCT -->
 
 <div class="product-box">
 
@@ -400,11 +356,17 @@ onclick="openZoom()">
 </h2>
 
 <div class="product-price">
-৳<span id="productPrice">0</span>
-</div>
+
+৳<span id="productPrice">
+0
+</span>
 
 </div>
 
+</div>
+
+
+<!-- FORM -->
 
 <form id="orderForm">
 
@@ -482,6 +444,8 @@ id="remarks"
 placeholder="প্রয়োজন হলে অতিরিক্ত তথ্য লিখুন"></textarea>
 
 
+<!-- SUMMARY -->
+
 <div class="summary">
 
 
@@ -545,14 +509,13 @@ class="error">
 
 </form>
 
-</div>
 
 </div>
 
+</div>
 
-<!-- =========================
-     SUCCESS
-========================= -->
+
+<!-- SUCCESS -->
 
 <div id="success"
 class="success">
@@ -579,43 +542,41 @@ onclick="window.location.href='index.html'">
 
 </div>
 
+
 </div>
 
 
-<!-- =========================
-     ZOOM VIEW
-========================= -->
+<!-- IMAGE VIEWER -->
 
-<div
-id="zoomOverlay"
-class="zoom-overlay">
+<div id="imageViewer">
 
 <button
-class="zoom-close"
-onclick="closeZoom()">
-×
+class="viewer-close"
+onclick="closeViewer()">
+
+✕ বন্ধ
+
 </button>
 
 
 <img
-id="zoomImage"
-class="zoom-image"
+id="viewerImage"
 src=""
-alt="Product Zoom">
+alt="Product">
 
 
-<div class="zoom-controls">
+<div class="viewer-controls">
 
 <button onclick="zoomOut()">
-−
+➖ Zoom Out
 </button>
 
 <button onclick="resetZoom()">
-⟳
+⟳ Reset
 </button>
 
 <button onclick="zoomIn()">
-+
+➕ Zoom In
 </button>
 
 </div>
@@ -626,147 +587,89 @@ alt="Product Zoom">
 <script>
 
 
-// ==========================================
-// APPS SCRIPT URL
-// ==========================================
+/* ==========================================
+   APPS SCRIPT URL
+========================================== */
 
 const API_URL =
 "https://script.google.com/macros/s/AKfycbwEl4AmzhQHDoy0yMqE0_XnUJ2Yj65-PiWnP0FADuC5Wh5Y8d8fej2lUBqndiQC2bN5/exec";
 
 
-// ==========================================
-// VARIABLES
-// ==========================================
-
-let selectedProduct = null;
+/* ==========================================
+   DELIVERY
+========================================== */
 
 let dhakaDelivery = 60;
 
 let outsideDelivery = 120;
 
 
-// ==========================================
-// URL DATA
-// ==========================================
+/* ==========================================
+   GET PRODUCT DIRECTLY FROM INDEX
+========================================== */
 
 const urlParams =
 new URLSearchParams(
 window.location.search
 );
 
-const productNameFromURL =
+
+const productName =
 urlParams.get("product");
 
-const priceFromURL =
-urlParams.get("price");
 
-const imageFromURL =
-urlParams.get("image");
-
-
-// ==========================================
-// START
-// ==========================================
-
-function startOrder(){
-
-  /*
-   * INDEX.HTML এখন পণ্যের নাম,
-   * দাম এবং ছবির URL সরাসরি পাঠাচ্ছে।
-   * তাই প্রথমে API-এর জন্য অপেক্ষা করতে হবে না।
-   */
-
-  if(
-    productNameFromURL
-  ){
-
-    selectedProduct = {
-
-      name:
-        productNameFromURL,
-
-      price:
-        Number(priceFromURL || 0),
-
-      image1:
-        imageFromURL || ""
-
-    };
+const productPrice =
+Number(
+urlParams.get("price")
+) || 0;
 
 
-    showProduct();
-
-    loadSettings();
-
-    return;
-
-  }
+const productImage =
+urlParams.get("image") || "";
 
 
-  /*
-   * পুরোনো লিংক হলেও API থেকে
-   * পণ্য খুঁজে বের করার চেষ্টা করবে।
-   */
-
-  loadProductFromAPI();
-
-}
-
-
-// ==========================================
-// SHOW PRODUCT
-// ==========================================
+/* ==========================================
+   SHOW PRODUCT IMMEDIATELY
+========================================== */
 
 function showProduct(){
 
-  document.getElementById("loading")
-    .style.display =
-    "none";
+  if(!productName){
 
+    document.getElementById("orderSection")
+      .style.display = "none";
 
-  document.getElementById("orderSection")
-    .style.display =
-    "block";
+    document.getElementById("formError")
+      .textContent =
+      "কোনো পণ্য নির্বাচন করা হয়নি।";
+
+    return;
+  }
 
 
   document.getElementById("productName")
     .textContent =
-    selectedProduct.name;
+    productName;
 
 
   document.getElementById("productPrice")
     .textContent =
-    Number(
-      selectedProduct.price || 0
-    ).toLocaleString("en-BD");
+    productPrice.toLocaleString("en-BD");
 
 
-  const image =
-    document.getElementById(
-      "productImage"
-    );
+  if(productImage){
 
+    const imageBox =
+      document.getElementById("productPhotoBox");
 
-  if(
-    selectedProduct.image1
-  ){
+    const image =
+      document.getElementById("productImage");
 
     image.src =
-      selectedProduct.image1;
+      productImage;
 
-    image.style.display =
+    imageBox.style.display =
       "block";
-
-  }
-  else{
-
-    image.style.display =
-      "none";
-
-    document.getElementById(
-      "productImageBox"
-    ).innerHTML =
-      '<div style="padding:40px 10px;color:#888;text-align:center;">ছবি পাওয়া যায়নি</div>';
 
   }
 
@@ -776,174 +679,9 @@ function showProduct(){
 }
 
 
-// ==========================================
-// FALLBACK API PRODUCT LOAD
-// ==========================================
-
-function loadProductFromAPI(){
-
-  if(!productNameFromURL){
-
-    showError(
-      "কোনো পণ্য নির্বাচন করা হয়নি।"
-    );
-
-    return;
-
-  }
-
-
-  const callbackName =
-    "orderProductCallback_" +
-    Date.now();
-
-
-  let finished = false;
-
-
-  window[callbackName] =
-  function(result){
-
-    if(finished){
-      return;
-    }
-
-    finished = true;
-
-
-    try{
-
-      delete window[callbackName];
-
-
-      if(
-        !result ||
-        result.success !== true
-      ){
-
-        showError(
-          result && result.error
-            ? result.error
-            : "পণ্যের তথ্য পাওয়া যায়নি।"
-        );
-
-        return;
-
-      }
-
-
-      const products =
-        result.products || [];
-
-
-      for(
-        let i=0;
-        i<products.length;
-        i++
-      ){
-
-        if(
-          String(products[i].name) ===
-          String(productNameFromURL)
-        ){
-
-          selectedProduct =
-            products[i];
-
-          showProduct();
-
-          loadSettings();
-
-          return;
-
-        }
-
-      }
-
-
-      showError(
-        "এই পণ্যটি বর্তমানে পাওয়া যাচ্ছে না।"
-      );
-
-    }
-    catch(error){
-
-      showError(
-        "পণ্যের তথ্য লোড করতে সমস্যা হয়েছে।"
-      );
-
-    }
-
-  };
-
-
-  const script =
-    document.createElement("script");
-
-
-  script.src =
-    API_URL +
-    "?action=products" +
-    "&callback=" +
-    callbackName +
-    "&time=" +
-    Date.now();
-
-
-  script.onerror =
-  function(){
-
-    if(finished){
-      return;
-    }
-
-    finished = true;
-
-    delete window[callbackName];
-
-    showError(
-      "Google Sheet থেকে পণ্যের তথ্য পাওয়া যাচ্ছে না।"
-    );
-
-  };
-
-
-  document.body.appendChild(script);
-
-
-  /*
-   * যদি API থেকে কোনো উত্তর না আসে,
-   * তাহলে চিরকাল LOADING দেখাবে না।
-   */
-
-  setTimeout(
-    function(){
-
-      if(
-        !finished &&
-        !selectedProduct
-      ){
-
-        finished = true;
-
-        delete window[callbackName];
-
-        showError(
-          "পণ্যের তথ্য লোড হতে সময় বেশি লাগছে। আবার চেষ্টা করুন।"
-        );
-
-      }
-
-    },
-    15000
-  );
-
-}
-
-
-// ==========================================
-// LOAD SETTINGS
-// ==========================================
+/* ==========================================
+   LOAD SETTINGS
+========================================== */
 
 function loadSettings(){
 
@@ -983,6 +721,7 @@ function loadSettings(){
       updateTotal();
 
     }
+
     catch(error){
 
       updateTotal();
@@ -1020,54 +759,36 @@ function loadSettings(){
 }
 
 
-// ==========================================
-// UPDATE TOTAL
-// ==========================================
+/* ==========================================
+   TOTAL
+========================================== */
 
 function updateTotal(){
 
-  if(!selectedProduct){
-    return;
-  }
-
-
   const quantity =
     Number(
-      document.getElementById(
-        "quantity"
-      ).value
+      document.getElementById("quantity").value
     ) || 1;
 
 
-  const productPrice =
-    Number(
-      selectedProduct.price
-    ) || 0;
-
-
   const productTotal =
-    productPrice *
-    quantity;
+    productPrice * quantity;
 
 
   const area =
-    document.getElementById(
-      "deliveryArea"
-    ).value;
+    document.getElementById("deliveryArea").value;
 
 
   let deliveryCharge;
 
 
-  if(
-    area ===
-    "ঢাকার বাইরে"
-  ){
+  if(area === "ঢাকার বাইরে"){
 
     deliveryCharge =
       outsideDelivery;
 
   }
+
   else{
 
     deliveryCharge =
@@ -1081,29 +802,26 @@ function updateTotal(){
     deliveryCharge;
 
 
-  document.getElementById(
-    "productTotal"
-  ).textContent =
+  document.getElementById("productTotal")
+    .textContent =
     productTotal.toLocaleString("en-BD");
 
 
-  document.getElementById(
-    "deliveryCharge"
-  ).textContent =
+  document.getElementById("deliveryCharge")
+    .textContent =
     deliveryCharge.toLocaleString("en-BD");
 
 
-  document.getElementById(
-    "totalPrice"
-  ).textContent =
+  document.getElementById("totalPrice")
+    .textContent =
     total.toLocaleString("en-BD");
 
 }
 
 
-// ==========================================
-// INPUT EVENTS
-// ==========================================
+/* ==========================================
+   INPUT EVENTS
+========================================== */
 
 document
 .getElementById("quantity")
@@ -1121,9 +839,9 @@ document
 );
 
 
-// ==========================================
-// FORM SUBMIT
-// ==========================================
+/* ==========================================
+   FORM SUBMIT
+========================================== */
 
 document
 .getElementById("orderForm")
@@ -1135,51 +853,42 @@ document
 
 
     const customerName =
-      document.getElementById(
-        "customerName"
-      ).value.trim();
+      document.getElementById("customerName")
+      .value.trim();
 
 
     const phone =
-      document.getElementById(
-        "phone"
-      ).value.trim();
+      document.getElementById("phone")
+      .value.trim();
 
 
     const address =
-      document.getElementById(
-        "address"
-      ).value.trim();
+      document.getElementById("address")
+      .value.trim();
 
 
     const quantity =
       Number(
-        document.getElementById(
-          "quantity"
-        ).value
+        document.getElementById("quantity")
+        .value
       ) || 1;
 
 
     const deliveryArea =
-      document.getElementById(
-        "deliveryArea"
-      ).value;
+      document.getElementById("deliveryArea")
+      .value;
 
 
     const remarks =
-      document.getElementById(
-        "remarks"
-      ).value.trim();
+      document.getElementById("remarks")
+      .value.trim();
 
 
     const formError =
-      document.getElementById(
-        "formError"
-      );
+      document.getElementById("formError");
 
 
-    formError.textContent =
-      "";
+    formError.textContent = "";
 
 
     if(!customerName){
@@ -1228,9 +937,7 @@ document
       );
 
 
-    button.disabled =
-      true;
-
+    button.disabled = true;
 
     button.textContent =
       "অর্ডার পাঠানো হচ্ছে...";
@@ -1248,7 +955,7 @@ document
         address,
 
       productName:
-        selectedProduct.name,
+        productName,
 
       quantity:
         quantity,
@@ -1265,9 +972,9 @@ document
 );
 
 
-// ==========================================
-// SUBMIT ORDER
-// ==========================================
+/* ==========================================
+   SAVE ORDER
+========================================== */
 
 function submitOrder(order){
 
@@ -1312,9 +1019,7 @@ function submitOrder(order){
       }
 
 
-      button.disabled =
-        false;
-
+      button.disabled = false;
 
       button.textContent =
         "🛒 অর্ডার কনফার্ম করুন";
@@ -1323,15 +1028,19 @@ function submitOrder(order){
       document.getElementById(
         "formError"
       ).textContent =
+
         result &&
         (result.error || result.message)
+
           ? (
               result.error ||
               result.message
             )
+
           : "অর্ডার পাঠানো যায়নি।";
 
     }
+
     catch(error){
 
       showSubmitError();
@@ -1424,9 +1133,9 @@ function submitOrder(order){
 }
 
 
-// ==========================================
-// SUBMIT ERROR
-// ==========================================
+/* ==========================================
+   SUBMIT ERROR
+========================================== */
 
 function showSubmitError(){
 
@@ -1436,8 +1145,7 @@ function showSubmitError(){
     );
 
 
-  button.disabled =
-    false;
+  button.disabled = false;
 
 
   button.textContent =
@@ -1452,143 +1160,120 @@ function showSubmitError(){
 }
 
 
-// ==========================================
-// GENERAL ERROR
-// ==========================================
+/* ==========================================
+   IMAGE VIEWER
+========================================== */
 
-function showError(message){
-
-  document.getElementById(
-    "loading"
-  ).style.display =
-    "none";
+let imageScale = 1;
 
 
-  document.getElementById(
-    "error"
-  ).style.display =
-    "block";
+function openViewer(){
 
-
-  document.getElementById(
-    "error"
-  ).textContent =
-    message;
-
-}
-
-
-// ==========================================
-// ZOOM
-// ==========================================
-
-let zoomLevel = 1;
-
-
-function openZoom(){
-
-  const source =
-    document.getElementById(
-      "productImage"
-    ).src;
-
-
-  if(!source){
+  if(!productImage){
     return;
   }
 
 
+  imageScale = 1;
+
+
   document.getElementById(
-    "zoomImage"
+    "viewerImage"
   ).src =
-    source;
-
-
-  zoomLevel =
-    1;
-
-
-  updateZoom();
+    productImage;
 
 
   document.getElementById(
-    "zoomOverlay"
-  ).classList.add(
-    "active"
-  );
+    "viewerImage"
+  ).style.transform =
+    "scale(1)";
+
+
+  document.getElementById(
+    "imageViewer"
+  ).style.display =
+    "flex";
 
 }
 
 
-function closeZoom(){
+function closeViewer(){
 
   document.getElementById(
-    "zoomOverlay"
-  ).classList.remove(
-    "active"
-  );
+    "imageViewer"
+  ).style.display =
+    "none";
 
 }
 
 
 function zoomIn(){
 
-  zoomLevel += .25;
+  imageScale += 0.25;
 
-  if(zoomLevel > 4){
-    zoomLevel = 4;
+
+  if(imageScale > 4){
+    imageScale = 4;
   }
 
-  updateZoom();
+
+  document.getElementById(
+    "viewerImage"
+  ).style.transform =
+    "scale(" +
+    imageScale +
+    ")";
 
 }
 
 
 function zoomOut(){
 
-  zoomLevel -= .25;
+  imageScale -= 0.25;
 
-  if(zoomLevel < .5){
-    zoomLevel = .5;
+
+  if(imageScale < 0.5){
+    imageScale = 0.5;
   }
 
-  updateZoom();
+
+  document.getElementById(
+    "viewerImage"
+  ).style.transform =
+    "scale(" +
+    imageScale +
+    ")";
 
 }
 
 
 function resetZoom(){
 
-  zoomLevel = 1;
+  imageScale = 1;
 
-  updateZoom();
-
-}
-
-
-function updateZoom(){
 
   document.getElementById(
-    "zoomImage"
+    "viewerImage"
   ).style.transform =
-    "scale(" +
-    zoomLevel +
-    ")";
+    "scale(1)";
 
 }
 
 
-document.getElementById(
-  "zoomOverlay"
-).addEventListener(
-  "click",
-  function(event){
+/* ==========================================
+   START
+========================================== */
 
-    if(
-      event.target ===
-      this
-    ){
+/*
+   এখানে আর products API দিয়ে অপেক্ষা করা হচ্ছে না।
+   Index থেকে সরাসরি পণ্য নেওয়া হচ্ছে।
+*/
 
-      closeZoom();
+showProduct();
 
-  
+loadSettings();
+
+</script>
+
+</body>
+  </html>
