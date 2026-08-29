@@ -17,10 +17,9 @@ body{
   color:#222;
 }
 
+/* COVER */
 .cover-header{
   width:100%;
-  margin:0;
-  padding:0;
   background:#fff;
   overflow:hidden;
   line-height:0;
@@ -32,6 +31,7 @@ body{
   height:auto;
 }
 
+/* BISMILLAH */
 .bismillah-box{
   margin:14px 10px 16px;
   padding:15px 10px;
@@ -56,6 +56,7 @@ body{
   color:#8a2be2;
 }
 
+/* TITLE */
 .shop-title{
   margin:15px 10px 18px;
   padding:16px 10px;
@@ -69,7 +70,6 @@ body{
 .shop-title h1{
   margin:0 0 7px;
   font-size:26px;
-  font-weight:bold;
 }
 
 .shop-title p{
@@ -82,15 +82,16 @@ body{
   margin-top:9px;
   font-size:18px;
   font-weight:bold;
-  color:#111;
 }
 
+/* CONTAINER */
 .container{
   max-width:1100px;
   margin:auto;
   padding:0 18px 20px;
 }
 
+/* PRODUCTS */
 .products{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
@@ -104,25 +105,48 @@ body{
   box-shadow:0 3px 12px rgba(0,0,0,.08);
 }
 
+/* IMPORTANT:
+   সম্পূর্ণ ছবি দেখাবে, crop হবে না
+*/
 .product-image{
   width:100%;
-  min-height:220px;
+  height:230px;
   background:#fff;
   display:flex;
   align-items:center;
   justify-content:center;
   overflow:hidden;
-  padding:5px;
+  cursor:pointer;
 }
 
 .product-image img{
-  display:block;
   width:100%;
-  height:auto;
-  max-width:100%;
+  height:100%;
   object-fit:contain;
+  display:block;
+  background:#fff;
 }
 
+/* IMAGE CONTROLS */
+.image-controls{
+  display:flex;
+  gap:5px;
+  padding:7px;
+  background:#fff;
+}
+
+.image-controls button{
+  flex:1;
+  border:1px solid #ccc;
+  background:#f5f5f5;
+  border-radius:6px;
+  padding:7px 2px;
+  font-size:12px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* PRODUCT INFO */
 .product-info{
   padding:14px;
 }
@@ -146,6 +170,7 @@ body{
   margin-bottom:12px;
 }
 
+/* ORDER */
 .order-button{
   width:100%;
   border:none;
@@ -162,6 +187,7 @@ body{
   transform:scale(.98);
 }
 
+/* LOADING */
 #loading{
   text-align:center;
   padding:40px 15px;
@@ -181,10 +207,11 @@ body{
   padding:40px 15px;
 }
 
+/* THANK YOU */
 .thank-you{
   margin:30px 0 10px;
   padding:24px 16px;
-  background:linear-gradient(135deg,#ffffff,#fffdf4);
+  background:linear-gradient(135deg,#fff,#fffdf4);
   border:2px solid #111;
   border-radius:14px;
   text-align:center;
@@ -217,19 +244,69 @@ body{
 }
 
 .shop-footer-name{
-  margin-top:20px !important;
-  font-size:20px !important;
+  margin-top:20px!important;
+  font-size:20px!important;
   font-weight:bold;
-  color:#111 !important;
+  color:#111!important;
 }
 
 .alhamdulillah{
-  margin-top:8px !important;
-  font-size:19px !important;
+  margin-top:8px!important;
+  font-size:19px!important;
   font-weight:bold;
-  color:#111 !important;
+  color:#111!important;
 }
 
+/* FULL SCREEN IMAGE VIEWER */
+#imageViewer{
+  display:none;
+  position:fixed;
+  z-index:99999;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,.94);
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+}
+
+#viewerImage{
+  max-width:94%;
+  max-height:78%;
+  object-fit:contain;
+  transition:transform .2s ease;
+  user-select:none;
+}
+
+.viewer-top{
+  position:absolute;
+  top:12px;
+  right:12px;
+  display:flex;
+  gap:6px;
+}
+
+.viewer-top button,
+.viewer-controls button{
+  border:0;
+  border-radius:8px;
+  background:#fff;
+  color:#111;
+  font-weight:bold;
+  padding:10px 13px;
+  cursor:pointer;
+}
+
+.viewer-controls{
+  position:absolute;
+  bottom:20px;
+  display:flex;
+  gap:7px;
+}
+
+/* MOBILE */
 @media(max-width:600px){
 
   .bismillah-box{
@@ -272,8 +349,7 @@ body{
   }
 
   .product-image{
-    min-height:170px;
-    padding:4px;
+    height:190px;
   }
 
   .product-info{
@@ -295,6 +371,11 @@ body{
   .order-button{
     font-size:14px;
     padding:11px 5px;
+  }
+
+  .image-controls button{
+    font-size:10px;
+    padding:6px 1px;
   }
 
   .thank-you{
@@ -406,26 +487,50 @@ body{
 
 </div>
 
+<!-- FULL SCREEN VIEWER -->
+<div id="imageViewer">
+
+  <div class="viewer-top">
+    <button onclick="closeViewer()">✕ বন্ধ</button>
+  </div>
+
+  <img id="viewerImage" src="" alt="Product">
+
+  <div class="viewer-controls">
+    <button onclick="viewerZoomOut()">➖ Zoom Out</button>
+    <button onclick="viewerReset()">⟳ Reset</button>
+    <button onclick="viewerZoomIn()">➕ Zoom In</button>
+  </div>
+
+</div>
+
 <script>
+
+/* ==========================================
+   GOOGLE APPS SCRIPT URL
+========================================== */
 
 const API_URL =
 "https://script.google.com/macros/s/AKfycbwEl4AmzhQHDoy0yMqE0_XnUJ2Yj65-PiWnP0FADuC5Wh5Y8d8fej2lUBqndiQC2bN5/exec";
 
+
+/* ==========================================
+   LOAD PRODUCTS
+========================================== */
 
 function loadProducts(){
 
   const callbackName =
     "productsCallback_" + Date.now();
 
-  window[callbackName] =
-  function(result){
+  window[callbackName] = function(result){
 
     try{
 
       delete window[callbackName];
 
-      document.getElementById("loading").style.display =
-        "none";
+      document.getElementById("loading")
+        .style.display = "none";
 
       if(
         !result ||
@@ -446,8 +551,8 @@ function loadProducts(){
 
       if(products.length === 0){
 
-        document.getElementById("empty").style.display =
-          "block";
+        document.getElementById("empty")
+          .style.display = "block";
 
         return;
       }
@@ -455,6 +560,7 @@ function loadProducts(){
       displayProducts(products);
 
     }
+
     catch(error){
 
       showError(
@@ -477,13 +583,12 @@ function loadProducts(){
     "&time=" +
     Date.now();
 
-  script.onerror =
-  function(){
+  script.onerror = function(){
 
     delete window[callbackName];
 
-    document.getElementById("loading").style.display =
-      "none";
+    document.getElementById("loading")
+      .style.display = "none";
 
     showError(
       "Google Sheet থেকে পণ্য আনা যাচ্ছে না।"
@@ -495,13 +600,16 @@ function loadProducts(){
 }
 
 
+/* ==========================================
+   DISPLAY PRODUCTS
+========================================== */
+
 function displayProducts(products){
 
   const container =
     document.getElementById("products");
 
   container.innerHTML = "";
-
 
   products.forEach(function(product){
 
@@ -512,117 +620,106 @@ function displayProducts(products){
       "product-card";
 
 
-    const imageBox =
-      document.createElement("div");
-
-    imageBox.className =
-      "product-image";
-
+    let imageURL = "";
 
     if(product.image1){
 
-      const imageURL =
+      imageURL =
         convertImageURL(product.image1);
 
-      const img =
-        document.createElement("img");
+    }
 
-      img.src =
-        imageURL;
 
-      img.alt =
-        product.name || "Product";
+    let imageHTML = "";
 
-      img.onerror =
-      function(){
+    if(imageURL){
 
-        imageBox.innerHTML =
-          '<div style="font-size:14px;color:#888;">ছবি পাওয়া যায়নি</div>';
+      imageHTML =
 
-      };
+        '<div class="product-image" ' +
+        'onclick="openViewer(' +
+        JSON.stringify(imageURL) +
+        ')">' +
 
-      imageBox.appendChild(img);
+        '<img src="' +
+        escapeHTML(imageURL) +
+        '" ' +
+        'alt="' +
+        escapeHTML(product.name) +
+        '" ' +
+        'onerror="imageError(this)">' +
+
+        '</div>' +
+
+        '<div class="image-controls">' +
+
+        '<button onclick="event.stopPropagation(); openViewer(' +
+        JSON.stringify(imageURL) +
+        ')">' +
+        '🔍 দেখুন' +
+        '</button>' +
+
+        '<button onclick="event.stopPropagation(); openViewer(' +
+        JSON.stringify(imageURL) +
+        ')">' +
+        '⛶ Full Screen' +
+        '</button>' +
+
+        '</div>';
 
     }
     else{
 
-      imageBox.innerHTML =
-        '<div style="font-size:14px;color:#888;">ছবি নেই</div>';
+      imageHTML =
+
+        '<div class="product-image">' +
+        '<div style="font-size:14px;color:#888;">ছবি নেই</div>' +
+        '</div>';
 
     }
 
 
-    const info =
-      document.createElement("div");
-
-    info.className =
-      "product-info";
-
-
-    const name =
-      document.createElement("div");
-
-    name.className =
-      "product-name";
-
-    name.textContent =
+    const productName =
       product.name || "";
 
-    info.appendChild(name);
+    const productPrice =
+      Number(product.price || 0);
 
 
-    const description =
-      document.createElement("div");
+    card.innerHTML =
 
-    description.className =
-      "product-description";
+      imageHTML +
 
-    description.textContent =
-      product.description || "";
+      '<div class="product-info">' +
 
-    info.appendChild(description);
+      '<div class="product-name">' +
+      escapeHTML(productName) +
+      '</div>' +
 
+      '<div class="product-description">' +
+      escapeHTML(product.description || "") +
+      '</div>' +
 
-    const price =
-      document.createElement("div");
-
-    price.className =
-      "product-price";
-
-    price.textContent =
+      '<div class="product-price">' +
       "৳" +
-      Number(product.price || 0)
-      .toLocaleString("en-BD");
+      productPrice.toLocaleString("en-BD") +
+      '</div>' +
 
-    info.appendChild(price);
+      '<button class="order-button" ' +
+      'onclick=\'orderProduct(' +
+      JSON.stringify(productName) +
+      ',' +
+      JSON.stringify(productPrice) +
+      ',' +
+      JSON.stringify(imageURL) +
+      ')\'>' +
 
+      '🛒 ORDER NOW' +
 
-    const button =
-      document.createElement("button");
+      '</button>' +
 
-    button.className =
-      "order-button";
+      '</div>';
 
-    button.textContent =
-      "🛒 ORDER NOW";
-
-
-    button.addEventListener(
-      "click",
-      function(){
-
-        orderProduct(product);
-
-      }
-    );
-
-
-    info.appendChild(button);
-
-
-    card.appendChild(imageBox);
-
-    card.appendChild(info);
 
     container.appendChild(card);
 
@@ -631,36 +728,38 @@ function displayProducts(products){
 }
 
 
-function orderProduct(product){
+/* ==========================================
+   ORDER PRODUCT
+   IMPORTANT:
+   এখন নাম + দাম + ছবি সরাসরি order.html-এ যাবে
+========================================== */
 
-  const imageURL =
-    product.image1
-      ? convertImageURL(product.image1)
-      : "";
+function orderProduct(
+  productName,
+  productPrice,
+  imageURL
+){
 
-  const params =
-    new URLSearchParams();
+  const orderPage =
+    "order.html" +
 
-  params.set(
-    "product",
-    product.name || ""
-  );
+    "?product=" +
+    encodeURIComponent(productName) +
 
-  params.set(
-    "price",
-    product.price || 0
-  );
+    "&price=" +
+    encodeURIComponent(productPrice) +
 
-  params.set(
-    "image",
-    imageURL
-  );
+    "&image=" +
+    encodeURIComponent(imageURL);
 
   window.location.href =
-    "order.html?" +
-    params.toString();
+    orderPage;
 }
 
+
+/* ==========================================
+   GOOGLE DRIVE IMAGE
+========================================== */
 
 function convertImageURL(url){
 
@@ -673,55 +772,38 @@ function convertImageURL(url){
 
 
   let match =
-    url.match(
-      /\/file\/d\/([^\/]+)/
-    );
+    url.match(/\/file\/d\/([^\/]+)/);
 
-
-  if(
-    match &&
-    match[1]
-  ){
+  if(match && match[1]){
 
     return (
       "https://drive.google.com/thumbnail?id=" +
       match[1] +
-      "&sz=w2000"
+      "&sz=w1600"
     );
 
   }
 
 
   match =
-    url.match(
-      /\/d\/([^\/]+)/
-    );
+    url.match(/\/d\/([^\/]+)/);
 
-
-  if(
-    match &&
-    match[1]
-  ){
+  if(match && match[1]){
 
     return (
       "https://drive.google.com/thumbnail?id=" +
       match[1] +
-      "&sz=w2000"
+      "&sz=w1600"
     );
 
   }
 
 
   match =
-    url.match(
-      /[?&]id=([^&]+)/
-    );
-
+    url.match(/[?&]id=([^&]+)/);
 
   if(
-    url.indexOf(
-      "drive.google.com"
-    ) !== -1 &&
+    url.indexOf("drive.google.com") !== -1 &&
     match &&
     match[1]
   ){
@@ -729,7 +811,7 @@ function convertImageURL(url){
     return (
       "https://drive.google.com/thumbnail?id=" +
       match[1] +
-      "&sz=w2000"
+      "&sz=w1600"
     );
 
   }
@@ -738,6 +820,101 @@ function convertImageURL(url){
   return url;
 }
 
+
+/* ==========================================
+   IMAGE VIEWER
+========================================== */
+
+let viewerScale = 1;
+
+function openViewer(url){
+
+  if(!url){
+    return;
+  }
+
+  viewerScale = 1;
+
+  document.getElementById("viewerImage")
+    .src = url;
+
+  document.getElementById("viewerImage")
+    .style.transform =
+    "scale(1)";
+
+  document.getElementById("imageViewer")
+    .style.display = "flex";
+}
+
+
+function closeViewer(){
+
+  document.getElementById("imageViewer")
+    .style.display = "none";
+
+}
+
+
+function viewerZoomIn(){
+
+  viewerScale += 0.25;
+
+  if(viewerScale > 4){
+    viewerScale = 4;
+  }
+
+  document.getElementById("viewerImage")
+    .style.transform =
+    "scale(" + viewerScale + ")";
+}
+
+
+function viewerZoomOut(){
+
+  viewerScale -= 0.25;
+
+  if(viewerScale < 0.5){
+    viewerScale = 0.5;
+  }
+
+  document.getElementById("viewerImage")
+    .style.transform =
+    "scale(" + viewerScale + ")";
+}
+
+
+function viewerReset(){
+
+  viewerScale = 1;
+
+  document.getElementById("viewerImage")
+    .style.transform =
+    "scale(1)";
+}
+
+
+/* ==========================================
+   IMAGE ERROR
+========================================== */
+
+function imageError(image){
+
+  image.style.display = "none";
+
+  const parent =
+    image.parentElement;
+
+  parent.innerHTML =
+    '<div style="font-size:14px;color:#888;">' +
+    'ছবি পাওয়া যায়নি' +
+    '</div>';
+
+}
+
+
+/* ==========================================
+   ERROR
+========================================== */
 
 function showError(message){
 
@@ -751,6 +928,27 @@ function showError(message){
     "block";
 }
 
+
+/* ==========================================
+   SECURITY
+========================================== */
+
+function escapeHTML(value){
+
+  return String(value || "")
+
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+/* ==========================================
+   START
+========================================== */
 
 loadProducts();
 
