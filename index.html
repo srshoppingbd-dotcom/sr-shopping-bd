@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>SR Shopping BD</title>
 
 <style>
@@ -20,6 +21,7 @@ body{
 /* =========================
    COVER PHOTO
 ========================= */
+
 .cover-header{
   width:100%;
   margin:0;
@@ -36,8 +38,9 @@ body{
 }
 
 /* =========================
-   BISSMILLAH SECTION
+   BISSMILLAH
 ========================= */
+
 .bismillah-box{
   margin:14px 10px 16px;
   padding:15px 10px;
@@ -65,6 +68,7 @@ body{
 /* =========================
    SHOP TITLE
 ========================= */
+
 .shop-title{
   margin:15px 10px 18px;
   padding:16px 10px;
@@ -97,6 +101,7 @@ body{
 /* =========================
    CONTAINER
 ========================= */
+
 .container{
   max-width:1100px;
   margin:auto;
@@ -106,6 +111,7 @@ body{
 /* =========================
    PRODUCTS
 ========================= */
+
 .products{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
@@ -119,21 +125,31 @@ body{
   box-shadow:0 3px 12px rgba(0,0,0,.08);
 }
 
+/* FULL IMAGE - NO CROPPING */
+
 .product-image{
   width:100%;
-  height:220px;
-  background:#eee;
+  aspect-ratio:1 / 1;
+  height:auto;
+  background:#fff;
   display:flex;
   align-items:center;
   justify-content:center;
   overflow:hidden;
+  padding:4px;
+  cursor:zoom-in;
 }
 
 .product-image img{
   width:100%;
   height:100%;
-  object-fit:cover;
+  object-fit:contain;
+  display:block;
 }
+
+/* =========================
+   PRODUCT INFO
+========================= */
 
 .product-info{
   padding:14px;
@@ -161,6 +177,7 @@ body{
 /* =========================
    ORDER BUTTON
 ========================= */
+
 .order-button{
   width:100%;
   border:none;
@@ -180,6 +197,7 @@ body{
 /* =========================
    LOADING
 ========================= */
+
 #loading{
   text-align:center;
   padding:40px 15px;
@@ -189,6 +207,7 @@ body{
 /* =========================
    ERROR
 ========================= */
+
 #error{
   display:none;
   text-align:center;
@@ -199,6 +218,7 @@ body{
 /* =========================
    EMPTY
 ========================= */
+
 #empty{
   display:none;
   text-align:center;
@@ -206,8 +226,9 @@ body{
 }
 
 /* =========================
-   THANK YOU SECTION
+   THANK YOU
 ========================= */
+
 .thank-you{
   margin:30px 0 10px;
   padding:24px 16px;
@@ -234,6 +255,7 @@ body{
 /* =========================
    CALL BUTTON
 ========================= */
+
 .call-button{
   display:inline-block;
   margin-top:12px;
@@ -265,8 +287,35 @@ body{
 }
 
 /* =========================
+   IMAGE ZOOM VIEWER
+========================= */
+
+#imageViewer{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.94);
+  z-index:99999;
+  align-items:center;
+  justify-content:center;
+  padding:15px;
+}
+
+#zoomImage{
+  max-width:100%;
+  max-height:85vh;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+  transform:scale(1);
+  transition:transform .2s ease;
+  user-select:none;
+}
+
+/* =========================
    MOBILE
 ========================= */
+
 @media(max-width:600px){
 
   .bismillah-box{
@@ -308,8 +357,13 @@ body{
     gap:10px;
   }
 
+  /* IMPORTANT:
+     NO FIXED HEIGHT
+  */
+
   .product-image{
-    height:170px;
+    aspect-ratio:1 / 1;
+    height:auto;
   }
 
   .product-info{
@@ -356,17 +410,14 @@ body{
 
 <body>
 
-<!-- =========================
-     COVER PHOTO
-========================= -->
+<!-- COVER PHOTO -->
+
 <header class="cover-header">
   <img src="cover.jpg" alt="SR Shopping BD Cover">
 </header>
 
+<!-- BISSMILLAH -->
 
-<!-- =========================
-     BISSMILLAH
-========================= -->
 <section class="bismillah-box">
 
   <div class="bismillah">
@@ -379,10 +430,8 @@ body{
 
 </section>
 
+<!-- SHOP TITLE -->
 
-<!-- =========================
-     SHOP TITLE
-========================= -->
 <section class="shop-title">
 
   <h1>🛍️ SR Shopping BD</h1>
@@ -397,10 +446,8 @@ body{
 
 </section>
 
+<!-- MAIN -->
 
-<!-- =========================
-     MAIN
-========================= -->
 <div class="container">
 
   <div id="loading">
@@ -415,10 +462,8 @@ body{
 
   <div id="products" class="products"></div>
 
+  <!-- THANK YOU -->
 
-  <!-- =========================
-       THANK YOU SECTION
-  ========================= -->
   <section class="thank-you">
 
     <h2>
@@ -465,20 +510,102 @@ body{
 
 </div>
 
+<!-- =========================
+     IMAGE ZOOM VIEWER
+========================= -->
+
+<div id="imageViewer">
+
+  <button
+    onclick="closeImageViewer()"
+    style="
+      position:absolute;
+      top:15px;
+      right:15px;
+      width:45px;
+      height:45px;
+      border:0;
+      border-radius:50%;
+      background:#fff;
+      color:#111;
+      font-size:27px;
+      font-weight:bold;
+      z-index:2;
+    ">
+    ×
+  </button>
+
+  <img
+    id="zoomImage"
+    src=""
+    alt="Product Image">
+
+  <div
+    style="
+      position:absolute;
+      bottom:20px;
+      left:50%;
+      transform:translateX(-50%);
+      display:flex;
+      gap:10px;
+      z-index:2;
+    ">
+
+    <button
+      onclick="zoomOut()"
+      style="
+        width:50px;
+        height:45px;
+        border:0;
+        border-radius:8px;
+        font-size:25px;
+        font-weight:bold;
+      ">
+      −
+    </button>
+
+    <button
+      onclick="resetZoom()"
+      style="
+        width:70px;
+        height:45px;
+        border:0;
+        border-radius:8px;
+        font-size:13px;
+        font-weight:bold;
+      ">
+      RESET
+    </button>
+
+    <button
+      onclick="zoomIn()"
+      style="
+        width:50px;
+        height:45px;
+        border:0;
+        border-radius:8px;
+        font-size:25px;
+        font-weight:bold;
+      ">
+      +
+    </button>
+
+  </div>
+
+</div>
 
 <script>
 
-/* ==================================================
-   GOOGLE APPS SCRIPT WEB APP URL
-   ================================================== */
+/* =========================
+   GOOGLE APPS SCRIPT
+========================= */
 
 const API_URL =
 "https://script.google.com/macros/s/AKfycbwEl4AmzhQHDoy0yMqE0_XnUJ2Yj65-PiWnP0FADuC5Wh5Y8d8fej2lUBqndiQC2bN5/exec";
 
-
-/* ==================================================
+/* =========================
    LOAD PRODUCTS
-================================================== */
+========================= */
 
 function loadProducts(){
 
@@ -496,7 +623,6 @@ function loadProducts(){
           .getElementById("loading")
           .style.display = "none";
 
-
         if(
           !result ||
           result.success !== true
@@ -512,10 +638,8 @@ function loadProducts(){
           return;
         }
 
-
         const products =
           result.products || [];
-
 
         if(products.length === 0){
 
@@ -525,7 +649,6 @@ function loadProducts(){
 
           return;
         }
-
 
         displayProducts(products);
 
@@ -541,10 +664,8 @@ function loadProducts(){
 
     };
 
-
   const script =
     document.createElement("script");
-
 
   script.src =
     API_URL +
@@ -553,7 +674,6 @@ function loadProducts(){
     callbackName +
     "&time=" +
     Date.now();
-
 
   script.onerror =
     function(){
@@ -570,26 +690,21 @@ function loadProducts(){
 
     };
 
-
   document
     .body
     .appendChild(script);
-
 }
 
-
-/* ==================================================
+/* =========================
    DISPLAY PRODUCTS
-================================================== */
+========================= */
 
 function displayProducts(products){
 
   const container =
     document.getElementById("products");
 
-
   container.innerHTML = "";
-
 
   products.forEach(
     function(product){
@@ -597,13 +712,10 @@ function displayProducts(products){
       const card =
         document.createElement("div");
 
-
       card.className =
         "product-card";
 
-
       let imageHTML = "";
-
 
       if(product.image1){
 
@@ -612,7 +724,6 @@ function displayProducts(products){
             product.image1
           );
 
-
         imageHTML =
           '<img src="' +
           escapeHTML(imageURL) +
@@ -620,6 +731,7 @@ function displayProducts(products){
           'alt="' +
           escapeHTML(product.name) +
           '" ' +
+          'onclick="openImageViewer(this.src)" ' +
           'onerror="imageError(this)">';
 
       }
@@ -636,32 +748,40 @@ function displayProducts(products){
 
       }
 
-
       card.innerHTML =
 
         '<div class="product-image">' +
+
           imageHTML +
+
         '</div>' +
 
         '<div class="product-info">' +
 
           '<div class="product-name">' +
+
             escapeHTML(
               product.name
             ) +
+
           '</div>' +
 
           '<div class="product-description">' +
+
             escapeHTML(
               product.description || ""
             ) +
+
           '</div>' +
 
           '<div class="product-price">' +
+
             "৳" +
+
             Number(
               product.price || 0
             ).toLocaleString("en-BD") +
+
           '</div>' +
 
           '<button ' +
@@ -671,23 +791,22 @@ function displayProducts(products){
                 product.name
               ) +
             ')\'>' +
+
             "🛒 ORDER NOW" +
+
           '</button>' +
 
         '</div>';
-
 
       container.appendChild(card);
 
     }
   );
-
 }
 
-
-/* ==================================================
+/* =========================
    ORDER PRODUCT
-================================================== */
+========================= */
 
 function orderProduct(productName){
 
@@ -697,16 +816,13 @@ function orderProduct(productName){
       productName
     );
 
-
   window.location.href =
     orderPage;
-
 }
 
-
-/* ==================================================
-   GOOGLE DRIVE IMAGE SUPPORT
-================================================== */
+/* =========================
+   GOOGLE DRIVE IMAGE
+========================= */
 
 function convertImageURL(url){
 
@@ -714,17 +830,14 @@ function convertImageURL(url){
     return "";
   }
 
-
   url =
     String(url).trim();
-
 
   let match =
     url.match(
       /\/file\/d\/([^\/]+)/
     );
 
-
   if(
     match &&
     match[1]
@@ -733,18 +846,16 @@ function convertImageURL(url){
     return (
       "https://drive.google.com/thumbnail?id=" +
       match[1] +
-      "&sz=w1000"
+      "&sz=w2000"
     );
 
   }
-
 
   match =
     url.match(
       /\/d\/([^\/]+)/
     );
 
-
   if(
     match &&
     match[1]
@@ -753,17 +864,15 @@ function convertImageURL(url){
     return (
       "https://drive.google.com/thumbnail?id=" +
       match[1] +
-      "&sz=w1000"
+      "&sz=w2000"
     );
 
   }
-
 
   match =
     url.match(
       /[?&]id=([^&]+)/
     );
-
 
   if(
     url.indexOf(
@@ -776,30 +885,25 @@ function convertImageURL(url){
     return (
       "https://drive.google.com/thumbnail?id=" +
       match[1] +
-      "&sz=w1000"
+      "&sz=w2000"
     );
 
   }
 
-
   return url;
-
 }
 
-
-/* ==================================================
+/* =========================
    IMAGE ERROR
-================================================== */
+========================= */
 
 function imageError(image){
 
   image.style.display =
     "none";
 
-
   const parent =
     image.parentElement;
-
 
   parent.innerHTML =
     '<div style="' +
@@ -808,13 +912,96 @@ function imageError(image){
     '">' +
     'ছবি পাওয়া যায়নি' +
     '</div>';
-
 }
 
+/* =========================
+   IMAGE ZOOM
+========================= */
 
-/* ==================================================
+let currentZoom = 1;
+
+function openImageViewer(src){
+
+  const viewer =
+    document.getElementById(
+      "imageViewer"
+    );
+
+  const image =
+    document.getElementById(
+      "zoomImage"
+    );
+
+  image.src = src;
+
+  currentZoom = 1;
+
+  image.style.transform =
+    "scale(1)";
+
+  viewer.style.display =
+    "flex";
+
+  document.body.style.overflow =
+    "hidden";
+}
+
+function closeImageViewer(){
+
+  document.getElementById(
+    "imageViewer"
+  ).style.display =
+    "none";
+
+  document.body.style.overflow =
+    "";
+}
+
+function zoomIn(){
+
+  currentZoom += 0.25;
+
+  if(currentZoom > 3){
+    currentZoom = 3;
+  }
+
+  document.getElementById(
+    "zoomImage"
+  ).style.transform =
+    "scale(" +
+    currentZoom +
+    ")";
+}
+
+function zoomOut(){
+
+  currentZoom -= 0.25;
+
+  if(currentZoom < 1){
+    currentZoom = 1;
+  }
+
+  document.getElementById(
+    "zoomImage"
+  ).style.transform =
+    "scale(" +
+    currentZoom +
+    ")";
+}
+
+function resetZoom(){
+
+  currentZoom = 1;
+
+  document.getElementById(
+    "zoomImage"
+  ).style.transform =
+    "scale(1)";
+}
+
+/* =========================
    ERROR
-================================================== */
+========================= */
 
 function showError(message){
 
@@ -823,20 +1010,16 @@ function showError(message){
       "error"
     );
 
-
   error.innerText =
     message;
 
-
   error.style.display =
     "block";
-
 }
 
-
-/* ==================================================
+/* =========================
    SECURITY
-================================================== */
+========================= */
 
 function escapeHTML(value){
 
@@ -868,13 +1051,11 @@ function escapeHTML(value){
     /'/g,
     "&#039;"
   );
-
 }
 
-
-/* ==================================================
+/* =========================
    START
-================================================== */
+========================= */
 
 loadProducts();
 
