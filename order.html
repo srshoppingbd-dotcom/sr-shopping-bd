@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="bn">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>অর্ডার করুন - SR Shopping BD</title>
 
@@ -21,7 +25,7 @@ body{
 
 header{
   background:#111;
-  color:#fff;
+  color:white;
   text-align:center;
   padding:20px 15px;
 }
@@ -50,75 +54,45 @@ header p{
   font-weight:bold;
 }
 
-/* =========================
-   PRODUCT IMAGE
-========================= */
-
-.product-photo-box{
-  background:#fff;
-  border-radius:12px;
-  padding:10px;
-  margin-bottom:15px;
-  box-shadow:0 3px 12px rgba(0,0,0,.08);
-  text-align:center;
-}
-
-.product-photo{
-  width:100%;
-  height:auto;
-  max-height:500px;
-  object-fit:contain;
-  display:block;
-  margin:auto;
-  border-radius:8px;
-  cursor:zoom-in;
-  background:#fff;
-}
-
-/* =========================
-   IMAGE ZOOM
-========================= */
-
-.image-modal{
-  display:none;
-  position:fixed;
-  z-index:9999;
-  left:0;
-  top:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,.92);
-  align-items:center;
-  justify-content:center;
-  padding:15px;
-}
-
-.image-modal img{
-  max-width:100%;
-  max-height:95vh;
-  object-fit:contain;
-}
-
-.close-image{
-  position:absolute;
-  top:10px;
-  right:18px;
-  color:#fff;
-  font-size:40px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-/* =========================
-   CARD
-========================= */
-
 .card{
-  background:#fff;
+  background:white;
   border-radius:12px;
   padding:20px;
   box-shadow:0 3px 12px rgba(0,0,0,.08);
 }
+
+
+/* =========================
+   PRODUCT IMAGE
+========================= */
+
+.order-product-image{
+  width:100%;
+  background:#fff;
+  border-radius:12px;
+  margin-bottom:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  border:1px solid #eee;
+  padding:6px;
+}
+
+.order-product-image img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-width:100%;
+  max-height:70vh;
+  object-fit:contain;
+  cursor:zoom-in;
+}
+
+
+/* =========================
+   PRODUCT INFO
+========================= */
 
 .product-box{
   background:#f3f3f3;
@@ -130,13 +104,13 @@ header p{
 .product-box h2{
   margin:0 0 8px;
   font-size:21px;
-  line-height:1.4;
 }
 
 .product-price{
-  font-size:23px;
+  font-size:22px;
   font-weight:bold;
 }
+
 
 /* =========================
    FORM
@@ -160,16 +134,11 @@ textarea{
   outline:none;
 }
 
-input:focus,
-select:focus,
-textarea:focus{
-  border-color:#111;
-}
-
 textarea{
   min-height:90px;
   resize:vertical;
 }
+
 
 /* =========================
    SUMMARY
@@ -196,6 +165,7 @@ textarea{
   font-weight:bold;
 }
 
+
 /* =========================
    BUTTON
 ========================= */
@@ -207,7 +177,7 @@ textarea{
   padding:16px;
   margin-top:20px;
   background:#111;
-  color:#fff;
+  color:white;
   font-size:18px;
   font-weight:bold;
   cursor:pointer;
@@ -217,26 +187,25 @@ textarea{
   opacity:.6;
 }
 
+
 /* =========================
-   LOADING / ERROR
+   STATUS
 ========================= */
 
 .loading{
   text-align:center;
   padding:40px 15px;
-  font-size:17px;
 }
 
 .error{
   color:#c62828;
   margin-top:12px;
   text-align:center;
-  line-height:1.6;
 }
 
 .success{
   display:none;
-  background:#fff;
+  background:white;
   border-radius:12px;
   padding:30px 20px;
   text-align:center;
@@ -254,10 +223,81 @@ textarea{
   padding:14px;
   margin-top:20px;
   background:#111;
-  color:#fff;
+  color:white;
   font-size:16px;
   font-weight:bold;
 }
+
+
+/* =========================
+   IMAGE ZOOM
+========================= */
+
+.zoom-overlay{
+  display:none;
+  position:fixed;
+  z-index:99999;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,.95);
+  align-items:center;
+  justify-content:center;
+  padding:60px 15px 90px;
+  overflow:hidden;
+}
+
+.zoom-overlay.active{
+  display:flex;
+}
+
+.zoom-image{
+  max-width:95%;
+  max-height:85vh;
+  object-fit:contain;
+  transition:transform .2s ease;
+  cursor:grab;
+  user-select:none;
+  -webkit-user-select:none;
+}
+
+.zoom-controls{
+  position:fixed;
+  z-index:100000;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:10px;
+}
+
+.zoom-controls button{
+  width:48px;
+  height:48px;
+  border:none;
+  border-radius:50%;
+  background:white;
+  color:#111;
+  font-size:24px;
+  font-weight:bold;
+}
+
+.zoom-close{
+  position:fixed;
+  z-index:100001;
+  top:15px;
+  right:15px;
+  width:45px;
+  height:45px;
+  border:none;
+  border-radius:50%;
+  background:white;
+  color:#111;
+  font-size:25px;
+  font-weight:bold;
+}
+
 
 /* =========================
    MOBILE
@@ -269,302 +309,334 @@ textarea{
     padding:12px 10px;
   }
 
-  header h1{
-    font-size:24px;
-  }
-
   .card{
-    padding:15px;
+    padding:14px;
   }
 
-  .product-photo{
-    max-height:430px;
+  .order-product-image{
+    padding:4px;
   }
 
-  .product-box h2{
-    font-size:19px;
+  .order-product-image img{
+    max-height:65vh;
   }
 
-  .product-price{
-    font-size:21px;
-  }
-
-  .confirm-button{
-    font-size:16px;
+  header h1{
+    font-size:25px;
   }
 
 }
 
 </style>
+
 </head>
 
 <body>
 
 <header>
-  <h1>SR Shopping BD</h1>
-  <p>অর্ডার করুন</p>
+
+<h1>
+SR Shopping BD
+</h1>
+
+<p>
+অর্ডার করুন
+</p>
+
 </header>
+
 
 <div class="container">
 
-<a href="index.html" class="back-button">
-  ← পণ্যের তালিকায় ফিরে যান
+<a href="index.html"
+class="back-button">
+← পণ্যের তালিকায় ফিরে যান
 </a>
 
-<!-- =========================
-     LOADING
-========================= -->
 
-<div id="loading" class="loading">
-  পণ্যের তথ্য লোড হচ্ছে...
+<div id="loading"
+class="loading">
+পণ্যের তথ্য লোড হচ্ছে...
 </div>
 
-<!-- =========================
-     ERROR
-========================= -->
 
 <div id="error"
-     class="error"
-     style="display:none;">
+class="error"
+style="display:none;">
 </div>
+
+
+<div id="orderSection"
+style="display:none;">
+
+<div class="card">
+
 
 <!-- =========================
-     ORDER SECTION
+     SELECTED PRODUCT IMAGE
 ========================= -->
 
-<div id="orderSection" style="display:none;">
+<div
+class="order-product-image"
+id="productImageBox">
 
-  <!-- PRODUCT IMAGE -->
-
-  <div class="product-photo-box">
-
-    <img
-      id="productImage"
-      class="product-photo"
-      src=""
-      alt="Product Image"
-      onclick="openImage()"
-    >
-
-  </div>
-
-  <div class="card">
-
-    <div class="product-box">
-
-      <h2 id="productName">
-        পণ্য
-      </h2>
-
-      <div class="product-price">
-        ৳<span id="productPrice">0</span>
-      </div>
-
-    </div>
-
-    <form id="orderForm">
-
-      <label>
-        পরিমাণ *
-      </label>
-
-      <input
-        type="number"
-        id="quantity"
-        value="1"
-        min="1"
-        required
-      >
-
-      <label>
-        আপনার নাম *
-      </label>
-
-      <input
-        type="text"
-        id="customerName"
-        placeholder="আপনার নাম লিখুন"
-        required
-      >
-
-      <label>
-        মোবাইল নম্বর *
-      </label>
-
-      <input
-        type="tel"
-        id="phone"
-        placeholder="01XXXXXXXXX"
-        inputmode="numeric"
-        required
-      >
-
-      <label>
-        ডেলিভারি এলাকা *
-      </label>
-
-      <select
-        id="deliveryArea"
-        required
-      >
-
-        <option value="ঢাকার ভিতরে">
-          ঢাকার ভিতরে
-        </option>
-
-        <option value="ঢাকার বাইরে">
-          ঢাকার বাইরে
-        </option>
-
-      </select>
-
-      <label>
-        সম্পূর্ণ ঠিকানা *
-      </label>
-
-      <textarea
-        id="address"
-        placeholder="বাসা, রোড, এলাকা, থানা/উপজেলা লিখুন"
-        required
-      ></textarea>
-
-      <label>
-        অতিরিক্ত তথ্য (ঐচ্ছিক)
-      </label>
-
-      <textarea
-        id="remarks"
-        placeholder="প্রয়োজন হলে অতিরিক্ত তথ্য লিখুন"
-      ></textarea>
-
-      <!-- SUMMARY -->
-
-      <div class="summary">
-
-        <div class="summary-row">
-
-          <span>
-            পণ্যের মূল্য
-          </span>
-
-          <span>
-            ৳<span id="productTotal">0</span>
-          </span>
-
-        </div>
-
-        <div class="summary-row">
-
-          <span>
-            ডেলিভারি চার্জ
-          </span>
-
-          <span>
-            ৳<span id="deliveryCharge">60</span>
-          </span>
-
-        </div>
-
-        <div class="summary-row summary-total">
-
-          <span>
-            সর্বমোট
-          </span>
-
-          <span>
-            ৳<span id="totalPrice">0</span>
-          </span>
-
-        </div>
-
-      </div>
-
-      <button
-        type="submit"
-        id="confirmButton"
-        class="confirm-button">
-
-        🛒 অর্ডার কনফার্ম করুন
-
-      </button>
-
-      <div
-        id="formError"
-        class="error">
-      </div>
-
-    </form>
-
-  </div>
+<img
+id="productImage"
+src=""
+alt="Product"
+onclick="openZoom()">
 
 </div>
+
+
+<!-- =========================
+     PRODUCT INFO
+========================= -->
+
+<div class="product-box">
+
+<h2 id="productName">
+পণ্য
+</h2>
+
+<div class="product-price">
+৳<span id="productPrice">0</span>
+</div>
+
+</div>
+
+
+<form id="orderForm">
+
+
+<label>
+পরিমাণ *
+</label>
+
+<input
+type="number"
+id="quantity"
+value="1"
+min="1"
+required>
+
+
+<label>
+আপনার নাম *
+</label>
+
+<input
+type="text"
+id="customerName"
+placeholder="আপনার নাম লিখুন"
+required>
+
+
+<label>
+মোবাইল নম্বর *
+</label>
+
+<input
+type="tel"
+id="phone"
+placeholder="01XXXXXXXXX"
+inputmode="numeric"
+required>
+
+
+<label>
+ডেলিভারি এলাকা *
+</label>
+
+<select
+id="deliveryArea"
+required>
+
+<option value="ঢাকার ভিতরে">
+ঢাকার ভিতরে
+</option>
+
+<option value="ঢাকার বাইরে">
+ঢাকার বাইরে
+</option>
+
+</select>
+
+
+<label>
+সম্পূর্ণ ঠিকানা *
+</label>
+
+<textarea
+id="address"
+placeholder="বাসা, রোড, এলাকা, থানা/উপজেলা লিখুন"
+required></textarea>
+
+
+<label>
+অতিরিক্ত তথ্য (ঐচ্ছিক)
+</label>
+
+<textarea
+id="remarks"
+placeholder="প্রয়োজন হলে অতিরিক্ত তথ্য লিখুন"></textarea>
+
+
+<div class="summary">
+
+
+<div class="summary-row">
+
+<span>
+পণ্যের মূল্য
+</span>
+
+<span>
+৳<span id="productTotal">0</span>
+</span>
+
+</div>
+
+
+<div class="summary-row">
+
+<span>
+ডেলিভারি চার্জ
+</span>
+
+<span>
+৳<span id="deliveryCharge">60</span>
+</span>
+
+</div>
+
+
+<div class="summary-row summary-total">
+
+<span>
+সর্বমোট
+</span>
+
+<span>
+৳<span id="totalPrice">0</span>
+</span>
+
+</div>
+
+
+</div>
+
+
+<button
+type="submit"
+id="confirmButton"
+class="confirm-button">
+
+🛒 অর্ডার কনফার্ম করুন
+
+</button>
+
+
+<div
+id="formError"
+class="error">
+</div>
+
+
+</form>
+
+</div>
+
+</div>
+
 
 <!-- =========================
      SUCCESS
 ========================= -->
 
-<div id="success" class="success">
+<div id="success"
+class="success">
 
-  <h2>
-    ✅ অর্ডার সফল হয়েছে!
-  </h2>
+<h2>
+✅ অর্ডার সফল হয়েছে!
+</h2>
 
-  <p>
-    আপনার অর্ডারটি সফলভাবে গ্রহণ করা হয়েছে।
-  </p>
+<p>
+আপনার অর্ডারটি সফলভাবে গ্রহণ করা হয়েছে।
+</p>
 
-  <p>
-    আমরা খুব শীঘ্রই আপনার সাথে যোগাযোগ করব।
-  </p>
+<p>
+আমরা খুব শীঘ্রই আপনার সাথে যোগাযোগ করব।
+</p>
 
-  <button
-    class="success-button"
-    onclick="window.location.href='index.html'">
+<button
+class="success-button"
+onclick="window.location.href='index.html'">
 
-    আরও পণ্য দেখুন
+আরও পণ্য দেখুন
 
-  </button>
+</button>
 
 </div>
 
 </div>
+
 
 <!-- =========================
-     IMAGE MODAL
+     ZOOM VIEW
 ========================= -->
 
 <div
-  id="imageModal"
-  class="image-modal"
-  onclick="closeImage()">
+id="zoomOverlay"
+class="zoom-overlay">
 
-  <span
-    class="close-image"
-    onclick="closeImage()">
-    ×
-  </span>
+<button
+class="zoom-close"
+onclick="closeZoom()">
+×
+</button>
 
-  <img
-    id="largeProductImage"
-    src=""
-    alt="Product">
+
+<img
+id="zoomImage"
+class="zoom-image"
+src=""
+alt="Product Zoom">
+
+
+<div class="zoom-controls">
+
+<button onclick="zoomOut()">
+−
+</button>
+
+<button onclick="resetZoom()">
+⟳
+</button>
+
+<button onclick="zoomIn()">
++
+</button>
+
+</div>
 
 </div>
 
 
 <script>
 
-/* ==========================================
-   GOOGLE APPS SCRIPT URL
-========================================== */
+
+// ==========================================
+// APPS SCRIPT URL
+// ==========================================
 
 const API_URL =
 "https://script.google.com/macros/s/AKfycbwEl4AmzhQHDoy0yMqE0_XnUJ2Yj65-PiWnP0FADuC5Wh5Y8d8fej2lUBqndiQC2bN5/exec";
 
 
-/* ==========================================
-   VARIABLES
-========================================== */
+// ==========================================
+// VARIABLES
+// ==========================================
 
 let selectedProduct = null;
 
@@ -573,37 +645,156 @@ let dhakaDelivery = 60;
 let outsideDelivery = 120;
 
 
-/* ==========================================
-   PRODUCT FROM URL
-========================================== */
+// ==========================================
+// URL DATA
+// ==========================================
 
 const urlParams =
 new URLSearchParams(
-  window.location.search
+window.location.search
 );
 
 const productNameFromURL =
 urlParams.get("product");
 
+const priceFromURL =
+urlParams.get("price");
 
-/* ==========================================
-   LOAD PRODUCT
-========================================== */
+const imageFromURL =
+urlParams.get("image");
 
-function loadProduct(){
+
+// ==========================================
+// START
+// ==========================================
+
+function startOrder(){
+
+  /*
+   * INDEX.HTML এখন পণ্যের নাম,
+   * দাম এবং ছবির URL সরাসরি পাঠাচ্ছে।
+   * তাই প্রথমে API-এর জন্য অপেক্ষা করতে হবে না।
+   */
+
+  if(
+    productNameFromURL
+  ){
+
+    selectedProduct = {
+
+      name:
+        productNameFromURL,
+
+      price:
+        Number(priceFromURL || 0),
+
+      image1:
+        imageFromURL || ""
+
+    };
+
+
+    showProduct();
+
+    loadSettings();
+
+    return;
+
+  }
+
+
+  /*
+   * পুরোনো লিংক হলেও API থেকে
+   * পণ্য খুঁজে বের করার চেষ্টা করবে।
+   */
+
+  loadProductFromAPI();
+
+}
+
+
+// ==========================================
+// SHOW PRODUCT
+// ==========================================
+
+function showProduct(){
+
+  document.getElementById("loading")
+    .style.display =
+    "none";
+
+
+  document.getElementById("orderSection")
+    .style.display =
+    "block";
+
+
+  document.getElementById("productName")
+    .textContent =
+    selectedProduct.name;
+
+
+  document.getElementById("productPrice")
+    .textContent =
+    Number(
+      selectedProduct.price || 0
+    ).toLocaleString("en-BD");
+
+
+  const image =
+    document.getElementById(
+      "productImage"
+    );
+
+
+  if(
+    selectedProduct.image1
+  ){
+
+    image.src =
+      selectedProduct.image1;
+
+    image.style.display =
+      "block";
+
+  }
+  else{
+
+    image.style.display =
+      "none";
+
+    document.getElementById(
+      "productImageBox"
+    ).innerHTML =
+      '<div style="padding:40px 10px;color:#888;text-align:center;">ছবি পাওয়া যায়নি</div>';
+
+  }
+
+
+  updateTotal();
+
+}
+
+
+// ==========================================
+// FALLBACK API PRODUCT LOAD
+// ==========================================
+
+function loadProductFromAPI(){
 
   if(!productNameFromURL){
 
     showError(
-      "কোনো পণ্য নির্বাচন করা হয়নি। প্রথম পেজ থেকে ORDER NOW চাপুন।"
+      "কোনো পণ্য নির্বাচন করা হয়নি।"
     );
 
     return;
+
   }
 
 
   const callbackName =
-    "productCallback_" +
+    "orderProductCallback_" +
     Date.now();
 
 
@@ -631,13 +822,13 @@ function loadProduct(){
       ){
 
         showError(
-          result &&
-          result.error
-          ? result.error
-          : "পণ্যের তথ্য পাওয়া যায়নি।"
+          result && result.error
+            ? result.error
+            : "পণ্যের তথ্য পাওয়া যায়নি।"
         );
 
         return;
+
       }
 
 
@@ -646,14 +837,14 @@ function loadProduct(){
 
 
       for(
-        let i = 0;
-        i < products.length;
+        let i=0;
+        i<products.length;
         i++
       ){
 
         if(
-          String(products[i].name).trim() ===
-          String(productNameFromURL).trim()
+          String(products[i].name) ===
+          String(productNameFromURL)
         ){
 
           selectedProduct =
@@ -664,6 +855,7 @@ function loadProduct(){
           loadSettings();
 
           return;
+
         }
 
       }
@@ -674,11 +866,10 @@ function loadProduct(){
       );
 
     }
-
     catch(error){
 
       showError(
-        "পণ্যের তথ্য দেখাতে সমস্যা হয়েছে।"
+        "পণ্যের তথ্য লোড করতে সমস্যা হয়েছে।"
       );
 
     }
@@ -694,7 +885,7 @@ function loadProduct(){
     API_URL +
     "?action=products" +
     "&callback=" +
-    encodeURIComponent(callbackName) +
+    callbackName +
     "&time=" +
     Date.now();
 
@@ -720,19 +911,25 @@ function loadProduct(){
   document.body.appendChild(script);
 
 
-  /* 15 SECOND TIMEOUT */
+  /*
+   * যদি API থেকে কোনো উত্তর না আসে,
+   * তাহলে চিরকাল LOADING দেখাবে না।
+   */
 
   setTimeout(
     function(){
 
-      if(!finished){
+      if(
+        !finished &&
+        !selectedProduct
+      ){
 
         finished = true;
 
         delete window[callbackName];
 
         showError(
-          "পণ্যের তথ্য লোড হতে সময় বেশি লাগছে। ইন্টারনেট সংযোগ বা Google Apps Script পরীক্ষা করুন।"
+          "পণ্যের তথ্য লোড হতে সময় বেশি লাগছে। আবার চেষ্টা করুন।"
         );
 
       }
@@ -744,167 +941,9 @@ function loadProduct(){
 }
 
 
-/* ==========================================
-   SHOW PRODUCT
-========================================== */
-
-function showProduct(){
-
-  document
-  .getElementById("loading")
-  .style.display =
-  "none";
-
-
-  document
-  .getElementById("orderSection")
-  .style.display =
-  "block";
-
-
-  document
-  .getElementById("productName")
-  .textContent =
-  selectedProduct.name;
-
-
-  document
-  .getElementById("productPrice")
-  .textContent =
-  Number(
-    selectedProduct.price || 0
-  ).toLocaleString("en-BD");
-
-
-  /* PRODUCT IMAGE */
-
-  const image =
-    document.getElementById(
-      "productImage"
-    );
-
-
-  if(selectedProduct.image1){
-
-    const imageURL =
-      convertImageURL(
-        selectedProduct.image1
-      );
-
-
-    image.src =
-      imageURL;
-
-
-    image.onerror =
-    function(){
-
-      image.style.display =
-      "none";
-
-    };
-
-  }
-
-  else{
-
-    image.style.display =
-    "none";
-
-  }
-
-
-  updateTotal();
-
-}
-
-
-/* ==========================================
-   GOOGLE DRIVE IMAGE
-========================================== */
-
-function convertImageURL(url){
-
-  if(!url){
-    return "";
-  }
-
-
-  url =
-  String(url).trim();
-
-
-  let match =
-  url.match(
-    /\/file\/d\/([^\/]+)/
-  );
-
-
-  if(
-    match &&
-    match[1]
-  ){
-
-    return (
-      "https://drive.google.com/thumbnail?id=" +
-      match[1] +
-      "&sz=w2000"
-    );
-
-  }
-
-
-  match =
-  url.match(
-    /\/d\/([^\/]+)/
-  );
-
-
-  if(
-    match &&
-    match[1]
-  ){
-
-    return (
-      "https://drive.google.com/thumbnail?id=" +
-      match[1] +
-      "&sz=w2000"
-    );
-
-  }
-
-
-  match =
-  url.match(
-    /[?&]id=([^&]+)/
-  );
-
-
-  if(
-    url.indexOf(
-      "drive.google.com"
-    ) !== -1 &&
-    match &&
-    match[1]
-  ){
-
-    return (
-      "https://drive.google.com/thumbnail?id=" +
-      match[1] +
-      "&sz=w2000"
-    );
-
-  }
-
-
-  return url;
-
-}
-
-
-/* ==========================================
-   LOAD DELIVERY SETTINGS
-========================================== */
+// ==========================================
+// LOAD SETTINGS
+// ==========================================
 
 function loadSettings(){
 
@@ -928,15 +967,15 @@ function loadSettings(){
       ){
 
         dhakaDelivery =
-        Number(
-          result.settings.dhaka
-        ) || 60;
+          Number(
+            result.settings.dhaka
+          ) || 60;
 
 
         outsideDelivery =
-        Number(
-          result.settings.outsideDhaka
-        ) || 120;
+          Number(
+            result.settings.outsideDhaka
+          ) || 120;
 
       }
 
@@ -944,7 +983,6 @@ function loadSettings(){
       updateTotal();
 
     }
-
     catch(error){
 
       updateTotal();
@@ -962,7 +1000,7 @@ function loadSettings(){
     API_URL +
     "?action=settings" +
     "&callback=" +
-    encodeURIComponent(callbackName) +
+    callbackName +
     "&time=" +
     Date.now();
 
@@ -982,9 +1020,9 @@ function loadSettings(){
 }
 
 
-/* ==========================================
-   UPDATE TOTAL
-========================================== */
+// ==========================================
+// UPDATE TOTAL
+// ==========================================
 
 function updateTotal(){
 
@@ -995,9 +1033,9 @@ function updateTotal(){
 
   const quantity =
     Number(
-      document
-      .getElementById("quantity")
-      .value
+      document.getElementById(
+        "quantity"
+      ).value
     ) || 1;
 
 
@@ -1013,27 +1051,27 @@ function updateTotal(){
 
 
   const area =
-    document
-    .getElementById("deliveryArea")
-    .value;
+    document.getElementById(
+      "deliveryArea"
+    ).value;
 
 
   let deliveryCharge;
 
 
   if(
-    area === "ঢাকার বাইরে"
+    area ===
+    "ঢাকার বাইরে"
   ){
 
     deliveryCharge =
-    outsideDelivery;
+      outsideDelivery;
 
   }
-
   else{
 
     deliveryCharge =
-    dhakaDelivery;
+      dhakaDelivery;
 
   }
 
@@ -1043,29 +1081,29 @@ function updateTotal(){
     deliveryCharge;
 
 
-  document
-  .getElementById("productTotal")
-  .textContent =
-  productTotal.toLocaleString("en-BD");
+  document.getElementById(
+    "productTotal"
+  ).textContent =
+    productTotal.toLocaleString("en-BD");
 
 
-  document
-  .getElementById("deliveryCharge")
-  .textContent =
-  deliveryCharge.toLocaleString("en-BD");
+  document.getElementById(
+    "deliveryCharge"
+  ).textContent =
+    deliveryCharge.toLocaleString("en-BD");
 
 
-  document
-  .getElementById("totalPrice")
-  .textContent =
-  total.toLocaleString("en-BD");
+  document.getElementById(
+    "totalPrice"
+  ).textContent =
+    total.toLocaleString("en-BD");
 
 }
 
 
-/* ==========================================
-   INPUT EVENTS
-========================================== */
+// ==========================================
+// INPUT EVENTS
+// ==========================================
 
 document
 .getElementById("quantity")
@@ -1083,202 +1121,153 @@ document
 );
 
 
-/* ==========================================
-   IMAGE ZOOM
-========================================== */
-
-function openImage(){
-
-  const image =
-    document.getElementById(
-      "productImage"
-    );
-
-
-  if(!image.src){
-    return;
-  }
-
-
-  document
-  .getElementById(
-    "largeProductImage"
-  )
-  .src =
-  image.src;
-
-
-  document
-  .getElementById(
-    "imageModal"
-  )
-  .style.display =
-  "flex";
-
-}
-
-
-function closeImage(){
-
-  document
-  .getElementById(
-    "imageModal"
-  )
-  .style.display =
-  "none";
-
-}
-
-
-/* ==========================================
-   FORM SUBMIT
-========================================== */
+// ==========================================
+// FORM SUBMIT
+// ==========================================
 
 document
 .getElementById("orderForm")
 .addEventListener(
-"submit",
-function(event){
+  "submit",
+  function(event){
 
-  event.preventDefault();
-
-
-  const customerName =
-    document
-    .getElementById("customerName")
-    .value
-    .trim();
+    event.preventDefault();
 
 
-  const phone =
-    document
-    .getElementById("phone")
-    .value
-    .trim();
+    const customerName =
+      document.getElementById(
+        "customerName"
+      ).value.trim();
 
 
-  const address =
-    document
-    .getElementById("address")
-    .value
-    .trim();
+    const phone =
+      document.getElementById(
+        "phone"
+      ).value.trim();
 
 
-  const quantity =
-    Number(
-      document
-      .getElementById("quantity")
-      .value
-    ) || 1;
+    const address =
+      document.getElementById(
+        "address"
+      ).value.trim();
 
 
-  const deliveryArea =
-    document
-    .getElementById("deliveryArea")
-    .value;
+    const quantity =
+      Number(
+        document.getElementById(
+          "quantity"
+        ).value
+      ) || 1;
 
 
-  const remarks =
-    document
-    .getElementById("remarks")
-    .value
-    .trim();
+    const deliveryArea =
+      document.getElementById(
+        "deliveryArea"
+      ).value;
 
 
-  const formError =
-    document
-    .getElementById("formError");
+    const remarks =
+      document.getElementById(
+        "remarks"
+      ).value.trim();
 
 
-  formError.textContent = "";
+    const formError =
+      document.getElementById(
+        "formError"
+      );
 
-
-  if(!customerName){
 
     formError.textContent =
-    "আপনার নাম লিখুন।";
+      "";
 
-    return;
+
+    if(!customerName){
+
+      formError.textContent =
+        "আপনার নাম লিখুন।";
+
+      return;
+
+    }
+
+
+    if(!phone){
+
+      formError.textContent =
+        "মোবাইল নম্বর লিখুন।";
+
+      return;
+
+    }
+
+
+    if(!address){
+
+      formError.textContent =
+        "সম্পূর্ণ ঠিকানা লিখুন।";
+
+      return;
+
+    }
+
+
+    if(quantity < 1){
+
+      formError.textContent =
+        "পরিমাণ কমপক্ষে ১ হতে হবে।";
+
+      return;
+
+    }
+
+
+    const button =
+      document.getElementById(
+        "confirmButton"
+      );
+
+
+    button.disabled =
+      true;
+
+
+    button.textContent =
+      "অর্ডার পাঠানো হচ্ছে...";
+
+
+    submitOrder({
+
+      customerName:
+        customerName,
+
+      phone:
+        phone,
+
+      address:
+        address,
+
+      productName:
+        selectedProduct.name,
+
+      quantity:
+        quantity,
+
+      deliveryArea:
+        deliveryArea,
+
+      remarks:
+        remarks
+
+    });
 
   }
+);
 
 
-  if(!phone){
-
-    formError.textContent =
-    "মোবাইল নম্বর লিখুন।";
-
-    return;
-
-  }
-
-
-  if(!address){
-
-    formError.textContent =
-    "সম্পূর্ণ ঠিকানা লিখুন।";
-
-    return;
-
-  }
-
-
-  if(quantity < 1){
-
-    formError.textContent =
-    "পরিমাণ কমপক্ষে ১ হতে হবে।";
-
-    return;
-
-  }
-
-
-  const button =
-    document
-    .getElementById(
-      "confirmButton"
-    );
-
-
-  button.disabled =
-  true;
-
-
-  button.textContent =
-  "অর্ডার পাঠানো হচ্ছে...";
-
-
-  submitOrder({
-
-    customerName:
-      customerName,
-
-    phone:
-      phone,
-
-    address:
-      address,
-
-    productName:
-      selectedProduct.name,
-
-    quantity:
-      quantity,
-
-    deliveryArea:
-      deliveryArea,
-
-    remarks:
-      remarks
-
-  });
-
-});
-
-
-/* ==========================================
-   SUBMIT ORDER
-========================================== */
+// ==========================================
+// SUBMIT ORDER
+// ==========================================
 
 function submitOrder(order){
 
@@ -1296,8 +1285,7 @@ function submitOrder(order){
 
 
       const button =
-        document
-        .getElementById(
+        document.getElementById(
           "confirmButton"
         );
 
@@ -1307,20 +1295,16 @@ function submitOrder(order){
         result.success === true
       ){
 
-        document
-        .getElementById(
+        document.getElementById(
           "orderSection"
-        )
-        .style.display =
-        "none";
+        ).style.display =
+          "none";
 
 
-        document
-        .getElementById(
+        document.getElementById(
           "success"
-        )
-        .style.display =
-        "block";
+        ).style.display =
+          "block";
 
 
         return;
@@ -1329,30 +1313,25 @@ function submitOrder(order){
 
 
       button.disabled =
-      false;
+        false;
 
 
       button.textContent =
-      "🛒 অর্ডার কনফার্ম করুন";
+        "🛒 অর্ডার কনফার্ম করুন";
 
 
-      document
-      .getElementById(
+      document.getElementById(
         "formError"
-      )
-      .textContent =
-      result &&
-      (result.error || result.message)
-      ?
-      (
-        result.error ||
-        result.message
-      )
-      :
-      "অর্ডার পাঠানো যায়নি।";
+      ).textContent =
+        result &&
+        (result.error || result.message)
+          ? (
+              result.error ||
+              result.message
+            )
+          : "অর্ডার পাঠানো যায়নি।";
 
     }
-
     catch(error){
 
       showSubmitError();
@@ -1421,9 +1400,7 @@ function submitOrder(order){
 
 
   const script =
-    document.createElement(
-      "script"
-    );
+    document.createElement("script");
 
 
   script.src =
@@ -1442,82 +1419,176 @@ function submitOrder(order){
   };
 
 
-  document
-  .body
-  .appendChild(script);
+  document.body.appendChild(script);
 
 }
 
 
-/* ==========================================
-   SUBMIT ERROR
-========================================== */
+// ==========================================
+// SUBMIT ERROR
+// ==========================================
 
 function showSubmitError(){
 
   const button =
-    document
-    .getElementById(
+    document.getElementById(
       "confirmButton"
     );
 
 
   button.disabled =
-  false;
+    false;
 
 
   button.textContent =
-  "🛒 অর্ডার কনফার্ম করুন";
+    "🛒 অর্ডার কনফার্ম করুন";
 
 
-  document
-  .getElementById(
+  document.getElementById(
     "formError"
-  )
-  .textContent =
-  "অর্ডার পাঠাতে সমস্যা হয়েছে। আবার চেষ্টা করুন।";
+  ).textContent =
+    "অর্ডার পাঠাতে সমস্যা হয়েছে। আবার চেষ্টা করুন।";
 
 }
 
 
-/* ==========================================
-   GENERAL ERROR
-========================================== */
+// ==========================================
+// GENERAL ERROR
+// ==========================================
 
 function showError(message){
 
-  document
-  .getElementById(
+  document.getElementById(
     "loading"
-  )
-  .style.display =
-  "none";
+  ).style.display =
+    "none";
 
 
-  document
-  .getElementById(
-    "orderSection"
-  )
-  .style.display =
-  "none";
+  document.getElementById(
+    "error"
+  ).style.display =
+    "block";
 
 
-  const error =
-    document
-    .getElementById(
-      "error"
-    );
-
-
-  error.style.display =
-  "block";
-
-
-  error.textContent =
-  message;
+  document.getElementById(
+    "error"
+  ).textContent =
+    message;
 
 }
 
 
-/* ==========================================
-   ST
+// ==========================================
+// ZOOM
+// ==========================================
+
+let zoomLevel = 1;
+
+
+function openZoom(){
+
+  const source =
+    document.getElementById(
+      "productImage"
+    ).src;
+
+
+  if(!source){
+    return;
+  }
+
+
+  document.getElementById(
+    "zoomImage"
+  ).src =
+    source;
+
+
+  zoomLevel =
+    1;
+
+
+  updateZoom();
+
+
+  document.getElementById(
+    "zoomOverlay"
+  ).classList.add(
+    "active"
+  );
+
+}
+
+
+function closeZoom(){
+
+  document.getElementById(
+    "zoomOverlay"
+  ).classList.remove(
+    "active"
+  );
+
+}
+
+
+function zoomIn(){
+
+  zoomLevel += .25;
+
+  if(zoomLevel > 4){
+    zoomLevel = 4;
+  }
+
+  updateZoom();
+
+}
+
+
+function zoomOut(){
+
+  zoomLevel -= .25;
+
+  if(zoomLevel < .5){
+    zoomLevel = .5;
+  }
+
+  updateZoom();
+
+}
+
+
+function resetZoom(){
+
+  zoomLevel = 1;
+
+  updateZoom();
+
+}
+
+
+function updateZoom(){
+
+  document.getElementById(
+    "zoomImage"
+  ).style.transform =
+    "scale(" +
+    zoomLevel +
+    ")";
+
+}
+
+
+document.getElementById(
+  "zoomOverlay"
+).addEventListener(
+  "click",
+  function(event){
+
+    if(
+      event.target ===
+      this
+    ){
+
+      closeZoom();
+
+  
