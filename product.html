@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="bn">
 
 <head>
@@ -7,10 +8,22 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Product Details - SR Shopping BD</title>
+
+<title>SR Shopping BD - Product Details</title>
+
+
+<meta property="og:type" content="product">
+
+<meta property="og:title" content="SR Shopping BD">
+
+<meta property="og:description" content="আপনার পছন্দের পণ্য অনলাইনে অর্ডার করুন">
+
+<meta property="og:image" content="">
+
 
 
 <style>
+
 
 *{
 box-sizing:border-box;
@@ -20,49 +33,66 @@ box-sizing:border-box;
 body{
 
 margin:0;
+
 font-family:Arial,sans-serif;
+
 background:#f5f5f5;
+
 color:#222;
 
 }
 
 
+
+
 /* HEADER */
+
 
 .header{
 
 background:#111;
+
 color:white;
+
 text-align:center;
-padding:15px 10px;
+
+padding:14px 10px;
 
 }
+
 
 
 .header h1{
 
 margin:0;
-font-size:26px;
+
+font-size:24px;
 
 }
+
 
 
 .header p{
 
 margin:5px 0 0;
-font-size:15px;
+
+font-size:14px;
 
 }
 
 
 
 
-/* MAIN */
+
 
 .container{
 
-max-width:650px;
+width:100%;
+
+max-width:600px;
+
 margin:auto;
+
 padding:8px;
 
 }
@@ -70,35 +100,13 @@ padding:8px;
 
 
 
-/* BACK */
-
-.back{
-
-display:block;
-margin:8px 5px 12px;
-text-decoration:none;
-color:#111;
-font-weight:bold;
-font-size:18px;
-
-}
-
-
 
 
 
 /* ALL PRODUCT BUTTON */
 
-.all-product-box{
 
-margin-bottom:12px;
-padding:12px;
-
-background:white;
-
-border:3px solid #d4af37;
-
-border-radius:18px;
+.all-products-btn{
 
 display:flex;
 
@@ -106,16 +114,32 @@ align-items:center;
 
 justify-content:space-between;
 
-box-shadow:0 4px 15px rgba(0,0,0,.15);
+background:white;
+
+border:2px solid #d4af37;
+
+border-radius:16px;
+
+padding:10px;
+
+margin:10px 0;
+
+text-decoration:none;
+
+color:#111;
+
+box-shadow:0 3px 10px rgba(0,0,0,.15);
 
 }
 
 
 
-.shop-icon{
 
-width:48px;
-height:48px;
+.btn-icon{
+
+width:40px;
+
+height:40px;
 
 border-radius:50%;
 
@@ -127,32 +151,33 @@ align-items:center;
 
 justify-content:center;
 
-font-size:25px;
+font-size:20px;
 
 }
 
 
 
-.all-text{
+.btn-text{
 
 flex:1;
 
 text-align:center;
 
-font-size:17px;
+font-size:14px;
 
 font-weight:bold;
 
-line-height:1.4;
+line-height:1.3;
 
 }
 
 
 
-.arrow-btn{
+.btn-arrow{
 
-width:48px;
-height:48px;
+width:40px;
+
+height:40px;
 
 border-radius:50%;
 
@@ -164,11 +189,11 @@ align-items:center;
 
 justify-content:center;
 
-font-size:28px;
-
-font-weight:bold;
+font-size:24px;
 
 }
+
+
 
 
 
@@ -176,36 +201,37 @@ font-weight:bold;
 
 /* PRODUCT CARD */
 
-.card{
+
+.product-card{
 
 background:white;
 
-border-radius:18px;
+border-radius:15px;
 
 padding:10px;
 
-box-shadow:0 4px 15px rgba(0,0,0,.12);
+box-shadow:0 3px 12px rgba(0,0,0,.12);
 
 }
 
 
 
 
+
 /* IMAGE */
+
 
 .image-box{
 
-height:180px;
-
 width:100%;
 
-border-radius:15px;
-
-overflow:hidden;
+height:170px;
 
 background:white;
 
-border:1px solid #ddd;
+border-radius:12px;
+
+border:1px solid #eee;
 
 display:flex;
 
@@ -213,19 +239,20 @@ align-items:center;
 
 justify-content:center;
 
+overflow:hidden;
+
 }
 
 
 
-.product-image{
+
+.image-box img{
 
 width:100%;
 
 height:100%;
 
 object-fit:contain;
-
-display:none;
 
 transition:.3s;
 
@@ -236,7 +263,7 @@ transition:.3s;
 
 .no-image{
 
-font-size:16px;
+font-size:15px;
 
 color:#999;
 
@@ -245,8 +272,8 @@ color:#999;
 
 
 
-
 /* ZOOM */
+
 
 .zoom-controls{
 
@@ -254,7 +281,7 @@ display:flex;
 
 gap:6px;
 
-margin-top:8px;
+margin-top:6px;
 
 }
 
@@ -264,59 +291,64 @@ margin-top:8px;
 
 flex:1;
 
-padding:9px;
+padding:7px;
 
 border:none;
 
-border-radius:10px;
+border-radius:8px;
 
 background:#222;
 
 color:white;
 
-font-size:15px;
+font-size:13px;
 
 font-weight:bold;
 
 }
- /* PRODUCT DETAILS */
+ 
 
 
-.product-title{
 
-font-size:23px;
+/* PRODUCT DETAILS */
+
+
+.product-name{
+
+font-size:20px;
 
 font-weight:bold;
 
 line-height:1.3;
 
-margin:12px 0 8px;
+margin:8px 0 5px;
 
 }
 
 
 
-.description{
 
-font-size:15px;
+.product-description{
+
+font-size:13px;
 
 color:#666;
 
-line-height:1.6;
+line-height:1.4;
+
+margin:5px 0;
 
 }
 
 
 
-.price{
+.product-price{
 
-font-size:30px;
+font-size:26px;
 
 font-weight:bold;
 
-margin:12px 0;
-
-color:#111;
+margin:8px 0;
 
 }
 
@@ -331,21 +363,21 @@ color:#111;
 
 width:100%;
 
-padding:17px;
+padding:14px;
 
-border:none;
-
-border-radius:14px;
+margin-top:8px;
 
 background:#111;
 
 color:white;
 
-font-size:21px;
+border:none;
+
+border-radius:12px;
+
+font-size:19px;
 
 font-weight:bold;
-
-margin-top:8px;
 
 cursor:pointer;
 
@@ -358,31 +390,31 @@ cursor:pointer;
 /* SHARE BUTTON */
 
 
-.share-box{
+.share-buttons{
 
 display:flex;
 
-gap:7px;
+gap:6px;
 
-margin-top:10px;
+margin-top:8px;
 
 }
 
 
 
-.share-box button{
+.share-buttons button{
 
 flex:1;
 
-padding:12px 5px;
+padding:9px 3px;
 
 border:none;
 
-border-radius:10px;
+border-radius:8px;
 
 color:white;
 
-font-size:13px;
+font-size:12px;
 
 font-weight:bold;
 
@@ -414,10 +446,7 @@ background:#555;
 
 
 
-
-
 </style>
-
 
 </head>
 
@@ -454,9 +483,33 @@ Product Details
 
 
 
-<a href="index.html" class="back">
 
-← সকল পণ্য দেখুন
+
+<a href="index.html" class="all-products-btn">
+
+
+<div class="btn-icon">
+
+🛍️
+
+</div>
+
+
+<div class="btn-text">
+
+এই ওয়েবসাইটের আরও সকল পণ্য<br>
+
+দেখার জন্য ক্লিক করুন
+
+</div>
+
+
+<div class="btn-arrow">
+
+→
+
+</div>
+
 
 </a>
 
@@ -466,52 +519,7 @@ Product Details
 
 
 
-<div class="all-product-box"
-
-onclick="window.location.href='index.html'">
-
-
-
-<div class="shop-icon">
-
-🛍️
-
-</div>
-
-
-
-
-<div class="all-text">
-
-এই ওয়েবসাইটের আরও সকল পণ্য<br>
-
-দেখার জন্য ক্লিক করুন
-
-</div>
-
-
-
-
-<div class="arrow-btn">
-
-➜
-
-</div>
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="card">
+<div class="product-card">
 
 
 
@@ -521,20 +529,16 @@ onclick="window.location.href='index.html'">
 <div class="image-box">
 
 
-
-<img
+<img 
 
 id="productImage"
 
-class="product-image"
+style="display:none;"
 
 >
 
 
-
-<div id="noImage"
-
-class="no-image">
+<div id="noImage" class="no-image">
 
 Image নেই
 
@@ -542,9 +546,6 @@ Image নেই
 
 
 </div>
-
-
-
 
 
 
@@ -561,7 +562,6 @@ Image নেই
 </button>
 
 
-
 <button onclick="zoomOut()">
 
 −
@@ -569,13 +569,11 @@ Image নেই
 </button>
 
 
-
 <button onclick="resetZoom()">
 
 Reset
 
 </button>
-
 
 
 </div>
@@ -587,38 +585,27 @@ Reset
 
 
 
+<div id="productName" class="product-name">
 
-<h1
+লোড হচ্ছে...
 
-id="productName"
-
-class="product-title">
-
-Product Name
-
-</h1>
+</div>
 
 
 
 
 
 
-<p
+<div id="productDescription" class="product-description">
 
-id="productDescription"
-
-class="description">
-
-Description
-
-</p>
+</div>
 
 
 
 
 
 
-<div class="price">
+<div class="product-price">
 
 ৳<span id="productPrice">
 
@@ -634,12 +621,7 @@ Description
 
 
 
-
-<button
-
-id="orderBtn"
-
-class="order-btn">
+<button id="orderBtn" class="order-btn">
 
 🛒 ORDER NOW
 
@@ -650,65 +632,33 @@ class="order-btn">
 
 
 
+<div class="share-buttons">
 
 
-<div class="share-box">
+<button class="facebook">
 
-
-
-<button
-
-class="facebook"
-
-onclick="shareFacebook()">
-
-📘 Facebook
+📘 FB
 
 </button>
 
 
-
-
-
-<button
-
-class="whatsapp"
-
-onclick="shareWhatsApp()">
+<button class="whatsapp">
 
 🟢 WhatsApp
 
 </button>
 
 
-
-
-
-<button
-
-class="copy"
-
-onclick="copyLink()">
+<button class="copy">
 
 🔗 Copy
 
 </button>
 
 
-
 </div>
-
-
-
-</div>
-
-
-
-
-
-
-</div>
- <script>
+ 
+<script>
 
 
 const API_URL =
@@ -716,7 +666,7 @@ const API_URL =
 
 
 
-let currentProduct = {};
+let productData = {};
 
 let zoomLevel = 1;
 
@@ -724,7 +674,7 @@ let zoomLevel = 1;
 
 
 
-// GET PRODUCT NAME FROM LINK
+// GET PRODUCT NAME
 
 
 const params =
@@ -735,11 +685,9 @@ window.location.search
 
 
 
-let selectedProduct =
+let productNameURL =
 
 params.get("product") || "";
-
-
 
 
 
@@ -769,6 +717,8 @@ let id = "";
 
 
 
+// file/d/ID
+
 let match =
 
 url.match(/\/file\/d\/([^\/]+)/);
@@ -781,6 +731,11 @@ id = match[1];
 
 }
 
+
+
+
+
+// open?id=ID
 
 
 if(!id){
@@ -798,7 +753,10 @@ id = match[1];
 
 }
 
+
 }
+
+
 
 
 
@@ -874,7 +832,7 @@ result.products || [];
 
 
 
-let product =
+let found =
 
 products.find(function(item){
 
@@ -884,7 +842,7 @@ return String(item.name).trim()
 
 ===
 
-String(selectedProduct).trim();
+String(productNameURL).trim();
 
 
 
@@ -895,29 +853,16 @@ String(selectedProduct).trim();
 
 
 
-if(product){
+if(found){
 
 
-currentProduct = product;
+productData = found;
 
 
-showProduct(product);
-
-
-}
-
-else{
-
-
-document.getElementById("productName")
-
-.innerHTML =
-
-"Product পাওয়া যায়নি";
+showProduct(found);
 
 
 }
-
 
 
 }
@@ -931,13 +876,9 @@ document.getElementById("productName")
 
 
 
-
-
 let script =
 
 document.createElement("script");
-
-
 
 
 
@@ -1010,6 +951,7 @@ product.description || "";
 
 
 
+
 document.getElementById("productPrice")
 
 .innerHTML =
@@ -1023,23 +965,23 @@ Number(product.price || 0)
 
 
 
-let img =
 
-document.getElementById("productImage");
-
-
-
-
+// IMAGE SYSTEM (আগের কাজ করা)
 
 
 if(product.image1){
 
 
 
+let img =
+
+document.getElementById("productImage");
+
+
+
 img.src =
 
 convertImageURL(product.image1);
-
 
 
 
@@ -1060,8 +1002,24 @@ document.getElementById("noImage")
 
 
 
-}
 
+
+img.onerror=function(){
+
+
+img.style.display="none";
+
+
+document.getElementById("noImage")
+
+.innerHTML="Image পাওয়া যায়নি";
+
+
+};
+
+
+
+}
 
 
 
@@ -1115,7 +1073,6 @@ convertImageURL(product.image1)
 
 
 
-
 }
 
 
@@ -1126,7 +1083,7 @@ convertImageURL(product.image1)
 
 
 
-// ZOOM IN
+// ZOOM
 
 
 function zoomIn(){
@@ -1135,19 +1092,16 @@ function zoomIn(){
 
 if(zoomLevel < 2.5){
 
-
-zoomLevel += 0.2;
-
+zoomLevel +=0.2;
 
 }
-
 
 
 document.getElementById("productImage")
 
 .style.transform =
 
-"scale(" + zoomLevel + ")";
+"scale("+zoomLevel+")";
 
 
 }
@@ -1156,11 +1110,6 @@ document.getElementById("productImage")
 
 
 
-
-
-
-
-// ZOOM OUT
 
 
 function zoomOut(){
@@ -1169,19 +1118,16 @@ function zoomOut(){
 
 if(zoomLevel > 1){
 
-
-zoomLevel -= 0.2;
-
+zoomLevel -=0.2;
 
 }
-
 
 
 document.getElementById("productImage")
 
 .style.transform =
 
-"scale(" + zoomLevel + ")";
+"scale("+zoomLevel+")";
 
 
 }
@@ -1191,10 +1137,6 @@ document.getElementById("productImage")
 
 
 
-
-
-
-// RESET
 
 
 function resetZoom(){
@@ -1221,7 +1163,6 @@ document.getElementById("productImage")
 
 
 
-
 // SHARE
 
 
@@ -1236,7 +1177,11 @@ return window.location.href;
 
 
 
-function shareFacebook(){
+document
+
+.querySelector(".facebook")
+
+.onclick=function(){
 
 
 window.open(
@@ -1245,21 +1190,25 @@ window.open(
 
 +
 
-encodeURIComponent(getLink()),
-
-"_blank"
+encodeURIComponent(getLink())
 
 );
 
 
-}
+};
 
 
 
 
 
 
-function shareWhatsApp(){
+
+
+document
+
+.querySelector(".whatsapp")
+
+.onclick=function(){
 
 
 
@@ -1269,7 +1218,7 @@ let text =
 
 +
 
-(currentProduct.name || "")
+productData.name
 
 +
 
@@ -1283,28 +1232,32 @@ getLink();
 
 
 
-
 window.open(
 
 "https://wa.me/?text="
 
 +
 
-encodeURIComponent(text),
-
-"_blank"
+encodeURIComponent(text)
 
 );
 
 
-}
+};
 
 
 
 
 
 
-function copyLink(){
+
+
+
+document
+
+.querySelector(".copy")
+
+.onclick=function(){
 
 
 
@@ -1323,7 +1276,8 @@ alert(
 );
 
 
-}
+
+};
 
 
 
@@ -1342,3 +1296,11 @@ loadProduct();
 </body>
 
 </html>
+
+
+
+</div>
+
+
+</div>
+ 
