@@ -1,20 +1,29 @@
 <!DOCTYPE html>
+
 <html lang="bn">
 
 <head>
 
+
 <meta charset="UTF-8">
 
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 <title>Product - SR Shopping BD</title>
 
 
+
 <style>
 
+
 *{
+
 box-sizing:border-box;
+
 }
+
 
 
 body{
@@ -31,6 +40,7 @@ color:#222;
 
 
 
+
 header{
 
 background:#111;
@@ -39,30 +49,62 @@ color:white;
 
 text-align:center;
 
-padding:20px 10px;
+padding:20px 15px;
 
 }
+
 
 
 header h1{
 
 margin:0;
 
-font-size:26px;
+font-size:27px;
 
 }
 
 
 
+header p{
+
+margin:6px 0 0;
+
+}
+
+
+
+
+
 .container{
 
-max-width:650px;
+max-width:700px;
 
 margin:auto;
 
 padding:15px;
 
 }
+
+
+
+
+
+
+.back-button{
+
+display:inline-block;
+
+margin-bottom:15px;
+
+text-decoration:none;
+
+color:#111;
+
+font-weight:bold;
+
+}
+
+
 
 
 
@@ -80,11 +122,17 @@ box-shadow:0 3px 12px rgba(0,0,0,.10);
 
 
 
-.product-image{
+
+
+.product-image-box{
 
 width:100%;
 
-height:400px;
+height:420px;
+
+background:#fff;
+
+border-radius:12px;
 
 display:flex;
 
@@ -92,17 +140,17 @@ align-items:center;
 
 justify-content:center;
 
-background:#fff;
-
 overflow:hidden;
 
-border-radius:12px;
+border:1px solid #eee;
 
 }
 
 
 
-.product-image img{
+
+
+.product-image{
 
 width:100%;
 
@@ -114,9 +162,23 @@ object-fit:contain;
 
 
 
+
+
+.no-image{
+
+color:#999;
+
+font-size:16px;
+
+}
+
+
+
+
+
 .product-name{
 
-font-size:25px;
+font-size:26px;
 
 font-weight:bold;
 
@@ -126,13 +188,14 @@ margin-top:20px;
 
 
 
+
 .product-description{
 
-font-size:15px;
-
-color:#666;
+font-size:16px;
 
 line-height:1.6;
+
+color:#666;
 
 margin:12px 0;
 
@@ -140,15 +203,19 @@ margin:12px 0;
 
 
 
+
+
 .product-price{
 
-font-size:25px;
+font-size:26px;
 
 font-weight:bold;
 
 margin:15px 0;
 
 }
+
+
 
 
 
@@ -176,6 +243,8 @@ cursor:pointer;
 
 
 
+
+
 .share-box{
 
 display:flex;
@@ -185,6 +254,7 @@ gap:8px;
 margin-top:12px;
 
 }
+
 
 
 
@@ -200,11 +270,15 @@ border-radius:8px;
 
 color:white;
 
+font-size:13px;
+
 font-weight:bold;
 
 cursor:pointer;
 
 }
+
+
 
 
 .facebook{
@@ -214,11 +288,13 @@ background:#1877f2;
 }
 
 
+
 .whatsapp{
 
 background:#25d366;
 
 }
+
 
 
 .copy{
@@ -229,29 +305,48 @@ background:#555;
 
 
 
+
+
+
+
 .not-found{
 
 text-align:center;
 
 padding:40px;
 
-font-size:18px;
-
 color:red;
 
+font-size:18px;
+
 }
+
+
+
 
 
 
 @media(max-width:600px){
 
-.product-image{
 
-height:320px;
+.product-image-box{
+
+height:330px;
 
 }
 
+
+
+.product-name{
+
+font-size:22px;
+
 }
+
+
+}
+
+
 
 </style>
 
@@ -259,22 +354,49 @@ height:320px;
 </head>
 
 
+
 <body>
+
 
 
 <header>
 
+
 <h1>
+
 🛍️ SR Shopping BD
+
 </h1>
 
+
+<p>
+
+Product Details
+
+</p>
+
+
 </header>
+
+
 
 
 <div class="container">
 
 
+
+<a href="index.html" class="back-button">
+
+← সকল পণ্য দেখুন
+
+</a>
+
+
+
+
+
 <div id="loading"
+
 style="text-align:center;padding:40px;">
 
 পণ্য লোড হচ্ছে...
@@ -283,13 +405,16 @@ style="text-align:center;padding:40px;">
 
 
 
+
+
 <div id="productArea">
 
 </div>
-<script>
+ <script>
 
 
 const API_URL =
+
 "https://script.google.com/macros/s/AKfycbwEl4AmzhQHDoy0yMqE0_XnUJ2Yj65-PiWnP0FADuC5Wh5Y8d8fej2lUBqndiQC2bN5/exec";
 
 
@@ -298,9 +423,15 @@ let productData = null;
 
 
 
-// URL থেকে Product Name নেওয়া
 
-const params =
+
+// ===============================
+// GET PRODUCT NAME FROM URL
+// ===============================
+
+
+const urlParams =
+
 new URLSearchParams(
 window.location.search
 );
@@ -308,13 +439,22 @@ window.location.search
 
 
 const selectedProduct =
-params.get("product");
+
+urlParams.get("product") || "";
 
 
 
+
+
+
+
+// ===============================
+// LOAD PRODUCT
+// ===============================
 
 
 function loadProduct(){
+
 
 
 if(!selectedProduct){
@@ -329,13 +469,19 @@ return;
 
 
 
-const callbackName =
+
+
+
+let callbackName =
+
 "productCallback_" + Date.now();
 
 
 
-window[callbackName] =
-function(result){
+
+
+
+window[callbackName] = function(result){
 
 
 
@@ -343,26 +489,40 @@ delete window[callbackName];
 
 
 
+
+
 if(
+
 result &&
+
 result.success === true
+
 ){
 
 
 
-const products =
+let products =
+
 result.products || [];
 
 
 
+
+
 productData =
+
 products.find(function(item){
+
 
 
 return item.name === selectedProduct;
 
 
+
 });
+
+
+
 
 
 
@@ -403,24 +563,43 @@ showNotFound();
 
 
 
-const script =
+
+
+
+
+let script =
+
 document.createElement("script");
+
+
 
 
 
 script.src =
 
-API_URL +
+API_URL
 
-"?action=products" +
++
 
-"&callback=" +
+"?action=products"
 
-callbackName +
++
 
-"&time=" +
+"&callback="
+
++
+
+callbackName
+
++
+
+"&time="
+
++
 
 Date.now();
+
+
 
 
 
@@ -436,24 +615,191 @@ document.body.appendChild(script);
 
 
 
-function displayProduct(){
+
+
+// ===============================
+// GOOGLE DRIVE IMAGE FIX
+// ===============================
+
+
+function convertImageURL(url){
 
 
 
-document.getElementById("loading")
-.style.display="none";
+if(!url){
+
+return "";
+
+}
 
 
 
-const image =
-convertImageURL(
-productData.image1
+
+url =
+
+String(url).trim();
+
+
+
+
+
+if(
+
+url.includes("thumbnail")
+
+){
+
+
+return url;
+
+
+}
+
+
+
+
+
+let id = "";
+
+
+
+
+
+let match =
+
+url.match(
+
+/\/file\/d\/([^\/]+)/
+
 );
 
 
 
 
-document.getElementById("productArea")
+
+if(match && match[1]){
+
+
+id = match[1];
+
+
+}
+
+
+
+
+
+
+if(!id){
+
+
+
+match =
+
+url.match(
+
+/[?&]id=([^&]+)/
+
+);
+
+
+
+if(match && match[1]){
+
+
+id = match[1];
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+if(id){
+
+
+
+return
+
+"https://drive.google.com/thumbnail?id="
+
++
+
+id
+
++
+
+"&sz=w1200";
+
+
+
+}
+
+
+
+
+
+
+return url;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// ===============================
+// DISPLAY PRODUCT
+// ===============================
+
+
+function displayProduct(){
+
+
+
+document
+
+.getElementById("loading")
+
+.style.display = "none";
+
+
+
+
+
+
+let imageURL =
+
+convertImageURL(
+
+productData.image1
+
+);
+
+
+
+
+
+
+
+
+document
+
+.getElementById("productArea")
+
 .innerHTML = `
 
 
@@ -462,28 +808,69 @@ document.getElementById("productArea")
 
 
 
-<div class="product-image">
 
+
+<div class="product-image-box">
+
+
+
+${
+imageURL
+
+?
+
+`
 
 <img
 
-src="${image}"
+class="product-image"
+
+src="${imageURL}"
 
 alt="${productData.name}"
 
+onerror="this.style.display='none'"
+
 >
+
+`
+
+:
+
+`
+
+<div class="no-image">
+
+Image নেই
+
+</div>
+
+`
+
+}
+
+
+
 
 
 </div>
+
+
+
+
 
 
 
 
 <div class="product-name">
 
-${productData.name}
+
+${productData.name || ""}
+
 
 </div>
+
+
 
 
 
@@ -491,9 +878,13 @@ ${productData.name}
 
 <div class="product-description">
 
+
 ${productData.description || ""}
 
+
 </div>
+
+
 
 
 
@@ -501,10 +892,15 @@ ${productData.description || ""}
 
 <div class="product-price">
 
+
 ৳${Number(productData.price || 0)
+
 .toLocaleString("en-BD")}
 
+
 </div>
+
+
 
 
 
@@ -529,7 +925,6 @@ onclick="orderNow()"
 <div class="share-box">
 
 
-
 <button
 
 class="facebook"
@@ -545,6 +940,7 @@ onclick="shareFacebook()"
 
 
 
+
 <button
 
 class="whatsapp"
@@ -556,6 +952,7 @@ onclick="shareWhatsApp()"
 🟢 WhatsApp
 
 </button>
+
 
 
 
@@ -578,6 +975,8 @@ onclick="copyLink()"
 
 
 
+
+
 </div>
 
 
@@ -592,43 +991,32 @@ onclick="copyLink()"
 
 
 
+
+// ===============================
+// ORDER NOW
+// ===============================
+
+
 function orderNow(){
 
 
 
-window.location.href =
+let image =
 
-"order.html?product="
+convertImageURL(
 
-+
-encodeURIComponent(productData.name)
+productData.image1
 
-+
-
-"&price="
-
-+
-encodeURIComponent(productData.price)
-
-+
-
-"&image="
-
-+
-encodeURIComponent(
-convertImageURL(productData.image1)
 );
 
 
 
-}
+// ===============================
+// SHARE LINK
+// ===============================
 
 
-
-
-
-
-function getShareLink(){
+function getProductLink(){
 
 
 return window.location.href;
@@ -640,26 +1028,41 @@ return window.location.href;
 
 
 
+
+
+
 function shareFacebook(){
+
+
+
+let link =
+
+getProductLink();
+
+
 
 
 
 window.open(
 
+
 "https://www.facebook.com/sharer/sharer.php?u="
 
 +
 
-encodeURIComponent(
-getShareLink()
-),
+encodeURIComponent(link),
+
 
 "_blank"
+
 
 );
 
 
+
 }
+
+
 
 
 
@@ -670,22 +1073,57 @@ function shareWhatsApp(){
 
 
 
+let link =
+
+getProductLink();
+
+
+
+
+
+let message =
+
+
+"🛍️ SR Shopping BD\n\n"
+
++
+
+productData.name
+
++
+
+"\n\nঅর্ডার করতে ভিজিট করুন:\n"
+
++
+
+link;
+
+
+
+
+
+
 window.open(
+
 
 "https://wa.me/?text="
 
 +
 
-encodeURIComponent(
-getShareLink()
-),
+encodeURIComponent(message),
+
 
 "_blank"
+
 
 );
 
 
+
 }
+
+
+
 
 
 
@@ -697,13 +1135,17 @@ function copyLink(){
 
 
 navigator.clipboard.writeText(
-getShareLink()
+
+getProductLink()
+
 );
 
 
 
 alert(
+
 "Product Link Copy হয়েছে"
+
 );
 
 
@@ -714,113 +1156,62 @@ alert(
 
 
 
-function convertImageURL(url){
-
-
-if(!url){
-
-return "";
-
-}
-
-
-
-url =
-String(url).trim();
-
-
-
-let id = "";
-
-
-
-let match =
-url.match(/\/file\/d\/([^\/]+)/);
-
-
-
-if(match && match[1]){
-
-id =
-match[1];
-
-}
-
-
-
-if(!id){
-
-
-match =
-url.match(/[?&]id=([^&]+)/);
-
-
-
-if(match && match[1]){
-
-id =
-match[1];
-
-}
-
-
-}
-
-
-
-if(id){
-
-
-return
-
-"https://drive.google.com/thumbnail?id="
-
-+
-
-id
-
-+
-
-"&sz=w1200";
-
-
-}
-
-
-
-return url;
-
-
-
-}
 
 
 
 
+// ===============================
+// NOT FOUND
+// ===============================
 
 
 function showNotFound(){
 
 
-document.getElementById("loading")
+
+document
+
+.getElementById("loading")
+
 .style.display="none";
 
 
-document.getElementById("productArea")
-.innerHTML =
 
-`
+
+
+document
+
+.getElementById("productArea")
+
+.innerHTML = `
+
 
 <div class="not-found">
 
+
 ❌ Product পাওয়া যায়নি
+
 
 </div>
 
+
 `;
+
+
 
 }
 
+
+
+
+
+
+
+
+
+// ===============================
+// START
+// ===============================
 
 
 loadProduct();
@@ -828,68 +1219,6 @@ loadProduct();
 
 
 </script>
-<!-- FOOTER -->
-
-<section style="
-margin-top:30px;
-padding:25px 15px;
-background:#fff;
-border-radius:14px;
-border:2px solid #111;
-text-align:center;
-box-shadow:0 3px 12px rgba(0,0,0,.10);
-">
-
-
-<h2>
-❤️ SR Shopping BD
-</h2>
-
-
-<p style="
-font-size:15px;
-color:#555;
-line-height:1.7;
-">
-
-আপনার পছন্দের পণ্য আমাদের কাছ থেকে
-সংগ্রহ করার জন্য ধন্যবাদ।
-
-</p>
-
-
-
-<a href="tel:+8801774891525"
-
-style="
-display:inline-block;
-margin-top:10px;
-padding:12px 25px;
-background:#111;
-color:#fff;
-border-radius:8px;
-text-decoration:none;
-font-weight:bold;
-">
-
-📞 যোগাযোগ করুন
-
-</a>
-
-
-
-<p style="
-margin-top:20px;
-font-size:18px;
-font-weight:bold;
-">
-
-আল্লাহ হাফেজ 🤲
-
-</p>
-
-
-</section>
 
 
 
@@ -899,5 +1228,38 @@ font-weight:bold;
 
 </body>
 
-  </html>
+
+</html>
+
+
+
+
+window.location.href =
+
+"order.html?product="
+
++
+
+encodeURIComponent(productData.name)
+
++
+
+"&price="
+
++
+
+encodeURIComponent(productData.price)
+
++
+
+"&image="
+
++
+
+encodeURIComponent(image);
+
+
+
+} 
+   
   
