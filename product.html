@@ -7,84 +7,254 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Product - SR Shopping BD</title>
+
+<title>SR Shopping BD - Product Details</title>
+
+
+<!-- Facebook Preview -->
+
+<meta property="og:type" content="product">
+
+<meta property="og:title" content="SR Shopping BD Product">
+
+<meta property="og:description" content="আপনার পছন্দের পণ্য এখন অনলাইনে অর্ডার করুন">
+
+<meta property="og:image" content="">
+
+<meta property="og:url" content="">
+
 
 
 <style>
+
 
 *{
 box-sizing:border-box;
 }
 
 
+
 body{
+
 margin:0;
+
 font-family:Arial,sans-serif;
+
 background:#f5f5f5;
+
 color:#222;
+
 }
+
+
+
+/* HEADER */
 
 
 header{
 
 background:#111;
+
 color:white;
+
 text-align:center;
-padding:20px;
+
+padding:25px 15px;
 
 }
+
 
 
 header h1{
 
 margin:0;
-font-size:27px;
+
+font-size:28px;
 
 }
+
+
+
+header p{
+
+margin:8px 0 0;
+
+font-size:17px;
+
+}
+
+
 
 
 .container{
 
-max-width:700px;
+max-width:650px;
+
 margin:auto;
+
 padding:15px;
 
 }
 
 
-.back-button{
 
-display:inline-block;
-margin-bottom:15px;
+/* PREMIUM ALL PRODUCT BUTTON */
+
+
+.all-products-btn{
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+gap:10px;
+
+margin-bottom:20px;
+
+padding:14px;
+
+background:white;
+
+border:2px solid #d4af37;
+
+border-radius:18px;
+
 text-decoration:none;
+
 color:#111;
+
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+
+transition:.3s;
+
+}
+
+
+
+.all-products-btn:hover{
+
+transform:scale(1.03);
+
+}
+
+
+
+
+
+.btn-icon{
+
+
+width:45px;
+
+height:45px;
+
+background:#111;
+
+color:#d4af37;
+
+border-radius:50%;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:22px;
+
+
+}
+
+
+
+.btn-text{
+
+
+flex:1;
+
+text-align:center;
+
+font-size:16px;
+
 font-weight:bold;
 
+line-height:1.4;
+
+
 }
 
 
 
-.product-card{
+.btn-arrow{
 
-background:#fff;
-border-radius:15px;
+
+width:45px;
+
+height:45px;
+
+background:#d4af37;
+
+color:#111;
+
+border-radius:50%;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:28px;
+
+font-weight:bold;
+
+
+}
+
+
+
+
+
+/* PRODUCT CARD */
+
+
+.card{
+
+background:white;
+
+border-radius:16px;
+
 padding:15px;
-box-shadow:0 3px 12px rgba(0,0,0,.10);
+
+box-shadow:0 4px 15px rgba(0,0,0,.12);
 
 }
 
+
+
+/* IMAGE */
 
 
 .product-image-box{
 
 width:100%;
-height:420px;
-background:#fff;
-border-radius:12px;
-display:flex;
-align-items:center;
-justify-content:center;
+
+height:380px;
+
+background:white;
+
+border-radius:14px;
+
 overflow:hidden;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
 border:1px solid #eee;
 
 }
@@ -94,7 +264,9 @@ border:1px solid #eee;
 .product-image{
 
 width:100%;
+
 height:100%;
+
 object-fit:contain;
 
 }
@@ -103,17 +275,28 @@ object-fit:contain;
 
 .no-image{
 
+font-size:18px;
+
 color:#999;
 
 }
 
 
 
+
+
+/* PRODUCT INFO */
+
+
 .product-name{
 
-font-size:26px;
+
+font-size:28px;
+
 font-weight:bold;
+
 margin-top:20px;
+
 
 }
 
@@ -121,10 +304,15 @@ margin-top:20px;
 
 .product-description{
 
-font-size:16px;
+
+font-size:17px;
+
+line-height:1.7;
+
 color:#666;
-line-height:1.6;
-margin:12px 0;
+
+margin-top:12px;
+
 
 }
 
@@ -132,34 +320,64 @@ margin:12px 0;
 
 .product-price{
 
-font-size:26px;
+
+font-size:30px;
+
 font-weight:bold;
-margin:15px 0;
+
+margin-top:15px;
+
 
 }
 
 
 
-.order-button{
+
+
+
+/* ORDER BUTTON */
+
+
+.order-btn{
+
 
 width:100%;
-padding:15px;
-background:#111;
-color:white;
+
+margin-top:25px;
+
+padding:16px;
+
 border:none;
-border-radius:10px;
-font-size:18px;
+
+border-radius:12px;
+
+background:#111;
+
+color:white;
+
+font-size:20px;
+
 font-weight:bold;
+
+cursor:pointer;
+
 
 }
 
+
+
+
+
+/* SHARE BUTTON */
 
 
 .share-box{
 
 display:flex;
+
 gap:8px;
-margin-top:12px;
+
+margin-top:15px;
 
 }
 
@@ -168,21 +386,29 @@ margin-top:12px;
 .share-box button{
 
 flex:1;
-padding:10px;
+
+padding:12px 5px;
+
 border:none;
-border-radius:8px;
+
+border-radius:10px;
+
 color:white;
+
 font-weight:bold;
+
+font-size:14px;
 
 }
 
 
 
-.facebook{
+.fb{
 
 background:#1877f2;
 
 }
+
 
 
 .whatsapp{
@@ -190,6 +416,7 @@ background:#1877f2;
 background:#25d366;
 
 }
+
 
 
 .copy{
@@ -200,28 +427,31 @@ background:#555;
 
 
 
-.not-found{
-
-text-align:center;
-padding:40px;
-color:red;
-
-}
-
-
 
 @media(max-width:600px){
 
+
 .product-image-box{
 
-height:330px;
+height:320px;
 
 }
 
+
+.product-name{
+
+font-size:24px;
+
 }
+
+
+
+}
+
 
 
 </style>
+
 
 </head>
 
@@ -229,11 +459,18 @@ height:330px;
 <body>
 
 
+
 <header>
 
-<h1>🛍️ SR Shopping BD</h1>
+<h1>
+🛍️ SR Shopping BD
+</h1>
 
-<p>Product Details</p>
+
+<p>
+Product Details
+</p>
+
 
 </header>
 
@@ -242,29 +479,140 @@ height:330px;
 <div class="container">
 
 
-<a href="index.html" class="back-button">
-
-← সকল পণ্য দেখুন
-
-</a>
+<a href="index.html" class="all-products-btn">
 
 
+<div class="btn-icon">
 
-<div id="loading"
-style="text-align:center;padding:40px;">
-
-পণ্য লোড হচ্ছে...
+🛍️
 
 </div>
 
 
 
-<div id="productArea"></div>
+<div class="btn-text">
+
+এই ওয়েবসাইটের আরও সকল পণ্য<br>
+
+দেখার জন্য ক্লিক করুন
+
+</div>
+
+
+
+<div class="btn-arrow">
+
+→
+
+</div>
+
+
+</a>
+
+
+
+
+<div class="card">
+
+
+<div class="product-image-box">
+
+
+<img id="productImage" class="product-image" style="display:none;">
+
+
+<div id="noImage" class="no-image">
+
+Image নেই
+
+</div>
+
+
+</div>
+
+
+
+
+
+<h1 id="productName" class="product-name">
+
+Product Name
+
+</h1>
+
+
+
+
+<div id="productDescription" class="product-description">
+
+Product Description
+
+</div>
+
+
+
+
+<div class="product-price">
+
+৳<span id="productPrice">
+
+0
+
+</span>
+
+</div>
+
+
+
+
+
+<button id="orderButton" class="order-btn">
+
+🛒 ORDER NOW
+
+</button>
+
+
+
+<div class="share-box">
+
+
+<button class="fb">
+
+📘 Facebook
+
+</button>
+
+
+
+<button class="whatsapp">
+
+🟢 WhatsApp
+
+</button>
+
+
+
+<button class="copy">
+
+🔗 Copy
+
+</button>
+
+
+
+</div>
+
+
+
+</div>
  
- <script>
+
+<script>
 
 
 const API_URL =
+
 "https://script.google.com/macros/s/AKfycbwEl4AmzhQHDoy0yMqE0_XnUJ2Yj65-PiWnP0FADuC5Wh5Y8d8fej2lUBqndiQC2bN5/exec";
 
 
@@ -283,7 +631,9 @@ let productData = null;
 const urlParams =
 
 new URLSearchParams(
+
 window.location.search
+
 );
 
 
@@ -299,8 +649,9 @@ urlParams.get("product") || "";
 
 
 
+
 // ===============================
-// LOAD PRODUCT
+// LOAD PRODUCT FROM SHEET
 // ===============================
 
 
@@ -315,7 +666,10 @@ showNotFound();
 
 return;
 
+
 }
+
+
 
 
 
@@ -328,11 +682,13 @@ let callbackName =
 
 
 
+
 window[callbackName] = function(result){
 
 
 
 delete window[callbackName];
+
 
 
 
@@ -377,7 +733,7 @@ return item.name === selectedProduct;
 if(productData){
 
 
-displayProduct();
+showProduct();
 
 
 }
@@ -417,6 +773,7 @@ showNotFound();
 let script =
 
 document.createElement("script");
+
 
 
 
@@ -463,8 +820,10 @@ document.body.appendChild(script);
 
 
 
+
+
 // ===============================
-// GOOGLE DRIVE IMAGE FIX
+// GOOGLE DRIVE IMAGE CONVERTER
 // ===============================
 
 
@@ -480,8 +839,6 @@ return "";
 
 
 
-
-
 url =
 
 String(url).trim();
@@ -491,18 +848,14 @@ String(url).trim();
 
 
 
-
-if(
-
-url.includes("thumbnail")
-
-){
+if(url.includes("thumbnail")){
 
 
 return url;
 
 
 }
+
 
 
 
@@ -528,7 +881,6 @@ url.match(
 
 
 
-
 if(match && match[1]){
 
 
@@ -545,7 +897,6 @@ id = match[1];
 if(!id){
 
 
-
 match =
 
 url.match(
@@ -553,8 +904,6 @@ url.match(
 /[?&]id=([^&]+)/
 
 );
-
-
 
 
 
@@ -575,7 +924,9 @@ id = match[1];
 
 
 
+
 if(id){
+
 
 
 return
@@ -612,20 +963,47 @@ return url;
 
 
 
+
+
 // ===============================
-// DISPLAY PRODUCT
+// SHOW PRODUCT
 // ===============================
 
 
-function displayProduct(){
+function showProduct(){
 
 
 
-document
+document.getElementById("productName")
 
-.getElementById("loading")
+.textContent =
 
-.style.display="none";
+productData.name || "";
+
+
+
+
+
+document.getElementById("productDescription")
+
+.textContent =
+
+productData.description || "";
+
+
+
+
+
+
+document.getElementById("productPrice")
+
+.textContent =
+
+Number(productData.price || 0)
+
+.toLocaleString("en-BD");
+
+
 
 
 
@@ -646,199 +1024,134 @@ productData.image1
 
 
 
-document
 
-.getElementById("productArea")
+let img =
 
-.innerHTML = `
-
-
-
-
-<div class="product-card">
+document.getElementById("productImage");
 
 
 
 
 
-
-<div class="product-image-box">
-
+if(imageURL){
 
 
-${
+
+img.src = imageURL;
+
+
+
+
+
+
+img.onload = function(){
+
+
+img.style.display="block";
+
+
+document.getElementById("noImage")
+
+.style.display="none";
+
+
+};
+
+
+
+
+
+
+img.onerror=function(){
+
+
+img.style.display="none";
+
+
+document.getElementById("noImage")
+
+.style.display="block";
+
+
+};
+
+
+
+}
+
+
+
+
+
+
+// Facebook preview update
+
+
+document.querySelector(
+
+'meta[property="og:title"]'
+
+)
+
+.setAttribute(
+
+"content",
+
+productData.name
+
+);
+
+
+
+
+
+document.querySelector(
+
+'meta[property="og:description"]'
+
+)
+
+.setAttribute(
+
+"content",
+
+productData.description || ""
+
+);
+
+
+
+
+
+document.querySelector(
+
+'meta[property="og:image"]'
+
+)
+
+.setAttribute(
+
+"content",
 
 imageURL
 
-?
-
-`
-
-<img
-
-class="product-image"
-
-src="${imageURL}"
-
-alt="${productData.name}"
-
->
-
-`
-
-:
-
-`
-
-<div class="no-image">
-
-Image নেই
-
-</div>
-
-`
-
-}
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="product-name">
-
-${productData.name || ""}
-
-</div>
-
-
-
-
-
-
-<div class="product-description">
-
-${productData.description || ""}
-
-</div>
-
-
-
-
-
-
-<div class="product-price">
-
-৳${Number(productData.price || 0)
-
-.toLocaleString("en-BD")}
-
-</div>
-
-
-
-
-
-
-<button
-
-class="order-button"
-
-onclick="orderNow()"
-
->
-
-🛒 ORDER NOW
-
-</button>
-
-
-
-
-
-
-<div class="share-box">
-
-
-
-<button
-
-class="facebook"
-
-onclick="shareFacebook()"
-
->
-
-📘 Facebook
-
-</button>
-
-
-
-
-
-<button
-
-class="whatsapp"
-
-onclick="shareWhatsApp()"
-
->
-
-🟢 WhatsApp
-
-</button>
-
-
-
-
-
-<button
-
-class="copy"
-
-onclick="copyLink()"
-
->
-
-🔗 Copy
-
-</button>
-
-
-
-</div>
-
-
-
-
-
-</div>
-
-
-
-`;
+);
 
 
 
 }
-  
+ 
 
 // ===============================
 // ORDER NOW
 // ===============================
 
 
-function orderNow(){
+document
+.getElementById("orderButton")
+.addEventListener(
+"click",
+function(){
 
 
 
@@ -849,6 +1162,7 @@ convertImageURL(
 productData.image1
 
 );
+
 
 
 
@@ -880,7 +1194,7 @@ encodeURIComponent(image);
 
 
 
-}
+});
 
 
 
@@ -891,7 +1205,7 @@ encodeURIComponent(image);
 
 
 // ===============================
-// GET PRODUCT LINK
+// PRODUCT LINK
 // ===============================
 
 
@@ -916,16 +1230,11 @@ return window.location.href;
 // ===============================
 
 
-function shareFacebook(){
-
-
-
-let link =
-
-getProductLink();
-
-
-
+document
+.querySelector(".fb")
+.addEventListener(
+"click",
+function(){
 
 
 
@@ -936,7 +1245,9 @@ window.open(
 
 +
 
-encodeURIComponent(link),
+encodeURIComponent(
+getProductLink()
+),
 
 
 "_blank"
@@ -946,7 +1257,7 @@ encodeURIComponent(link),
 
 
 
-}
+});
 
 
 
@@ -961,16 +1272,11 @@ encodeURIComponent(link),
 // ===============================
 
 
-function shareWhatsApp(){
-
-
-
-let link =
-
-getProductLink();
-
-
-
+document
+.querySelector(".whatsapp")
+.addEventListener(
+"click",
+function(){
 
 
 
@@ -989,8 +1295,7 @@ productData.name
 
 +
 
-link;
-
+getProductLink();
 
 
 
@@ -1014,7 +1319,7 @@ encodeURIComponent(message),
 
 
 
-}
+});
 
 
 
@@ -1029,7 +1334,11 @@ encodeURIComponent(message),
 // ===============================
 
 
-function copyLink(){
+document
+.querySelector(".copy")
+.addEventListener(
+"click",
+function(){
 
 
 
@@ -1049,7 +1358,7 @@ alert(
 
 
 
-}
+});
 
 
 
@@ -1068,36 +1377,23 @@ function showNotFound(){
 
 
 
-document
+document.getElementById("productName")
 
-.getElementById("loading")
+.textContent =
 
-.style.display="none";
-
-
+"Product পাওয়া যায়নি";
 
 
 
-document
+document.getElementById("productDescription")
 
-.getElementById("productArea")
+.textContent =
 
-.innerHTML = `
-
-
-<div class="not-found">
-
-❌ Product পাওয়া যায়নি
-
-</div>
-
-
-`;
+"এই পণ্যটি বর্তমানে পাওয়া যাচ্ছে না।";
 
 
 
 }
-
 
 
 
