@@ -1,1 +1,903 @@
+<!DOCTYPE html>
+<html lang="bn">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Product - SR Shopping BD</title>
+
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+
+body{
+
+margin:0;
+
+font-family:Arial,sans-serif;
+
+background:#f5f5f5;
+
+color:#222;
+
+}
+
+
+
+header{
+
+background:#111;
+
+color:white;
+
+text-align:center;
+
+padding:20px 10px;
+
+}
+
+
+header h1{
+
+margin:0;
+
+font-size:26px;
+
+}
+
+
+
+.container{
+
+max-width:650px;
+
+margin:auto;
+
+padding:15px;
+
+}
+
+
+
+.product-card{
+
+background:#fff;
+
+border-radius:15px;
+
+padding:15px;
+
+box-shadow:0 3px 12px rgba(0,0,0,.10);
+
+}
+
+
+
+.product-image{
+
+width:100%;
+
+height:400px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+background:#fff;
+
+overflow:hidden;
+
+border-radius:12px;
+
+}
+
+
+
+.product-image img{
+
+width:100%;
+
+height:100%;
+
+object-fit:contain;
+
+}
+
+
+
+.product-name{
+
+font-size:25px;
+
+font-weight:bold;
+
+margin-top:20px;
+
+}
+
+
+
+.product-description{
+
+font-size:15px;
+
+color:#666;
+
+line-height:1.6;
+
+margin:12px 0;
+
+}
+
+
+
+.product-price{
+
+font-size:25px;
+
+font-weight:bold;
+
+margin:15px 0;
+
+}
+
+
+
+.order-button{
+
+width:100%;
+
+padding:15px;
+
+border:none;
+
+border-radius:10px;
+
+background:#111;
+
+color:white;
+
+font-size:18px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+}
+
+
+
+.share-box{
+
+display:flex;
+
+gap:8px;
+
+margin-top:12px;
+
+}
+
+
+
+.share-box button{
+
+flex:1;
+
+padding:10px 5px;
+
+border:none;
+
+border-radius:8px;
+
+color:white;
+
+font-weight:bold;
+
+cursor:pointer;
+
+}
+
+
+.facebook{
+
+background:#1877f2;
+
+}
+
+
+.whatsapp{
+
+background:#25d366;
+
+}
+
+
+.copy{
+
+background:#555;
+
+}
+
+
+
+.not-found{
+
+text-align:center;
+
+padding:40px;
+
+font-size:18px;
+
+color:red;
+
+}
+
+
+
+@media(max-width:600px){
+
+.product-image{
+
+height:320px;
+
+}
+
+}
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<h1>
+🛍️ SR Shopping BD
+</h1>
+
+</header>
+
+
+<div class="container">
+
+
+<div id="loading"
+style="text-align:center;padding:40px;">
+
+পণ্য লোড হচ্ছে...
+
+</div>
+
+
+
+<div id="productArea">
+
+</div>
+<script>
+
+
+const API_URL =
+"https://script.google.com/macros/s/AKfycbwEl4AmzhQHDoy0yMqE0_XnUJ2Yj65-PiWnP0FADuC5Wh5Y8d8fej2lUBqndiQC2bN5/exec";
+
+
+
+let productData = null;
+
+
+
+// URL থেকে Product Name নেওয়া
+
+const params =
+new URLSearchParams(
+window.location.search
+);
+
+
+
+const selectedProduct =
+params.get("product");
+
+
+
+
+
+function loadProduct(){
+
+
+if(!selectedProduct){
+
+
+showNotFound();
+
+return;
+
+
+}
+
+
+
+const callbackName =
+"productCallback_" + Date.now();
+
+
+
+window[callbackName] =
+function(result){
+
+
+
+delete window[callbackName];
+
+
+
+if(
+result &&
+result.success === true
+){
+
+
+
+const products =
+result.products || [];
+
+
+
+productData =
+products.find(function(item){
+
+
+return item.name === selectedProduct;
+
+
+});
+
+
+
+
+if(productData){
+
+
+displayProduct();
+
+
+}
+
+else{
+
+
+showNotFound();
+
+
+}
+
+
+
+}
+
+else{
+
+
+showNotFound();
+
+
+}
+
+
+
+};
+
+
+
+
+
+const script =
+document.createElement("script");
+
+
+
+script.src =
+
+API_URL +
+
+"?action=products" +
+
+"&callback=" +
+
+callbackName +
+
+"&time=" +
+
+Date.now();
+
+
+
+document.body.appendChild(script);
+
+
+
+}
+
+
+
+
+
+
+
+function displayProduct(){
+
+
+
+document.getElementById("loading")
+.style.display="none";
+
+
+
+const image =
+convertImageURL(
+productData.image1
+);
+
+
+
+
+document.getElementById("productArea")
+.innerHTML = `
+
+
+
+<div class="product-card">
+
+
+
+<div class="product-image">
+
+
+<img
+
+src="${image}"
+
+alt="${productData.name}"
+
+>
+
+
+</div>
+
+
+
+
+<div class="product-name">
+
+${productData.name}
+
+</div>
+
+
+
+
+
+<div class="product-description">
+
+${productData.description || ""}
+
+</div>
+
+
+
+
+
+<div class="product-price">
+
+৳${Number(productData.price || 0)
+.toLocaleString("en-BD")}
+
+</div>
+
+
+
+
+
+<button
+
+class="order-button"
+
+onclick="orderNow()"
+
+>
+
+🛒 ORDER NOW
+
+</button>
+
+
+
+
+
+<div class="share-box">
+
+
+
+<button
+
+class="facebook"
+
+onclick="shareFacebook()"
+
+>
+
+📘 Facebook
+
+</button>
+
+
+
+
+<button
+
+class="whatsapp"
+
+onclick="shareWhatsApp()"
+
+>
+
+🟢 WhatsApp
+
+</button>
+
+
+
+
+<button
+
+class="copy"
+
+onclick="copyLink()"
+
+>
+
+🔗 Copy
+
+</button>
+
+
+
+</div>
+
+
+
+</div>
+
+
+`;
+
+
+
+}
+
+
+
+
+
+
+function orderNow(){
+
+
+
+window.location.href =
+
+"order.html?product="
+
++
+encodeURIComponent(productData.name)
+
++
+
+"&price="
+
++
+encodeURIComponent(productData.price)
+
++
+
+"&image="
+
++
+encodeURIComponent(
+convertImageURL(productData.image1)
+);
+
+
+
+}
+
+
+
+
+
+
+function getShareLink(){
+
+
+return window.location.href;
+
+
+}
+
+
+
+
+
+function shareFacebook(){
+
+
+
+window.open(
+
+"https://www.facebook.com/sharer/sharer.php?u="
+
++
+
+encodeURIComponent(
+getShareLink()
+),
+
+"_blank"
+
+);
+
+
+}
+
+
+
+
+
+
+function shareWhatsApp(){
+
+
+
+window.open(
+
+"https://wa.me/?text="
+
++
+
+encodeURIComponent(
+getShareLink()
+),
+
+"_blank"
+
+);
+
+
+}
+
+
+
+
+
+
+function copyLink(){
+
+
+
+navigator.clipboard.writeText(
+getShareLink()
+);
+
+
+
+alert(
+"Product Link Copy হয়েছে"
+);
+
+
+
+}
+
+
+
+
+
+function convertImageURL(url){
+
+
+if(!url){
+
+return "";
+
+}
+
+
+
+url =
+String(url).trim();
+
+
+
+let id = "";
+
+
+
+let match =
+url.match(/\/file\/d\/([^\/]+)/);
+
+
+
+if(match && match[1]){
+
+id =
+match[1];
+
+}
+
+
+
+if(!id){
+
+
+match =
+url.match(/[?&]id=([^&]+)/);
+
+
+
+if(match && match[1]){
+
+id =
+match[1];
+
+}
+
+
+}
+
+
+
+if(id){
+
+
+return
+
+"https://drive.google.com/thumbnail?id="
+
++
+
+id
+
++
+
+"&sz=w1200";
+
+
+}
+
+
+
+return url;
+
+
+
+}
+
+
+
+
+
+
+function showNotFound(){
+
+
+document.getElementById("loading")
+.style.display="none";
+
+
+document.getElementById("productArea")
+.innerHTML =
+
+`
+
+<div class="not-found">
+
+❌ Product পাওয়া যায়নি
+
+</div>
+
+`;
+
+}
+
+
+
+loadProduct();
+
+
+
+</script>
+<!-- FOOTER -->
+
+<section style="
+margin-top:30px;
+padding:25px 15px;
+background:#fff;
+border-radius:14px;
+border:2px solid #111;
+text-align:center;
+box-shadow:0 3px 12px rgba(0,0,0,.10);
+">
+
+
+<h2>
+❤️ SR Shopping BD
+</h2>
+
+
+<p style="
+font-size:15px;
+color:#555;
+line-height:1.7;
+">
+
+আপনার পছন্দের পণ্য আমাদের কাছ থেকে
+সংগ্রহ করার জন্য ধন্যবাদ।
+
+</p>
+
+
+
+<a href="tel:+8801774891525"
+
+style="
+display:inline-block;
+margin-top:10px;
+padding:12px 25px;
+background:#111;
+color:#fff;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;
+">
+
+📞 যোগাযোগ করুন
+
+</a>
+
+
+
+<p style="
+margin-top:20px;
+font-size:18px;
+font-weight:bold;
+">
+
+আল্লাহ হাফেজ 🤲
+
+</p>
+
+
+</section>
+
+
+
+</div>
+
+
+
+</body>
+
+  </html>
+  
