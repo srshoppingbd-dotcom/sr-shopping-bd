@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="bn">
+
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>SR Shopping BD</title>
+
 
 <style>
 
@@ -13,185 +16,380 @@
 box-sizing:border-box;
 }
 
+
 body{
+
 margin:0;
+
 font-family:Arial,sans-serif;
+
 background:#f5f5f5;
+
 color:#222;
+
 }
+
 
 /* COVER */
 
 .cover-header{
+
 width:100%;
-background:#fff;
+
 overflow:hidden;
+
+background:#fff;
+
 }
 
+
 .cover-header img{
+
 width:100%;
+
 display:block;
+
 }
+
+
+
 
 
 /* BISMILLAH */
 
+
 .bismillah-box{
+
 margin:15px 10px;
-padding:15px;
+
+padding:18px;
+
 text-align:center;
+
 background:linear-gradient(135deg,#fff7d6,#f5fff5);
+
 border:2px solid #c9a227;
+
 border-radius:14px;
-box-shadow:0 3px 12px rgba(0,0,0,.08);
+
 }
+
 
 
 .bismillah{
-font-size:23px;
+
+font-size:24px;
+
 font-weight:bold;
+
 color:#008000;
+
 direction:rtl;
+
 }
+
 
 
 .allah-vorsa{
-margin-top:8px;
-font-size:20px;
+
+margin-top:10px;
+
+font-size:21px;
+
 font-weight:bold;
+
 color:#8a2be2;
+
 }
+
+
+
 
 
 /* TITLE */
 
+
 .shop-title{
+
 margin:15px 10px;
-padding:16px;
+
+padding:18px;
+
 background:#fff;
+
 border:2px solid #111;
-border-radius:12px;
+
+border-radius:14px;
+
 text-align:center;
+
 }
+
 
 
 .shop-title h1{
+
 margin:0;
-font-size:27px;
+
+font-size:28px;
+
 }
+
 
 
 .shop-title p{
-margin:8px 0 0;
+
+margin-top:8px;
+
 color:#555;
+
+font-size:17px;
+
 }
+
+
+
 
 
 /* CONTAINER */
 
+
 .container{
+
 max-width:1100px;
+
 margin:auto;
+
 padding:10px;
+
 }
+
+
+
 
 
 /* SEARCH */
 
+
 .search-box{
+
 margin-bottom:15px;
+
 }
 
 
 .search-box input{
+
 width:100%;
-padding:14px;
-border-radius:10px;
+
+padding:15px;
+
+border-radius:12px;
+
 border:1px solid #ccc;
-font-size:16px;
+
+font-size:17px;
+
 }
+
+
+
 
 
 /* PRODUCTS */
 
+
 .products{
+
 display:grid;
+
 grid-template-columns:repeat(2,1fr);
+
 gap:12px;
+
 }
+
 
 
 .product-card{
+
 background:#fff;
-border-radius:12px;
+
+border-radius:14px;
+
 overflow:hidden;
-box-shadow:0 3px 12px rgba(0,0,0,.08);
+
+box-shadow:0 3px 12px rgba(0,0,0,.10);
+
 }
+
 
 
 .product-image{
+
 height:220px;
-display:flex;
-align-items:center;
-justify-content:center;
+
 background:#fff;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
 }
+
 
 
 .product-image img{
+
 width:100%;
+
 height:100%;
+
 object-fit:contain;
+
 }
+
+
 
 
 .product-info{
+
 padding:12px;
+
 }
+
 
 
 .product-name{
-font-size:18px;
+
+font-size:19px;
+
 font-weight:bold;
+
 }
+
 
 
 .product-description{
-font-size:14px;
+
+font-size:15px;
+
 color:#666;
+
 line-height:1.5;
+
 margin:8px 0;
+
 }
+
 
 
 .product-price{
-font-size:21px;
+
+font-size:22px;
+
 font-weight:bold;
-margin-bottom:12px;
+
+margin:12px 0;
+
 }
 
 
+
+
 .order-button{
+
 width:100%;
-padding:13px;
-border:0;
-border-radius:8px;
+
+padding:14px;
+
+border:none;
+
+border-radius:10px;
+
 background:#111;
+
 color:#fff;
-font-size:16px;
+
+font-size:17px;
+
 font-weight:bold;
+
+cursor:pointer;
+
+}
+
+
+
+.share-buttons{
+
+display:flex;
+
+gap:5px;
+
+margin-top:10px;
+
+}
+
+
+.share-buttons button{
+
+flex:1;
+
+padding:9px 3px;
+
+border:none;
+
+border-radius:7px;
+
+color:white;
+
+font-size:12px;
+
+font-weight:bold;
+
+}
+
+
+.facebook{
+
+background:#1877f2;
+
+}
+
+
+.whatsapp{
+
+background:#25d366;
+
+}
+
+
+.copy{
+
+background:#555;
+
 }
 
 
 @media(max-width:600px){
 
+
 .products{
+
 grid-template-columns:repeat(2,1fr);
+
 }
 
+
 .product-image{
+
 height:190px;
+
 }
+
 
 }
 
@@ -199,7 +397,9 @@ height:190px;
 
 </head>
 
+
 <body>
+
 
 <header class="cover-header">
 
@@ -214,8 +414,11 @@ height:190px;
 بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
 </div>
 
+
 <div class="allah-vorsa">
+
 🤲 আল্লাহ ভরসা 🤲
+
 </div>
 
 </section>
@@ -223,11 +426,15 @@ height:190px;
 
 <section class="shop-title">
 
-<h1>🛍️ SR Shopping BD</h1>
+<h1>
+🛍️ SR Shopping BD
+</h1>
+
 
 <p>
 আপনার পছন্দের পণ্যগুলো একসাথে দেখুন
 </p>
+
 
 </section>
 
@@ -246,22 +453,31 @@ placeholder="🔍 পণ্য খুঁজুন..."
 
 
 <div id="loading"
+
 style="text-align:center;padding:30px;">
+
 পণ্য লোড হচ্ছে...
-</div>
-
-
-<div id="products" class="products">
 
 </div>
-  <script>
+
+
+<div id="products" class="products"></div>
+<script>
+
 
 const API_URL =
 "https://script.google.com/macros/s/AKfycbwEl4AmzhQHDoy0yMqE0_XnUJ2Yj65-PiWnP0FADuC5Wh5Y8d8fej2lUBqndiQC2bN5/exec";
 
 
+
 let allProducts = [];
 
+
+
+
+// ==========================================
+// LOAD PRODUCTS
+// ==========================================
 
 
 function loadProducts(){
@@ -275,21 +491,29 @@ const callbackName =
 window[callbackName] = function(result){
 
 
+
 delete window[callbackName];
+
 
 
 document.getElementById("loading")
 .style.display="none";
 
 
-if(result && result.success === true){
+
+if(
+result &&
+result.success === true
+){
 
 
 allProducts =
 result.products || [];
 
 
+
 displayProducts(allProducts);
+
 
 
 }
@@ -298,13 +522,16 @@ else{
 
 
 document.getElementById("products").innerHTML =
+
 "<p style='text-align:center'>পণ্য পাওয়া যায়নি</p>";
 
 
 }
 
 
+
 };
+
 
 
 
@@ -312,17 +539,26 @@ const script =
 document.createElement("script");
 
 
+
 script.src =
+
 API_URL +
+
 "?action=products" +
+
 "&callback=" +
+
 callbackName +
+
 "&time=" +
+
 Date.now();
 
 
 
+
 document.body.appendChild(script);
+
 
 
 }
@@ -331,11 +567,19 @@ document.body.appendChild(script);
 
 
 
+
+// ==========================================
+// SHOW PRODUCTS
+// ==========================================
+
+
 function displayProducts(products){
+
 
 
 const box =
 document.getElementById("products");
+
 
 
 box.innerHTML="";
@@ -346,8 +590,8 @@ products.forEach(function(product){
 
 
 
-let imageURL =
-"";
+let imageURL = "";
+
 
 
 if(product.image1){
@@ -359,12 +603,17 @@ convertImageURL(product.image1);
 
 
 
+
+
 const card =
 document.createElement("div");
 
 
+
 card.className =
 "product-card";
+
+
 
 
 
@@ -380,8 +629,6 @@ src="${imageURL}"
 
 alt="${product.name || ''}"
 
-onerror="this.style.display='none'"
-
 >
 
 
@@ -390,6 +637,7 @@ onerror="this.style.display='none'"
 
 
 <div class="product-info">
+
 
 
 <div class="product-name">
@@ -417,14 +665,19 @@ ${product.description || ""}
 
 
 
+
 <button
 
 class="order-button"
 
 onclick="orderProduct(
+
 '${escapeText(product.name)}',
+
 '${product.price}',
+
 '${imageURL}'
+
 )"
 
 >
@@ -434,6 +687,73 @@ onclick="orderProduct(
 </button>
 
 
+
+
+
+<div class="share-buttons">
+
+
+<button
+
+class="facebook"
+
+onclick="shareFacebook(
+
+'${escapeText(product.name)}'
+
+)"
+
+>
+
+📘 FB
+
+</button>
+
+
+
+
+<button
+
+class="whatsapp"
+
+onclick="shareWhatsApp(
+
+'${escapeText(product.name)}'
+
+)"
+
+>
+
+🟢 WhatsApp
+
+</button>
+
+
+
+
+<button
+
+class="copy"
+
+onclick="copyProductLink(
+
+'${escapeText(product.name)}'
+
+)"
+
+>
+
+🔗 Copy
+
+</button>
+
+
+
+</div>
+
+
+
+
 </div>
 
 
@@ -441,10 +761,13 @@ onclick="orderProduct(
 
 
 
+
 box.appendChild(card);
 
 
+
 });
+
 
 
 }
@@ -453,7 +776,15 @@ box.appendChild(card);
 
 
 
+
+
+// ==========================================
+// GOOGLE DRIVE IMAGE FIX
+// ==========================================
+
+
 function convertImageURL(url){
+
 
 
 if(!url){
@@ -473,8 +804,6 @@ let id = "";
 
 
 
-/* Google Drive file/d/ID */
-
 let match =
 url.match(/\/file\/d\/([^\/]+)/);
 
@@ -482,14 +811,14 @@ url.match(/\/file\/d\/([^\/]+)/);
 
 if(match && match[1]){
 
-id =
-match[1];
+
+id = match[1];
+
 
 }
 
 
 
-/* Google Drive open?id=ID */
 
 if(!id){
 
@@ -498,26 +827,29 @@ match =
 url.match(/[?&]id=([^&]+)/);
 
 
+
 if(match && match[1]){
 
-id =
-match[1];
 
-}
+id = match[1];
 
 
 }
 
 
+}
 
-/* Google Drive thumbnail already */
 
-if(!id &&
-url.includes("thumbnail")){
+
+
+if(!id && url.includes("thumbnail")){
+
 
 return url;
 
+
 }
+
 
 
 
@@ -525,12 +857,17 @@ return url;
 if(id){
 
 
+
 return
 
 "https://drive.google.com/thumbnail?id="
+
 +
+
 id
+
 +
+
 "&sz=w1200";
 
 
@@ -538,7 +875,42 @@ id
 
 
 
+
+
 return url;
+
+
+
+}
+  // ==========================================
+// ORDER PRODUCT
+// ==========================================
+
+
+function orderProduct(name,price,image){
+
+
+window.location.href =
+
+"order.html?product="
+
++
+encodeURIComponent(name)
+
++
+
+"&price="
+
++
+encodeURIComponent(price)
+
++
+
+"&image="
+
++
+encodeURIComponent(image);
+
 
 
 }
@@ -547,7 +919,134 @@ return url;
 
 
 
+
+// ==========================================
+// SHARE SYSTEM
+// ==========================================
+
+
+function getProductLink(name){
+
+
+return
+
+window.location.origin
+
++
+
+window.location.pathname.replace(
+"index.html",
+""
+)
+
++
+
+"product.html?product="
+
++
+
+encodeURIComponent(name);
+
+
+
+}
+
+
+
+
+
+
+function shareFacebook(name){
+
+
+let link =
+getProductLink(name);
+
+
+
+window.open(
+
+"https://www.facebook.com/sharer/sharer.php?u="
+
++
+
+encodeURIComponent(link),
+
+"_blank"
+
+);
+
+
+
+}
+
+
+
+
+
+
+function shareWhatsApp(name){
+
+
+let link =
+getProductLink(name);
+
+
+
+window.open(
+
+"https://wa.me/?text="
+
++
+
+encodeURIComponent(link),
+
+"_blank"
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+function copyProductLink(name){
+
+
+let link =
+getProductLink(name);
+
+
+
+navigator.clipboard.writeText(link);
+
+
+
+alert(
+"Product Link Copy হয়েছে"
+);
+
+
+
+}
+
+
+
+
+
+
+// ==========================================
+// ESCAPE TEXT
+// ==========================================
+
+
 function escapeText(value){
+
 
 return String(value || "")
 
@@ -562,38 +1061,21 @@ return String(value || "")
 
 
 
-function orderProduct(name,price,image){
 
 
-window.location.href =
-
-"order.html?product="
-+
-encodeURIComponent(name)
-
-+
-"&price="
-+
-encodeURIComponent(price)
-
-+
-"&image="
-+
-encodeURIComponent(image);
-
-
-
-}
-
-
-
+// ==========================================
+// SEARCH
+// ==========================================
 
 
 document
 
 .getElementById("searchInput")
 
-.addEventListener("keyup",function(){
+.addEventListener(
+"keyup",
+function(){
+
 
 
 let text =
@@ -601,8 +1083,10 @@ this.value.toLowerCase();
 
 
 
+
 let result =
 allProducts.filter(function(item){
+
 
 
 return String(item.name || "")
@@ -612,14 +1096,25 @@ return String(item.name || "")
 .includes(text);
 
 
+
 });
+
+
 
 
 displayProducts(result);
 
 
-});
 
+}
+
+);
+
+
+
+
+
+// START
 
 
 loadProducts();
@@ -627,7 +1122,9 @@ loadProducts();
 
 
 </script>
-  <!-- THANK YOU SECTION -->
+  
+<!-- THANK YOU SECTION -->
+
 
 <section style="
 margin:30px 10px;
@@ -645,6 +1142,7 @@ box-shadow:0 3px 12px rgba(0,0,0,.10);
 </h2>
 
 
+
 <p style="
 font-size:15px;
 line-height:1.7;
@@ -657,6 +1155,7 @@ color:#555;
 </p>
 
 
+
 <p style="
 font-size:15px;
 line-height:1.7;
@@ -667,6 +1166,7 @@ color:#555;
 সংগ্রহ করার জন্য আপনাকে স্বাগতম।
 
 </p>
+
 
 
 
@@ -689,6 +1189,7 @@ font-weight:bold;
 
 
 
+
 <h3 style="
 margin-top:25px;
 font-size:22px;
@@ -699,6 +1200,7 @@ font-size:22px;
 </h3>
 
 
+
 <p style="
 font-size:18px;
 font-weight:bold;
@@ -707,6 +1209,7 @@ font-weight:bold;
 আল্লাহ হাফেজ 🤲
 
 </p>
+
 
 
 </section>
