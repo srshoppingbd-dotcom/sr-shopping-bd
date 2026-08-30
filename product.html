@@ -26,8 +26,11 @@
 
 
 *{
+
 box-sizing:border-box;
+
 }
+
 
 
 body{
@@ -41,7 +44,6 @@ background:#f5f5f5;
 color:#222;
 
 }
-
 
 
 
@@ -87,8 +89,6 @@ font-size:14px;
 
 .container{
 
-width:100%;
-
 max-width:600px;
 
 margin:auto;
@@ -96,7 +96,6 @@ margin:auto;
 padding:8px;
 
 }
-
 
 
 
@@ -128,18 +127,17 @@ text-decoration:none;
 
 color:#111;
 
-box-shadow:0 3px 10px rgba(0,0,0,.15);
+box-shadow:0 3px 12px rgba(0,0,0,.15);
 
 }
 
 
 
-
 .btn-icon{
 
-width:40px;
+width:42px;
 
-height:40px;
+height:42px;
 
 border-radius:50%;
 
@@ -175,9 +173,9 @@ line-height:1.3;
 
 .btn-arrow{
 
-width:40px;
+width:42px;
 
-height:40px;
+height:42px;
 
 border-radius:50%;
 
@@ -198,7 +196,6 @@ font-size:24px;
 
 
 
-
 /* PRODUCT CARD */
 
 
@@ -206,13 +203,14 @@ font-size:24px;
 
 background:white;
 
-border-radius:15px;
+border-radius:16px;
 
 padding:10px;
 
 box-shadow:0 3px 12px rgba(0,0,0,.12);
 
 }
+
 
 
 
@@ -225,7 +223,7 @@ box-shadow:0 3px 12px rgba(0,0,0,.12);
 
 width:100%;
 
-height:170px;
+height:160px;
 
 background:white;
 
@@ -245,7 +243,6 @@ overflow:hidden;
 
 
 
-
 .image-box img{
 
 width:100%;
@@ -260,7 +257,6 @@ transition:.3s;
 
 
 
-
 .no-image{
 
 font-size:15px;
@@ -268,11 +264,12 @@ font-size:15px;
 color:#999;
 
 }
+ 
 
 
 
 
-/* ZOOM */
+/* ZOOM BUTTON */
 
 
 .zoom-controls{
@@ -306,7 +303,9 @@ font-size:13px;
 font-weight:bold;
 
 }
- 
+
+
+
 
 
 
@@ -327,7 +326,6 @@ margin:8px 0 5px;
 
 
 
-
 .product-description{
 
 font-size:13px;
@@ -336,15 +334,13 @@ color:#666;
 
 line-height:1.4;
 
-margin:5px 0;
-
 }
 
 
 
 .product-price{
 
-font-size:26px;
+font-size:25px;
 
 font-weight:bold;
 
@@ -365,8 +361,6 @@ width:100%;
 
 padding:14px;
 
-margin-top:8px;
-
 background:#111;
 
 color:white;
@@ -375,11 +369,11 @@ border:none;
 
 border-radius:12px;
 
-font-size:19px;
+font-size:20px;
 
 font-weight:bold;
 
-cursor:pointer;
+margin-top:8px;
 
 }
 
@@ -387,7 +381,7 @@ cursor:pointer;
 
 
 
-/* SHARE BUTTON */
+/* SHARE */
 
 
 .share-buttons{
@@ -429,13 +423,11 @@ background:#1877f2;
 }
 
 
-
 .whatsapp{
 
 background:#25d366;
 
 }
-
 
 
 .copy{
@@ -446,7 +438,10 @@ background:#555;
 
 
 
+
+
 </style>
+
 
 </head>
 
@@ -519,8 +514,8 @@ Product Details
 
 
 
-<div class="product-card">
 
+<div class="product-card">
 
 
 
@@ -529,7 +524,7 @@ Product Details
 <div class="image-box">
 
 
-<img 
+<img
 
 id="productImage"
 
@@ -552,6 +547,8 @@ Image নেই
 
 
 
+
+
 <div class="zoom-controls">
 
 
@@ -562,11 +559,13 @@ Image নেই
 </button>
 
 
+
 <button onclick="zoomOut()">
 
 −
 
 </button>
+
 
 
 <button onclick="resetZoom()">
@@ -577,6 +576,7 @@ Reset
 
 
 </div>
+
 
 
 
@@ -621,11 +621,16 @@ Reset
 
 
 
-<button id="orderBtn" class="order-btn">
+<button
+
+id="orderBtn"
+
+class="order-btn">
 
 🛒 ORDER NOW
 
 </button>
+
 
 
 
@@ -656,8 +661,16 @@ Reset
 </button>
 
 
+
 </div>
- 
+
+
+
+</div>
+
+
+
+</div>
 <script>
 
 
@@ -674,7 +687,7 @@ let zoomLevel = 1;
 
 
 
-// GET PRODUCT NAME
+// PRODUCT NAME FROM LINK
 
 
 const params =
@@ -695,7 +708,7 @@ params.get("product") || "";
 
 
 
-// GOOGLE DRIVE IMAGE FIX
+// IMAGE CONVERTER
 
 
 function convertImageURL(url){
@@ -708,7 +721,6 @@ return "";
 }
 
 
-
 url = String(url).trim();
 
 
@@ -716,8 +728,6 @@ url = String(url).trim();
 let id = "";
 
 
-
-// file/d/ID
 
 let match =
 
@@ -733,9 +743,6 @@ id = match[1];
 
 
 
-
-
-// open?id=ID
 
 
 if(!id){
@@ -761,13 +768,10 @@ id = match[1];
 
 
 
-
 if(id){
 
 
-return
-
-"https://drive.google.com/thumbnail?id="
+return "https://drive.google.com/thumbnail?id="
 
 +
 
@@ -820,6 +824,7 @@ delete window[callbackName];
 
 
 
+
 if(result && result.success){
 
 
@@ -827,6 +832,7 @@ if(result && result.success){
 let products =
 
 result.products || [];
+
 
 
 
@@ -864,12 +870,26 @@ showProduct(found);
 
 }
 
+else{
+
+
+document.getElementById("productName")
+
+.innerHTML =
+
+"Product পাওয়া যায়নি";
+
+
+}
+
+
 
 }
 
 
 
 };
+
 
 
 
@@ -951,7 +971,6 @@ product.description || "";
 
 
 
-
 document.getElementById("productPrice")
 
 .innerHTML =
@@ -966,7 +985,7 @@ Number(product.price || 0)
 
 
 
-// IMAGE SYSTEM (আগের কাজ করা)
+// IMAGE
 
 
 if(product.image1){
@@ -979,6 +998,8 @@ document.getElementById("productImage");
 
 
 
+
+
 img.src =
 
 convertImageURL(product.image1);
@@ -987,7 +1008,9 @@ convertImageURL(product.image1);
 
 
 
+
 img.onload=function(){
+
 
 
 img.style.display="block";
@@ -1012,7 +1035,9 @@ img.style.display="none";
 
 document.getElementById("noImage")
 
-.innerHTML="Image পাওয়া যায়নি";
+.innerHTML=
+
+"Image পাওয়া যায়নি";
 
 
 };
@@ -1027,8 +1052,7 @@ document.getElementById("noImage")
 
 
 
-
-// ORDER BUTTON
+// ORDER
 
 
 document.getElementById("orderBtn")
@@ -1072,7 +1096,6 @@ convertImageURL(product.image1)
 
 
 
-
 }
 
 
@@ -1089,10 +1112,9 @@ convertImageURL(product.image1)
 function zoomIn(){
 
 
-
 if(zoomLevel < 2.5){
 
-zoomLevel +=0.2;
+zoomLevel += 0.2;
 
 }
 
@@ -1105,8 +1127,6 @@ document.getElementById("productImage")
 
 
 }
-
-
 
 
 
@@ -1118,7 +1138,7 @@ function zoomOut(){
 
 if(zoomLevel > 1){
 
-zoomLevel -=0.2;
+zoomLevel -= 0.2;
 
 }
 
@@ -1136,15 +1156,11 @@ document.getElementById("productImage")
 
 
 
-
-
-
 function resetZoom(){
 
 
 
 zoomLevel = 1;
-
 
 
 document.getElementById("productImage")
@@ -1163,10 +1179,11 @@ document.getElementById("productImage")
 
 
 
-// SHARE
+
+// SHARE LINK
 
 
-function getLink(){
+function getProductLink(){
 
 return window.location.href;
 
@@ -1190,7 +1207,7 @@ window.open(
 
 +
 
-encodeURIComponent(getLink())
+encodeURIComponent(getProductLink())
 
 );
 
@@ -1218,7 +1235,7 @@ let text =
 
 +
 
-productData.name
+(productData.name || "")
 
 +
 
@@ -1226,7 +1243,7 @@ productData.name
 
 +
 
-getLink();
+getProductLink();
 
 
 
@@ -1252,7 +1269,6 @@ encodeURIComponent(text)
 
 
 
-
 document
 
 .querySelector(".copy")
@@ -1263,7 +1279,7 @@ document
 
 navigator.clipboard.writeText(
 
-getLink()
+getProductLink()
 
 );
 
@@ -1285,6 +1301,10 @@ alert(
 
 
 
+
+// START
+
+
 loadProduct();
 
 
@@ -1296,11 +1316,3 @@ loadProduct();
 </body>
 
 </html>
-
-
-
-</div>
-
-
-</div>
- 
