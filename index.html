@@ -282,15 +282,14 @@ document.getElementById("loading")
 .style.display="none";
 
 
-
 if(result && result.success === true){
 
 
-allProducts = result.products || [];
+allProducts =
+result.products || [];
 
 
 displayProducts(allProducts);
-
 
 
 }
@@ -298,12 +297,11 @@ displayProducts(allProducts);
 else{
 
 
-document.getElementById("products")
-.innerHTML =
-"<p style='text-align:center'>কোনো পণ্য পাওয়া যায়নি</p>";
+document.getElementById("products").innerHTML =
+"<p style='text-align:center'>পণ্য পাওয়া যায়নি</p>";
+
 
 }
-
 
 
 };
@@ -327,7 +325,6 @@ Date.now();
 document.body.appendChild(script);
 
 
-
 }
 
 
@@ -349,8 +346,8 @@ products.forEach(function(product){
 
 
 
-let imageURL = "";
-
+let imageURL =
+"";
 
 
 if(product.image1){
@@ -366,7 +363,8 @@ const card =
 document.createElement("div");
 
 
-card.className="product-card";
+card.className =
+"product-card";
 
 
 
@@ -375,8 +373,17 @@ card.innerHTML = `
 
 <div class="product-image">
 
-<img src="${imageURL}"
-alt="${product.name || ''}">
+
+<img
+
+src="${imageURL}"
+
+alt="${product.name || ''}"
+
+onerror="this.style.display='none'"
+
+>
+
 
 </div>
 
@@ -403,24 +410,28 @@ ${product.description || ""}
 
 <div class="product-price">
 
-৳${Number(product.price || 0).toLocaleString("en-BD")}
+৳${Number(product.price || 0)
+.toLocaleString("en-BD")}
 
 </div>
 
 
 
-<button class="order-button"
+<button
+
+class="order-button"
 
 onclick="orderProduct(
-'${safe(product.name)}',
+'${escapeText(product.name)}',
 '${product.price}',
 '${imageURL}'
-)">
+)"
+
+>
 
 🛒 ORDER NOW
 
 </button>
-
 
 
 </div>
@@ -433,9 +444,7 @@ onclick="orderProduct(
 box.appendChild(card);
 
 
-
 });
-
 
 
 }
@@ -460,6 +469,12 @@ String(url).trim();
 
 
 
+let id = "";
+
+
+
+/* Google Drive file/d/ID */
+
 let match =
 url.match(/\/file\/d\/([^\/]+)/);
 
@@ -467,30 +482,54 @@ url.match(/\/file\/d\/([^\/]+)/);
 
 if(match && match[1]){
 
-
-return "https://drive.google.com/thumbnail?id="
-+
-match[1]
-+
-"&sz=w1200";
-
-
+id =
+match[1];
 
 }
 
+
+
+/* Google Drive open?id=ID */
+
+if(!id){
 
 
 match =
 url.match(/[?&]id=([^&]+)/);
 
 
-
 if(match && match[1]){
 
+id =
+match[1];
 
-return "https://drive.google.com/thumbnail?id="
+}
+
+
+}
+
+
+
+/* Google Drive thumbnail already */
+
+if(!id &&
+url.includes("thumbnail")){
+
+return url;
+
+}
+
+
+
+
+if(id){
+
+
+return
+
+"https://drive.google.com/thumbnail?id="
 +
-match[1]
+id
 +
 "&sz=w1200";
 
@@ -502,14 +541,13 @@ match[1]
 return url;
 
 
-
 }
 
 
 
 
-function safe(value){
 
+function escapeText(value){
 
 return String(value || "")
 
@@ -558,7 +596,6 @@ document
 .addEventListener("keyup",function(){
 
 
-
 let text =
 this.value.toLowerCase();
 
@@ -575,13 +612,10 @@ return String(item.name || "")
 .includes(text);
 
 
-
 });
 
 
-
 displayProducts(result);
-
 
 
 });
@@ -592,7 +626,7 @@ loadProducts();
 
 
 
-  </script>
+</script>
   <!-- THANK YOU SECTION -->
 
 <section style="
