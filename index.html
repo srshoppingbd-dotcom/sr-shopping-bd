@@ -221,7 +221,15 @@ overflow:hidden;
 
 box-shadow:0 3px 12px rgba(0,0,0,.10);
 
+display:flex;
+
+flex-direction:column;
+
+height:100%;
+
 }
+
+
 
 
 
@@ -236,6 +244,8 @@ display:flex;
 align-items:center;
 
 justify-content:center;
+
+overflow:hidden;
 
 }
 
@@ -253,10 +263,27 @@ object-fit:contain;
 
 
 
+.no-image{
+
+font-size:14px;
+
+color:#999;
+
+}
+
+
+
+
 
 .product-info{
 
 padding:12px;
+
+display:flex;
+
+flex-direction:column;
+
+flex:1;
 
 }
 
@@ -299,6 +326,7 @@ margin:12px 0;
 
 
 
+
 .order-button{
 
 width:100%;
@@ -319,7 +347,11 @@ font-weight:bold;
 
 cursor:pointer;
 
+margin-top:auto;
+
 }
+
+
 
 
 
@@ -374,6 +406,9 @@ background:#555;
 }
 
 
+
+
+
 @media(max-width:600px){
 
 
@@ -411,7 +446,9 @@ height:190px;
 <section class="bismillah-box">
 
 <div class="bismillah">
+
 بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
+
 </div>
 
 
@@ -427,12 +464,16 @@ height:190px;
 <section class="shop-title">
 
 <h1>
+
 🛍️ SR Shopping BD
+
 </h1>
 
 
 <p>
+
 আপনার পছন্দের পণ্যগুলো একসাথে দেখুন
+
 </p>
 
 
@@ -445,8 +486,11 @@ height:190px;
 <div class="search-box">
 
 <input 
+
 id="searchInput"
+
 placeholder="🔍 পণ্য খুঁজুন..."
+
 >
 
 </div>
@@ -462,16 +506,14 @@ style="text-align:center;padding:30px;">
 
 
 <div id="products" class="products"></div>
-<script>
+  <script>
 
 
 const API_URL =
 "https://script.google.com/macros/s/AKfycbwEl4AmzhQHDoy0yMqE0_XnUJ2Yj65-PiWnP0FADuC5Wh5Y8d8fej2lUBqndiQC2bN5/exec";
 
 
-
 let allProducts = [];
-
 
 
 
@@ -489,7 +531,6 @@ const callbackName =
 
 
 window[callbackName] = function(result){
-
 
 
 delete window[callbackName];
@@ -511,9 +552,7 @@ allProducts =
 result.products || [];
 
 
-
 displayProducts(allProducts);
-
 
 
 }
@@ -529,8 +568,8 @@ document.getElementById("products").innerHTML =
 }
 
 
-
 };
+
 
 
 
@@ -556,7 +595,6 @@ Date.now();
 
 
 
-
 document.body.appendChild(script);
 
 
@@ -568,8 +606,9 @@ document.body.appendChild(script);
 
 
 
+
 // ==========================================
-// SHOW PRODUCTS
+// DISPLAY PRODUCTS
 // ==========================================
 
 
@@ -604,6 +643,50 @@ convertImageURL(product.image1);
 
 
 
+let imageHTML = "";
+
+
+
+if(imageURL){
+
+
+imageHTML = `
+
+<img
+
+src="${imageURL}"
+
+alt="${product.name || ''}"
+
+onerror="this.parentElement.innerHTML='<div class=&quot;no-image&quot;>Image নেই</div>'"
+
+>
+
+`;
+
+
+
+}
+
+else{
+
+
+imageHTML =
+
+`
+<div class="no-image">
+Image নেই
+</div>
+`;
+
+
+
+}
+
+
+
+
+
 
 const card =
 document.createElement("div");
@@ -620,19 +703,16 @@ card.className =
 card.innerHTML = `
 
 
+
 <div class="product-image">
 
 
-<img
-
-src="${imageURL}"
-
-alt="${product.name || ''}"
-
->
+${imageHTML}
 
 
 </div>
+
+
 
 
 
@@ -648,11 +728,14 @@ ${product.name || ""}
 
 
 
+
 <div class="product-description">
 
 ${product.description || ""}
 
 </div>
+
+
 
 
 
@@ -662,6 +745,7 @@ ${product.description || ""}
 .toLocaleString("en-BD")}
 
 </div>
+
 
 
 
@@ -689,8 +773,8 @@ onclick="orderProduct(
 
 
 
-
 <div class="share-buttons">
+
 
 
 <button
@@ -712,6 +796,7 @@ onclick="shareFacebook(
 
 
 
+
 <button
 
 class="whatsapp"
@@ -727,6 +812,7 @@ onclick="shareWhatsApp(
 🟢 WhatsApp
 
 </button>
+
 
 
 
@@ -757,8 +843,8 @@ onclick="copyProductLink(
 </div>
 
 
-`;
 
+`;
 
 
 
@@ -777,14 +863,12 @@ box.appendChild(card);
 
 
 
-
 // ==========================================
-// GOOGLE DRIVE IMAGE FIX
+// GOOGLE DRIVE IMAGE CONVERTER
 // ==========================================
 
 
 function convertImageURL(url){
-
 
 
 if(!url){
@@ -804,6 +888,10 @@ let id = "";
 
 
 
+
+// file/d/ID
+
+
 let match =
 url.match(/\/file\/d\/([^\/]+)/);
 
@@ -811,13 +899,14 @@ url.match(/\/file\/d\/([^\/]+)/);
 
 if(match && match[1]){
 
-
 id = match[1];
-
 
 }
 
 
+
+
+// open?id=ID
 
 
 if(!id){
@@ -830,26 +919,25 @@ url.match(/[?&]id=([^&]+)/);
 
 if(match && match[1]){
 
-
 id = match[1];
 
-
 }
 
 
 }
 
 
+
+
+
+// thumbnail already
 
 
 if(!id && url.includes("thumbnail")){
 
-
 return url;
 
-
 }
-
 
 
 
@@ -857,23 +945,14 @@ return url;
 if(id){
 
 
-
-return
-
-"https://drive.google.com/thumbnail?id="
-
+return "https://drive.google.com/thumbnail?id="
 +
-
 id
-
 +
-
 "&sz=w1200";
 
 
 }
-
-
 
 
 
@@ -882,7 +961,7 @@ return url;
 
 
 }
-  // ==========================================
+   // ==========================================
 // ORDER PRODUCT
 // ==========================================
 
@@ -920,17 +999,16 @@ encodeURIComponent(image);
 
 
 
+
 // ==========================================
-// SHARE SYSTEM
+// PRODUCT SHARE LINK
 // ==========================================
 
 
 function getProductLink(name){
 
 
-return
-
-window.location.origin
+return window.location.origin
 
 +
 
@@ -956,11 +1034,23 @@ encodeURIComponent(name);
 
 
 
+
 function shareFacebook(name){
 
 
 let link =
 getProductLink(name);
+
+
+
+let text =
+"🛍️ SR Shopping BD\n\n"
++
+name
++
+"\n\nঅর্ডার করতে ভিজিট করুন:\n"
++
+link;
 
 
 
@@ -970,7 +1060,8 @@ window.open(
 
 +
 
-encodeURIComponent(link),
+encodeURIComponent(link)
+,
 
 "_blank"
 
@@ -985,11 +1076,24 @@ encodeURIComponent(link),
 
 
 
+
 function shareWhatsApp(name){
 
 
 let link =
 getProductLink(name);
+
+
+
+let text =
+
+"🛍️ "
++
+name
++
+"\n\nSR Shopping BD থেকে অর্ডার করুন:\n"
++
+link;
 
 
 
@@ -999,7 +1103,8 @@ window.open(
 
 +
 
-encodeURIComponent(link),
+encodeURIComponent(text)
+,
 
 "_blank"
 
@@ -1034,6 +1139,7 @@ alert(
 
 
 }
+
 
 
 
@@ -1114,15 +1220,18 @@ displayProducts(result);
 
 
 
-// START
 
+// START
 
 loadProducts();
 
 
-
 </script>
-  
+
+
+
+
+
 <!-- THANK YOU SECTION -->
 
 
@@ -1140,7 +1249,6 @@ box-shadow:0 3px 12px rgba(0,0,0,.10);
 <h2>
 ❤️ SR Shopping BD-তে আসার জন্য ধন্যবাদ
 </h2>
-
 
 
 <p style="
@@ -1209,7 +1317,6 @@ font-weight:bold;
 আল্লাহ হাফেজ 🤲
 
 </p>
-
 
 
 </section>
