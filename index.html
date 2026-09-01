@@ -16,6 +16,7 @@
 box-sizing:border-box;
 }
 
+
 body{
 
 margin:0;
@@ -27,6 +28,7 @@ background:#f5f5f5;
 color:#222;
 
 }
+
 
 
 /* COVER */
@@ -51,7 +53,11 @@ display:block;
 }
 
 
+
+
+
 /* BISMILLAH */
+
 
 .bismillah-box{
 
@@ -96,7 +102,12 @@ color:#8a2be2;
 }
 
 
+
+
+
+
 /* TITLE */
+
 
 .shop-title{
 
@@ -115,6 +126,7 @@ text-align:center;
 }
 
 
+
 .shop-title h1{
 
 margin:0;
@@ -122,6 +134,7 @@ margin:0;
 font-size:28px;
 
 }
+
 
 
 .shop-title p{
@@ -135,7 +148,13 @@ font-size:17px;
 }
 
 
+
+
+
+
+
 /* CONTAINER */
+
 
 .container{
 
@@ -148,13 +167,19 @@ padding:10px;
 }
 
 
+
+
+
+
 /* SEARCH */
+
 
 .search-box{
 
 margin-bottom:15px;
 
 }
+
 
 
 .search-box input{
@@ -172,7 +197,13 @@ font-size:17px;
 }
 
 
+
+
+
+
+
 /* PRODUCTS */
+
 
 .products{
 
@@ -183,6 +214,7 @@ grid-template-columns:repeat(2,1fr);
 gap:12px;
 
 }
+
 
 
 .product-card{
@@ -204,6 +236,9 @@ height:100%;
 }
 
 
+
+
+
 .product-image{
 
 height:220px;
@@ -221,6 +256,8 @@ overflow:hidden;
 }
 
 
+
+
 .product-image img{
 
 width:100%;
@@ -229,16 +266,26 @@ height:100%;
 
 object-fit:contain;
 
+display:block;
+
 }
 
 
-.no-image{
+
+
+
+.loading-image{
 
 font-size:14px;
 
 color:#999;
 
+text-align:center;
+
 }
+
+
+
 
 
 .product-info{
@@ -254,6 +301,8 @@ flex:1;
 }
 
 
+
+
 .product-name{
 
 font-size:19px;
@@ -261,6 +310,7 @@ font-size:19px;
 font-weight:bold;
 
 }
+
 
 
 .product-description{
@@ -276,6 +326,7 @@ margin:8px 0;
 }
 
 
+
 .product-price{
 
 font-size:22px;
@@ -285,9 +336,7 @@ font-weight:bold;
 margin:12px 0;
 
 }
-
-
-.order-button{
+  .order-button{
 
 width:100%;
 
@@ -312,6 +361,9 @@ margin-top:auto;
 }
 
 
+
+
+
 .share-buttons{
 
 display:flex;
@@ -321,6 +373,7 @@ gap:5px;
 margin-top:10px;
 
 }
+
 
 
 .share-buttons button{
@@ -342,6 +395,7 @@ font-weight:bold;
 }
 
 
+
 .facebook{
 
 background:#1877f2;
@@ -356,6 +410,7 @@ background:#25d366;
 }
 
 
+
 .copy{
 
 background:#555;
@@ -363,7 +418,11 @@ background:#555;
 }
 
 
+
+
+
 @media(max-width:600px){
+
 
 .products{
 
@@ -372,11 +431,13 @@ grid-template-columns:repeat(2,1fr);
 }
 
 
+
 .product-image{
 
 height:190px;
 
 }
+
 
 }
 
@@ -389,11 +450,17 @@ height:190px;
 <body>
 
 
+
 <header class="cover-header">
+
 
 <img src="cover.jpg" alt="SR Shopping BD">
 
+
 </header>
+
+
+
 
 
 <section class="bismillah-box">
@@ -401,19 +468,28 @@ height:190px;
 
 <div class="bismillah">
 
+
 بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
+
 
 </div>
 
 
+
 <div class="allah-vorsa">
 
+
 🤲 আল্লাহ ভরসা 🤲
+
 
 </div>
 
 
 </section>
+
+
+
+
 
 
 <section class="shop-title">
@@ -426,6 +502,7 @@ height:190px;
 </h1>
 
 
+
 <p>
 
 আপনার পছন্দের পণ্যগুলো একসাথে দেখুন
@@ -436,7 +513,12 @@ height:190px;
 </section>
 
 
+
+
+
+
 <div class="container">
+
 
 
 <div class="search-box">
@@ -454,6 +536,9 @@ placeholder="🔍 পণ্য খুঁজুন..."
 </div>
 
 
+
+
+
 <div id="loading"
 
 style="text-align:center;padding:30px;">
@@ -463,31 +548,47 @@ style="text-align:center;padding:30px;">
 </div>
 
 
-<div id="products" class="products">
-  <script>
+
+
+
+<div id="products" class="products"></div>
+
+
+
+
+
+
+<script>
 
 
 const API_URL =
+
 "https://script.google.com/macros/s/AKfycbwEl4AmzhQHDoy0yMqE0_XnUJ2Yj65-PiWnP0FADuC5Wh5Y8d8fej2lUBqndiQC2bN5/exec";
+
 
 
 let allProducts = [];
 
 
 
-// ===============================
+
+
 // LOAD PRODUCTS
-// ===============================
+
 
 function loadProducts(){
 
 
 const callbackName =
+
 "productsCallback_" + Date.now();
 
 
 
+
+
 window[callbackName] = function(result){
+
 
 
 delete window[callbackName];
@@ -499,14 +600,15 @@ document.getElementById("loading")
 
 
 
-if(result && result.success === true){
+
+if(result && result.success){
 
 
-allProducts =
-result.products || [];
+allProducts = result.products || [];
 
 
 displayProducts(allProducts);
+
 
 
 }
@@ -519,7 +621,9 @@ document.getElementById("products").innerHTML =
 "<p style='text-align:center'>পণ্য পাওয়া যায়নি</p>";
 
 
+
 }
+
 
 
 };
@@ -527,7 +631,10 @@ document.getElementById("products").innerHTML =
 
 
 
+
+
 const script =
+
 document.createElement("script");
 
 
@@ -558,6 +665,8 @@ Date.now();
 
 
 
+
+
 document.body.appendChild(script);
 
 
@@ -569,16 +678,15 @@ document.body.appendChild(script);
 
 
 
-
-// ===============================
 // DISPLAY PRODUCTS
-// ===============================
 
 
 function displayProducts(products){
 
 
+
 const box =
+
 document.getElementById("products");
 
 
@@ -587,34 +695,39 @@ box.innerHTML="";
 
 
 
+
+
 products.forEach(function(product){
 
 
 
-let imageURL = "";
+let imageURL="";
 
 
 
 if(product.image1){
 
-imageURL =
-convertImageURL(product.image1);
+
+imageURL = convertImageURL(product.image1);
+
 
 }
 
 
 
 
-let imageHTML = "";
 
 
-
-if(imageURL){
-
-
-imageHTML =
+let imageHTML =
 
 `
+
+<div class="loading-image">
+
+ছবি লোড হচ্ছে...
+
+</div>
+
 
 <img
 
@@ -622,7 +735,11 @@ src="${imageURL}"
 
 alt="${product.name || ''}"
 
-onerror="this.parentElement.innerHTML='<div class=&quot;no-image&quot;>Image নেই</div>'"
+style="display:none;"
+
+onload="this.previousElementSibling.style.display='none'; this.style.display='block';"
+
+onerror="this.previousElementSibling.innerHTML='ছবি পাওয়া যায়নি';"
 
 >
 
@@ -630,50 +747,23 @@ onerror="this.parentElement.innerHTML='<div class=&quot;no-image&quot;>Image ন
 
 
 
-}
-
-else{
-
-
-imageHTML =
-
-`
-
-<div class="no-image">
-
-Image নেই
-
-</div>
-
-`;
-
-
-
-}
-
-
-
-
-
 
 
 const card =
+
 document.createElement("div");
 
 
 
-card.className =
-"product-card";
+card.className="product-card";
 
 
 
 
 
-card.innerHTML =
+card.innerHTML = `
 
 
-
-`
 
 <div class="product-image">
 
@@ -682,7 +772,6 @@ ${imageHTML}
 
 
 </div>
-
 
 
 
@@ -700,7 +789,6 @@ ${product.name || ""}
 
 
 
-
 <div class="product-description">
 
 ${product.description || ""}
@@ -710,14 +798,11 @@ ${product.description || ""}
 
 
 
-
 <div class="product-price">
 
-৳${Number(product.price || 0)
-.toLocaleString("en-BD")}
+৳${Number(product.price || 0).toLocaleString("en-BD")}
 
 </div>
-
 
 
 
@@ -744,8 +829,6 @@ onclick="orderProduct(
 
 
 
-
-
 <div class="share-buttons">
 
 
@@ -768,8 +851,6 @@ onclick="shareFacebook(
 
 
 
-
-
 <button
 
 class="whatsapp"
@@ -785,7 +866,6 @@ onclick="shareWhatsApp(
 🟢 WhatsApp
 
 </button>
-
 
 
 
@@ -814,6 +894,8 @@ onclick="copyProductLink(
 
 </div>
 
+
+
 `;
 
 
@@ -826,16 +908,7 @@ box.appendChild(card);
 
 
 
-}
-
-
-
-
-
-
-// ===============================
-// GOOGLE DRIVE IMAGE FIX
-// ===============================
+  }// GOOGLE DRIVE IMAGE CONVERTER
 
 
 function convertImageURL(url){
@@ -849,8 +922,7 @@ return "";
 
 
 
-url =
-String(url).trim();
+url = String(url).trim();
 
 
 
@@ -859,6 +931,7 @@ let id = "";
 
 
 let match =
+
 url.match(/\/file\/d\/([^\/]+)/);
 
 
@@ -871,12 +944,11 @@ id = match[1];
 
 
 
-
-
 if(!id){
 
 
 match =
+
 url.match(/[?&]id=([^&]+)/);
 
 
@@ -888,16 +960,9 @@ id = match[1];
 }
 
 
-}
-
-
-
-
-if(!id && url.includes("thumbnail")){
-
-return url;
 
 }
+
 
 
 
@@ -905,9 +970,7 @@ return url;
 if(id){
 
 
-return
-
-"https://drive.google.com/thumbnail?id="
+return "https://drive.google.com/thumbnail?id="
 
 +
 
@@ -915,7 +978,7 @@ id
 
 +
 
-"&sz=w1200";
+"&sz=w600";
 
 
 }
@@ -925,15 +988,14 @@ id
 return url;
 
 
-
 }
 
 
 
 
-// ===============================
-// ORDER
-// ===============================
+
+
+// ORDER PRODUCT
 
 
 function orderProduct(name,price,image){
@@ -966,9 +1028,14 @@ encodeURIComponent(image);
 
 
 }
-    // ===============================
-// PRODUCT LINK
-// ===============================
+
+
+
+
+
+
+
+// PRODUCT LINK CREATE
 
 
 function getProductLink(name){
@@ -981,6 +1048,7 @@ window.location.origin
 +
 
 window.location.pathname;
+
 
 
 baseUrl =
@@ -1016,9 +1084,7 @@ encodeURIComponent(name);
 
 
 
-// ===============================
 // FACEBOOK SHARE
-// ===============================
 
 
 function shareFacebook(name){
@@ -1043,6 +1109,7 @@ encodeURIComponent(link),
 );
 
 
+
 }
 
 
@@ -1052,9 +1119,7 @@ encodeURIComponent(link),
 
 
 
-// ===============================
 // WHATSAPP SHARE
-// ===============================
 
 
 function shareWhatsApp(name){
@@ -1097,6 +1162,7 @@ encodeURIComponent(text),
 );
 
 
+
 }
 
 
@@ -1106,9 +1172,7 @@ encodeURIComponent(text),
 
 
 
-// ===============================
 // COPY LINK
-// ===============================
 
 
 function copyProductLink(name){
@@ -1131,6 +1195,7 @@ alert(
 );
 
 
+
 }
 
 
@@ -1139,9 +1204,8 @@ alert(
 
 
 
-// ===============================
+
 // ESCAPE TEXT
-// ===============================
 
 
 function escapeText(value){
@@ -1163,9 +1227,7 @@ return String(value || "")
 
 
 
-// ===============================
 // SEARCH
-// ===============================
 
 
 document
@@ -1219,12 +1281,16 @@ displayProducts(result);
 
 
 
+
+
 // START
 
 loadProducts();
 
 
+
 </script>
+
 
 
 
@@ -1244,9 +1310,14 @@ box-shadow:0 3px 12px rgba(0,0,0,.10);
 ">
 
 
+
 <h2>
+
 ❤️ SR Shopping BD-তে আসার জন্য ধন্যবাদ
+
 </h2>
+
+
 
 
 <p style="
@@ -1259,6 +1330,7 @@ color:#555;
 পণ্যগুলো দেখার জন্য আন্তরিকভাবে কৃতজ্ঞ।
 
 </p>
+
 
 
 
@@ -1307,6 +1379,7 @@ font-size:22px;
 
 
 
+
 <p style="
 font-size:18px;
 font-weight:bold;
@@ -1317,11 +1390,16 @@ font-weight:bold;
 </p>
 
 
+
 </section>
 
 
 
+
+
 </div>
+
+
 
 
 
