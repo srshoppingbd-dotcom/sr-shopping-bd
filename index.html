@@ -34,7 +34,6 @@ color:#222;
 
 
 
-
 /* =========================
 COVER PHOTO
 ========================= */
@@ -129,12 +128,20 @@ transform:translateX(100%);
 
 
 
-/* CHANGE ONLY THIS TEXT */
+
+/* =========================
+CHANGE RUNNING TEXT HERE
+========================= */
 
 
-.message-text::after{
+.running-text{
 
-content:"🔥 এখানে আপনার অফার / ঘোষণা লিখুন 🔥";
+}
+
+
+.running-text::after{
+
+content:"🔥 SR Shopping BD-তে আপনাকে স্বাগতম।। নিচে সকল পণ্য দেখতে স্ক্রল করুন 🔥";
 
 }
 
@@ -165,7 +172,6 @@ text-align:center;
 
 
 
-
 .bismillah{
 
 font-size:18px;
@@ -179,6 +185,7 @@ direction:rtl;
 white-space:nowrap;
 
 }
+
 
 
 
@@ -196,6 +203,7 @@ margin-top:5px;
 
 
 
+
 .kalima{
 
 font-size:15px;
@@ -205,6 +213,7 @@ font-weight:bold;
 margin-top:6px;
 
 }
+
 
 
 
@@ -237,7 +246,7 @@ margin:12px 10px;
 
 padding:15px;
 
-background:#fff;
+background:white;
 
 border:2px solid #111;
 
@@ -319,13 +328,7 @@ grid-template-columns:repeat(2,1fr);
 gap:12px;
 
 }
-
-
-
-
-
-
-/* =========================
+   /* =========================
 PRODUCT CARD
 ========================= */
 
@@ -366,8 +369,81 @@ justify-content:center;
 
 overflow:hidden;
 
+padding:10px;
+
 }
 
+
+
+
+
+/* IMAGE DEFAULT SIZE */
+
+.product-image img{
+
+max-width:100%;
+
+max-height:100%;
+
+width:auto;
+
+height:auto;
+
+object-fit:contain;
+
+display:block;
+
+transform:scale(1);
+
+transition:.3s ease;
+
+}
+
+
+
+
+
+
+/* ZOOM CONTROL */
+
+
+.zoom-controls{
+
+display:flex;
+
+gap:5px;
+
+padding:6px 10px;
+
+}
+
+
+
+.zoom-controls button{
+
+flex:1;
+
+height:34px;
+
+border:none;
+
+border-radius:8px;
+
+background:#111;
+
+color:white;
+
+font-size:14px;
+
+font-weight:bold;
+
+}
+
+
+
+
+
+/* PRODUCT INFO */
 
 
 .product-info{
@@ -381,6 +457,7 @@ flex-direction:column;
 flex:1;
 
 }
+
 
 
 
@@ -438,6 +515,8 @@ align-items:center;
 
 
 
+
+
 /* ORDER NOW BUTTON */
 
 
@@ -468,7 +547,10 @@ box-shadow:0 4px 10px rgba(0,0,0,.25);
 
 
 
-/* SHARE BUTTONS */
+
+
+
+/* SHARE BUTTON */
 
 
 .share-buttons{
@@ -506,6 +588,7 @@ font-weight:bold;
 
 
 
+
 .facebook{
 
 background:#1877f2;
@@ -513,11 +596,13 @@ background:#1877f2;
 }
 
 
+
 .whatsapp{
 
 background:#25d366;
 
 }
+
 
 
 .copy{
@@ -531,10 +616,7 @@ background:#555;
 
 
 
-
-/* =========================
-THANK YOU SECTION
-========================= */
+/* THANK YOU SECTION */
 
 
 .thank-section{
@@ -557,11 +639,15 @@ box-shadow:0 3px 12px rgba(0,0,0,.12);
 
 
 
+
+
 .thank-section h2{
 
 font-size:26px;
 
 }
+
+
 
 
 
@@ -577,9 +663,9 @@ line-height:1.8;
 
 
 
-/* =========================
-HADITH BOX
-========================= */
+
+
+/* HADITH BOX */
 
 
 .islamic-message-box{
@@ -595,6 +681,7 @@ border-radius:15px;
 overflow:hidden;
 
 }
+
 
 
 
@@ -618,6 +705,7 @@ font-weight:bold;
 
 
 
+
 .islamic-content{
 
 padding:18px;
@@ -629,309 +717,7 @@ line-height:1.8;
 text-align:justify;
 
 }
-
-
-
-
-
-
-/* =========================
-FOOTER + RATING
-========================= */
-
-
-.footer-box{
-
-margin:25px 10px;
-
-padding:25px 15px;
-
-background:white;
-
-border:2px solid #111;
-
-border-radius:15px;
-
-text-align:center;
-
-}
-
-
-
-
-.footer-brand{
-
-font-size:25px;
-
-font-weight:bold;
-
-}
-
-
-
-
-
-.rating-title{
-
-font-size:16px;
-
-margin-top:15px;
-
-}
-
-
-
-
-
-.stars{
-
-font-size:30px;
-
-letter-spacing:5px;
-
-color:#d4af37;
-
-cursor:pointer;
-
-}
-
-
-
-
-
-.rating-result{
-
-font-size:16px;
-
-font-weight:bold;
-
-margin-top:8px;
-
-}
-
-
-
-
-.call-button{
-
-display:inline-block;
-
-margin-top:15px;
-
-padding:13px 35px;
-
-background:#111;
-
-color:white;
-
-border:2px solid #d4af37;
-
-border-radius:12px;
-
-text-decoration:none;
-
-font-size:18px;
-
-font-weight:bold;
-
-}
-
-
-
-
-
-.footer-hafiz{
-
-margin-top:12px;
-
-font-size:21px;
-
-font-weight:bold;
-
-text-align:center;
-
-}
-
-
-
-@media(max-width:600px){
-
-.product-image{
-
-height:190px;
-
-}
-
-
-.product-name{
-
-font-size:17px;
-
-}
-
-
-.product-description{
-
-font-size:13px;
-
-}
-
-
-.order-button{
-
-font-size:16px;
-
-}
-
-}
-
-
-
-
-
-
-</style>
-
-
-</head>
-
-
-<body>
-
-
-
-<header class="cover-header">
-
-<img src="cover.jpg">
-
-</header>
-
-
-
-
-
-<!-- RUNNING MESSAGE EDIT HERE -->
-
-
-<div class="running-box">
-
-
-<div class="running-text">
-
-
-🔥 এখানে আপনার অফার / ঘোষণা লিখুন 🔥
-
-
-</div>
-
-
-</div>
-
-
-<!-- END RUNNING MESSAGE -->
-
-
-
-
-
-<section class="bismillah-box">
-
-
-<div class="bismillah">
-
-بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
-
-</div>
-
-
-<div class="bangla-bismillah">
-
-বিসমিল্লাহির রহমানির রহিম
-
-</div>
-
-
-
-<div class="kalima">
-
-লা ইলাহা ইল্লাল্লাহু মুহাম্মাদুর রাসুলুল্লাহ (সঃ)
-
-</div>
-
-
-
-<div class="allah-vorsa">
-
-🤲 আল্লাহ ভরসা 🤲
-
-</div>
-
-
-</section>
-
-
-
-
-<section class="shop-title">
-
-
-<h1>
-
-🛍️ SR Shopping BD
-
-</h1>
-
-
-</section>
-
-
-
-
-<div class="search-box">
-
-
-<input id="searchInput" placeholder="🔍 Search Product...">
-
-
-</div>
-
-
-
-
-<div class="container">
-
-
-<div id="loading" style="text-align:center;padding:25px;">
-
-Image Loading Now...
-
-</div>
-
-
-<div id="products" class="products"></div>
-.product-image img{
-
-width:100%;
-
-height:100%;
-
-object-fit:contain;
-
-}
-
-
-
-.loading-image{
-
-font-size:14px;
-
-color:#888;
-
-}
-
-
-   
-<script>
+   <script>
 
 
 const API_URL =
@@ -946,10 +732,6 @@ let allProducts=[];
 
 
 
-
-// LOAD PRODUCTS
-
-
 function loadProducts(){
 
 
@@ -960,7 +742,6 @@ let callbackName="productsCallback_"+Date.now();
 
 
 window[callbackName]=function(result){
-
 
 
 delete window[callbackName];
@@ -983,17 +764,6 @@ displayProducts(allProducts);
 
 
 }
-
-else{
-
-
-document.getElementById("products").innerHTML=
-
-"<p style='text-align:center'>Product পাওয়া যায়নি</p>";
-
-
-}
-
 
 
 };
@@ -1036,18 +806,14 @@ document.body.appendChild(script);
 
 
 
-// DISPLAY PRODUCTS
-
 
 function displayProducts(products){
-
 
 
 let box=document.getElementById("products");
 
 
 box.innerHTML="";
-
 
 
 
@@ -1074,11 +840,11 @@ imageURL=convertImageURL(product.image1);
 
 
 
-
 let card=document.createElement("div");
 
 
 card.className="product-card";
+
 
 
 
@@ -1097,11 +863,14 @@ Image Loading Now...
 
 
 
+
 <img
+
+class="zoom-image"
 
 src="${imageURL}"
 
-style="display:none;"
+style="display:none"
 
 onload="
 
@@ -1111,13 +880,37 @@ this.style.display='block';
 
 "
 
-onerror="
-
-this.previousElementSibling.innerHTML='Image Error';
-
-"
-
 >
+
+
+
+</div>
+
+
+
+
+<div class="zoom-controls">
+
+
+<button onclick="zoomOut(this)">
+
+−
+
+</button>
+
+
+<button onclick="resetZoom(this)">
+
+Reset
+
+</button>
+
+
+<button onclick="zoomIn(this)">
+
++
+
+</button>
 
 
 </div>
@@ -1162,7 +955,6 @@ ${product.description || ""}
 
 
 
-
 <button
 
 class="order-button"
@@ -1188,8 +980,8 @@ onclick="orderProduct(
 
 
 
-
 <div class="share-buttons">
+
 
 
 <button
@@ -1208,6 +1000,7 @@ onclick="shareFacebook('${escapeText(product.name)}')"
 
 
 
+
 <button
 
 class="whatsapp"
@@ -1219,6 +1012,7 @@ onclick="shareWhatsApp('${escapeText(product.name)}')"
 🟢 WhatsApp
 
 </button>
+
 
 
 
@@ -1269,7 +1063,8 @@ box.appendChild(card);
 
 
 
-// GOOGLE DRIVE IMAGE
+
+// IMAGE CONVERTER
 
 
 function convertImageURL(url){
@@ -1300,13 +1095,7 @@ if(match && match[1]){
 
 id=match[1];
 
-
 }
-
-
-
-
-
 
 
 if(!id){
@@ -1330,8 +1119,6 @@ id=match[1];
 
 
 
-
-
 if(id){
 
 
@@ -1347,6 +1134,110 @@ return url;
 
 }
 
+
+
+
+
+
+// =========================
+// ZOOM SYSTEM
+// =========================
+
+
+function zoomIn(button){
+
+
+let img=
+
+button.parentElement.parentElement.querySelector(".zoom-image");
+
+
+
+let scale=
+
+Number(img.dataset.scale || 1);
+
+
+
+if(scale < 2.5){
+
+scale +=0.2;
+
+}
+
+
+
+img.dataset.scale=scale;
+
+
+img.style.transform=
+
+"scale("+scale+")";
+
+
+}
+
+
+
+
+
+
+
+function zoomOut(button){
+
+
+let img=
+
+button.parentElement.parentElement.querySelector(".zoom-image");
+
+
+
+let scale=
+
+Number(img.dataset.scale || 1);
+
+
+
+if(scale > 1){
+
+scale -=0.2;
+
+}
+
+
+
+img.dataset.scale=scale;
+
+
+img.style.transform=
+
+"scale("+scale+")";
+
+
+}
+
+
+
+
+
+
+
+function resetZoom(button){
+
+
+let img=
+
+button.parentElement.parentElement.querySelector(".zoom-image");
+
+
+
+img.dataset.scale=1;
+
+
+img.style.transform="scale(1)";
+
+
+}
 
 
 
@@ -1387,12 +1278,10 @@ encodeURIComponent(image);
 
 
 
-
 // PRODUCT LINK
 
 
 function getProductLink(name){
-
 
 
 let baseUrl=
@@ -1400,7 +1289,6 @@ let baseUrl=
 window.location.origin+
 
 window.location.pathname;
-
 
 
 
@@ -1413,7 +1301,6 @@ baseUrl.substring(
 baseUrl.lastIndexOf("/")+1
 
 );
-
 
 
 
@@ -1432,8 +1319,7 @@ encodeURIComponent(name);
 
 
 
-
-// FACEBOOK SHARE
+// FACEBOOK
 
 
 function shareFacebook(name){
@@ -1461,12 +1347,10 @@ encodeURIComponent(link),
 
 
 
-
-// WHATSAPP SHARE
+// WHATSAPP
 
 
 function shareWhatsApp(name){
-
 
 
 let link=getProductLink(name);
@@ -1505,11 +1389,10 @@ encodeURIComponent(text),
 
 
 
-// COPY LINK
+// COPY
 
 
 function copyProductLink(name){
-
 
 
 let link=getProductLink(name);
@@ -1523,7 +1406,6 @@ navigator.clipboard.writeText(link);
 alert("Product Link Copy হয়েছে");
 
 
-
 }
 
 
@@ -1531,8 +1413,7 @@ alert("Product Link Copy হয়েছে");
 
 
 
-
-// ESCAPE TEXT
+// ESCAPE
 
 
 function escapeText(value){
@@ -1546,8 +1427,6 @@ return String(value || "")
 
 
 }
-
-
 
 
 
@@ -1568,7 +1447,6 @@ document
 function(){
 
 
-
 let text=this.value.toLowerCase();
 
 
@@ -1578,13 +1456,11 @@ let result=
 allProducts.filter(function(item){
 
 
-
 return String(item.name || "")
 
 .toLowerCase()
 
 .includes(text);
-
 
 
 });
@@ -1605,16 +1481,14 @@ displayProducts(result);
 
 
 
-// START
-
-
 loadProducts();
-
 
 
 </script>
 
-   <!-- THANK YOU SECTION -->
+   
+
+<!-- THANK YOU SECTION -->
 
 
 <section class="thank-section">
@@ -1656,12 +1530,14 @@ loadProducts();
 
 
 
-<!-- ============================= -->
-<!-- HADITH TEXT EDIT HERE -->
-<!-- ============================= -->
+
+<!-- =========================
+HADITH SECTION
+========================= -->
 
 
 <section class="islamic-message-box">
+
 
 
 <div class="islamic-title">
@@ -1673,8 +1549,11 @@ loadProducts();
 
 
 
+
 <div class="islamic-content">
 
+
+<!-- HADITH TEXT EDIT HERE -->
 
 
 যখন কোনো কাফের বা পাপিষ্ঠ বান্দার দুনিয়া থেকে বিদায় এবং আখিরাতের যাত্রার সময় উপস্থিত হয়, তখন আকাশ থেকে কালো চেহারার হিংস্র ফেরেশতারা অবতীর্ণ হন। অতঃপর মালাকুল মউত (আজরাঈল) তার মাথার কাছে এসে বসেন এবং বলেন, 'হে অপবিত্র আত্মা! আল্লাহর অসন্তুষ্টি ও গজবের দিকে বের হয়ে এসো।' তখন তার আত্মা শরীরের সমস্ত রগ ও শিরা-উপশিরার ভেতরে লুকিয়ে যাওয়ার চেষ্টা করে। তখন ফেরেশতা তার আত্মাকে শরীর থেকে এমন প্রচণ্ড শক্তিতে টেনে বের করেন, যেমন ভেজা পশমের ভেতর থেকে অনেকগুলো কাঁটাযুক্ত লোহার শিক টেনে বের করা হয়। (যার ফলে তার শরীরের সমস্ত শিরা-উপশিরা ও রগ ছিঁড়ে ছিন্নভিন্ন হয়ে যায়)।
@@ -1688,13 +1567,17 @@ loadProducts();
 হাদিসের গ্রন্থ: সুনানে আবু দাউদ, মুসনাদে আহমাদ।
 
 
+
 <br>
+
 
 
 হাদিস নম্বর: সুনানে আবু দাউদ, হাদিস নং- ৪৭৫৩ (মুসনাদে আহমাদ, হাদিস নং- ১৮৫৩৪)।
 
 
+
 <br>
+
 
 
 হাদীসটির মান সহীহ (বিশুদ্ধ)।
@@ -1706,13 +1589,10 @@ loadProducts();
 
 
 
+
 হাদিসটি পড়ার জন্য আপনাকে ধন্যবাদ।
 
 
-
-<!-- ============================= -->
-<!-- END HADITH TEXT -->
-<!-- ============================= -->
 
 
 
@@ -1729,10 +1609,9 @@ loadProducts();
 
 
 
-<!-- ============================= -->
-<!-- FOOTER + RATING SECTION -->
-<!-- ============================= -->
-
+<!-- =========================
+FOOTER + RATING
+========================= -->
 
 
 <section class="footer-box">
@@ -1752,7 +1631,6 @@ loadProducts();
 
 
 
-
 <div class="rating-title">
 
 আপনার মতামত দিন
@@ -1764,13 +1642,18 @@ loadProducts();
 
 
 
-<!-- RATING SECTION -->
+<div class="stars" id="stars">
 
 
-<div class="stars">
+<span onclick="setRating(1)">★</span>
 
+<span onclick="setRating(2)">★</span>
 
-⭐ ⭐ ⭐ ⭐ ⭐
+<span onclick="setRating(3)">★</span>
+
+<span onclick="setRating(4)">★</span>
+
+<span onclick="setRating(5)">★</span>
 
 
 </div>
@@ -1778,11 +1661,23 @@ loadProducts();
 
 
 
-<div class="rating-result">
 
-5.0 / 5 Rating
+
+<div class="rating-result" id="ratingResult">
+
+0 / 5 Rating
 
 </div>
+
+
+
+
+<div class="rating-percent" id="ratingPercent">
+
+0% Positive Rating
+
+</div>
+
 
 
 
@@ -1813,8 +1708,120 @@ class="call-button">
 
 
 
-
 </section>
+
+
+
+
+
+
+
+
+<script>
+
+
+// =========================
+// RATING SYSTEM
+// =========================
+
+
+
+function setRating(number){
+
+
+
+let stars=document.querySelectorAll("#stars span");
+
+
+
+stars.forEach(function(star,index){
+
+
+
+if(index < number){
+
+
+star.style.color="#d4af37";
+
+
+}
+
+else{
+
+
+star.style.color="#ccc";
+
+
+}
+
+
+
+});
+
+
+
+
+
+
+document.getElementById("ratingResult").innerHTML=
+
+number+" / 5 Rating";
+
+
+
+
+
+
+document.getElementById("ratingPercent").innerHTML=
+
+(number*20)+"% Positive Rating";
+
+
+
+
+
+localStorage.setItem(
+
+"SR_Shopping_Rating",
+
+number
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+let savedRating=
+
+localStorage.getItem(
+
+"SR_Shopping_Rating"
+
+);
+
+
+
+
+
+if(savedRating){
+
+
+setRating(Number(savedRating));
+
+
+}
+
+
+
+</script>
+
 
 
 
@@ -1828,4 +1835,3 @@ class="call-button">
 
 
 </html>
-   
