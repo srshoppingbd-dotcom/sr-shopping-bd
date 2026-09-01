@@ -8,7 +8,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
 <title>SR Shopping BD</title>
 
 
@@ -33,11 +32,7 @@ color:#222;
 }
 
 
-
-/* =========================
-COVER PHOTO
-========================= */
-
+/* COVER */
 
 .cover-header{
 
@@ -45,7 +40,7 @@ width:100%;
 
 overflow:hidden;
 
-background:white;
+background:#fff;
 
 }
 
@@ -54,25 +49,22 @@ background:white;
 
 width:100%;
 
+height:auto;
+
 display:block;
 
 }
 
 
 
-
-
-
-/* =========================
-RUNNING MESSAGE EDIT HERE
-========================= */
+/* RUNNING MESSAGE */
 
 
 .running-box{
 
 margin:8px 10px;
 
-height:40px;
+height:42px;
 
 background:#111;
 
@@ -100,14 +92,13 @@ font-weight:bold;
 
 white-space:nowrap;
 
-animation:moveText 20s linear infinite;
+animation:scrollText 20s linear infinite;
 
 }
 
 
 
-@keyframes moveText{
-
+@keyframes scrollText{
 
 from{
 
@@ -115,43 +106,17 @@ transform:translateX(-100%);
 
 }
 
-
 to{
 
 transform:translateX(100%);
 
 }
 
-
 }
 
 
 
-
-
-/* =========================
-CHANGE RUNNING TEXT HERE
-========================= */
-
-
-.running-text{
-
-}
-
-
-.running-text::after{
-
-content:"🔥 SR Shopping BD-তে আপনাকে স্বাগতম।। নিচে সকল পণ্য দেখতে স্ক্রল করুন 🔥";
-
-}
-
-
-
-
-
-/* =========================
-BISMILLAH SECTION
-========================= */
+/* BISMILLAH */
 
 
 .bismillah-box{
@@ -188,7 +153,6 @@ white-space:nowrap;
 
 
 
-
 .bangla-bismillah{
 
 font-size:16px;
@@ -203,7 +167,6 @@ margin-top:5px;
 
 
 
-
 .kalima{
 
 font-size:15px;
@@ -213,7 +176,6 @@ font-weight:bold;
 margin-top:6px;
 
 }
-
 
 
 
@@ -232,12 +194,7 @@ margin-top:8px;
 
 
 
-
-
-
-/* =========================
-SHOP TITLE
-========================= */
+/* SHOP TITLE */
 
 
 .shop-title{
@@ -246,7 +203,7 @@ margin:12px 10px;
 
 padding:15px;
 
-background:white;
+background:#fff;
 
 border:2px solid #111;
 
@@ -269,11 +226,7 @@ font-size:28px;
 
 
 
-
-
-/* =========================
-SEARCH
-========================= */
+/* SEARCH */
 
 
 .search-box{
@@ -290,11 +243,11 @@ width:100%;
 
 padding:15px;
 
+font-size:17px;
+
 border-radius:12px;
 
 border:1px solid #ccc;
-
-font-size:17px;
 
 }
 
@@ -302,9 +255,7 @@ font-size:17px;
 
 
 
-/* =========================
-PRODUCT GRID
-========================= */
+/* PRODUCT CONTAINER */
 
 
 .container{
@@ -328,9 +279,10 @@ grid-template-columns:repeat(2,1fr);
 gap:12px;
 
 }
-   /* =========================
-PRODUCT CARD
-========================= */
+
+
+
+/* PRODUCT CARD */
 
 
 .product-card{
@@ -354,30 +306,27 @@ height:100%;
 
 
 
+/* IMAGE FIX */
 
 .product-image{
 
 height:210px;
 
-background:white;
+background:#fff;
 
 display:flex;
 
-align-items:center;
-
 justify-content:center;
+
+align-items:center;
 
 overflow:hidden;
 
-padding:10px;
+position:relative;
 
 }
 
 
-
-
-
-/* IMAGE DEFAULT SIZE */
 
 .product-image img{
 
@@ -393,47 +342,41 @@ object-fit:contain;
 
 display:block;
 
-transform:scale(1);
-
-transition:.3s ease;
-
 }
 
 
 
+/* IMAGE ZOOM BUTTON */
 
 
+.zoom-control{
 
-/* ZOOM CONTROL */
+position:absolute;
 
+bottom:5px;
 
-.zoom-controls{
+right:5px;
 
 display:flex;
 
-gap:5px;
-
-padding:6px 10px;
+gap:3px;
 
 }
 
 
+.zoom-control button{
 
-.zoom-controls button{
+width:30px;
 
-flex:1;
-
-height:34px;
+height:30px;
 
 border:none;
 
-border-radius:8px;
+border-radius:50%;
 
 background:#111;
 
 color:white;
-
-font-size:14px;
 
 font-weight:bold;
 
@@ -443,7 +386,19 @@ font-weight:bold;
 
 
 
-/* PRODUCT INFO */
+.loading-image{
+
+font-size:14px;
+
+color:#888;
+
+text-align:center;
+
+}
+
+
+
+/* PRODUCT INFORMATION */
 
 
 .product-info{
@@ -460,23 +415,17 @@ flex:1;
 
 
 
-
-
 .product-name{
 
-font-size:18px;
+font-size:19px;
 
 font-weight:bold;
 
 line-height:1.3;
 
-height:50px;
-
-overflow:hidden;
+min-height:50px;
 
 }
-
-
 
 
 
@@ -488,23 +437,19 @@ color:#666;
 
 line-height:1.5;
 
-flex:1;
-
 min-height:90px;
 
 }
 
 
 
-
-
 .product-price{
 
-font-size:22px;
+font-size:23px;
 
 font-weight:bold;
 
-height:40px;
+height:38px;
 
 display:flex;
 
@@ -514,17 +459,14 @@ align-items:center;
 
 
 
-
-
-
-/* ORDER NOW BUTTON */
+/* ORDER BUTTON */
 
 
 .order-button{
 
 width:100%;
 
-height:50px;
+height:52px;
 
 background:linear-gradient(135deg,#111,#333);
 
@@ -532,21 +474,17 @@ color:white;
 
 border:2px solid #d4af37;
 
-border-radius:12px;
+border-radius:14px;
 
 font-size:18px;
 
 font-weight:bold;
 
-margin-top:10px;
+margin-top:auto;
 
-box-shadow:0 4px 10px rgba(0,0,0,.25);
+box-shadow:0 5px 12px rgba(0,0,0,.25);
 
 }
-
-
-
-
 
 
 
@@ -557,11 +495,11 @@ box-shadow:0 4px 10px rgba(0,0,0,.25);
 
 display:flex;
 
-gap:5px;
+gap:6px;
 
-margin-top:8px;
+margin-top:10px;
 
-height:36px;
+height:38px;
 
 }
 
@@ -571,22 +509,17 @@ height:36px;
 
 flex:1;
 
-height:36px;
-
 border:none;
 
-border-radius:8px;
+border-radius:9px;
 
 color:white;
 
-font-size:11px;
+font-size:12px;
 
 font-weight:bold;
 
 }
-
-
-
 
 
 .facebook{
@@ -596,7 +529,6 @@ background:#1877f2;
 }
 
 
-
 .whatsapp{
 
 background:#25d366;
@@ -604,26 +536,19 @@ background:#25d366;
 }
 
 
-
 .copy{
 
 background:#555;
 
 }
-
-
-
-
-
-
-/* THANK YOU SECTION */
+   /* THANK YOU SECTION */
 
 
 .thank-section{
 
 margin:30px 10px;
 
-padding:20px 15px;
+padding:25px 15px;
 
 background:white;
 
@@ -639,15 +564,11 @@ box-shadow:0 3px 12px rgba(0,0,0,.12);
 
 
 
-
-
 .thank-section h2{
 
-font-size:26px;
+font-size:27px;
 
 }
-
-
 
 
 
@@ -663,8 +584,6 @@ line-height:1.8;
 
 
 
-
-
 /* HADITH BOX */
 
 
@@ -672,17 +591,15 @@ line-height:1.8;
 
 margin:25px 10px;
 
-background:white;
-
 border:2px solid green;
 
 border-radius:15px;
 
 overflow:hidden;
 
+background:white;
+
 }
-
-
 
 
 
@@ -692,11 +609,58 @@ background:green;
 
 color:white;
 
+text-align:center;
+
+font-size:22px;
+
+font-weight:bold;
+
 padding:12px;
+
+}
+
+
+
+.islamic-content{
+
+padding:20px;
+
+font-size:16px;
+
+line-height:1.8;
+
+text-align:justify;
+
+}
+
+
+
+
+
+/* FOOTER */
+
+
+.footer-box{
+
+margin:25px 10px;
+
+padding:25px;
+
+background:white;
+
+border:2px solid #111;
+
+border-radius:15px;
 
 text-align:center;
 
-font-size:21px;
+}
+
+
+
+.footer-brand{
+
+font-size:24px;
 
 font-weight:bold;
 
@@ -706,21 +670,314 @@ font-weight:bold;
 
 
 
-.islamic-content{
+/* RATING */
 
-padding:18px;
+
+.rating-title{
+
+font-size:17px;
+
+margin-top:15px;
+
+font-weight:bold;
+
+}
+
+
+
+.stars{
+
+font-size:35px;
+
+letter-spacing:5px;
+
+cursor:pointer;
+
+}
+
+
+
+.stars span{
+
+color:#ccc;
+
+}
+
+
+
+.stars span.active{
+
+color:#d4af37;
+
+}
+
+
+
+.rating-result{
+
+font-size:16px;
+
+font-weight:bold;
+
+margin-top:8px;
+
+}
+
+
+
+.rating-percent{
 
 font-size:15px;
 
-line-height:1.8;
+color:green;
 
-text-align:justify;
+font-weight:bold;
+
+margin-top:5px;
 
 }
-   <script>
 
 
-const API_URL =
+
+
+
+.call-button{
+
+display:inline-block;
+
+margin-top:15px;
+
+padding:14px 35px;
+
+background:#111;
+
+color:white;
+
+border:2px solid #d4af37;
+
+border-radius:14px;
+
+font-size:18px;
+
+font-weight:bold;
+
+text-decoration:none;
+
+}
+
+
+
+
+
+.footer-hafiz{
+
+margin-top:8px;
+
+font-size:21px;
+
+font-weight:bold;
+
+text-align:center;
+
+}
+
+
+
+
+
+@media(max-width:600px){
+
+
+.product-image{
+
+height:190px;
+
+}
+
+
+
+.product-name{
+
+font-size:17px;
+
+}
+
+
+
+.product-description{
+
+font-size:13px;
+
+}
+
+
+
+.product-price{
+
+font-size:21px;
+
+}
+
+
+
+.order-button{
+
+font-size:16px;
+
+}
+
+
+}
+
+
+
+
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+
+
+<!-- COVER PHOTO -->
+
+
+<header class="cover-header">
+
+
+<img src="cover.jpg">
+
+
+</header>
+
+
+
+
+
+
+<!-- RUNNING MESSAGE -->
+
+
+<div class="running-box">
+
+
+<div class="running-text">
+
+
+🔥 এখানে আপনার অফার / ঘোষণা লিখুন 🔥
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<!-- BISMILLAH -->
+
+
+<section class="bismillah-box">
+
+
+<div class="bismillah">
+
+بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
+
+</div>
+
+
+
+<div class="bangla-bismillah">
+
+বিসমিল্লাহির রহমানির রহিম
+
+</div>
+
+
+
+<div class="kalima">
+
+লা ইলাহা ইল্লাল্লাহু মুহাম্মাদুর রাসুলুল্লাহ (সঃ)
+
+</div>
+
+
+
+<div class="allah-vorsa">
+
+🤲 আল্লাহ ভরসা 🤲
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+<section class="shop-title">
+
+
+<h1>
+
+🛍️ SR Shopping BD
+
+</h1>
+
+
+</section>
+
+
+
+
+
+
+<div class="search-box">
+
+
+<input id="searchInput" placeholder="🔍 Search Product...">
+
+
+</div>
+
+
+
+
+
+
+<div class="container">
+
+
+<div id="loading" style="text-align:center;padding:25px;">
+
+Image Loading Now...
+
+</div>
+
+
+
+
+
+<div id="products" class="products"></div>
+
+
+
+
+
+<script>
+   const API_URL =
 
 "https://script.google.com/macros/s/AKfycbwEl4AmzhQHDoy0yMqE0_XnUJ2Yj65-PiWnP0FADuC5Wh5Y8d8fej2lUBqndiQC2bN5/exec";
 
@@ -735,8 +992,7 @@ let allProducts=[];
 function loadProducts(){
 
 
-let callbackName="productsCallback_"+Date.now();
-
+const callbackName="productsCallback_"+Date.now();
 
 
 
@@ -744,12 +1000,12 @@ let callbackName="productsCallback_"+Date.now();
 window[callbackName]=function(result){
 
 
+
 delete window[callbackName];
 
 
 
 document.getElementById("loading").style.display="none";
-
 
 
 
@@ -765,6 +1021,17 @@ displayProducts(allProducts);
 
 }
 
+else{
+
+
+document.getElementById("products").innerHTML=
+
+"<p style='text-align:center'>Product পাওয়া যায়নি</p>";
+
+
+}
+
+
 
 };
 
@@ -773,7 +1040,7 @@ displayProducts(allProducts);
 
 
 
-let script=document.createElement("script");
+const script=document.createElement("script");
 
 
 
@@ -806,11 +1073,12 @@ document.body.appendChild(script);
 
 
 
-
 function displayProducts(products){
 
 
-let box=document.getElementById("products");
+
+const box=document.getElementById("products");
+
 
 
 box.innerHTML="";
@@ -849,10 +1117,12 @@ card.className="product-card";
 
 
 
-
 card.innerHTML=`
 
+
+
 <div class="product-image">
+
 
 
 <div class="loading-image">
@@ -863,14 +1133,15 @@ Image Loading Now...
 
 
 
-
 <img
 
-class="zoom-image"
+class="product-img"
 
 src="${imageURL}"
 
-style="display:none"
+style="display:none;"
+
+data-scale="1"
 
 onload="
 
@@ -880,40 +1151,36 @@ this.style.display='block';
 
 "
 
+onerror="
+
+this.previousElementSibling.innerHTML='Image Error';
+
+"
+
 >
 
 
 
-</div>
+
+<div class="zoom-control">
 
 
+<button onclick="zoomOut(this)">−</button>
 
 
-<div class="zoom-controls">
+<button onclick="resetZoom(this)">↺</button>
 
 
-<button onclick="zoomOut(this)">
-
-−
-
-</button>
-
-
-<button onclick="resetZoom(this)">
-
-Reset
-
-</button>
-
-
-<button onclick="zoomIn(this)">
-
-+
-
-</button>
+<button onclick="zoomIn(this)">+</button>
 
 
 </div>
+
+
+
+</div>
+
+
 
 
 
@@ -955,6 +1222,7 @@ ${product.description || ""}
 
 
 
+
 <button
 
 class="order-button"
@@ -983,7 +1251,6 @@ onclick="orderProduct(
 <div class="share-buttons">
 
 
-
 <button
 
 class="facebook"
@@ -1000,7 +1267,6 @@ onclick="shareFacebook('${escapeText(product.name)}')"
 
 
 
-
 <button
 
 class="whatsapp"
@@ -1012,7 +1278,6 @@ onclick="shareWhatsApp('${escapeText(product.name)}')"
 🟢 WhatsApp
 
 </button>
-
 
 
 
@@ -1036,8 +1301,8 @@ onclick="copyProductLink('${escapeText(product.name)}')"
 
 
 
-
 </div>
+
 
 
 `;
@@ -1095,7 +1360,10 @@ if(match && match[1]){
 
 id=match[1];
 
+
 }
+
+
 
 
 if(!id){
@@ -1115,6 +1383,8 @@ id=match[1];
 
 
 }
+
+
 
 
 
@@ -1139,23 +1409,18 @@ return url;
 
 
 
-// =========================
-// ZOOM SYSTEM
-// =========================
+
+// ZOOM FUNCTIONS
 
 
-function zoomIn(button){
+function zoomIn(btn){
 
 
-let img=
-
-button.parentElement.parentElement.querySelector(".zoom-image");
+let img=btn.parentElement.parentElement.querySelector(".product-img");
 
 
 
-let scale=
-
-Number(img.dataset.scale || 1);
+let scale=Number(img.dataset.scale);
 
 
 
@@ -1170,9 +1435,7 @@ scale +=0.2;
 img.dataset.scale=scale;
 
 
-img.style.transform=
-
-"scale("+scale+")";
+img.style.transform="scale("+scale+")";
 
 
 }
@@ -1183,18 +1446,14 @@ img.style.transform=
 
 
 
-function zoomOut(button){
+function zoomOut(btn){
 
 
-let img=
-
-button.parentElement.parentElement.querySelector(".zoom-image");
+let img=btn.parentElement.parentElement.querySelector(".product-img");
 
 
 
-let scale=
-
-Number(img.dataset.scale || 1);
+let scale=Number(img.dataset.scale);
 
 
 
@@ -1209,9 +1468,7 @@ scale -=0.2;
 img.dataset.scale=scale;
 
 
-img.style.transform=
-
-"scale("+scale+")";
+img.style.transform="scale("+scale+")";
 
 
 }
@@ -1222,12 +1479,10 @@ img.style.transform=
 
 
 
-function resetZoom(button){
+function resetZoom(btn){
 
 
-let img=
-
-button.parentElement.parentElement.querySelector(".zoom-image");
+let img=btn.parentElement.parentElement.querySelector(".product-img");
 
 
 
@@ -1245,7 +1500,8 @@ img.style.transform="scale(1)";
 
 
 
-// ORDER NOW
+
+// ORDER
 
 
 function orderProduct(name,price,image){
@@ -1272,6 +1528,7 @@ encodeURIComponent(image);
 
 
 }
+
 
 
 
@@ -1347,6 +1604,7 @@ encodeURIComponent(link),
 
 
 
+
 // WHATSAPP
 
 
@@ -1389,6 +1647,7 @@ encodeURIComponent(text),
 
 
 
+
 // COPY
 
 
@@ -1407,6 +1666,7 @@ alert("Product Link Copy হয়েছে");
 
 
 }
+
 
 
 
@@ -1433,6 +1693,7 @@ return String(value || "")
 
 
 
+
 // SEARCH
 
 
@@ -1447,6 +1708,7 @@ document
 function(){
 
 
+
 let text=this.value.toLowerCase();
 
 
@@ -1456,11 +1718,13 @@ let result=
 allProducts.filter(function(item){
 
 
+
 return String(item.name || "")
 
 .toLowerCase()
 
 .includes(text);
+
 
 
 });
@@ -1480,15 +1744,16 @@ displayProducts(result);
 
 
 
-
 loadProducts();
+   // =========================
+// THANK YOU SECTION
+// =========================
 
 
 </script>
 
-   
 
-<!-- THANK YOU SECTION -->
+
 
 
 <section class="thank-section">
@@ -1532,7 +1797,7 @@ loadProducts();
 
 
 <!-- =========================
-HADITH SECTION
+ISLAMIC MESSAGE
 ========================= -->
 
 
@@ -1553,9 +1818,6 @@ HADITH SECTION
 <div class="islamic-content">
 
 
-<!-- HADITH TEXT EDIT HERE -->
-
-
 যখন কোনো কাফের বা পাপিষ্ঠ বান্দার দুনিয়া থেকে বিদায় এবং আখিরাতের যাত্রার সময় উপস্থিত হয়, তখন আকাশ থেকে কালো চেহারার হিংস্র ফেরেশতারা অবতীর্ণ হন। অতঃপর মালাকুল মউত (আজরাঈল) তার মাথার কাছে এসে বসেন এবং বলেন, 'হে অপবিত্র আত্মা! আল্লাহর অসন্তুষ্টি ও গজবের দিকে বের হয়ে এসো।' তখন তার আত্মা শরীরের সমস্ত রগ ও শিরা-উপশিরার ভেতরে লুকিয়ে যাওয়ার চেষ্টা করে। তখন ফেরেশতা তার আত্মাকে শরীর থেকে এমন প্রচণ্ড শক্তিতে টেনে বের করেন, যেমন ভেজা পশমের ভেতর থেকে অনেকগুলো কাঁটাযুক্ত লোহার শিক টেনে বের করা হয়। (যার ফলে তার শরীরের সমস্ত শিরা-উপশিরা ও রগ ছিঁড়ে ছিন্নভিন্ন হয়ে যায়)।
 
 
@@ -1563,30 +1825,23 @@ HADITH SECTION
 <br><br>
 
 
-
 হাদিসের গ্রন্থ: সুনানে আবু দাউদ, মুসনাদে আহমাদ।
 
 
-
-<br>
-
+<br><br>
 
 
 হাদিস নম্বর: সুনানে আবু দাউদ, হাদিস নং- ৪৭৫৩ (মুসনাদে আহমাদ, হাদিস নং- ১৮৫৩৪)।
 
 
-
-<br>
-
+<br><br>
 
 
 হাদীসটির মান সহীহ (বিশুদ্ধ)।
 
 
 
-
 <hr>
-
 
 
 
@@ -1595,9 +1850,7 @@ HADITH SECTION
 
 
 
-
 </div>
-
 
 
 </section>
@@ -1631,6 +1884,7 @@ FOOTER + RATING
 
 
 
+
 <div class="rating-title">
 
 আপনার মতামত দিন
@@ -1642,21 +1896,23 @@ FOOTER + RATING
 
 
 
+
 <div class="stars" id="stars">
 
 
-<span onclick="setRating(1)">★</span>
+<span onclick="setRating(1)">☆</span>
 
-<span onclick="setRating(2)">★</span>
+<span onclick="setRating(2)">☆</span>
 
-<span onclick="setRating(3)">★</span>
+<span onclick="setRating(3)">☆</span>
 
-<span onclick="setRating(4)">★</span>
+<span onclick="setRating(4)">☆</span>
 
-<span onclick="setRating(5)">★</span>
+<span onclick="setRating(5)">☆</span>
 
 
 </div>
+
 
 
 
@@ -1672,11 +1928,13 @@ FOOTER + RATING
 
 
 
+
 <div class="rating-percent" id="ratingPercent">
 
 0% Positive Rating
 
 </div>
+
 
 
 
@@ -1698,11 +1956,13 @@ class="call-button">
 
 
 
+
 <div class="footer-hafiz">
 
 আল্লাহ হাফেজ 🤲
 
 </div>
+
 
 
 
@@ -1716,14 +1976,12 @@ class="call-button">
 
 
 
+<!-- =========================
+RATING SCRIPT
+========================= -->
+
 
 <script>
-
-
-// =========================
-// RATING SYSTEM
-// =========================
-
 
 
 function setRating(number){
@@ -1741,7 +1999,10 @@ stars.forEach(function(star,index){
 if(index < number){
 
 
-star.style.color="#d4af37";
+star.innerHTML="★";
+
+
+star.classList.add("active");
 
 
 }
@@ -1749,7 +2010,10 @@ star.style.color="#d4af37";
 else{
 
 
-star.style.color="#ccc";
+star.innerHTML="☆";
+
+
+star.classList.remove("active");
 
 
 }
@@ -1797,7 +2061,6 @@ number
 
 
 
-
 let savedRating=
 
 localStorage.getItem(
@@ -1827,8 +2090,8 @@ setRating(Number(savedRating));
 
 
 
-
 </div>
+
 
 
 </body>
