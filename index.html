@@ -16,11 +16,8 @@
 
 
 *{
-
 box-sizing:border-box;
-
 }
-
 
 
 body{
@@ -38,7 +35,7 @@ color:#222;
 
 
 
-/* COVER IMAGE */
+/* COVER PHOTO */
 
 
 .cover-header{
@@ -64,23 +61,21 @@ display:block;
 
 
 
-
 /* RUNNING HEADLINE */
-
 
 .running-box{
 
 margin:8px 10px;
 
-height:38px;
+height:42px;
 
 background:#111;
 
-border-radius:10px;
+border:2px solid #d4af37;
+
+border-radius:12px;
 
 overflow:hidden;
-
-border:2px solid #d4af37;
 
 display:flex;
 
@@ -92,21 +87,22 @@ align-items:center;
 
 .running-text{
 
-white-space:nowrap;
-
 color:white;
 
-font-size:15px;
+font-size:16px;
 
 font-weight:bold;
 
-animation:moveText 25s linear infinite;
+white-space:nowrap;
+
+animation:scrollText 20s linear infinite;
 
 }
 
 
 
-@keyframes moveText{
+
+@keyframes scrollText{
 
 
 from{
@@ -126,12 +122,20 @@ transform:translateX(100%);
 }
 
 
+/* ============================= */
+/* RUNNING HEADLINE EDIT HERE */
+/* ============================= */
+
+
+.running-text::after{
+
+content:" এখানে আপনার বার্তা লিখুন ";
+
+}
 
 
 
-
-
-/* BISMILLAH */
+/* BISMILLAH SECTION */
 
 
 .bismillah-box{
@@ -140,16 +144,15 @@ margin:12px 10px;
 
 padding:12px;
 
-text-align:center;
-
 background:linear-gradient(135deg,#fff7d6,#f5fff5);
 
 border:2px solid #c9a227;
 
-border-radius:14px;
+border-radius:15px;
+
+text-align:center;
 
 }
-
 
 
 
@@ -170,10 +173,9 @@ white-space:nowrap;
 
 
 
-
 .bangla-bismillah{
 
-font-size:15px;
+font-size:16px;
 
 font-weight:bold;
 
@@ -187,13 +189,11 @@ margin-top:5px;
 
 .kalima{
 
-font-size:14px;
+font-size:15px;
 
 font-weight:bold;
 
-color:#222;
-
-margin-top:5px;
+margin-top:6px;
 
 }
 
@@ -201,13 +201,13 @@ margin-top:5px;
 
 .allah-vorsa{
 
-margin-top:8px;
-
-font-size:20px;
+font-size:22px;
 
 font-weight:bold;
 
 color:#8a2be2;
+
+margin-top:10px;
 
 }
 
@@ -230,7 +230,7 @@ background:#fff;
 
 border:2px solid #111;
 
-border-radius:14px;
+border-radius:15px;
 
 text-align:center;
 
@@ -238,14 +238,15 @@ text-align:center;
 
 
 
-
 .shop-title h1{
 
 margin:0;
 
-font-size:27px;
+font-size:28px;
 
 }
+
+
 
 
 
@@ -265,20 +266,22 @@ margin:10px;
 
 width:100%;
 
-padding:14px;
+padding:15px;
+
+font-size:17px;
 
 border-radius:12px;
 
 border:1px solid #ccc;
-
-font-size:16px;
 
 }
 
 
 
 
-/* PRODUCT GRID */
+
+
+/* PRODUCT AREA */
 
 
 .container{
@@ -305,11 +308,16 @@ gap:12px;
 
 
 
+
+
+/* PRODUCT CARD */
+
+
 .product-card{
 
 background:white;
 
-border-radius:14px;
+border-radius:15px;
 
 overflow:hidden;
 
@@ -319,25 +327,30 @@ display:flex;
 
 flex-direction:column;
 
+height:100%;
+
 }
+
+
 
 
 
 .product-image{
 
-height:200px;
+height:210px;
 
-background:#fff;
+background:white;
 
 display:flex;
 
-align-items:center;
-
 justify-content:center;
+
+align-items:center;
 
 overflow:hidden;
 
 }
+
 
 
 
@@ -349,9 +362,8 @@ height:100%;
 
 object-fit:contain;
 
-display:block;
-
 }
+
 
 
 
@@ -364,7 +376,13 @@ color:#888;
 text-align:center;
 
 }
+
+
    id="part2"
+
+
+/* PRODUCT INFORMATION */
+
 
 .product-info{
 
@@ -380,15 +398,21 @@ flex:1;
 
 
 
+
+
 .product-name{
 
-font-size:18px;
+font-size:19px;
 
 font-weight:bold;
 
-min-height:45px;
+line-height:1.3;
+
+min-height:50px;
 
 }
+
+
 
 
 
@@ -398,25 +422,26 @@ font-size:14px;
 
 color:#666;
 
-line-height:1.4;
+line-height:1.5;
 
-margin:6px 0;
-
-min-height:40px;
+min-height:90px;
 
 }
 
 
 
+
 .product-price{
 
-font-size:22px;
+font-size:23px;
 
 font-weight:bold;
 
-margin:8px 0;
+height:38px;
 
-height:32px;
+display:flex;
+
+align-items:center;
 
 }
 
@@ -431,7 +456,7 @@ height:32px;
 
 width:100%;
 
-padding:13px;
+height:52px;
 
 background:linear-gradient(135deg,#111,#333);
 
@@ -439,7 +464,7 @@ color:white;
 
 border:2px solid #d4af37;
 
-border-radius:12px;
+border-radius:14px;
 
 font-size:18px;
 
@@ -447,30 +472,31 @@ font-weight:bold;
 
 letter-spacing:.5px;
 
-cursor:pointer;
-
 margin-top:auto;
 
-box-shadow:0 4px 10px rgba(0,0,0,.25);
+box-shadow:0 5px 12px rgba(0,0,0,.25);
 
 }
 
 
 
 
-
-/* SHARE BUTTONS */
+/* SHARE BUTTON */
 
 
 .share-buttons{
 
 display:flex;
 
-gap:5px;
+gap:6px;
 
-margin-top:8px;
+margin-top:10px;
+
+height:38px;
 
 }
+
+
 
 
 
@@ -478,22 +504,17 @@ margin-top:8px;
 
 flex:1;
 
-padding:8px 2px;
-
 border:none;
 
-border-radius:8px;
+border-radius:9px;
 
 color:white;
 
-font-size:11px;
+font-size:12px;
 
 font-weight:bold;
 
-height:34px;
-
 }
-
 
 
 
@@ -524,70 +545,95 @@ background:#555;
 
 
 
-/* FOOTER MESSAGE */
+
+/* THANK YOU SECTION */
 
 
 .thank-section{
 
 margin:30px 10px;
 
-padding:20px 15px;
+padding:25px 15px;
 
 background:white;
 
-border-radius:14px;
-
 border:2px solid #111;
+
+border-radius:15px;
 
 text-align:center;
 
-box-shadow:0 3px 12px rgba(0,0,0,.10);
+box-shadow:0 3px 12px rgba(0,0,0,.12);
 
 }
 
 
 
+.thank-section h2{
+
+font-size:27px;
+
+}
+
+
+
+.thank-section p{
+
+font-size:16px;
+
+line-height:1.8;
+
+}
+
+
+
+
+
+/* HADITH SECTION */
 
 
 .islamic-message-box{
 
 margin:25px 10px;
 
-background:white;
+border:2px solid green;
 
-border:2px solid #008000;
-
-border-radius:14px;
+border-radius:15px;
 
 overflow:hidden;
 
+background:white;
+
 }
+
+
 
 
 
 .islamic-title{
 
-background:#008000;
+background:green;
 
 color:white;
 
-padding:10px;
+text-align:center;
 
-font-size:20px;
+font-size:22px;
 
 font-weight:bold;
 
-text-align:center;
+padding:12px;
 
 }
 
 
 
+
 .islamic-content{
 
-padding:18px;
+padding:20px;
 
-font-size:15px;
+font-size:16px;
 
 line-height:1.8;
 
@@ -599,27 +645,81 @@ text-align:justify;
 
 
 
-.footer-center{
+
+/* FOOTER */
+
+
+.footer-box{
+
+margin:25px 10px;
+
+padding:25px;
+
+background:white;
+
+border:2px solid #111;
+
+border-radius:15px;
 
 text-align:center;
-
-width:100%;
 
 }
 
 
 
+
+
+.footer-brand{
+
+font-size:24px;
+
+font-weight:bold;
+
+}
+
+
+
+.call-button{
+
+display:inline-block;
+
+margin-top:15px;
+
+padding:14px 35px;
+
+background:#111;
+
+color:white;
+
+border:2px solid #d4af37;
+
+border-radius:14px;
+
+font-size:18px;
+
+font-weight:bold;
+
+text-decoration:none;
+
+}
+
+
+
+
 .footer-hafiz{
 
-text-align:center;
+margin-top:8px;
 
-width:100%;
+font-size:20px;
+
+font-weight:bold;
 
 position:relative;
 
 left:6px;
 
 }
+
 
 
 
@@ -670,23 +770,21 @@ font-size:16px;
 
 
 
-
-
 </style>
 
 
 </head>
 
 
-
 <body>
+
 
 
 
 <header class="cover-header">
 
 
-<img src="cover.jpg" alt="SR Shopping BD">
+<img src="cover.jpg">
 
 
 </header>
@@ -695,23 +793,22 @@ font-size:16px;
 
 
 
-<!-- RUNNING HEADLINE START -->
+<!-- RUNNING HEADLINE EDIT HERE -->
 
 
 <div class="running-box">
 
-
 <div class="running-text">
 
-এখানে আপনার বার্তা লিখুন
+🔥 এখানে আপনার অফার / ঘোষণা লিখুন 🔥
+
+</div>
 
 </div>
 
 
-</div>
 
-
-<!-- RUNNING HEADLINE END -->
+<!-- END RUNNING HEADLINE -->
 
 
 
@@ -745,12 +842,12 @@ font-size:16px;
 
 
 
+
 <div class="allah-vorsa">
 
 🤲 আল্লাহ ভরসা 🤲
 
 </div>
-
 
 
 </section>
@@ -805,8 +902,11 @@ Image Loading Now...
 </div>
 
 
+
 <div id="products" class="products"></div>
-  <script>
+
+
+   <script>
 
 
 const API_URL =
@@ -882,6 +982,7 @@ document.getElementById("products").innerHTML =
 
 
 
+
 const script =
 
 document.createElement("script");
@@ -934,9 +1035,8 @@ document.body.appendChild(script);
 function displayProducts(products){
 
 
-const box =
 
-document.getElementById("products");
+const box = document.getElementById("products");
 
 
 
@@ -950,7 +1050,7 @@ products.forEach(function(product){
 
 
 
-let imageURL = "";
+let imageURL="";
 
 
 
@@ -966,7 +1066,9 @@ imageURL = convertImageURL(product.image1);
 
 
 
-const card = document.createElement("div");
+
+
+let card=document.createElement("div");
 
 
 card.className="product-card";
@@ -975,7 +1077,7 @@ card.className="product-card";
 
 
 
-card.innerHTML = `
+card.innerHTML=`
 
 
 
@@ -996,8 +1098,6 @@ src="${imageURL}"
 
 style="display:none;"
 
-alt="${product.name || ''}"
-
 onload="
 
 this.previousElementSibling.style.display='none';
@@ -1016,6 +1116,7 @@ this.previousElementSibling.innerHTML='Image Error';
 
 
 </div>
+
 
 
 
@@ -1055,7 +1156,6 @@ ${product.description || ""}
 
 
 
-
 <button
 
 class="order-button"
@@ -1089,11 +1189,7 @@ onclick="orderProduct(
 
 class="facebook"
 
-onclick="shareFacebook(
-
-'${escapeText(product.name)}'
-
-)"
+onclick="shareFacebook('${escapeText(product.name)}')"
 
 >
 
@@ -1109,11 +1205,7 @@ onclick="shareFacebook(
 
 class="whatsapp"
 
-onclick="shareWhatsApp(
-
-'${escapeText(product.name)}'
-
-)"
+onclick="shareWhatsApp('${escapeText(product.name)}')"
 
 >
 
@@ -1129,11 +1221,7 @@ onclick="shareWhatsApp(
 
 class="copy"
 
-onclick="copyProductLink(
-
-'${escapeText(product.name)}'
-
-)"
+onclick="copyProductLink('${escapeText(product.name)}')"
 
 >
 
@@ -1157,6 +1245,8 @@ onclick="copyProductLink(
 
 
 
+
+
 box.appendChild(card);
 
 
@@ -1173,7 +1263,7 @@ box.appendChild(card);
 
 
 
-// IMAGE CONVERTER
+// GOOGLE DRIVE IMAGE CONVERTER
 
 
 function convertImageURL(url){
@@ -1187,7 +1277,7 @@ return "";
 
 
 
-url = String(url).trim();
+url=String(url).trim();
 
 
 
@@ -1195,7 +1285,7 @@ let id="";
 
 
 
-let match = url.match(/\/file\/d\/([^\/]+)/);
+let match=url.match(/\/file\/d\/([^\/]+)/);
 
 
 
@@ -1203,6 +1293,7 @@ if(match && match[1]){
 
 
 id=match[1];
+
 
 
 }
@@ -1233,6 +1324,8 @@ id=match[1];
 
 
 
+
+
 if(id){
 
 
@@ -1244,7 +1337,7 @@ id
 
 +
 
-"&sz=w600";
+"&sz=w800";
 
 
 }
@@ -1261,7 +1354,8 @@ return url;
 
 
 
-// ORDER
+
+// ORDER PRODUCT
 
 
 function orderProduct(name,price,image){
@@ -1300,8 +1394,7 @@ encodeURIComponent(image);
 
 
 
-
-// PRODUCT LINK
+// CREATE PRODUCT LINK
 
 
 function getProductLink(name){
@@ -1347,6 +1440,9 @@ encodeURIComponent(name);
 
 
 
+// FACEBOOK SHARE
+
+
 function shareFacebook(name){
 
 
@@ -1376,6 +1472,9 @@ encodeURIComponent(link),
 
 
 
+// WHATSAPP SHARE
+
+
 function shareWhatsApp(name){
 
 
@@ -1383,7 +1482,7 @@ let link=getProductLink(name);
 
 
 
-let text =
+let text=
 
 "🛍️ SR Shopping BD\n\n"
 
@@ -1423,6 +1522,9 @@ encodeURIComponent(text),
 
 
 
+// COPY
+
+
 function copyProductLink(name){
 
 
@@ -1444,6 +1546,9 @@ alert("Product Link Copy হয়েছে");
 
 
 
+
+
+// ESCAPE
 
 
 function escapeText(value){
@@ -1483,7 +1588,8 @@ let text=this.value.toLowerCase();
 
 
 
-let result = allProducts.filter(function(item){
+let result=allProducts.filter(function(item){
+
 
 
 return String(item.name || "")
@@ -1512,7 +1618,6 @@ displayProducts(result);
 
 
 
-
 // START
 
 
@@ -1520,14 +1625,10 @@ loadProducts();
 
 
 
-</script>
+   </script>
 
 
-
-
-
-
-<!-- THANK YOU SECTION -->
+   <!-- THANK YOU SECTION -->
 
 
 <section class="thank-section">
@@ -1541,6 +1642,7 @@ loadProducts();
 
 
 
+
 <p>
 
 আপনার মূল্যবান সময় দিয়ে আমাদের পণ্যগুলো দেখার জন্য আন্তরিকভাবে কৃতজ্ঞ।
@@ -1549,12 +1651,14 @@ loadProducts();
 
 
 
+
 <p>
 
-যদি আপনার মূল্যবান সময় থেকে থাকে, তাহলে একটি হাদিস পড়ে যান। হয়তো জীবনে আরও একটি ভালো শিক্ষা অর্জন করতে পারবেন।
+যদি আপনার মূল্যবান সময় থেকে থাকে,
+তাহলে একটি হাদিস পড়ে যান।
+হয়তো জীবনে আরও একটি ভালো শিক্ষা অর্জন করতে পারবেন।
 
 </p>
-
 
 
 </section>
@@ -1565,10 +1669,11 @@ loadProducts();
 
 
 
-<!-- ISLAMIC MESSAGE -->
+<!-- ISLAMIC MESSAGE START -->
 
 
 <section class="islamic-message-box">
+
 
 
 <div class="islamic-title">
@@ -1579,10 +1684,26 @@ loadProducts();
 
 
 
+
 <div class="islamic-content">
 
 
-এখানে আপনার ইসলামিক বার্তা লিখবেন।
+<!-- HADITH TEXT EDIT HERE -->
+
+
+যখন কোনো কাফের বা পাপিষ্ঠ বান্দার দুনিয়া থেকে বিদায় এবং আখিরাতের যাত্রার সময় উপস্থিত হয়, তখন আকাশ থেকে কালো চেহারার হিংস্র ফেরেশতারা অবতীর্ণ হন। অতঃপর মালাকুল মউত (আজরাঈল) তার মাথার কাছে এসে বসেন এবং বলেন, 'হে অপবিত্র আত্মা! আল্লাহর অসন্তুষ্টি ও গজবের দিকে বের হয়ে এসো।' তখন তার আত্মা শরীরের সমস্ত রগ ও শিরা-উপশিরার ভেতরে লুকিয়ে যাওয়ার চেষ্টা করে। তখন ফেরেশতা তার আত্মাকে শরীর থেকে এমন প্রচণ্ড শক্তিতে টেনে বের করেন, যেমন ভেজা পশমের ভেতর থেকে অনেকগুলো কাঁটাযুক্ত লোহার শিক টেনে বের করা হয়। (যার ফলে তার শরীরের সমস্ত শিরা-উপশিরা ও রগ ছিঁড়ে ছিন্নভিন্ন হয়ে যায়)।
+
+
+<br><br>
+
+
+হাদিসের গ্রন্থ: সুনানে আবু দাউদ, মুসনাদে আহমাদ।  
+হাদিস নম্বর: সুনানে আবু দাউদ, হাদিস নং- ৪৭৫৩ (মুসনাদে আহমাদ, হাদিস নং- ১৮৫৩৪)।  
+হাদীসটির মান সহীহ (বিশুদ্ধ)।
+
+
+
+<!-- END HADITH TEXT -->
 
 
 </div>
@@ -1592,12 +1713,17 @@ loadProducts();
 </section>
 
 
+<!-- ISLAMIC MESSAGE END -->
 
 
 
 
 
-<div class="thank-section">
+
+
+
+<section class="footer-box">
+
 
 
 <p>
@@ -1608,27 +1734,28 @@ loadProducts();
 
 
 
-<div class="footer-center">
 
 
-<h3>
+<div class="footer-brand">
 
 🛍️ SR Shopping BD
 
-</h3>
+</div>
+
+
 
 
 
 
 <a href="tel:+8801774891525"
 
-class="order-button call-button"
-
-style="display:inline-block;width:auto;text-decoration:none;">
+class="call-button">
 
 📞 সরাসরি কল করুন
 
 </a>
+
+
 
 
 
@@ -1642,12 +1769,9 @@ style="display:inline-block;width:auto;text-decoration:none;">
 
 
 
-</div>
 
 
-
-</div>
-
+</section>
 
 
 
@@ -1655,8 +1779,10 @@ style="display:inline-block;width:auto;text-decoration:none;">
 
 
 </div>
+
 
 
 </body>
+
 
 </html>
