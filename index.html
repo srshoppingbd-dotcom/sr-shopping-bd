@@ -1014,9 +1014,15 @@ return window.location.origin
 
 function getProductLink(name){
 
-return window.location.href
-.replace("index.html","")
-.replace("#","")
+return window.location.origin
++
+window.location.pathname.replace("index.html","")
++
+"product.html?product="
++
+encodeURIComponent(name);
+
+}
 
 +
 
