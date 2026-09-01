@@ -1000,59 +1000,7 @@ encodeURIComponent(image);
 
 
 
-// ==========================================
-// PRODUCT SHARE LINK
-// ==========================================
 
-
-function getProductLink(name){
-
-
-return window.location.origin
-
-+
-
-function getProductLink(name){
-
-return window.location.origin
-+
-window.location.pathname.replace("index.html","")
-+
-"product.html?product="
-+
-encodeURIComponent(name);
-
-}
-
-+
-
-"product.html?product="
-
-+
-
-encodeURIComponent(name);
-
-}
-
-+
-
-"product.html?product="
-
-+
-
-encodeURIComponent(name);
-
-
-
-}
-
-
-
-
-
-
-
-function shareFacebook(name){
 
 
 let link =
@@ -1068,7 +1016,21 @@ name
 "\n\nঅর্ডার করতে ভিজিট করুন:\n"
 +
 link;
+// ==========================================
+// PRODUCT SHARE LINK
+// ==========================================
 
+function getProductLink(name){
+
+return window.location.origin
++
+window.location.pathname.replace("index.html","")
++
+"product.html?product="
++
+encodeURIComponent(name);
+
+}
 
 
 window.open(
