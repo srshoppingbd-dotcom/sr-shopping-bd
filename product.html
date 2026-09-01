@@ -86,7 +86,6 @@ font-size:14px;
 
 
 
-
 .container{
 
 max-width:600px;
@@ -96,7 +95,6 @@ margin:auto;
 padding:8px;
 
 }
-
 
 
 
@@ -195,7 +193,6 @@ font-size:24px;
 
 
 
-
 /* PRODUCT CARD */
 
 
@@ -215,7 +212,6 @@ box-shadow:0 3px 12px rgba(0,0,0,.12);
 
 
 
-
 /* IMAGE */
 
 
@@ -223,7 +219,7 @@ box-shadow:0 3px 12px rgba(0,0,0,.12);
 
 width:100%;
 
-height:200px;
+height:220px;
 
 background:white;
 
@@ -251,9 +247,7 @@ height:100%;
 
 object-fit:contain;
 
-transform:scaleX(1.40);
-
-transition:.3s;
+display:block;
 
 }
 
@@ -266,12 +260,12 @@ font-size:15px;
 color:#999;
 
 }
- 
 
 
 
 
-/* ZOOM BUTTON */
+
+/* ZOOM */
 
 
 .zoom-controls{
@@ -310,8 +304,7 @@ font-weight:bold;
 
 
 
-
-/* PRODUCT DETAILS */
+/* DETAILS */
 
 
 .product-name{
@@ -354,7 +347,7 @@ margin:8px 0;
 
 
 
-/* ORDER BUTTON */
+/* ORDER */
 
 
 .order-btn{
@@ -378,15 +371,7 @@ font-weight:bold;
 margin-top:8px;
 
 }
-
-
-
-
-
-/* SHARE */
-
-
-.share-buttons{
+ .share-buttons{
 
 display:flex;
 
@@ -537,7 +522,7 @@ style="display:none;"
 
 <div id="noImage" class="no-image">
 
-Image নেই
+Image Loading Now...
 
 </div>
 
@@ -589,7 +574,7 @@ Reset
 
 <div id="productName" class="product-name">
 
-লোড হচ্ছে...
+Loading...
 
 </div>
 
@@ -673,10 +658,17 @@ class="order-btn">
 
 
 </div>
+
+
+
+
+
+
 <script>
 
 
 const API_URL =
+
 "https://script.google.com/macros/s/AKfycbwEl4AmzhQHDoy0yMqE0_XnUJ2Yj65-PiWnP0FADuC5Wh5Y8d8fej2lUBqndiQC2bN5/exec";
 
 
@@ -689,7 +681,7 @@ let zoomLevel = 1;
 
 
 
-// PRODUCT NAME FROM LINK
+// GET PRODUCT NAME FROM LINK
 
 
 const params =
@@ -703,8 +695,6 @@ window.location.search
 let productNameURL =
 
 params.get("product") || "";
-
-
 
 
 
@@ -769,7 +759,6 @@ id = match[1];
 
 
 
-
 if(id){
 
 
@@ -781,7 +770,7 @@ id
 
 +
 
-"&sz=w1200";
+"&sz=w600";
 
 
 }
@@ -798,19 +787,15 @@ return url;
 
 
 
-
-
-
-// LOAD PRODUCT
+// LOAD SINGLE PRODUCT FAST
 
 
 function loadProduct(){
 
 
-
 let callbackName =
 
-"productCallback_" + Date.now();
+"singleProductCallback_" + Date.now();
 
 
 
@@ -826,48 +811,14 @@ delete window[callbackName];
 
 
 
-
-if(result && result.success){
-
+if(result && result.success && result.product){
 
 
-let products =
-
-result.products || [];
+productData = result.product;
 
 
+showProduct(result.product);
 
-
-
-
-let found =
-
-products.find(function(item){
-
-
-
-return String(item.name).trim()
-
-===
-
-String(productNameURL).trim();
-
-
-
-});
-
-
-
-
-
-
-if(found){
-
-
-productData = found;
-
-
-showProduct(found);
 
 
 }
@@ -886,12 +837,7 @@ document.getElementById("productName")
 
 
 
-}
-
-
-
 };
-
 
 
 
@@ -910,7 +856,15 @@ API_URL
 
 +
 
-"?action=products"
+"?action=singleProduct"
+
++
+
+"&name="
+
++
+
+encodeURIComponent(productNameURL)
 
 +
 
@@ -932,25 +886,15 @@ Date.now();
 
 
 
+
 document.body.appendChild(script);
 
 
 
-}
-
-
-
-
-
-
-
-
-
-// SHOW PRODUCT
-
+ }
+ // SHOW PRODUCT
 
 function showProduct(product){
-
 
 
 document.getElementById("productName")
@@ -987,18 +931,15 @@ Number(product.price || 0)
 
 
 
-// IMAGE
+// IMAGE LOAD
 
 
 if(product.image1){
 
 
-
 let img =
 
 document.getElementById("productImage");
-
-
 
 
 
@@ -1010,9 +951,7 @@ convertImageURL(product.image1);
 
 
 
-
 img.onload=function(){
-
 
 
 img.style.display="block";
@@ -1032,14 +971,11 @@ document.getElementById("noImage")
 img.onerror=function(){
 
 
-img.style.display="none";
-
-
 document.getElementById("noImage")
 
-.innerHTML=
+.innerHTML =
 
-"Image পাওয়া যায়নি";
+"Image Loading Error";
 
 
 };
@@ -1054,7 +990,8 @@ document.getElementById("noImage")
 
 
 
-// ORDER
+
+// ORDER BUTTON
 
 
 document.getElementById("orderBtn")
@@ -1161,7 +1098,6 @@ document.getElementById("productImage")
 function resetZoom(){
 
 
-
 zoomLevel = 1;
 
 
@@ -1181,19 +1117,24 @@ document.getElementById("productImage")
 
 
 
-
-// SHARE LINK
+// PRODUCT LINK
 
 
 function getProductLink(){
 
+
 return window.location.href;
+
 
 }
 
 
 
 
+
+
+
+// FACEBOOK
 
 
 document
@@ -1203,15 +1144,19 @@ document
 .onclick=function(){
 
 
+
 window.open(
 
 "https://www.facebook.com/sharer/sharer.php?u="
 
 +
 
-encodeURIComponent(getProductLink())
+encodeURIComponent(
+getProductLink()
+)
 
 );
+
 
 
 };
@@ -1223,6 +1168,9 @@ encodeURIComponent(getProductLink())
 
 
 
+// WHATSAPP
+
+
 document
 
 .querySelector(".whatsapp")
@@ -1232,6 +1180,7 @@ document
 
 
 let text =
+
 
 "🛍️ SR Shopping BD\n\n"
 
@@ -1262,6 +1211,7 @@ encodeURIComponent(text)
 );
 
 
+
 };
 
 
@@ -1269,6 +1219,9 @@ encodeURIComponent(text)
 
 
 
+
+
+// COPY
 
 
 document
@@ -1314,7 +1267,7 @@ loadProduct();
 </script>
 
 
-
 </body>
+
 
 </html>
