@@ -1016,36 +1016,30 @@ name
 "\n\nঅর্ডার করতে ভিজিট করুন:\n"
 +
 link;
+
 // ==========================================
 // PRODUCT SHARE LINK
 // ==========================================
 
 function getProductLink(name){
 
-return window.location.origin
-+
-window.location.pathname.replace("index.html","")
+let currentPath =
+window.location.href;
+
+
+let baseUrl =
+currentPath.substring(
+0,
+currentPath.lastIndexOf("/") + 1
+);
+
+
+
+return baseUrl
 +
 "product.html?product="
 +
 encodeURIComponent(name);
-
-}
-
-
-window.open(
-
-"https://www.facebook.com/sharer/sharer.php?u="
-
-+
-
-encodeURIComponent(link)
-,
-
-"_blank"
-
-);
-
 
 
 }
