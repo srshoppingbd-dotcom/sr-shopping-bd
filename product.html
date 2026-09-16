@@ -698,36 +698,43 @@ let callbackName =
 "productCallback_"+Date.now();
 
 
-
-
-
 window[callbackName]=function(result){
-
 
 
 delete window[callbackName];
 
 
+console.log(result);
+
 
 
 if(
 result &&
-result.success &&
 result.product
 ){
 
 
-productData =
-result.product;
+productData = result.product;
 
 
-showProduct(
-result.product
-);
-
+showProduct(result.product);
 
 
 }
+
+else{
+
+
+document.getElementById("productName").innerHTML =
+"Product পাওয়া যায়নি";
+
+
+}
+
+
+};
+
+
 
 else{
 
