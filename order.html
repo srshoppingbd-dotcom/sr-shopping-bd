@@ -36,7 +36,7 @@ color:white;
 
 text-align:center;
 
-padding:20px 15px;
+padding:15px;
 
 }
 
@@ -45,38 +45,40 @@ header h1{
 
 margin:0;
 
-font-size:27px;
+font-size:22px;
 
 }
 
 
 header p{
 
-margin:6px 0 0;
+margin:5px 0 0;
 
-font-size:15px;
+font-size:13px;
 
 }
-
 
 
 .container{
 
-max-width:650px;
+max-width:600px;
 
 margin:auto;
 
-padding:15px;
+padding:10px;
 
 }
 
 
-
 .back-button{
 
-display:inline-block;
+display:block;
 
-margin-bottom:15px;
+background:white;
+
+padding:12px;
+
+border-radius:12px;
 
 text-decoration:none;
 
@@ -84,117 +86,179 @@ color:#111;
 
 font-weight:bold;
 
-}
+margin-bottom:10px;
 
+text-align:center;
+
+}
 
 
 .card{
 
 background:white;
 
-border-radius:14px;
+border-radius:15px;
 
-padding:20px;
+padding:10px;
 
 box-shadow:0 3px 12px rgba(0,0,0,.10);
 
 }
 
 
-
-/* PRODUCT IMAGE */
+/* IMAGE SLIDER */
 
 .product-photo-box{
 
 width:100%;
 
-height:350px;
+height:220px;
 
-background:#fff;
+background:white;
 
 border-radius:12px;
 
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
 overflow:hidden;
 
-border:1px solid #eee;
+position:relative;
 
-margin-bottom:15px;
+border:1px solid #ddd;
 
 }
 
 
+.slider-track{
 
-.product-photo{
+display:flex;
 
-width:100%;
+height:100%;
+
+transition:.4s ease;
+
+}
+
+
+.slider-track img{
+
+min-width:100%;
 
 height:100%;
 
 object-fit:contain;
 
-display:none;
+}
+
+
+.arrow{
+
+position:absolute;
+
+top:50%;
+
+transform:translateY(-50%);
+
+width:40px;
+
+height:40px;
+
+border-radius:50%;
+
+background:#111;
+
+color:white;
+
+border:none;
+
+font-size:25px;
 
 }
 
 
-.no-image{
+.left{
 
-font-size:16px;
-
-color:#999;
+left:10px;
 
 }
 
 
-/* PRODUCT */
+.right{
+
+right:10px;
+
+}
+
+
+.dots{
+
+text-align:center;
+
+padding:5px;
+
+}
+
+
+.dot{
+
+display:inline-block;
+
+width:10px;
+
+height:10px;
+
+background:#ccc;
+
+border-radius:50%;
+
+margin:3px;
+
+}
+
+
+.dot.active{
+
+background:#d4af37;
+
+}
+
 
 .product-box{
 
-background:#f3f3f3;
+background:#f5f5f5;
 
-padding:15px;
+padding:12px;
 
 border-radius:10px;
 
-margin-bottom:20px;
+margin-top:10px;
 
 }
 
 
 .product-box h2{
 
-margin:0 0 10px;
+margin:0 0 8px;
 
-font-size:22px;
+font-size:20px;
 
 }
 
 
 .product-price{
 
-font-size:24px;
+font-size:22px;
 
 font-weight:bold;
 
 }
-
-
-
-/* FORM */
+  <style>
 
 label{
 
 display:block;
 
-margin-top:15px;
+margin-top:12px;
 
-margin-bottom:6px;
+margin-bottom:5px;
 
 font-weight:bold;
 
@@ -207,28 +271,23 @@ textarea{
 
 width:100%;
 
-padding:13px;
+padding:12px;
 
 border:1px solid #ccc;
 
 border-radius:8px;
 
-font-size:16px;
+font-size:15px;
 
 }
 
 
 textarea{
 
-min-height:90px;
-
-resize:vertical;
+min-height:80px;
 
 }
 
-
-
-/* PAYMENT */
 
 .payment-box{
 
@@ -238,7 +297,7 @@ border:1px solid #ddd;
 
 border-radius:10px;
 
-padding:15px;
+padding:12px;
 
 margin-top:15px;
 
@@ -253,7 +312,7 @@ align-items:center;
 
 gap:8px;
 
-margin:12px 0;
+margin:10px 0;
 
 }
 
@@ -268,7 +327,7 @@ border:1px solid #e91e63;
 
 border-radius:10px;
 
-padding:15px;
+padding:12px;
 
 margin-top:10px;
 
@@ -277,7 +336,7 @@ margin-top:10px;
 
 .bkash-number{
 
-font-size:20px;
+font-size:18px;
 
 font-weight:bold;
 
@@ -286,18 +345,15 @@ color:#d81b60;
 }
 
 
-
-/* SUMMARY */
-
 .summary{
 
 background:#f7f7f7;
 
-padding:15px;
+padding:12px;
 
 border-radius:10px;
 
-margin-top:20px;
+margin-top:15px;
 
 }
 
@@ -308,7 +364,7 @@ display:flex;
 
 justify-content:space-between;
 
-padding:7px 0;
+padding:6px 0;
 
 }
 
@@ -317,40 +373,34 @@ padding:7px 0;
 
 border-top:1px solid #ccc;
 
-margin-top:8px;
+padding-top:10px;
 
-padding-top:12px;
-
-font-size:21px;
+font-size:20px;
 
 font-weight:bold;
 
 }
 
 
-/* BUTTON */
-
 .confirm-button{
 
 width:100%;
 
-border:0;
+padding:15px;
+
+margin-top:15px;
+
+border:none;
 
 border-radius:10px;
-
-padding:16px;
-
-margin-top:20px;
 
 background:#111;
 
 color:white;
 
-font-size:18px;
+font-size:17px;
 
 font-weight:bold;
-
-cursor:pointer;
 
 }
 
@@ -372,13 +422,14 @@ display:none;
 
 background:white;
 
-padding:30px;
+padding:25px;
 
 border-radius:12px;
 
 text-align:center;
 
 }
+
 
 </style>
 
@@ -417,17 +468,27 @@ text-align:center;
 <div class="product-photo-box">
 
 
-<img id="productImage" class="product-photo">
+<div id="sliderTrack" class="slider-track"></div>
 
 
-<div id="noImage" class="no-image">
+<button class="arrow left" onclick="previousImage()">
 
-Product Image
+‹
+
+</button>
+
+
+<button class="arrow right" onclick="nextImage()">
+
+›
+
+</button>
+
 
 </div>
 
 
-</div>
+<div id="dots" class="dots"></div>
 
 
 
@@ -462,19 +523,7 @@ Product Name
 </label>
 
 
-<input
-
-type="number"
-
-id="quantity"
-
-value="1"
-
-min="1"
-
-required
-
->
+<input type="number" id="quantity" value="1" min="1">
 
 
 
@@ -485,17 +534,8 @@ required
 </label>
 
 
-<input
+<input type="text" id="customerName" required>
 
-type="text"
-
-id="customerName"
-
-placeholder="আপনার নাম লিখুন"
-
-required
-
->
 
 
 <label>
@@ -505,17 +545,8 @@ required
 </label>
 
 
-<input
+<input type="tel" id="phone" required>
 
-type="tel"
-
-id="phone"
-
-placeholder="01XXXXXXXXX"
-
-required
-
->
 
 
 <label>
@@ -526,7 +557,6 @@ required
 
 
 <select id="deliveryArea">
-
 
 <option value="ঢাকার ভিতরে">
 
@@ -553,35 +583,19 @@ required
 </label>
 
 
-<textarea
-
-id="address"
-
-placeholder="বাসা, রোড, এলাকা লিখুন"
-
-required
-
-></textarea>
+<textarea id="address" required></textarea>
 
 
 
 <label>
 
-Product Code (ঐচ্ছিক)
+Product Code
 
 </label>
 
 
-<input
+<input type="text" id="productCode">
 
-type="text"
-
-id="productCode"
-
-placeholder="প্রোডাক্ট কোড লিখুন"
-
->
-<!-- PAYMENT SECTION -->
 
 
 <div class="payment-box">
@@ -597,21 +611,7 @@ placeholder="প্রোডাক্ট কোড লিখুন"
 
 <div class="payment-option">
 
-
-<input
-
-type="radio"
-
-id="cod"
-
-name="payment"
-
-value="Cash on Delivery"
-
-checked
-
->
-
+<input type="radio" id="cod" name="payment" value="Cash on Delivery" checked>
 
 <label for="cod">
 
@@ -619,28 +619,12 @@ Cash on Delivery
 
 </label>
 
-
 </div>
-
-
-
 
 
 <div class="payment-option">
 
-
-<input
-
-type="radio"
-
-id="bkash"
-
-name="payment"
-
-value="bKash Send Money"
-
->
-
+<input type="radio" id="bkash" name="payment" value="bKash Send Money">
 
 <label for="bkash">
 
@@ -648,31 +632,12 @@ bKash Send Money
 
 </label>
 
-
 </div>
-
-
-
 
 
 <div id="bkashBox" class="bkash-box">
 
-
-<p>
-
-<b>bKash Send Money</b>
-
-</p>
-
-
-
-<p>
-
-bKash Number:
-
-</p>
-
-
+<p><b>bKash Number</b></p>
 
 <div class="bkash-number">
 
@@ -681,26 +646,14 @@ bKash Number:
 </div>
 
 
-
-
 <label>
 
-bKash Transaction ID *
+Transaction ID
 
 </label>
 
 
-
-<input
-
-type="text"
-
-id="transactionId"
-
-placeholder="Transaction ID লিখুন"
-
->
-
+<input id="transactionId">
 
 </div>
 
@@ -708,99 +661,50 @@ placeholder="Transaction ID লিখুন"
 </div>
 
 
-
-
-
 <label>
 
-অতিরিক্ত তথ্য (ঐচ্ছিক)
+অতিরিক্ত তথ্য
 
 </label>
 
 
-<textarea
-
-id="remarks"
-
-placeholder="প্রয়োজন হলে অতিরিক্ত তথ্য লিখুন"
-
-></textarea>
-
-
-
-
-
-
-
-<!-- SUMMARY -->
-
+<textarea id="remarks"></textarea>
 
 <div class="summary">
 
 
 <div class="summary-row">
 
+<span>পণ্যের মূল্য</span>
 
 <span>
-
-পণ্যের মূল্য
-
-</span>
-
-
-<span>
-
 ৳<span id="productTotal">0</span>
-
 </span>
-
 
 </div>
-
-
 
 
 
 <div class="summary-row">
 
+<span>ডেলিভারি চার্জ</span>
 
 <span>
-
-ডেলিভারি চার্জ
-
-</span>
-
-
-<span>
-
 ৳<span id="deliveryCharge">60</span>
-
 </span>
-
 
 </div>
-
-
 
 
 
 <div class="summary-row summary-total">
 
+<span>সর্বমোট</span>
 
 <span>
-
-সর্বমোট
-
-</span>
-
-
-<span>
-
 ৳<span id="totalPrice">0</span>
-
 </span>
 
-
 </div>
 
 
@@ -808,28 +712,14 @@ placeholder="প্রয়োজন হলে অতিরিক্ত তথ্�
 
 
 
-
-
-
-<button
-
-type="submit"
-
-class="confirm-button"
-
->
+<button type="submit" class="confirm-button">
 
 🛒 অর্ডার কনফার্ম করুন
 
 </button>
 
 
-
-
-<div id="formError" class="error">
-
-</div>
-
+<div id="formError" class="error"></div>
 
 
 </form>
@@ -842,46 +732,14 @@ class="confirm-button"
 
 
 
-
-
-
-<!-- SUCCESS -->
-
-
 <div id="success" class="success">
 
+<h2>✅ অর্ডার সফল হয়েছে!</h2>
 
-<h2>
-
-✅ অর্ডার সফল হয়েছে!
-
-</h2>
+<p>আপনার অর্ডারটি সফলভাবে গ্রহণ করা হয়েছে।</p>
 
 
-
-<p>
-
-আপনার অর্ডারটি সফলভাবে গ্রহণ করা হয়েছে।
-
-</p>
-
-
-
-<p>
-
-আমরা খুব শীঘ্রই আপনার সাথে যোগাযোগ করব।
-
-</p>
-
-
-
-<button
-
-class="confirm-button"
-
-onclick="window.location.href='index.html'"
-
->
+<button class="confirm-button" onclick="window.location.href='index.html'">
 
 আরও পণ্য দেখুন
 
@@ -889,9 +747,6 @@ onclick="window.location.href='index.html'"
 
 
 </div>
-
-
-
 
 
 
@@ -904,289 +759,142 @@ const API_URL =
 
 
 
-let dhakaDelivery = 60;
+let productName="";
+let productPrice=0;
+let images=[];
+let currentImage=0;
 
-let outsideDelivery = 120;
-
-
-let productName = "";
-
-let productPrice = 0;
-
-let productImage = "";
+let dhakaDelivery=60;
+let outsideDelivery=120;
 
 
 
-
-
-const urlParams =
-
-new URLSearchParams(
-
-window.location.search
-
-);
+const urlParams=new URLSearchParams(window.location.search);
 
 
 
-productName =
+productName=urlParams.get("product") || "";
 
-urlParams.get("product") || "";
-
-
-
-productPrice =
-
-Number(
-
-urlParams.get("price")
-
-) || 0;
+productPrice=Number(urlParams.get("price")) || 0;
 
 
 
-productImage =
-
-decodeURIComponent(
-
-urlParams.get("image") || ""
-
-);
+let imageParam=urlParams.get("image") || "";
 
 
 
+if(imageParam){
 
-
-
-
-
-function convertImageURL(url){
-
-
-if(!url){
-
-return "";
+images.push(decodeURIComponent(imageParam));
 
 }
 
 
 
-url = String(url).trim();
+document.getElementById("productName").innerHTML=productName;
 
 
-
-if(url.includes("thumbnail")){
-
-return url;
-
-}
-
-
-
-let id="";
-
-
-
-let match =
-
-url.match(/\/file\/d\/([^\/]+)/);
-
-
-
-if(match && match[1]){
-
-id=match[1];
-
-}
-
-
-
-if(!id){
-
-match =
-
-url.match(/[?&]id=([^&]+)/);
-
-
-if(match && match[1]){
-
-id=match[1];
-
-}
-
-}
-
-
-
-if(id){
-
-
-return
-
-"https://drive.google.com/thumbnail?id="
-
-+
-
-id
-
-+
-
-"&sz=w1200";
-
-
-}
-
-
-
-return url;
-
-
-}
-
-
-
-
-
-
-
-
-function showProduct(){
-
-
-document.getElementById("productName")
-
-.textContent =
-
-productName;
-
-
-
-document.getElementById("productPrice")
-
-.textContent =
+document.getElementById("productPrice").innerHTML=
 
 productPrice.toLocaleString("en-BD");
 
 
 
 
-let img =
 
-document.getElementById("productImage");
-
+function createSlider(){
 
 
-let finalImage =
+let track=document.getElementById("sliderTrack");
 
-convertImageURL(productImage);
-
-
-
-if(finalImage){
+let dots=document.getElementById("dots");
 
 
-img.src = finalImage;
+track.innerHTML="";
+
+
+images.forEach(function(url,index){
+
+
+let img=document.createElement("img");
+
+
+img.src=url;
+
+
+track.appendChild(img);
 
 
 
-img.onload=function(){
+let dot=document.createElement("span");
+
+dot.className="dot";
 
 
-img.style.display="block";
+if(index===0){
 
-
-document.getElementById("noImage")
-
-.style.display="none";
-
-
-};
-
-
-}
-
-
-updateTotal();
-
+dot.classList.add("active");
 
 }
 
 
+dots.appendChild(dot);
 
 
-
-
-
-function loadSettings(){
-
-
-let callbackName =
-
-"settings_" + Date.now();
-
-
-
-window[callbackName]=function(result){
-
-
-delete window[callbackName];
-
-
-
-if(result && result.success){
-
-
-dhakaDelivery =
-
-Number(result.settings.dhaka) || 60;
-
-
-outsideDelivery =
-
-Number(result.settings.outsideDhaka) || 120;
+});
 
 
 }
 
 
 
-updateTotal();
+
+function updateSlider(){
 
 
-};
+document.getElementById("sliderTrack").style.transform=
 
+"translateX(-"+
 
+(currentImage*100)
 
-
-let script =
-
-document.createElement("script");
-
-
-
-script.src =
-
-API_URL
-
-+
-
-"?action=settings"
-
-+
-
-"&callback="
-
-+
-
-callbackName;
-
-
-
-document.body.appendChild(script);
++"%)";
 
 
 }
 
+
+
+
+function nextImage(){
+
+
+if(currentImage < images.length-1){
+
+currentImage++;
+
+}
+
+
+updateSlider();
+
+}
+
+
+
+function previousImage(){
+
+
+if(currentImage>0){
+
+currentImage--;
+
+}
+
+
+updateSlider();
+
+}
 
 
 
@@ -1195,33 +903,20 @@ document.body.appendChild(script);
 function updateTotal(){
 
 
-let qty =
+let qty=
 
-Number(
-
-document.getElementById("quantity").value
-
-)
-
-||1;
+Number(document.getElementById("quantity").value)||1;
 
 
+let total=
 
-let productTotal =
-
-productPrice * qty;
+productPrice*qty;
 
 
 
-let area =
+let delivery=
 
-document.getElementById("deliveryArea").value;
-
-
-
-let delivery =
-
-area==="ঢাকার বাইরে"
+document.getElementById("deliveryArea").value==="ঢাকার বাইরে"
 
 ?
 
@@ -1233,531 +928,169 @@ dhakaDelivery;
 
 
 
-document.getElementById("productTotal")
+document.getElementById("productTotal").innerHTML=
 
-.textContent =
-
-productTotal.toLocaleString("en-BD");
+total.toLocaleString("en-BD");
 
 
 
-document.getElementById("deliveryCharge")
+document.getElementById("deliveryCharge").innerHTML=
 
-.textContent =
-
-delivery.toLocaleString("en-BD");
+delivery;
 
 
 
-document.getElementById("totalPrice")
+document.getElementById("totalPrice").innerHTML=
 
-.textContent =
-
-(productTotal + delivery)
-
-.toLocaleString("en-BD");
-
-
-}
-<script>
-
-
-// PAYMENT SHOW
-
-
-document
-
-.getElementById("bkash")
-
-.addEventListener(
-
-"change",
-
-function(){
-
-
-document.getElementById("bkashBox")
-
-.style.display="block";
+(total+delivery).toLocaleString("en-BD");
 
 
 }
 
-);
 
 
 
 
+document.getElementById("quantity")
 
+.addEventListener("input",updateTotal);
 
-document
 
-.getElementById("cod")
 
-.addEventListener(
+document.getElementById("deliveryArea")
 
-"change",
+.addEventListener("change",updateTotal);
 
-function(){
 
 
-document.getElementById("bkashBox")
 
-.style.display="none";
 
+document.getElementById("bkash")
 
-}
+.addEventListener("change",function(){
 
-);
-
-
-
-
-
-
-document
-
-.getElementById("quantity")
-
-.addEventListener(
-
-"input",
-
-updateTotal
-
-);
-
-
-
-
-
-document
-
-.getElementById("deliveryArea")
-
-.addEventListener(
-
-"change",
-
-updateTotal
-
-);
-
-
-
-
-
-
-
-
-
-// SUBMIT ORDER
-
-
-document
-
-.getElementById("orderForm")
-
-.addEventListener(
-
-"submit",
-
-function(e){
-
-
-e.preventDefault();
-
-
-
-
-
-let paymentMethod =
-
-
-document.querySelector(
-
-'input[name="payment"]:checked'
-
-)
-
-.value;
-
-
-
-
-
-
-let transactionId =
-
-
-document.getElementById(
-
-"transactionId"
-
-)
-
-.value.trim();
-
-
-
-
-
-
-
-if(
-
-paymentMethod === "bKash Send Money"
-
-&&
-
-!transactionId
-
-){
-
-
-document.getElementById(
-
-"formError"
-
-)
-
-.textContent =
-
-"bKash Transaction ID লিখুন।";
-
-
-return;
-
-
-}
-
-
-
-
-
-
-let customerNote =
-
-
-document.getElementById(
-
-"remarks"
-
-)
-
-.value.trim();
-
-
-
-
-
-
-let productCode =
-
-
-document.getElementById(
-
-"productCode"
-
-)
-
-.value.trim();
-
-
-
-
-
-
-
-
-
-submitOrder({
-
-
-customerName:
-
-
-document.getElementById(
-
-"customerName"
-
-)
-
-.value.trim(),
-
-
-
-
-phone:
-
-
-document.getElementById(
-
-"phone"
-
-)
-
-.value.trim(),
-
-
-
-
-
-address:
-
-
-document.getElementById(
-
-"address"
-
-)
-
-.value.trim(),
-
-
-
-
-
-productName:
-
-
-productName,
-
-
-
-
-
-quantity:
-
-
-Number(
-
-document.getElementById(
-
-"quantity"
-
-)
-
-.value
-
-)
-
-||1,
-
-
-
-
-
-
-deliveryArea:
-
-
-document.getElementById(
-
-"deliveryArea"
-
-)
-
-.value,
-
-
-
-
-
-
-
-remarks:
-
-
-customerNote,
-
-
-
-
-
-
-productCode:
-
-
-productCode,
-
-
-
-
-
-
-
-paymentMethod:
-
-
-paymentMethod,
-
-
-
-
-
-
-
-transactionId:
-
-
-transactionId
-
-
-
-
+document.getElementById("bkashBox").style.display="block";
 
 });
 
 
 
-}
+document.getElementById("cod")
 
-);
+.addEventListener("change",function(){
 
+document.getElementById("bkashBox").style.display="none";
 
-
-
-
-
+});
 
 
 
-// SEND ORDER TO API
-
-
-function submitOrder(order){
 
 
 
-let callbackName =
+document.getElementById("orderForm")
 
-"order_" + Date.now();
+.addEventListener("submit",function(e){
 
 
+e.preventDefault();
+
+
+let callbackName="order_"+Date.now();
 
 
 
 window[callbackName]=function(result){
 
 
-
-delete window[callbackName];
-
+if(result && result.success){
 
 
+document.getElementById("orderSection").style.display="none";
 
 
-if(
-
-result && result.success
-
-){
-
-
-
-document.getElementById(
-
-"orderSection"
-
-)
-
-.style.display="none";
-
-
-
-
-
-document.getElementById(
-
-"success"
-
-)
-
-.style.display="block";
-
+document.getElementById("success").style.display="block";
 
 
 }
-
-else{
-
-
-
-document.getElementById(
-
-"formError"
-
-)
-
-.textContent =
-
-"অর্ডার পাঠানো যায়নি।";
-
-
-}
-
-
 
 };
 
 
 
 
+let params=new URLSearchParams();
+
+
+params.append("action","saveOrder");
+
+params.append("callback",callbackName);
+
+
+params.append("customerName",
+
+document.getElementById("customerName").value);
 
 
 
-let params =
+params.append("phone",
 
-new URLSearchParams();
-
-
+document.getElementById("phone").value);
 
 
 
+params.append("address",
 
-
-params.append(
-
-"action",
-
-"saveOrder"
-
-);
+document.getElementById("address").value);
 
 
 
+params.append("productName",productName);
+
+
+params.append("quantity",
+
+document.getElementById("quantity").value);
 
 
 
-params.append(
+params.append("deliveryArea",
 
-"callback",
-
-callbackName
-
-);
+document.getElementById("deliveryArea").value);
 
 
 
+params.append("remarks",
+
+document.getElementById("remarks").value);
 
 
 
+params.append("productCode",
 
-
-Object.keys(order)
-
-.forEach(function(key){
+document.getElementById("productCode").value);
 
 
 
-params.append(
+params.append("paymentMethod",
 
-key,
+document.querySelector('input[name="payment"]:checked').value);
 
-order[key]
 
-);
+
+params.append("transactionId",
+
+document.getElementById("transactionId").value);
+
+
+
+let script=document.createElement("script");
+
+
+script.src=API_URL+"?"+params.toString();
+
+
+document.body.appendChild(script);
 
 
 
@@ -1765,59 +1098,9 @@ order[key]
 
 
 
+createSlider();
 
-
-
-
-
-let script =
-
-document.createElement("script");
-
-
-
-
-
-
-script.src =
-
-API_URL
-
-+
-
-"?"
-
-+
-
-params.toString();
-
-
-
-
-
-
-
-document.body.appendChild(script);
-
-
-
-}
-
-
-
-
-
-
-
-
-
-// START
-
-
-showProduct();
-
-loadSettings();
-
+updateTotal();
 
 
 </script>
@@ -1825,5 +1108,6 @@ loadSettings();
 
 </body>
 
-  </html>
+</html>
 
+  
