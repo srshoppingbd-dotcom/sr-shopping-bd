@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="bn">
 
 <head>
@@ -33,6 +32,8 @@ color:#222;
 
 
 
+/* HEADER */
+
 .header{
 
 background:#111;
@@ -59,6 +60,8 @@ font-size:25px;
 
 margin:5px 0 0;
 
+font-size:14px;
+
 }
 
 
@@ -79,7 +82,7 @@ padding:10px;
 
 
 
-.all-products-btn{
+.back-btn{
 
 display:block;
 
@@ -93,15 +96,17 @@ padding:12px;
 
 text-align:center;
 
-font-weight:bold;
-
 text-decoration:none;
 
 color:#111;
 
+font-weight:bold;
+
 margin-bottom:12px;
 
 }
+
+
 
 
 
@@ -124,10 +129,11 @@ box-shadow:0 3px 12px rgba(0,0,0,.15);
 
 
 
+
 /* IMAGE SLIDER */
 
 
-.slider-container{
+.slider-box{
 
 width:100%;
 
@@ -137,9 +143,9 @@ overflow:hidden;
 
 border-radius:15px;
 
-background:white;
-
 border:1px solid #ddd;
+
+background:white;
 
 position:relative;
 
@@ -149,9 +155,9 @@ position:relative;
 
 .slider-track{
 
-display:flex;
-
 height:100%;
+
+display:flex;
 
 transition:.3s ease;
 
@@ -175,7 +181,7 @@ object-fit:contain;
 
 
 
-.arrow{
+.arrow-box{
 
 position:absolute;
 
@@ -192,15 +198,16 @@ padding:0 10px;
 }
 
 
-.arrow button{
+
+.arrow-box button{
 
 width:40px;
 
 height:40px;
 
-border-radius:50%;
-
 border:none;
+
+border-radius:50%;
 
 background:#111;
 
@@ -218,22 +225,23 @@ font-size:25px;
 
 text-align:center;
 
-margin:8px;
+margin:10px;
 
 }
+
 
 
 .dot{
 
 display:inline-block;
 
-width:10px;
-
 height:10px;
 
-border-radius:50%;
+width:10px;
 
 background:#ccc;
+
+border-radius:50%;
 
 margin:3px;
 
@@ -251,37 +259,21 @@ background:#d4af37;
 
 
 
-.no-image{
-
-height:100%;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-color:#999;
-
-font-size:16px;
-
-}
 
 
-
-
-
+/* ZOOM */
 
 
 .zoom-buttons{
 
 display:flex;
 
-gap:5px;
+gap:6px;
 
 margin-top:10px;
 
 }
+
 
 
 .zoom-buttons button{
@@ -298,10 +290,16 @@ background:#222;
 
 color:white;
 
+font-weight:bold;
+
 }
 
 
 
+
+
+
+/* DETAILS */
 
 
 .product-name{
@@ -313,7 +311,6 @@ font-weight:bold;
 margin-top:15px;
 
 }
-
 
 
 
@@ -331,8 +328,6 @@ margin-top:8px;
 
 
 
-
-
 .product-price{
 
 font-size:28px;
@@ -342,8 +337,6 @@ font-weight:bold;
 margin:12px 0;
 
 }
-
-
 
 
 
@@ -375,6 +368,9 @@ font-weight:bold;
 
 
 
+/* SHARE */
+
+
 .share-buttons{
 
 display:flex;
@@ -384,6 +380,7 @@ gap:6px;
 margin-top:10px;
 
 }
+
 
 
 .share-buttons button{
@@ -403,13 +400,11 @@ font-weight:bold;
 }
 
 
-
 .facebook{
 
 background:#1877f2;
 
 }
-
 
 
 .whatsapp{
@@ -419,13 +414,31 @@ background:#25d366;
 }
 
 
-
 .copy{
 
 background:#555;
 
 }
 
+
+
+
+
+.loading{
+
+height:100%;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+color:#888;
+
+font-size:16px;
+
+}
 
 
 </style>
@@ -441,11 +454,15 @@ background:#555;
 
 <div class="header">
 
+
 <h1>🛍️ SR Shopping BD</h1>
+
 
 <p>Product Details</p>
 
+
 </div>
+
 
 
 
@@ -454,11 +471,12 @@ background:#555;
 
 
 
-<a href="index.html" class="all-products-btn">
+<a href="index.html" class="back-btn">
 
-🛍️ সকল পণ্য দেখতে ক্লিক করুন →
+← সকল পণ্য দেখুন
 
 </a>
+
 
 
 
@@ -467,13 +485,15 @@ background:#555;
 
 
 
-<div class="slider-container">
+
+
+<div class="slider-box">
 
 
 <div id="sliderTrack" class="slider-track">
 
 
-<div class="no-image">
+<div class="loading">
 
 Image Loading Now...
 
@@ -484,7 +504,7 @@ Image Loading Now...
 
 
 
-<div class="arrow">
+<div class="arrow-box">
 
 
 <button onclick="previousImage()">
@@ -505,7 +525,6 @@ Image Loading Now...
 </div>
 
 
-
 </div>
 
 
@@ -513,6 +532,8 @@ Image Loading Now...
 
 
 <div id="dots" class="dots"></div>
+
+
 
 
 
@@ -548,12 +569,12 @@ Reset
 
 
 
+
 <div id="productName" class="product-name">
 
 Loading...
 
 </div>
-
 
 
 
@@ -575,12 +596,12 @@ Loading...
 
 
 
-
 <button id="orderBtn" class="order-btn">
 
 🛒 ORDER NOW
 
 </button>
+
 
 
 
@@ -615,6 +636,7 @@ Loading...
 
 
 
+
 </div>
 
 
@@ -630,17 +652,18 @@ const API_URL =
 
 let productData = {};
 
-let images = [];
+let imageList = [];
 
 let currentIndex = 0;
 
-let zoomValue = 1;
+let zoomLevel = 1;
 
 
 
 
 
-// GET PRODUCT NAME FROM URL
+
+// GET PRODUCT NAME
 
 
 const params =
@@ -662,7 +685,8 @@ params.get("product") || "";
 
 
 
-// CONVERT GOOGLE DRIVE IMAGE
+
+// GOOGLE DRIVE IMAGE CONVERTER
 
 
 function convertImageURL(url){
@@ -677,6 +701,7 @@ return "";
 
 
 url = String(url).trim();
+
 
 
 
@@ -735,6 +760,7 @@ id=match[1];
 
 
 
+
 if(id){
 
 
@@ -767,6 +793,7 @@ return url;
 
 
 
+
 // LOAD PRODUCT
 
 
@@ -776,7 +803,7 @@ function loadProduct(){
 
 let callbackName =
 
-"singleProduct_" + Date.now();
+"singleProductCallback_" + Date.now();
 
 
 
@@ -798,15 +825,20 @@ console.log(result);
 
 
 
+
 if(
+
 result &&
+
+result.success &&
+
 result.product
+
 ){
 
 
 
-productData =
-result.product;
+productData = result.product;
 
 
 
@@ -840,11 +872,10 @@ document.getElementById(
 
 
 
+
 let script =
 
 document.createElement("script");
-
-
 
 
 
@@ -898,6 +929,9 @@ document.body.appendChild(script);
 
 
 
+
+
+
 // SHOW PRODUCT
 
 
@@ -916,12 +950,14 @@ product.name || "";
 
 
 
+
 document.getElementById(
 "productDescription"
 )
 .innerHTML =
 
 product.description || "";
+
 
 
 
@@ -944,24 +980,28 @@ product.price || 0
 
 
 
-// IMAGE LIST
+// MULTIPLE IMAGE SUPPORT
 
 
 
-images=[];
+imageList = [];
 
 
 
 
 
 if(
+
 product.images &&
+
 Array.isArray(product.images)
+
 ){
 
 
-images =
-product.images;
+
+imageList = product.images;
+
 
 
 }
@@ -972,14 +1012,17 @@ product.images;
 
 
 
-if(images.length===0){
+// OLD IMAGE SUPPORT
+
+
+if(imageList.length === 0){
 
 
 
 if(product.image1){
 
 
-images.push(
+imageList.push(
 product.image1
 );
 
@@ -991,7 +1034,7 @@ product.image1
 if(product.image2){
 
 
-images.push(
+imageList.push(
 product.image2
 );
 
@@ -1014,6 +1057,11 @@ createSlider();
 
 
 
+
+// ORDER BUTTON
+
+
+
 document.getElementById(
 "orderBtn"
 )
@@ -1021,7 +1069,26 @@ document.getElementById(
 
 
 
+let image = "";
+
+
+
+
+if(imageList.length > 0){
+
+
+image = convertImageURL(
+imageList[0]
+);
+
+
+}
+
+
+
+
 window.location.href =
+
 
 "order.html?product="
 
@@ -1048,7 +1115,7 @@ product.price
 +
 
 encodeURIComponent(
-convertImageURL(images[0] || "")
+image
 );
 
 
@@ -1068,7 +1135,8 @@ convertImageURL(images[0] || "")
 
 
 
-// CREATE IMAGE SLIDER
+
+// CREATE SLIDER
 
 
 function createSlider(){
@@ -1099,25 +1167,20 @@ dots.innerHTML="";
 
 
 
-
-
-if(images.length===0){
-
+if(imageList.length===0){
 
 
 track.innerHTML =
 
 `
 
-<div class="no-image">
+<div class="loading">
 
-Image Not Available
+Image পাওয়া যায়নি
 
 </div>
 
 `;
-
-
 
 return;
 
@@ -1130,23 +1193,23 @@ return;
 
 
 
-images.forEach(function(img,index){
+imageList.forEach(function(image,index){
 
 
 
-let image =
+let img =
 
 document.createElement("img");
 
 
 
-image.src =
+img.src =
 
-convertImageURL(img);
+convertImageURL(image);
 
 
 
-track.appendChild(image);
+track.appendChild(img);
 
 
 
@@ -1182,7 +1245,6 @@ goToImage(index);
 
 
 
-
 dots.appendChild(dot);
 
 
@@ -1206,7 +1268,7 @@ updateSlider();
 
 
 
-// SLIDER CONTROL
+// SLIDER MOVE
 
 
 function updateSlider(){
@@ -1221,6 +1283,7 @@ document.getElementById(
 
 
 
+
 track.style.transform =
 
 "translateX(-"
@@ -1232,6 +1295,7 @@ track.style.transform =
 +
 
 "%)";
+
 
 
 
@@ -1273,12 +1337,15 @@ dot.classList.remove("active");
 
 
 
+
 function nextImage(){
 
 
 
 if(
-currentIndex < images.length-1
+
+currentIndex < imageList.length-1
+
 ){
 
 
@@ -1290,7 +1357,6 @@ currentIndex++;
 
 
 updateSlider();
-
 
 
 }
@@ -1318,7 +1384,6 @@ currentIndex--;
 updateSlider();
 
 
-
 }
 
 
@@ -1330,24 +1395,24 @@ updateSlider();
 function goToImage(index){
 
 
-
 currentIndex=index;
 
 
 updateSlider();
 
 
-
 }
+
+
 // ZOOM FUNCTION
 
 
 function zoomIn(){
 
 
-if(zoomValue < 2.5){
+if(zoomLevel < 2.5){
 
-zoomValue += 0.2;
+zoomLevel += 0.2;
 
 }
 
@@ -1361,12 +1426,13 @@ applyZoom();
 
 
 
+
 function zoomOut(){
 
 
-if(zoomValue > 1){
+if(zoomLevel > 1){
 
-zoomValue -= 0.2;
+zoomLevel -= 0.2;
 
 }
 
@@ -1384,7 +1450,7 @@ applyZoom();
 function resetZoom(){
 
 
-zoomValue = 1;
+zoomLevel = 1;
 
 
 applyZoom();
@@ -1401,31 +1467,23 @@ function applyZoom(){
 
 
 
-let img =
+let images =
 
-document.querySelector(
+document.querySelectorAll(
 "#sliderTrack img"
 );
 
 
 
-if(img){
+images.forEach(function(img){
 
 
 img.style.transform =
 
-"scale("
-
-+
-
-zoomValue
-
-+
-
-")";
+"scale("+zoomLevel+")";
 
 
-}
+});
 
 
 
@@ -1439,7 +1497,97 @@ zoomValue
 
 
 
-// PRODUCT LINK
+// SWIPE SUPPORT
+
+
+let startX = 0;
+
+let endX = 0;
+
+
+
+
+document
+
+.getElementById("sliderTrack")
+
+.addEventListener(
+
+"touchstart",
+
+function(e){
+
+
+startX =
+
+e.touches[0].clientX;
+
+
+}
+
+);
+
+
+
+
+
+
+
+
+document
+
+.getElementById("sliderTrack")
+
+.addEventListener(
+
+"touchend",
+
+function(e){
+
+
+endX =
+
+e.changedTouches[0].clientX;
+
+
+
+
+
+if(startX - endX > 50){
+
+
+nextImage();
+
+
+}
+
+
+
+
+
+if(endX - startX > 50){
+
+
+previousImage();
+
+
+}
+
+
+
+}
+
+);
+
+
+
+
+
+
+
+
+
+// SHARE LINK
 
 
 function getProductLink(){
@@ -1456,11 +1604,11 @@ return window.location.href;
 
 
 
-// FACEBOOK SHARE
-
 
 document
+
 .querySelector(".facebook")
+
 .onclick=function(){
 
 
@@ -1473,7 +1621,9 @@ window.open(
 
 encodeURIComponent(
 getProductLink()
-)
+),
+
+"_blank"
 
 );
 
@@ -1488,11 +1638,12 @@ getProductLink()
 
 
 
-// WHATSAPP SHARE
 
 
 document
+
 .querySelector(".whatsapp")
+
 .onclick=function(){
 
 
@@ -1517,13 +1668,16 @@ getProductLink();
 
 
 
+
 window.open(
 
 "https://wa.me/?text="
 
 +
 
-encodeURIComponent(text)
+encodeURIComponent(text),
+
+"_blank"
 
 );
 
@@ -1537,106 +1691,34 @@ encodeURIComponent(text)
 
 
 
-// COPY LINK
 
 
 document
+
 .querySelector(".copy")
+
 .onclick=function(){
 
 
 
 navigator.clipboard.writeText(
+
 getProductLink()
+
 );
 
 
 
 alert(
+
 "Product Link Copy হয়েছে"
+
 );
 
 
 
 };
 
-
-
-
-
-
-
-
-
-// MOBILE SWIPE
-
-
-let startX = 0;
-
-let endX = 0;
-
-
-
-document
-.getElementById("sliderTrack")
-.addEventListener(
-"touchstart",
-function(e){
-
-
-
-startX =
-e.touches[0].clientX;
-
-
-
-});
-
-
-
-
-
-
-document
-.getElementById("sliderTrack")
-.addEventListener(
-"touchend",
-function(e){
-
-
-
-endX =
-e.changedTouches[0].clientX;
-
-
-
-
-if(
-startX - endX > 50
-){
-
-
-nextImage();
-
-
-}
-
-
-
-
-if(
-endX - startX > 50
-){
-
-
-previousImage();
-
-
-}
-
-
-
-});
 
 
 
