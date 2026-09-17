@@ -4,12 +4,9 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
 <title>SR Shopping BD - Product Details</title>
-
 
 <style>
 
@@ -17,148 +14,87 @@
 box-sizing:border-box;
 }
 
-
 body{
-
 margin:0;
-
 font-family:Arial,sans-serif;
-
 background:#f5f5f5;
-
 color:#222;
-
 }
 
-
-
-/* HEADER */
 
 .header{
-
 background:#111;
-
 color:white;
-
 text-align:center;
-
 padding:15px;
-
 }
-
 
 .header h1{
-
 margin:0;
-
 font-size:25px;
-
 }
-
 
 .header p{
-
 margin:5px 0 0;
-
-font-size:14px;
-
 }
-
-
 
 
 
 .container{
-
 max-width:650px;
-
 margin:auto;
-
 padding:10px;
-
 }
-
-
 
 
 
 .back-btn{
 
 display:block;
-
 background:white;
-
 border:2px solid #d4af37;
-
 border-radius:15px;
-
 padding:12px;
-
 text-align:center;
-
 text-decoration:none;
-
 color:#111;
-
 font-weight:bold;
-
 margin-bottom:12px;
 
 }
 
 
 
-
-
-
-
 .product-card{
 
 background:white;
-
-padding:12px;
-
 border-radius:16px;
-
+padding:12px;
 box-shadow:0 3px 12px rgba(0,0,0,.15);
 
 }
 
 
 
-
-
-
-
 /* IMAGE SLIDER */
-
 
 .slider-box{
 
 width:100%;
-
 height:350px;
-
-overflow:hidden;
-
-border-radius:15px;
-
-border:1px solid #ddd;
-
 background:white;
-
+border-radius:15px;
+overflow:hidden;
+border:1px solid #ddd;
 position:relative;
 
 }
 
 
-
 .slider-track{
 
-height:100%;
-
 display:flex;
-
+height:100%;
 transition:.3s ease;
 
 }
@@ -168,15 +104,24 @@ transition:.3s ease;
 .slider-track img{
 
 width:100%;
-
 height:100%;
-
 flex-shrink:0;
-
 object-fit:contain;
 
 }
 
+
+
+.loading{
+
+width:100%;
+height:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#999;
+
+}
 
 
 
@@ -184,69 +129,47 @@ object-fit:contain;
 .arrow-box{
 
 position:absolute;
-
 top:45%;
-
 width:100%;
-
 display:flex;
-
 justify-content:space-between;
-
 padding:0 10px;
 
 }
 
 
-
 .arrow-box button{
 
 width:40px;
-
 height:40px;
-
 border:none;
-
 border-radius:50%;
-
 background:#111;
-
 color:white;
-
 font-size:25px;
 
 }
 
 
 
-
-
 .dots{
 
 text-align:center;
-
 margin:10px;
 
 }
 
 
-
 .dot{
 
 display:inline-block;
-
 height:10px;
-
 width:10px;
-
 background:#ccc;
-
 border-radius:50%;
-
 margin:3px;
 
 }
-
 
 
 .dot.active{
@@ -257,218 +180,130 @@ background:#d4af37;
 
 
 
-
-
-
-
 /* ZOOM */
-
 
 .zoom-buttons{
 
 display:flex;
-
-gap:6px;
-
+gap:5px;
 margin-top:10px;
 
 }
 
 
-
 .zoom-buttons button{
 
 flex:1;
-
 padding:8px;
-
 border:none;
-
 border-radius:8px;
-
 background:#222;
-
 color:white;
 
-font-weight:bold;
-
 }
-
-
-
 
 
 
 /* DETAILS */
 
-
 .product-name{
 
 font-size:23px;
-
 font-weight:bold;
-
 margin-top:15px;
 
 }
 
 
-
 .product-description{
 
 font-size:14px;
-
 color:#666;
-
 line-height:1.5;
-
 margin-top:8px;
 
 }
 
 
-
 .product-price{
 
 font-size:28px;
-
 font-weight:bold;
-
 margin:12px 0;
 
 }
 
 
 
-
-
 .order-btn{
 
 width:100%;
-
 padding:15px;
-
 background:#111;
-
 color:white;
-
 border:2px solid #d4af37;
-
 border-radius:12px;
-
 font-size:20px;
-
 font-weight:bold;
 
 }
 
 
 
-
-
-
-
-/* SHARE */
-
-
 .share-buttons{
 
 display:flex;
-
 gap:6px;
-
 margin-top:10px;
 
 }
 
 
-
 .share-buttons button{
 
 flex:1;
-
 padding:10px;
-
 border:none;
-
 border-radius:8px;
-
 color:white;
-
 font-weight:bold;
 
 }
 
 
 .facebook{
-
 background:#1877f2;
-
 }
 
 
 .whatsapp{
-
 background:#25d366;
-
 }
 
 
 .copy{
-
 background:#555;
-
-}
-
-
-
-
-
-.loading{
-
-height:100%;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-color:#888;
-
-font-size:16px;
-
 }
 
 
 </style>
 
-
 </head>
-
 
 
 <body>
 
 
-
 <div class="header">
-
 
 <h1>🛍️ SR Shopping BD</h1>
 
-
 <p>Product Details</p>
-
 
 </div>
 
 
-
-
-
 <div class="container">
-
 
 
 <a href="index.html" class="back-btn">
@@ -479,12 +314,7 @@ font-size:16px;
 
 
 
-
-
 <div class="product-card">
-
-
-
 
 
 <div class="slider-box">
@@ -492,99 +322,47 @@ font-size:16px;
 
 <div id="sliderTrack" class="slider-track">
 
-
 <div class="loading">
 
-Image Loading Now...
+Image Loading...
 
 </div>
 
-
 </div>
-
 
 
 <div class="arrow-box">
 
+<button onclick="previousImage()">‹</button>
 
-<button onclick="previousImage()">
-
-‹
-
-</button>
-
-
-
-<button onclick="nextImage()">
-
-›
-
-</button>
-
+<button onclick="nextImage()">›</button>
 
 </div>
 
 
 </div>
-
-
-
 
 
 <div id="dots" class="dots"></div>
 
 
-
-
-
-
-
 <div class="zoom-buttons">
 
+<button onclick="zoomIn()">+</button>
 
-<button onclick="zoomIn()">
+<button onclick="resetZoom()">Reset</button>
 
-+
-
-</button>
-
-
-<button onclick="resetZoom()">
-
-Reset
-
-</button>
-
-
-<button onclick="zoomOut()">
-
-−
-
-</button>
-
+<button onclick="zoomOut()">−</button>
 
 </div>
-
-
-
-
 
 
 <div id="productName" class="product-name">
-
 Loading...
-
 </div>
 
 
-
-
-<div id="productDescription" class="product-description">
-
-</div>
-
-
-
+<div id="productDescription" class="product-description"></div>
 
 
 <div class="product-price">
@@ -594,8 +372,6 @@ Loading...
 </div>
 
 
-
-
 <button id="orderBtn" class="order-btn">
 
 🛒 ORDER NOW
@@ -603,44 +379,22 @@ Loading...
 </button>
 
 
-
-
-
-
 <div class="share-buttons">
 
+<button class="facebook">📘 FB</button>
 
-<button class="facebook">
+<button class="whatsapp">🟢 WhatsApp</button>
 
-📘 FB
-
-</button>
-
-
-<button class="whatsapp">
-
-🟢 WhatsApp
-
-</button>
-
-
-<button class="copy">
-
-🔗 Copy
-
-</button>
-
+<button class="copy">🔗 Copy</button>
 
 </div>
-
-
-
 
 
 </div>
 
 
 </div>
+
 <script>
 
 
@@ -660,10 +414,6 @@ let zoomLevel = 1;
 
 
 
-
-
-
-// GET PRODUCT NAME
 
 
 const params =
@@ -686,43 +436,30 @@ params.get("product") || "";
 
 
 
-// GOOGLE DRIVE IMAGE CONVERTER
+// IMAGE CONVERTER
 
 
 function convertImageURL(url){
 
+
 if(!url){
+
 return "";
+
 }
+
+
 
 url = String(url).trim();
 
-let id = "";
-
-let match = url.match(/\/file\/d\/([^\/]+)/);
-
-if(match && match[1]){
-id = match[1];
-}
 
 
-if(!id){
 
-match = url.match(/[?&]id=([^&]+)/);
+// If already thumbnail
 
-if(match && match[1]){
-id = match[1];
-}
-
-}
-
-
-if(id){
-
-return "https://drive.google.com/uc?export=view&id=" + id;
-
-}
-
+if(
+url.includes("thumbnail")
+){
 
 return url;
 
@@ -732,10 +469,89 @@ return url;
 
 
 
+let id = "";
 
 
 
-// LOAD PRODUCT
+let match =
+
+url.match(
+/\/file\/d\/([^\/]+)/
+);
+
+
+
+if(match && match[1]){
+
+id = match[1];
+
+}
+
+
+
+
+
+
+if(!id){
+
+
+match =
+
+url.match(
+/[?&]id=([^&]+)/
+);
+
+
+
+if(match && match[1]){
+
+id = match[1];
+
+}
+
+
+}
+
+
+
+
+
+
+if(id){
+
+
+return
+
+"https://drive.google.com/thumbnail?id="
+
++
+
+id
+
++
+
+"&sz=w1200";
+
+
+}
+
+
+
+
+return url;
+
+
+}
+
+
+
+
+
+
+
+
+
+// LOAD PRODUCT FROM API
 
 
 function loadProduct(){
@@ -744,7 +560,8 @@ function loadProduct(){
 
 let callbackName =
 
-"singleProductCallback_" + Date.now();
+"productCallback_" + Date.now();
+
 
 
 
@@ -755,13 +572,6 @@ window[callbackName] = function(result){
 
 
 delete window[callbackName];
-
-
-
-
-
-console.log(result);
-
 
 
 
@@ -798,6 +608,7 @@ document.getElementById(
 "productName"
 )
 .innerHTML =
+
 "Product পাওয়া যায়নি";
 
 
@@ -817,6 +628,8 @@ document.getElementById(
 let script =
 
 document.createElement("script");
+
+
 
 
 
@@ -883,11 +696,9 @@ function showProduct(product){
 document.getElementById(
 "productName"
 )
-.innerHTML =
+innerHTML =
 
 product.name || "";
-
-
 
 
 
@@ -898,7 +709,6 @@ document.getElementById(
 .innerHTML =
 
 product.description || "";
-
 
 
 
@@ -920,15 +730,14 @@ product.price || 0
 
 
 
-
-// MULTIPLE IMAGE SUPPORT
-
-
-
 imageList = [];
 
 
 
+
+
+
+// NEW MULTIPLE IMAGE
 
 
 if(
@@ -940,9 +749,7 @@ Array.isArray(product.images)
 ){
 
 
-
 imageList = product.images;
-
 
 
 }
@@ -962,11 +769,9 @@ if(imageList.length === 0){
 
 if(product.image1){
 
-
 imageList.push(
 product.image1
 );
-
 
 }
 
@@ -974,17 +779,16 @@ product.image1
 
 if(product.image2){
 
-
 imageList.push(
 product.image2
 );
 
-
 }
 
 
 
 }
+
 
 
 
@@ -999,8 +803,9 @@ createSlider();
 
 
 
-// ORDER BUTTON
 
+
+// ORDER BUTTON
 
 
 document.getElementById(
@@ -1010,18 +815,17 @@ document.getElementById(
 
 
 
-let image = "";
-
+let firstImage = "";
 
 
 
 if(imageList.length > 0){
 
+firstImage =
 
-image = convertImageURL(
+convertImageURL(
 imageList[0]
 );
-
 
 }
 
@@ -1056,7 +860,7 @@ product.price
 +
 
 encodeURIComponent(
-image
+firstImage
 );
 
 
@@ -1065,9 +869,10 @@ image
 
 
 
-
-
 }
+
+
+
 
 
 
@@ -1101,14 +906,19 @@ document.getElementById(
 
 
 
-track.innerHTML="";
 
-dots.innerHTML="";
+track.innerHTML = "";
+
+dots.innerHTML = "";
 
 
 
 
-if(imageList.length===0){
+
+
+
+if(imageList.length === 0){
+
 
 
 track.innerHTML =
@@ -1125,16 +935,12 @@ Image পাওয়া যায়নি
 
 return;
 
-
 }
 
 
 
 
-
-
-
-imageList.forEach(function(image,index){
+imageList.forEach(function(url,index){
 
 
 
@@ -1146,12 +952,13 @@ document.createElement("img");
 
 img.src =
 
-convertImageURL(image);
+convertImageURL(url);
+
+
 
 
 
 track.appendChild(img);
-
 
 
 
@@ -1164,11 +971,11 @@ document.createElement("span");
 
 
 
-dot.className="dot";
+dot.className = "dot";
 
 
 
-if(index===0){
+if(index === 0){
 
 dot.classList.add("active");
 
@@ -1176,13 +983,14 @@ dot.classList.add("active");
 
 
 
-dot.onclick=function(){
 
+dot.onclick=function(){
 
 goToImage(index);
 
-
 };
+
+
 
 
 
@@ -1209,7 +1017,8 @@ updateSlider();
 
 
 
-// SLIDER MOVE
+
+// SLIDER
 
 
 function updateSlider(){
@@ -1224,19 +1033,17 @@ document.getElementById(
 
 
 
-
 track.style.transform =
 
 "translateX(-"
 
 +
 
-(currentIndex*100)
+(currentIndex * 100)
 
 +
 
 "%)";
-
 
 
 
@@ -1249,7 +1056,7 @@ document
 
 
 
-if(index===currentIndex){
+if(index === currentIndex){
 
 
 dot.classList.add("active");
@@ -1307,12 +1114,11 @@ updateSlider();
 
 
 
-
 function previousImage(){
 
 
 
-if(currentIndex>0){
+if(currentIndex > 0){
 
 
 currentIndex--;
@@ -1332,11 +1138,10 @@ updateSlider();
 
 
 
-
 function goToImage(index){
 
 
-currentIndex=index;
+currentIndex = index;
 
 
 updateSlider();
@@ -1345,7 +1150,7 @@ updateSlider();
 }
 
 
-// ZOOM FUNCTION
+// ZOOM
 
 
 function zoomIn(){
@@ -1360,9 +1165,7 @@ zoomLevel += 0.2;
 
 applyZoom();
 
-
 }
-
 
 
 
@@ -1380,9 +1183,7 @@ zoomLevel -= 0.2;
 
 applyZoom();
 
-
 }
-
 
 
 
@@ -1396,8 +1197,8 @@ zoomLevel = 1;
 
 applyZoom();
 
-
 }
+
 
 
 
@@ -1407,8 +1208,7 @@ applyZoom();
 function applyZoom(){
 
 
-
-let images =
+let imgs =
 
 document.querySelectorAll(
 "#sliderTrack img"
@@ -1416,16 +1216,23 @@ document.querySelectorAll(
 
 
 
-images.forEach(function(img){
+imgs.forEach(function(img){
 
 
 img.style.transform =
 
-"scale("+zoomLevel+")";
+"scale("
+
++
+
+zoomLevel
+
++
+
+")";
 
 
 });
-
 
 
 }
@@ -1437,14 +1244,12 @@ img.style.transform =
 
 
 
-
-// SWIPE SUPPORT
+// SWIPE
 
 
 let startX = 0;
 
 let endX = 0;
-
 
 
 
@@ -1472,9 +1277,6 @@ e.touches[0].clientX;
 
 
 
-
-
-
 document
 
 .getElementById("sliderTrack")
@@ -1496,9 +1298,7 @@ e.changedTouches[0].clientX;
 
 if(startX - endX > 50){
 
-
 nextImage();
-
 
 }
 
@@ -1508,9 +1308,7 @@ nextImage();
 
 if(endX - startX > 50){
 
-
 previousImage();
-
 
 }
 
@@ -1528,17 +1326,14 @@ previousImage();
 
 
 
-// SHARE LINK
+// SHARE
 
 
 function getProductLink(){
 
-
 return window.location.href;
 
-
 }
-
 
 
 
@@ -1668,6 +1463,7 @@ alert(
 
 
 
+
 // START
 
 
@@ -1679,6 +1475,5 @@ loadProduct();
 
 
 </body>
-
 
 </html>
