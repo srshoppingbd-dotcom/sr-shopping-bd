@@ -910,7 +910,49 @@ currentImage--;
 updateSlider();
 
 }
+// SWIPE IMAGE
 
+let touchStart = 0;
+let touchEnd = 0;
+
+
+document
+.getElementById("sliderTrack")
+.addEventListener(
+"touchstart",
+function(e){
+
+touchStart = e.touches[0].clientX;
+
+}
+);
+
+
+document
+.getElementById("sliderTrack")
+.addEventListener(
+"touchend",
+function(e){
+
+touchEnd = e.changedTouches[0].clientX;
+
+
+if(touchStart - touchEnd > 50){
+
+nextImage();
+
+}
+
+
+if(touchEnd - touchStart > 50){
+
+previousImage();
+
+}
+
+
+}
+);
 
 
 
