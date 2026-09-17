@@ -1,12 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="bn">
 
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
 <title>SR Shopping BD - Product Details</title>
+
 
 <style>
 
@@ -14,36 +18,61 @@
 box-sizing:border-box;
 }
 
+
 body{
+
 margin:0;
+
 font-family:Arial,sans-serif;
+
 background:#f5f5f5;
+
 color:#222;
+
 }
+
 
 
 .header{
+
 background:#111;
+
 color:white;
+
 text-align:center;
-padding:15px;
+
+padding:18px 10px;
+
 }
+
 
 .header h1{
+
 margin:0;
-font-size:25px;
+
+font-size:28px;
+
 }
 
+
 .header p{
+
 margin:5px 0 0;
+
+font-size:16px;
+
 }
 
 
 
 .container{
+
 max-width:650px;
+
 margin:auto;
+
 padding:10px;
+
 }
 
 
@@ -51,51 +80,78 @@ padding:10px;
 .back-btn{
 
 display:block;
+
 background:white;
+
 border:2px solid #d4af37;
-border-radius:15px;
-padding:12px;
+
+border-radius:18px;
+
+padding:15px;
+
 text-align:center;
-text-decoration:none;
-color:#111;
+
+font-size:20px;
+
 font-weight:bold;
-margin-bottom:12px;
+
+text-decoration:none;
+
+color:#111;
+
+margin-bottom:15px;
 
 }
+
 
 
 
 .product-card{
 
 background:white;
-border-radius:16px;
+
+border-radius:18px;
+
 padding:12px;
-box-shadow:0 3px 12px rgba(0,0,0,.15);
+
+box-shadow:0 3px 15px rgba(0,0,0,.15);
 
 }
+
 
 
 
 /* IMAGE SLIDER */
 
+
 .slider-box{
 
 width:100%;
-height:350px;
-background:white;
-border-radius:15px;
+
+height:420px;
+
 overflow:hidden;
+
 border:1px solid #ddd;
+
+border-radius:15px;
+
 position:relative;
 
+background:white;
+
 }
+
+
 
 
 .slider-track{
 
 display:flex;
+
 height:100%;
-transition:.3s ease;
+
+transition:.4s;
 
 }
 
@@ -103,73 +159,91 @@ transition:.3s ease;
 
 .slider-track img{
 
-width:100%;
+min-width:100%;
+
 height:100%;
-flex-shrink:0;
+
 object-fit:contain;
 
-}
-
-
-
-.loading{
-
-width:100%;
-height:100%;
-display:flex;
-align-items:center;
-justify-content:center;
-color:#999;
+transition:.3s;
 
 }
 
 
 
 
-.arrow-box{
+
+.arrow{
 
 position:absolute;
-top:45%;
-width:100%;
-display:flex;
-justify-content:space-between;
-padding:0 10px;
 
-}
+top:50%;
 
+transform:translateY(-50%);
 
-.arrow-box button{
+width:55px;
 
-width:40px;
-height:40px;
-border:none;
+height:55px;
+
 border-radius:50%;
+
+border:none;
+
 background:#111;
+
 color:white;
-font-size:25px;
+
+font-size:35px;
+
+z-index:5;
 
 }
+
+
+
+.left{
+
+left:15px;
+
+}
+
+
+.right{
+
+right:15px;
+
+}
+
+
 
 
 
 .dots{
 
 text-align:center;
+
 margin:10px;
 
 }
 
 
+
 .dot{
 
 display:inline-block;
-height:10px;
-width:10px;
-background:#ccc;
+
+width:12px;
+
+height:12px;
+
 border-radius:50%;
-margin:3px;
+
+background:#ccc;
+
+margin:4px;
 
 }
+
 
 
 .dot.active{
@@ -180,56 +254,75 @@ background:#d4af37;
 
 
 
-/* ZOOM */
+
 
 .zoom-buttons{
 
 display:flex;
-gap:5px;
+
+gap:8px;
+
 margin-top:10px;
 
 }
 
 
+
 .zoom-buttons button{
 
 flex:1;
-padding:8px;
+
+padding:12px;
+
 border:none;
-border-radius:8px;
-background:#222;
+
+border-radius:10px;
+
+background:#111;
+
 color:white;
+
+font-size:18px;
+
+font-weight:bold;
 
 }
 
 
 
-/* DETAILS */
-
 .product-name{
 
-font-size:23px;
+font-size:28px;
+
 font-weight:bold;
+
 margin-top:15px;
 
 }
 
 
+
 .product-description{
 
-font-size:14px;
+font-size:16px;
+
+line-height:1.6;
+
 color:#666;
-line-height:1.5;
-margin-top:8px;
+
+margin-top:10px;
 
 }
 
 
+
 .product-price{
 
-font-size:28px;
+font-size:32px;
+
 font-weight:bold;
-margin:12px 0;
+
+margin-top:15px;
 
 }
 
@@ -238,13 +331,22 @@ margin:12px 0;
 .order-btn{
 
 width:100%;
-padding:15px;
+
+padding:16px;
+
 background:#111;
-color:white;
+
 border:2px solid #d4af37;
-border-radius:12px;
-font-size:20px;
+
+border-radius:15px;
+
+color:white;
+
+font-size:22px;
+
 font-weight:bold;
+
+margin-top:20px;
 
 }
 
@@ -253,40 +355,68 @@ font-weight:bold;
 .share-buttons{
 
 display:flex;
-gap:6px;
-margin-top:10px;
+
+gap:8px;
+
+margin-top:12px;
 
 }
+
 
 
 .share-buttons button{
 
 flex:1;
+
 padding:10px;
+
 border:none;
-border-radius:8px;
+
+border-radius:10px;
+
 color:white;
+
 font-weight:bold;
 
 }
 
 
 .facebook{
+
 background:#1877f2;
+
 }
 
 
 .whatsapp{
+
 background:#25d366;
+
 }
 
 
 .copy{
+
 background:#555;
+
+}
+
+
+.loading{
+
+text-align:center;
+
+font-size:20px;
+
+padding:40px;
+
+color:#888;
+
 }
 
 
 </style>
+
 
 </head>
 
@@ -317,10 +447,12 @@ background:#555;
 <div class="product-card">
 
 
+
 <div class="slider-box">
 
 
 <div id="sliderTrack" class="slider-track">
+
 
 <div class="loading">
 
@@ -328,41 +460,68 @@ Image Loading...
 
 </div>
 
-</div>
-
-
-<div class="arrow-box">
-
-<button onclick="previousImage()">‹</button>
-
-<button onclick="nextImage()">›</button>
 
 </div>
 
 
+<button class="arrow left" onclick="previousImage()">
+
+‹
+
+</button>
+
+
+<button class="arrow right" onclick="nextImage()">
+
+›
+
+</button>
+
+
 </div>
+
 
 
 <div id="dots" class="dots"></div>
 
 
+
 <div class="zoom-buttons">
 
-<button onclick="zoomIn()">+</button>
+<button onclick="zoomIn()">
 
-<button onclick="resetZoom()">Reset</button>
++
 
-<button onclick="zoomOut()">−</button>
+</button>
+
+
+<button onclick="resetZoom()">
+
+Reset
+
+</button>
+
+
+<button onclick="zoomOut()">
+
+-
+
+</button>
 
 </div>
+
 
 
 <div id="productName" class="product-name">
+
 Loading...
+
 </div>
 
 
-<div id="productDescription" class="product-description"></div>
+<div id="productDescription" class="product-description">
+
+</div>
 
 
 <div class="product-price">
@@ -381,20 +540,27 @@ Loading...
 
 <div class="share-buttons">
 
-<button class="facebook">📘 FB</button>
+<button class="facebook">
 
-<button class="whatsapp">🟢 WhatsApp</button>
+📘 FB
 
-<button class="copy">🔗 Copy</button>
+</button>
+
+
+<button class="whatsapp">
+
+🟢 WhatsApp
+
+</button>
+
+
+<button class="copy">
+
+🔗 Copy
+
+</button>
 
 </div>
-
-
-</div>
-
-
-</div>
-
 <script>
 
 
@@ -416,7 +582,7 @@ let zoomLevel = 1;
 
 
 
-const params =
+const urlParams =
 
 new URLSearchParams(
 window.location.search
@@ -424,11 +590,9 @@ window.location.search
 
 
 
-let productNameURL =
+const productNameURL =
 
-params.get("product") || "";
-
-
+urlParams.get("product") || "";
 
 
 
@@ -436,7 +600,8 @@ params.get("product") || "";
 
 
 
-// IMAGE CONVERTER
+
+// GOOGLE DRIVE IMAGE FIX
 
 
 function convertImageURL(url){
@@ -451,20 +616,6 @@ return "";
 
 
 url = String(url).trim();
-
-
-
-
-// If already thumbnail
-
-if(
-url.includes("thumbnail")
-){
-
-return url;
-
-}
-
 
 
 
@@ -486,7 +637,6 @@ if(match && match[1]){
 id = match[1];
 
 }
-
 
 
 
@@ -516,7 +666,6 @@ id = match[1];
 
 
 
-
 if(id){
 
 
@@ -538,6 +687,7 @@ id
 
 
 
+
 return url;
 
 
@@ -551,7 +701,9 @@ return url;
 
 
 
-// LOAD PRODUCT FROM API
+
+
+// LOAD PRODUCT
 
 
 function loadProduct(){
@@ -560,8 +712,7 @@ function loadProduct(){
 
 let callbackName =
 
-"productCallback_" + Date.now();
-
+"product_" + Date.now();
 
 
 
@@ -631,8 +782,6 @@ document.createElement("script");
 
 
 
-
-
 script.src =
 
 API_URL
@@ -685,7 +834,6 @@ document.body.appendChild(script);
 
 
 
-
 // SHOW PRODUCT
 
 
@@ -696,9 +844,10 @@ function showProduct(product){
 document.getElementById(
 "productName"
 )
-innerHTML =
+.innerHTML =
 
 product.name || "";
+
 
 
 
@@ -729,15 +878,11 @@ product.price || 0
 
 
 
-
 imageList = [];
 
 
 
 
-
-
-// NEW MULTIPLE IMAGE
 
 
 if(
@@ -758,9 +903,6 @@ imageList = product.images;
 
 
 
-
-
-// OLD IMAGE SUPPORT
 
 
 if(imageList.length === 0){
@@ -804,10 +946,6 @@ createSlider();
 
 
 
-
-// ORDER BUTTON
-
-
 document.getElementById(
 "orderBtn"
 )
@@ -815,15 +953,13 @@ document.getElementById(
 
 
 
-let firstImage = "";
+let image = "";
 
 
 
 if(imageList.length > 0){
 
-firstImage =
-
-convertImageURL(
+image = convertImageURL(
 imageList[0]
 );
 
@@ -860,7 +996,7 @@ product.price
 +
 
 encodeURIComponent(
-firstImage
+image
 );
 
 
@@ -869,8 +1005,8 @@ firstImage
 
 
 
-}
 
+}
 
 
 
@@ -916,7 +1052,6 @@ dots.innerHTML = "";
 
 
 
-
 if(imageList.length === 0){
 
 
@@ -940,6 +1075,9 @@ return;
 
 
 
+
+
+
 imageList.forEach(function(url,index){
 
 
@@ -956,9 +1094,8 @@ convertImageURL(url);
 
 
 
-
-
 track.appendChild(img);
+
 
 
 
@@ -975,12 +1112,11 @@ dot.className = "dot";
 
 
 
-if(index === 0){
+if(index===0){
 
 dot.classList.add("active");
 
 }
-
 
 
 
@@ -989,8 +1125,6 @@ dot.onclick=function(){
 goToImage(index);
 
 };
-
-
 
 
 
@@ -1018,22 +1152,17 @@ updateSlider();
 
 
 
-// SLIDER
+// MOVE SLIDER
 
 
 function updateSlider(){
 
 
 
-let track =
-
 document.getElementById(
 "sliderTrack"
-);
-
-
-
-track.style.transform =
+)
+.style.transform =
 
 "translateX(-"
 
@@ -1056,19 +1185,15 @@ document
 
 
 
-if(index === currentIndex){
-
+if(index===currentIndex){
 
 dot.classList.add("active");
-
 
 }
 
 else{
 
-
 dot.classList.remove("active");
-
 
 }
 
@@ -1086,19 +1211,14 @@ dot.classList.remove("active");
 
 
 
+
 function nextImage(){
 
 
 
-if(
-
-currentIndex < imageList.length-1
-
-){
-
+if(currentIndex < imageList.length-1){
 
 currentIndex++;
-
 
 }
 
@@ -1107,7 +1227,9 @@ currentIndex++;
 updateSlider();
 
 
+
 }
+
 
 
 
@@ -1120,9 +1242,7 @@ function previousImage(){
 
 if(currentIndex > 0){
 
-
 currentIndex--;
-
 
 }
 
@@ -1131,10 +1251,8 @@ currentIndex--;
 updateSlider();
 
 
+
 }
-
-
-
 
 
 
@@ -1148,9 +1266,8 @@ updateSlider();
 
 
 }
-
-
-// ZOOM
+ 
+// ZOOM FUNCTION
 
 
 function zoomIn(){
@@ -1166,8 +1283,6 @@ zoomLevel += 0.2;
 applyZoom();
 
 }
-
-
 
 
 
@@ -1187,8 +1302,6 @@ applyZoom();
 
 
 
-
-
 function resetZoom(){
 
 
@@ -1203,14 +1316,10 @@ applyZoom();
 
 
 
-
-
 function applyZoom(){
 
 
-let imgs =
-
-document.querySelectorAll(
+let imgs = document.querySelectorAll(
 "#sliderTrack img"
 );
 
@@ -1221,15 +1330,7 @@ imgs.forEach(function(img){
 
 img.style.transform =
 
-"scale("
-
-+
-
-zoomLevel
-
-+
-
-")";
+"scale(" + zoomLevel + ")";
 
 
 });
@@ -1243,8 +1344,7 @@ zoomLevel
 
 
 
-
-// SWIPE
+// TOUCH SWIPE
 
 
 let startX = 0;
@@ -1264,14 +1364,14 @@ document
 function(e){
 
 
-startX =
-
-e.touches[0].clientX;
+startX = e.touches[0].clientX;
 
 
 }
 
 );
+
+
 
 
 
@@ -1288,11 +1388,7 @@ document
 function(e){
 
 
-endX =
-
-e.changedTouches[0].clientX;
-
-
+endX = e.changedTouches[0].clientX;
 
 
 
@@ -1301,8 +1397,6 @@ if(startX - endX > 50){
 nextImage();
 
 }
-
-
 
 
 
@@ -1326,16 +1420,17 @@ previousImage();
 
 
 
+
 // SHARE
 
 
 function getProductLink(){
 
+
 return window.location.href;
 
+
 }
-
-
 
 
 
@@ -1357,18 +1452,11 @@ window.open(
 
 encodeURIComponent(
 getProductLink()
-),
-
-"_blank"
+)
 
 );
 
-
-
 };
-
-
-
 
 
 
@@ -1404,24 +1492,19 @@ getProductLink();
 
 
 
-
 window.open(
 
 "https://wa.me/?text="
 
 +
 
-encodeURIComponent(text),
-
-"_blank"
+encodeURIComponent(text)
 
 );
 
 
 
 };
-
-
 
 
 
@@ -1454,7 +1537,6 @@ alert(
 
 
 };
-
 
 
 
