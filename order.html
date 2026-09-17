@@ -779,16 +779,24 @@ productPrice=Number(urlParams.get("price")) || 0;
 
 
 
-let imageParam=urlParams.get("image") || "";
-
+let imageParam=urlParams.get("images") || "";
 
 
 if(imageParam){
 
-images.push(decodeURIComponent(imageParam));
+try{
+
+images = JSON.parse(decodeURIComponent(imageParam));
 
 }
 
+catch(e){
+
+images=[];
+
+}
+
+}
 
 
 document.getElementById("productName").innerHTML=productName;
