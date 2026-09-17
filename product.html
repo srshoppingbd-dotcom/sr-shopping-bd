@@ -14,7 +14,6 @@
 
 <style>
 
-
 *{
 box-sizing:border-box;
 }
@@ -42,25 +41,27 @@ color:white;
 
 text-align:center;
 
-padding:16px 10px;
+padding:20px 10px;
 
 }
+
 
 
 .header h1{
 
 margin:0;
 
-font-size:27px;
+font-size:28px;
 
 }
 
 
+
 .header p{
 
-margin:4px 0 0;
+margin:6px 0 0;
 
-font-size:15px;
+font-size:16px;
 
 }
 
@@ -74,7 +75,7 @@ max-width:700px;
 
 margin:auto;
 
-padding:8px;
+padding:10px;
 
 }
 
@@ -91,11 +92,11 @@ border:2px solid #d4af37;
 
 border-radius:18px;
 
-padding:13px;
+padding:16px;
 
 text-align:center;
 
-font-size:19px;
+font-size:20px;
 
 font-weight:bold;
 
@@ -103,10 +104,9 @@ text-decoration:none;
 
 color:#111;
 
-margin-bottom:12px;
+margin-bottom:15px;
 
 }
-
 
 
 
@@ -115,25 +115,22 @@ margin-bottom:12px;
 
 background:white;
 
-border-radius:20px;
+border-radius:18px;
 
-padding:10px;
+padding:12px;
 
-box-shadow:0 4px 15px rgba(0,0,0,.12);
+box-shadow:0 3px 15px rgba(0,0,0,.15);
 
 }
 
 
 
 
-/* IMAGE SIZE REDUCED */
-
-
 .slider-box{
 
 width:100%;
 
-height:320px;
+height:430px;
 
 background:white;
 
@@ -179,6 +176,7 @@ transition:.3s;
 
 
 
+
 .arrow{
 
 position:absolute;
@@ -187,9 +185,9 @@ top:50%;
 
 transform:translateY(-50%);
 
-width:52px;
+width:55px;
 
-height:52px;
+height:55px;
 
 border-radius:50%;
 
@@ -199,7 +197,7 @@ color:white;
 
 border:none;
 
-font-size:32px;
+font-size:35px;
 
 z-index:5;
 
@@ -209,7 +207,7 @@ z-index:5;
 
 .left{
 
-left:12px;
+left:15px;
 
 }
 
@@ -217,7 +215,7 @@ left:12px;
 
 .right{
 
-right:12px;
+right:15px;
 
 }
 
@@ -229,7 +227,7 @@ right:12px;
 
 text-align:center;
 
-padding:6px;
+padding:10px;
 
 }
 
@@ -239,9 +237,9 @@ padding:6px;
 
 display:inline-block;
 
-width:11px;
+width:12px;
 
-height:11px;
+height:12px;
 
 background:#ccc;
 
@@ -267,9 +265,9 @@ background:#d4af37;
 
 display:flex;
 
-gap:8px;
+gap:10px;
 
-margin-top:8px;
+margin-top:10px;
 
 }
 
@@ -279,7 +277,7 @@ margin-top:8px;
 
 flex:1;
 
-height:42px;
+height:45px;
 
 border:none;
 
@@ -289,7 +287,7 @@ background:#111;
 
 color:white;
 
-font-size:18px;
+font-size:20px;
 
 font-weight:bold;
 
@@ -298,14 +296,13 @@ font-weight:bold;
 
 
 
-
 .product-name{
 
-font-size:27px;
+font-size:30px;
 
 font-weight:bold;
 
-margin-top:12px;
+margin-top:18px;
 
 }
 
@@ -313,13 +310,13 @@ margin-top:12px;
 
 .product-description{
 
-font-size:15px;
+font-size:16px;
 
-line-height:1.5;
+line-height:1.6;
 
 color:#666;
 
-margin-top:6px;
+margin-top:10px;
 
 }
 
@@ -327,11 +324,11 @@ margin-top:6px;
 
 .product-price{
 
-font-size:30px;
+font-size:34px;
 
 font-weight:bold;
 
-margin-top:8px;
+margin-top:15px;
 
 }
 
@@ -341,9 +338,9 @@ margin-top:8px;
 
 width:100%;
 
-height:58px;
+margin-top:20px;
 
-margin-top:16px;
+height:60px;
 
 background:#111;
 
@@ -361,9 +358,202 @@ font-weight:bold;
 
 
 
-  
-<div class="share">
 
+
+.share{
+
+display:flex;
+
+gap:8px;
+
+margin-top:12px;
+
+}
+
+
+
+.share button{
+
+flex:1;
+
+height:45px;
+
+border:none;
+
+border-radius:10px;
+
+color:white;
+
+font-weight:bold;
+
+}
+
+
+.fb{
+
+background:#1877f2;
+
+}
+
+
+.wa{
+
+background:#25d366;
+
+}
+
+
+.copy{
+
+background:#555;
+
+}
+
+
+
+.loading{
+
+text-align:center;
+
+padding:50px;
+
+font-size:18px;
+
+color:#888;
+
+}
+
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<div class="header">
+
+<h1>🛍️ SR Shopping BD</h1>
+
+<p>Product Details</p>
+
+</div>
+
+
+
+<div class="container">
+
+
+<a href="index.html" class="back-btn">
+
+← সকল পণ্য দেখুন
+
+</a>
+
+
+
+<div class="product-card">
+
+
+
+<div class="slider-box">
+
+
+<div id="sliderTrack" class="slider-track">
+
+
+<div class="loading">
+
+Image Loading...
+
+</div>
+
+
+</div>
+
+
+<button class="arrow left" onclick="previousImage()">
+
+‹
+
+</button>
+
+
+
+<button class="arrow right" onclick="nextImage()">
+
+›
+
+</button>
+
+
+
+</div>
+
+
+<div id="dots" class="dots"></div>
+
+
+
+<div class="zoom-box">
+
+
+<button onclick="zoomIn()">
+
++
+
+</button>
+
+
+<button onclick="resetZoom()">
+
+Reset
+
+</button>
+
+
+<button onclick="zoomOut()">
+
+-
+
+</button>
+
+
+</div>
+
+
+
+<div id="productName" class="product-name">
+
+Loading...
+
+</div>
+
+
+<div id="productDescription" class="product-description">
+
+</div>
+
+
+<div class="product-price">
+
+৳<span id="productPrice">0</span>
+
+</div>
+
+
+<button id="orderBtn" class="order-btn">
+
+🛒 ORDER NOW
+
+</button>
+
+
+
+<div class="share">
 
 <button class="fb">
 
@@ -385,20 +575,7 @@ font-weight:bold;
 
 </button>
 
-
 </div>
-
-
-</div>
-
-
-</div>
-
-
-</div>
-
-
-
 
 <script>
 
@@ -409,13 +586,13 @@ const API_URL =
 
 
 
-let productData={};
+let productData = {};
 
-let images=[];
+let images = [];
 
-let currentImage=0;
+let currentImage = 0;
 
-let zoom=1;
+let zoom = 1;
 
 
 
@@ -439,18 +616,20 @@ params.get("product") || "";
 
 
 
+
 function loadProduct(){
+
 
 
 let callback =
 
-"productCallback_"+Date.now();
+"callback_" + Date.now();
 
 
 
 
 
-window[callback]=function(data){
+window[callback] = function(data){
 
 
 
@@ -464,7 +643,7 @@ if(data.success && data.product){
 
 
 
-productData=data.product;
+productData = data.product;
 
 
 showProduct();
@@ -478,7 +657,7 @@ else{
 
 document.getElementById(
 "productName"
-).innerHTML=
+).innerHTML =
 
 "Product পাওয়া যায়নি";
 
@@ -494,12 +673,13 @@ document.getElementById(
 
 
 
+let script =
 
-let script=document.createElement("script");
+document.createElement("script");
 
 
 
-script.src=
+script.src =
 
 API_URL
 
@@ -548,13 +728,14 @@ document.body.appendChild(script);
 
 
 
+
 function showProduct(){
 
 
 
 document.getElementById(
 "productName"
-).innerHTML=
+).innerHTML =
 
 productData.name || "";
 
@@ -564,7 +745,7 @@ productData.name || "";
 
 document.getElementById(
 "productDescription"
-).innerHTML=
+).innerHTML =
 
 productData.description || "";
 
@@ -574,7 +755,7 @@ productData.description || "";
 
 document.getElementById(
 "productPrice"
-).innerHTML=
+).innerHTML =
 
 Number(
 productData.price || 0
@@ -586,17 +767,23 @@ productData.price || 0
 
 
 
-images=[];
+
+images = [];
 
 
 
 
 
+if(
 
-if(productData.images && Array.isArray(productData.images)){
+productData.images &&
+
+Array.isArray(productData.images)
+
+){
 
 
-images=productData.images;
+images = productData.images;
 
 
 }
@@ -606,7 +793,8 @@ images=productData.images;
 
 
 
-if(images.length===0){
+
+if(images.length === 0){
 
 
 
@@ -640,14 +828,26 @@ createSlider();
 
 
 
-
 document.getElementById(
 "orderBtn"
 ).onclick=function(){
 
 
 
-window.location.href=
+let img="";
+
+
+
+if(images.length){
+
+img = images[0];
+
+}
+
+
+
+
+window.location.href =
 
 "order.html?product="
 
@@ -669,12 +869,11 @@ encodeURIComponent(productData.price)
 
 +
 
-encodeURIComponent(images[0] || "");
+encodeURIComponent(img);
 
 
 
 };
-
 
 
 
@@ -692,13 +891,17 @@ function createSlider(){
 
 
 
-let track=document.getElementById(
+let track =
+
+document.getElementById(
 "sliderTrack"
 );
 
 
 
-let dots=document.getElementById(
+let dots =
+
+document.getElementById(
 "dots"
 );
 
@@ -713,12 +916,11 @@ dots.innerHTML="";
 
 
 
-
 if(images.length===0){
 
 
 
-track.innerHTML=
+track.innerHTML =
 
 `
 
@@ -732,9 +934,7 @@ Image পাওয়া যায়নি
 
 return;
 
-
 }
-
 
 
 
@@ -745,11 +945,15 @@ images.forEach(function(url,index){
 
 
 
-let img=document.createElement("img");
+let img =
+
+document.createElement("img");
 
 
 
-img.src=
+/* API থেকে এখন সরাসরি lh3 URL আসছে */
+
+img.src =
 
 String(url).trim();
 
@@ -767,8 +971,6 @@ this.style.display="none";
 
 
 
-
-
 track.appendChild(img);
 
 
@@ -776,7 +978,9 @@ track.appendChild(img);
 
 
 
-let dot=document.createElement("span");
+let dot =
+
+document.createElement("span");
 
 
 
@@ -832,8 +1036,7 @@ function updateSlider(){
 
 document.getElementById(
 "sliderTrack"
-)
-.style.transform=
+).style.transform =
 
 "translateX(-"
 
@@ -844,7 +1047,6 @@ document.getElementById(
 +
 
 "%)";
-
 
 
 
@@ -878,12 +1080,15 @@ dot.classList.remove("active");
 
 
 
-  }
+}
 
 
-  
+
+
+
 
 function nextImage(){
+
 
 
 if(currentImage < images.length-1){
@@ -901,7 +1106,11 @@ updateSlider();
 
 
 
+
+
+
 function previousImage(){
+
 
 
 if(currentImage > 0){
@@ -920,6 +1129,7 @@ updateSlider();
 
 
 
+
 function goImage(index){
 
 
@@ -930,11 +1140,6 @@ updateSlider();
 
 
 }
-
-
-
-
-
 
 
 // ZOOM
@@ -952,10 +1157,7 @@ zoom += 0.2;
 
 applyZoom();
 
-
 }
-
-
 
 
 
@@ -971,24 +1173,19 @@ zoom -= 0.2;
 
 applyZoom();
 
-
 }
-
-
 
 
 
 function resetZoom(){
 
 
-zoom=1;
+zoom = 1;
 
 
 applyZoom();
 
-
 }
-
 
 
 
@@ -996,18 +1193,18 @@ applyZoom();
 function applyZoom(){
 
 
-document.querySelectorAll(
-
+let img = document.querySelectorAll(
 "#sliderTrack img"
-
-)
-
-.forEach(function(img){
+);
 
 
-img.style.transform=
 
-"scale("+zoom+")";
+img.forEach(function(item){
+
+
+item.style.transform =
+
+"scale(" + zoom + ")";
 
 
 });
@@ -1021,31 +1218,30 @@ img.style.transform=
 
 
 
-// SWIPE SUPPORT
 
 
-let startX=0;
+// SWIPE
 
-let endX=0;
+
+let touchStart = 0;
+
+let touchEnd = 0;
+
 
 
 
 document
-
 .getElementById("sliderTrack")
-
 .addEventListener(
-
 "touchstart",
-
 function(e){
 
 
-startX=e.touches[0].clientX;
+touchStart =
+e.touches[0].clientX;
 
 
 }
-
 );
 
 
@@ -1054,22 +1250,18 @@ startX=e.touches[0].clientX;
 
 
 document
-
 .getElementById("sliderTrack")
-
 .addEventListener(
-
 "touchend",
-
 function(e){
 
 
-endX=e.changedTouches[0].clientX;
+touchEnd =
+e.changedTouches[0].clientX;
 
 
 
-
-if(startX-endX>50){
+if(touchStart - touchEnd > 50){
 
 nextImage();
 
@@ -1077,7 +1269,7 @@ nextImage();
 
 
 
-if(endX-startX>50){
+if(touchEnd - touchStart > 50){
 
 previousImage();
 
@@ -1086,8 +1278,8 @@ previousImage();
 
 
 }
-
 );
+
 
 
 
@@ -1097,7 +1289,6 @@ previousImage();
 
 
 // SHARE
-
 
 
 function getLink(){
@@ -1112,9 +1303,7 @@ return window.location.href;
 
 
 document
-
 .querySelector(".fb")
-
 .onclick=function(){
 
 
@@ -1130,7 +1319,6 @@ getLink()
 
 );
 
-
 };
 
 
@@ -1140,13 +1328,12 @@ getLink()
 
 
 document
-
 .querySelector(".wa")
-
 .onclick=function(){
 
 
-let text=
+
+let text =
 
 "🛍️ SR Shopping BD\n\n"
 
@@ -1161,6 +1348,7 @@ let text=
 +
 
 getLink();
+
 
 
 
@@ -1184,25 +1372,21 @@ encodeURIComponent(text)
 
 
 
+
 document
-
 .querySelector(".copy")
-
 .onclick=function(){
 
 
+
 navigator.clipboard.writeText(
-
 getLink()
-
 );
 
 
 
 alert(
-
 "Product Link Copy হয়েছে"
-
 );
 
 
@@ -1228,5 +1412,5 @@ loadProduct();
 
 </body>
 
-
 </html>
+  
