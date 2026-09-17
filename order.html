@@ -784,17 +784,9 @@ let imageParam=urlParams.get("image") || "";
 
 if(imageParam){
 
-try{
-
-images = JSON.parse(decodeURIComponent(imageParam));
-
-}
-
-catch(e){
-
-images=[];
-
-}
+images.push(
+decodeURIComponent(imageParam)
+);
 
 }
 
