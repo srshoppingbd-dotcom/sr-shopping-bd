@@ -812,7 +812,6 @@ productPrice.toLocaleString("en-BD");
 
 function createSlider(){
 
-
 let track=document.getElementById("sliderTrack");
 
 let dots=document.getElementById("dots");
@@ -820,14 +819,21 @@ let dots=document.getElementById("dots");
 
 track.innerHTML="";
 
+dots.innerHTML="";
+
 
 images.forEach(function(url,index){
 
 
 let img=document.createElement("img");
 
-
 img.src=url;
+
+img.style.width="100%";
+
+img.style.flexShrink="0";
+
+img.style.objectFit="contain";
 
 
 track.appendChild(img);
@@ -852,7 +858,7 @@ dots.appendChild(dot);
 });
 
 
-}
+  }
 
 
 
