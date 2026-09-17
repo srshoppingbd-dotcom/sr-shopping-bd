@@ -1507,7 +1507,24 @@ img.style.transform="scale(1)";
 function orderProduct(name,price,image){
 
 
-window.location.href=
+let product = allProducts.find(function(item){
+
+return item.name === name;
+
+});
+
+
+let images=[];
+
+
+if(product && product.images){
+
+images = product.images;
+
+}
+
+
+window.location.href =
 
 "order.html?product="+
 
@@ -1521,10 +1538,9 @@ encodeURIComponent(price)
 
 +
 
-"&image="+
+"&images="+
 
-encodeURIComponent(image);
-
+encodeURIComponent(JSON.stringify(images));
 
 
 }
