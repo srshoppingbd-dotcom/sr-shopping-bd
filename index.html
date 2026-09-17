@@ -1503,28 +1503,37 @@ img.style.transform="scale(1)";
 
 // ORDER
 
+function orderProduct(product){
 
-function orderProduct(name,price,image){
+let images=[];
+
+if(product.image1){
+images.push(convertImageURL(product.image1));
+}
+
+if(product.image2){
+images.push(convertImageURL(product.image2));
+}
+
+if(product.image3){
+images.push(convertImageURL(product.image3));
+}
+
+if(product.image4){
+images.push(convertImageURL(product.image4));
+}
 
 
 window.location.href=
 
 "order.html?product="+
+encodeURIComponent(product.name)
 
-encodeURIComponent(name)
++"&price="+
+encodeURIComponent(product.price)
 
-+
-
-"&price="+
-
-encodeURIComponent(price)
-
-+
-
-"&image="+
-
-encodeURIComponent(image);
-
++"&images="+
+encodeURIComponent(JSON.stringify(images));
 
 
 }
