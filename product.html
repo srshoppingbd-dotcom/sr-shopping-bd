@@ -691,101 +691,42 @@ params.get("product") || "";
 
 function convertImageURL(url){
 
-
 if(!url){
-
 return "";
-
 }
-
-
 
 url = String(url).trim();
 
+let id = "";
 
-
-
-
-if(url.includes("thumbnail")){
-
-return url;
-
-}
-
-
-
-
-
-let id="";
-
-
-
-let match =
-
-url.match(
-/\/file\/d\/([^\/]+)/
-);
-
-
+let match = url.match(/\/file\/d\/([^\/]+)/);
 
 if(match && match[1]){
-
-id=match[1];
-
+id = match[1];
 }
-
-
 
 
 if(!id){
 
-
-match =
-
-url.match(
-/[?&]id=([^&]+)/
-);
-
-
+match = url.match(/[?&]id=([^&]+)/);
 
 if(match && match[1]){
-
-id=match[1];
-
+id = match[1];
 }
 
-
 }
-
-
-
 
 
 if(id){
 
-
-return
-
-"https://drive.google.com/thumbnail?id="
-
-+
-
-id
-
-+
-
-"&sz=w1000";
-
+return "https://drive.google.com/uc?export=view&id=" + id;
 
 }
-
 
 
 return url;
 
-
 }
-
 
 
 
