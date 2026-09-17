@@ -893,53 +893,30 @@ createSlider();
 
 
 
-document.getElementById(
-"orderBtn"
-).onclick=function(){
+document.getElementById("orderBtn").onclick=function(){
 
+let img = "";
 
+if(productData.image1){
 
-let img="";
+img = productData.image1;
 
-
-
-if(images.length){
+}
+else if(images.length){
 
 img = images[0];
 
 }
 
-
-
-
 window.location.href =
-
-"order.html?product="
-
-+
-
-encodeURIComponent(productData.name)
-
-+
-
-"&price="
-
-+
-
-encodeURIComponent(productData.price)
-
-+
-
-"&image="
-
-+
-
+"order.html?product=" +
+encodeURIComponent(productData.name || "") +
+"&price=" +
+encodeURIComponent(productData.price || 0) +
+"&image=" +
 encodeURIComponent(img);
 
-
-
 };
-
 
 
 }
