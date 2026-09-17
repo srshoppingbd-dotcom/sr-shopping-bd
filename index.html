@@ -869,7 +869,7 @@ font-size:16px;
 <div class="running-text">
 
 
-🔥❤️ SR Shopping BD-তে আপনাকে স্বাগতম।। SR Shopping BD থেকে পণ্য কিনে হন ধন্য।। নিচে সকল পণ্য দেখতে স্ক্রল করুন-🤳।। সাথে আছি আমি ঝিনাইদহ বিশ্বস্ত শপিং প্লাটফর্ম থেকে \\মোঃ আকাশ খান// ❤️🔥
+🔥 SR Shopping BD-তে আপনাকে স্বাগতম।। SR Shopping BD থেকে পণ্য কিনে হন ধন্য।। নিচে সকল পণ্য দেখতে স্ক্রল করুন-🤳।। 🔥
 
 
 </div>
@@ -1503,37 +1503,28 @@ img.style.transform="scale(1)";
 
 // ORDER
 
-function orderProduct(product){
 
-let images=[];
-
-if(product.image1){
-images.push(convertImageURL(product.image1));
-}
-
-if(product.image2){
-images.push(convertImageURL(product.image2));
-}
-
-if(product.image3){
-images.push(convertImageURL(product.image3));
-}
-
-if(product.image4){
-images.push(convertImageURL(product.image4));
-}
+function orderProduct(name,price,image){
 
 
 window.location.href=
 
 "order.html?product="+
-encodeURIComponent(product.name)
 
-+"&price="+
-encodeURIComponent(product.price)
+encodeURIComponent(name)
 
-+"&images="+
-encodeURIComponent(JSON.stringify(images));
++
+
+"&price="+
+
+encodeURIComponent(price)
+
++
+
+"&image="+
+
+encodeURIComponent(image);
+
 
 
 }
