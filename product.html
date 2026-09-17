@@ -14,7 +14,6 @@
 
 <style>
 
-
 *{
 box-sizing:border-box;
 }
@@ -47,15 +46,13 @@ padding:15px;
 }
 
 
-
 .header h1{
 
 margin:0;
 
-font-size:24px;
+font-size:25px;
 
 }
-
 
 
 .header p{
@@ -67,9 +64,10 @@ margin:5px 0 0;
 
 
 
+
 .container{
 
-max-width:600px;
+max-width:650px;
 
 margin:auto;
 
@@ -80,13 +78,10 @@ padding:10px;
 
 
 
+
 .all-products-btn{
 
-display:flex;
-
-align-items:center;
-
-justify-content:center;
+display:block;
 
 background:white;
 
@@ -96,13 +91,15 @@ border-radius:15px;
 
 padding:12px;
 
-margin-bottom:12px;
+text-align:center;
+
+font-weight:bold;
 
 text-decoration:none;
 
 color:#111;
 
-font-weight:bold;
+margin-bottom:12px;
 
 }
 
@@ -114,9 +111,9 @@ font-weight:bold;
 
 background:white;
 
-border-radius:16px;
-
 padding:12px;
+
+border-radius:16px;
 
 box-shadow:0 3px 12px rgba(0,0,0,.15);
 
@@ -127,25 +124,24 @@ box-shadow:0 3px 12px rgba(0,0,0,.15);
 
 
 
-
 /* IMAGE SLIDER */
 
 
-.slider-box{
+.slider-container{
 
 width:100%;
 
-height:320px;
-
-background:white;
-
-border-radius:15px;
+height:350px;
 
 overflow:hidden;
 
-position:relative;
+border-radius:15px;
+
+background:white;
 
 border:1px solid #ddd;
+
+position:relative;
 
 }
 
@@ -153,11 +149,11 @@ border:1px solid #ddd;
 
 .slider-track{
 
-height:100%;
-
 display:flex;
 
-transition:0.35s ease;
+height:100%;
+
+transition:.3s ease;
 
 }
 
@@ -179,7 +175,7 @@ object-fit:contain;
 
 
 
-.slider-arrow{
+.arrow{
 
 position:absolute;
 
@@ -196,12 +192,11 @@ padding:0 10px;
 }
 
 
+.arrow button{
 
-.slider-arrow button{
+width:40px;
 
-width:38px;
-
-height:38px;
+height:40px;
 
 border-radius:50%;
 
@@ -223,23 +218,22 @@ font-size:25px;
 
 text-align:center;
 
-margin-top:10px;
+margin:8px;
 
 }
-
 
 
 .dot{
 
 display:inline-block;
 
-width:9px;
+width:10px;
 
-height:9px;
-
-background:#ccc;
+height:10px;
 
 border-radius:50%;
+
+background:#ccc;
 
 margin:3px;
 
@@ -257,10 +251,29 @@ background:#d4af37;
 
 
 
-/* ZOOM */
+.no-image{
+
+height:100%;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+color:#999;
+
+font-size:16px;
+
+}
 
 
-.zoom-box{
+
+
+
+
+
+.zoom-buttons{
 
 display:flex;
 
@@ -271,8 +284,7 @@ margin-top:10px;
 }
 
 
-
-.zoom-box button{
+.zoom-buttons button{
 
 flex:1;
 
@@ -294,14 +306,13 @@ color:white;
 
 .product-name{
 
-font-size:22px;
+font-size:23px;
 
 font-weight:bold;
 
 margin-top:15px;
 
 }
-
 
 
 
@@ -324,13 +335,14 @@ margin-top:8px;
 
 .product-price{
 
-font-size:26px;
+font-size:28px;
 
 font-weight:bold;
 
 margin:12px 0;
 
 }
+
 
 
 
@@ -361,6 +373,8 @@ font-weight:bold;
 
 
 
+
+
 .share-buttons{
 
 display:flex;
@@ -370,7 +384,6 @@ gap:6px;
 margin-top:10px;
 
 }
-
 
 
 .share-buttons button{
@@ -414,12 +427,16 @@ background:#555;
 }
 
 
+
 </style>
+
 
 </head>
 
 
+
 <body>
+
 
 
 <div class="header">
@@ -432,7 +449,9 @@ background:#555;
 
 
 
+
 <div class="container">
+
 
 
 <a href="index.html" class="all-products-btn">
@@ -443,27 +462,53 @@ background:#555;
 
 
 
+
 <div class="product-card">
 
 
-<div class="slider-box">
+
+<div class="slider-container">
 
 
 <div id="sliderTrack" class="slider-track">
 
-</div>
 
+<div class="no-image">
 
-<div class="slider-arrow">
-
-<button onclick="previousImage()">‹</button>
-
-<button onclick="nextImage()">›</button>
+Image Loading Now...
 
 </div>
 
 
 </div>
+
+
+
+<div class="arrow">
+
+
+<button onclick="previousImage()">
+
+‹
+
+</button>
+
+
+
+<button onclick="nextImage()">
+
+›
+
+</button>
+
+
+</div>
+
+
+
+</div>
+
+
 
 
 
@@ -472,13 +517,30 @@ background:#555;
 
 
 
-<div class="zoom-box">
 
-<button onclick="zoomIn()">+</button>
+<div class="zoom-buttons">
 
-<button onclick="resetZoom()">Reset</button>
 
-<button onclick="zoomOut()">−</button>
+<button onclick="zoomIn()">
+
++
+
+</button>
+
+
+<button onclick="resetZoom()">
+
+Reset
+
+</button>
+
+
+<button onclick="zoomOut()">
+
+−
+
+</button>
+
 
 </div>
 
@@ -494,9 +556,13 @@ Loading...
 
 
 
+
+
 <div id="productDescription" class="product-description">
 
 </div>
+
+
 
 
 
@@ -508,6 +574,8 @@ Loading...
 
 
 
+
+
 <button id="orderBtn" class="order-btn">
 
 🛒 ORDER NOW
@@ -516,7 +584,10 @@ Loading...
 
 
 
+
+
 <div class="share-buttons">
+
 
 <button class="facebook">
 
@@ -538,7 +609,10 @@ Loading...
 
 </button>
 
+
 </div>
+
+
 
 
 </div>
@@ -549,27 +623,28 @@ Loading...
 
 
 const API_URL =
+
 "https://script.google.com/macros/s/AKfycbwEl4AmzhQHDoy0yMqE0_XnUJ2Yj65-PiWnP0FADuC5Wh5Y8d8fej2lUBqndiQC2bN5/exec";
 
 
 
 let productData = {};
 
-let imageList = [];
+let images = [];
 
 let currentIndex = 0;
 
-let zoomLevel = 1;
+let zoomValue = 1;
 
 
 
 
 
+// GET PRODUCT NAME FROM URL
 
-// GET PRODUCT NAME
 
+const params =
 
-const urlParams =
 new URLSearchParams(
 window.location.search
 );
@@ -577,7 +652,8 @@ window.location.search
 
 
 let productNameURL =
-urlParams.get("product") || "";
+
+params.get("product") || "";
 
 
 
@@ -585,7 +661,8 @@ urlParams.get("product") || "";
 
 
 
-// IMAGE CONVERTER
+
+// CONVERT GOOGLE DRIVE IMAGE
 
 
 function convertImageURL(url){
@@ -599,9 +676,7 @@ return "";
 
 
 
-url =
-String(url).trim();
-
+url = String(url).trim();
 
 
 
@@ -621,7 +696,10 @@ let id="";
 
 
 let match =
-url.match(/\/file\/d\/([^\/]+)/);
+
+url.match(
+/\/file\/d\/([^\/]+)/
+);
 
 
 
@@ -634,12 +712,14 @@ id=match[1];
 
 
 
-
 if(!id){
 
 
 match =
-url.match(/[?&]id=([^&]+)/);
+
+url.match(
+/[?&]id=([^&]+)/
+);
 
 
 
@@ -693,18 +773,28 @@ return url;
 function loadProduct(){
 
 
+
 let callbackName =
 
-"productCallback_"+Date.now();
+"singleProduct_" + Date.now();
 
 
-window[callbackName]=function(result){
+
+
+
+window[callbackName] = function(result){
+
 
 
 delete window[callbackName];
 
 
+
+
+
 console.log(result);
+
+
 
 
 
@@ -714,27 +804,19 @@ result.product
 ){
 
 
-productData = result.product;
+
+productData =
+result.product;
 
 
-showProduct(result.product);
 
+showProduct(
+result.product
+);
 
-}
-
-else{
-
-
-document.getElementById("productName").innerHTML =
-"Product পাওয়া যায়নি";
 
 
 }
-
-
-};
-
-
 
 else{
 
@@ -759,7 +841,10 @@ document.getElementById(
 
 
 let script =
+
 document.createElement("script");
+
+
 
 
 
@@ -799,12 +884,12 @@ Date.now();
 
 
 
-
 document.body.appendChild(script);
 
 
 
 }
+
 
 
 
@@ -824,7 +909,9 @@ document.getElementById(
 "productName"
 )
 .innerHTML =
+
 product.name || "";
+
 
 
 
@@ -833,6 +920,7 @@ document.getElementById(
 "productDescription"
 )
 .innerHTML =
+
 product.description || "";
 
 
@@ -847,7 +935,6 @@ document.getElementById(
 Number(
 product.price || 0
 )
-
 .toLocaleString("en-BD");
 
 
@@ -856,24 +943,24 @@ product.price || 0
 
 
 
-// IMAGE COLLECTION
 
-
-imageList = [];
-
+// IMAGE LIST
 
 
 
+images=[];
 
-// NEW FORMAT
+
+
+
 
 if(
 product.images &&
-product.images.length
+Array.isArray(product.images)
 ){
 
 
-imageList =
+images =
 product.images;
 
 
@@ -883,18 +970,19 @@ product.images;
 
 
 
-// FALLBACK OLD FORMAT
 
 
-if(imageList.length === 0){
+if(images.length===0){
 
 
 
 if(product.image1){
 
-imageList.push(
+
+images.push(
 product.image1
 );
+
 
 }
 
@@ -902,9 +990,11 @@ product.image1
 
 if(product.image2){
 
-imageList.push(
+
+images.push(
 product.image2
 );
+
 
 }
 
@@ -923,6 +1013,7 @@ createSlider();
 
 
 
+
 document.getElementById(
 "orderBtn"
 )
@@ -936,7 +1027,9 @@ window.location.href =
 
 +
 
-encodeURIComponent(product.name)
+encodeURIComponent(
+product.name
+)
 
 +
 
@@ -944,7 +1037,9 @@ encodeURIComponent(product.name)
 
 +
 
-encodeURIComponent(product.price)
+encodeURIComponent(
+product.price
+)
 
 +
 
@@ -953,14 +1048,13 @@ encodeURIComponent(product.price)
 +
 
 encodeURIComponent(
-convertImageURL(
-imageList[0]
-)
+convertImageURL(images[0] || "")
 );
 
 
 
 };
+
 
 
 
@@ -974,7 +1068,7 @@ imageList[0]
 
 
 
-// CREATE SLIDER
+// CREATE IMAGE SLIDER
 
 
 function createSlider(){
@@ -982,6 +1076,7 @@ function createSlider(){
 
 
 let track =
+
 document.getElementById(
 "sliderTrack"
 );
@@ -989,9 +1084,11 @@ document.getElementById(
 
 
 let dots =
+
 document.getElementById(
 "dots"
 );
+
 
 
 
@@ -1003,21 +1100,53 @@ dots.innerHTML="";
 
 
 
-imageList.forEach(function(image,index){
+
+if(images.length===0){
 
 
 
-let img =
+track.innerHTML =
+
+`
+
+<div class="no-image">
+
+Image Not Available
+
+</div>
+
+`;
+
+
+
+return;
+
+
+}
+
+
+
+
+
+
+
+images.forEach(function(img,index){
+
+
+
+let image =
+
 document.createElement("img");
 
 
 
-img.src =
-convertImageURL(image);
+image.src =
+
+convertImageURL(img);
 
 
 
-track.appendChild(img);
+track.appendChild(image);
 
 
 
@@ -1026,20 +1155,18 @@ track.appendChild(img);
 
 
 let dot =
+
 document.createElement("span");
 
 
 
-dot.className =
-"dot";
+dot.className="dot";
 
 
 
 if(index===0){
 
-dot.classList.add(
-"active"
-);
+dot.classList.add("active");
 
 }
 
@@ -1055,11 +1182,13 @@ goToImage(index);
 
 
 
+
 dots.appendChild(dot);
 
 
 
 });
+
 
 
 
@@ -1077,7 +1206,7 @@ updateSlider();
 
 
 
-// MOVE SLIDER
+// SLIDER CONTROL
 
 
 function updateSlider(){
@@ -1085,6 +1214,7 @@ function updateSlider(){
 
 
 let track =
+
 document.getElementById(
 "sliderTrack"
 );
@@ -1108,9 +1238,8 @@ track.style.transform =
 
 
 
-document.querySelectorAll(
-".dot"
-)
+document
+.querySelectorAll(".dot")
 .forEach(function(dot,index){
 
 
@@ -1118,9 +1247,7 @@ document.querySelectorAll(
 if(index===currentIndex){
 
 
-dot.classList.add(
-"active"
-);
+dot.classList.add("active");
 
 
 }
@@ -1128,9 +1255,7 @@ dot.classList.add(
 else{
 
 
-dot.classList.remove(
-"active"
-);
+dot.classList.remove("active");
 
 
 }
@@ -1148,14 +1273,12 @@ dot.classList.remove(
 
 
 
-
 function nextImage(){
 
 
 
 if(
-currentIndex <
-imageList.length-1
+currentIndex < images.length-1
 ){
 
 
@@ -1171,6 +1294,7 @@ updateSlider();
 
 
 }
+
 
 
 
@@ -1194,7 +1318,9 @@ currentIndex--;
 updateSlider();
 
 
+
 }
+
 
 
 
@@ -1213,22 +1339,15 @@ updateSlider();
 
 
 }
-
-
-
-
-
-
-// ZOOM
+// ZOOM FUNCTION
 
 
 function zoomIn(){
 
 
+if(zoomValue < 2.5){
 
-if(zoomLevel < 2.5){
-
-zoomLevel +=0.2;
+zoomValue += 0.2;
 
 }
 
@@ -1245,20 +1364,18 @@ applyZoom();
 function zoomOut(){
 
 
+if(zoomValue > 1){
 
-if(zoomLevel > 1){
-
-zoomLevel -=0.2;
+zoomValue -= 0.2;
 
 }
-
 
 
 applyZoom();
 
 
-
 }
+
 
 
 
@@ -1267,13 +1384,14 @@ applyZoom();
 function resetZoom(){
 
 
-zoomLevel=1;
+zoomValue = 1;
 
 
 applyZoom();
 
 
 }
+
 
 
 
@@ -1284,6 +1402,7 @@ function applyZoom(){
 
 
 let img =
+
 document.querySelector(
 "#sliderTrack img"
 );
@@ -1299,7 +1418,7 @@ img.style.transform =
 
 +
 
-zoomLevel
+zoomValue
 
 +
 
@@ -1311,11 +1430,23 @@ zoomLevel
 
 
 }
+
+
+
+
+
+
+
+
+
 // PRODUCT LINK
+
 
 function getProductLink(){
 
+
 return window.location.href;
+
 
 }
 
@@ -1323,11 +1454,15 @@ return window.location.href;
 
 
 
+
+
 // FACEBOOK SHARE
+
 
 document
 .querySelector(".facebook")
 .onclick=function(){
+
 
 
 window.open(
@@ -1345,6 +1480,8 @@ getProductLink()
 
 
 };
+
+
 
 
 
@@ -1410,17 +1547,13 @@ document
 
 
 navigator.clipboard.writeText(
-
 getProductLink()
-
 );
 
 
 
 alert(
-
 "Product Link Copy হয়েছে"
-
 );
 
 
@@ -1433,7 +1566,9 @@ alert(
 
 
 
-// TOUCH SWIPE SUPPORT
+
+
+// MOBILE SWIPE
 
 
 let startX = 0;
@@ -1442,21 +1577,17 @@ let endX = 0;
 
 
 
-const slider =
-document.getElementById(
-"sliderTrack"
-);
-
-
-
-
-slider.addEventListener(
+document
+.getElementById("sliderTrack")
+.addEventListener(
 "touchstart",
 function(e){
 
 
+
 startX =
 e.touches[0].clientX;
+
 
 
 });
@@ -1465,13 +1596,18 @@ e.touches[0].clientX;
 
 
 
-slider.addEventListener(
+
+document
+.getElementById("sliderTrack")
+.addEventListener(
 "touchend",
 function(e){
 
 
+
 endX =
 e.changedTouches[0].clientX;
+
 
 
 
@@ -1508,6 +1644,7 @@ previousImage();
 
 
 
+
 // START
 
 
@@ -1519,5 +1656,6 @@ loadProduct();
 
 
 </body>
+
 
 </html>
