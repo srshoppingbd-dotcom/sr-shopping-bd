@@ -235,7 +235,36 @@ Login
 Logout
 
 </button>
+<button onclick="showPasswordBox()">
 
+⚙️ Change Password
+
+</button>
+
+
+<div id="passwordBox" style="display:none;margin-top:15px;">
+
+
+<input id="oldPassword" type="password" placeholder="Old Password">
+
+
+<input id="newPassword" type="password" placeholder="New Password">
+
+
+<input id="confirmPassword" type="password" placeholder="Confirm New Password">
+
+
+<button onclick="changeMyPassword()">
+
+Save New Password
+
+</button>
+
+
+<p id="passwordMessage"></p>
+
+
+</div>
 
 </div>
 
@@ -570,11 +599,102 @@ location.reload();
 
 }
 
+function showPasswordBox(){
 
+document.getElementById("passwordBox").style.display="block";
+
+}
+
+
+
+
+function changeMyPassword(){
+
+
+let oldPass =
+document.getElementById("oldPassword").value;
+
+
+let newPass =
+document.getElementById("newPassword").value;
+
+
+let confirmPass =
+document.getElementById("confirmPassword").value;
+
+
+
+if(newPass !== confirmPass){
+
+document.getElementById("passwordMessage").innerHTML =
+"❌ New Password মিলছে না";
+
+return;
+
+}
+
+
+
+let callback =
+"changePass_"+Date.now();
+
+
+
+window[callback]=function(result){
+
+
+delete window[callback];
+
+
+if(result.success){
+
+document.getElementById("passwordMessage").innerHTML =
+"✅ Password Changed Successfully";
+
+
+}
+
+else{
+
+document.getElementById("passwordMessage").innerHTML =
+"❌ "+result.message;
+
+}
+
+
+};
+
+
+
+
+let script=document.createElement("script");
+
+
+script.src=
+
+API_URL+
+
+"?action=changePassword"+
+
+"&username="+encodeURIComponent(currentUser.username)+
+
+"&oldPassword="+encodeURIComponent(oldPass)+
+
+"&newPassword="+encodeURIComponent(newPass)+
+
+"&callback="+callback;
+
+
+
+document.body.appendChild(script);
+
+
+
+}
 
 </script>
 
 
 </body>
 
-  </html>
+</html>
