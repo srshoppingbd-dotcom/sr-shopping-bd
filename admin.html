@@ -196,11 +196,19 @@ font-weight:bold;
 <h2>Admin Login</h2>
 
 
-<input id="username" placeholder="Username">
+<select id="username">
 
+<option value="owner">
+👑 Owner
+</option>
+
+</select>
 
 <input id="password" type="password" placeholder="Password">
 
+<small style="color:#777">
+Role নির্বাচন করুন তারপর Password দিন
+</small>
 
 <button onclick="login()">
 
