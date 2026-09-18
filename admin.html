@@ -26,6 +26,7 @@ background:#f5f5f5;
 }
 
 
+
 .header{
 
 background:#111;
@@ -166,12 +167,11 @@ font-weight:bold;
 
 </style>
 
-
 </head>
 
 
-<body>
 
+<body>
 
 
 <div class="header">
@@ -184,12 +184,11 @@ font-weight:bold;
 
 
 
-
 <div class="container">
 
 
-
 <!-- LOGIN -->
+
 
 <div id="loginBox" class="card">
 
@@ -197,18 +196,32 @@ font-weight:bold;
 <h2>Admin Login</h2>
 
 
-
-<label>User ID</label>
-
-
-<input 
-id="userId"
-placeholder="Enter User ID">
+<label>Username</label>
 
 
+<select id="username">
 
-<input 
-id="password"
+<option value="owner">
+👑 Owner
+</option>
+
+
+<option value="manager">
+👨‍💼 Manager
+</option>
+
+
+<option value="delivery">
+🚚 Delivery
+</option>
+
+
+</select>
+
+
+
+
+<input id="password"
 type="password"
 placeholder="Password">
 
@@ -221,8 +234,15 @@ Login
 </button>
 
 
-
 <p id="loginMessage" class="msg"></p>
+
+
+
+<button onclick="showForgot()">
+
+Forgot Password
+
+</button>
 
 
 
@@ -235,6 +255,7 @@ Login
 
 <!-- DASHBOARD -->
 
+
 <div id="dashboard" class="hidden">
 
 
@@ -243,7 +264,6 @@ Login
 
 
 <h2 id="welcome"></h2>
-
 
 
 <button class="logout" onclick="logout()">
@@ -262,7 +282,7 @@ Change Password
 
 
 
-<button id="createBtn" onclick="showCreateUser()">
+<button onclick="showCreateUser()">
 
 Create User
 
@@ -270,24 +290,18 @@ Create User
 
 
 
-<button id="resetBtn" onclick="showResetPassword()">
+<button onclick="showResetPassword()">
 
 Reset User Password
 
 </button>
 
 
-
 </div>
-
-
-
-
-
+id="admin_part2"
 
 
 <!-- CHANGE PASSWORD -->
-
 
 <div id="changeBox" class="card hidden">
 
@@ -295,26 +309,19 @@ Reset User Password
 <h3>Change Password</h3>
 
 
-
-<input 
-id="oldPassword"
+<input id="oldPassword"
 type="password"
 placeholder="Old Password">
 
 
-
-<input 
-id="newPassword"
+<input id="newPassword"
 type="password"
 placeholder="New Password">
 
 
-
-<input 
-id="confirmPassword"
+<input id="confirmPassword"
 type="password"
 placeholder="Confirm Password">
-
 
 
 <button onclick="changePassword()">
@@ -324,13 +331,10 @@ Save Password
 </button>
 
 
-
 <p id="changeMessage" class="msg"></p>
 
 
-
 </div>
-
 
 
 
@@ -347,21 +351,20 @@ Save Password
 
 
 
-<input
-id="userName"
+<input id="userName"
 placeholder="Name">
 
 
+<input id="userUsername"
+placeholder="Username">
 
-<input
-id="userPassword"
+
+<input id="userPassword"
 type="password"
 placeholder="Password">
 
 
-
-<input
-id="userMobile"
+<input id="userMobile"
 placeholder="Mobile Number">
 
 
@@ -370,21 +373,16 @@ placeholder="Mobile Number">
 
 
 <option value="manager">
-
-Manager
-
+👨‍💼 Manager
 </option>
 
 
 <option value="delivery">
-
-Delivery
-
+🚚 Delivery
 </option>
 
 
 </select>
-
 
 
 
@@ -395,12 +393,11 @@ Create User
 </button>
 
 
-
 <p id="createMessage" class="msg"></p>
 
 
-
 </div>
+
 
 
 
@@ -420,9 +417,7 @@ Create User
 <select id="resetUser">
 
 <option value="">
-
 Select User
-
 </option>
 
 
@@ -432,14 +427,12 @@ Select User
 
 <button onclick="resetPassword()">
 
-Reset Password
+Reset
 
 </button>
 
 
-
 <p id="resetMessage" class="msg"></p>
-
 
 
 </div>
@@ -447,7 +440,39 @@ Reset Password
 
 
 
-<!-- DASHBOARD SUMMARY -->
+
+
+
+<!-- SEARCH -->
+
+
+<div class="card">
+
+
+<h3>Search Customer Order</h3>
+
+
+
+<input id="searchInput"
+placeholder="Phone / Order ID">
+
+
+<button onclick="searchOrder()">
+
+Search
+
+</button>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- SUMMARY -->
 
 
 <div class="card">
@@ -466,13 +491,10 @@ Total Orders
 <br>
 
 <span id="totalOrders">
-
 0
-
 </span>
 
 </div>
-
 
 
 
@@ -483,16 +505,13 @@ Pending
 <br>
 
 <span id="pendingOrders">
-
 0
-
 </span>
 
 
 </div>
 
 
-
 </div>
 
 
@@ -502,13 +521,17 @@ Pending
 
 
 
-<!-- ORDERS -->
+
+
+
+<!-- ORDER TABLE -->
 
 
 <div class="card">
 
 
 <h3>Orders</h3>
+
 
 
 <div style="overflow:auto;">
@@ -529,6 +552,8 @@ Pending
 
 <th>Product</th>
 
+<th>Amount</th>
+
 <th>Status</th>
 
 <th>Action</th>
@@ -536,13 +561,10 @@ Pending
 
 </tr>
 
-
 </thead>
 
 
-
 <tbody id="orderTable">
-
 
 </tbody>
 
@@ -553,16 +575,11 @@ Pending
 </div>
 
 
-
 </div>
 
 
 
-
 </div>
-
-
-
 
 
 <script>
@@ -578,15 +595,13 @@ let currentUser=null;
 
 
 
+
 function login(){
 
 
-let userId =
-document.getElementById("userId").value;
+let username=document.getElementById("username").value;
 
-
-let password =
-document.getElementById("password").value;
+let password=document.getElementById("password").value;
 
 
 
@@ -615,21 +630,14 @@ currentUser=result.user;
 
 document.getElementById("loginBox").style.display="none";
 
-
 document.getElementById("dashboard").classList.remove("hidden");
-
 
 
 document.getElementById("welcome").innerHTML=
 
-"Welcome "
-+
-currentUser.name
-+
-" ("
-+
-currentUser.role
-+
+"Welcome "+currentUser.name+
+" ("+
+currentUser.role+
 ")";
 
 
@@ -641,63 +649,45 @@ loadUsers();
 
 }
 
+
 else{
 
 
 document.getElementById("loginMessage").innerHTML=
-
-"❌ "
-+
-result.message;
+"❌ "+result.message;
 
 
 }
+
 
 
 };
 
 
 
-
 let script=document.createElement("script");
-
 
 
 script.src=
 
-API_URL
+API_URL+
 
-+
-"?action=adminLogin"
+"?action=adminLogin"+
 
-+
-"&userId="
-+
-encodeURIComponent(userId)
+"&username="+encodeURIComponent(username)+
 
-+
-"&password="
-+
-encodeURIComponent(password)
+"&password="+encodeURIComponent(password)+
 
-+
-"&callback="
-+
-callback;
+"&callback="+callback;
 
 
 
 document.body.appendChild(script);
 
 
+
 }
 
-<script>
-
-
-// ===============================
-// LOAD ORDERS
-// ===============================
 
 
 function loadOrders(){
@@ -711,7 +701,6 @@ window[callback]=function(result){
 
 
 delete window[callback];
-
 
 
 if(result.success){
@@ -756,28 +745,26 @@ html+=`
 
 <td>${o["Product Name"]||""}</td>
 
+<td>${o["Total Price"]||""}</td>
+
 <td>${o["Order Status"]||""}</td>
 
 <td>
-
 
 ${
 currentUser.role==="owner"
 
 ?
 
-`
-<button onclick="deleteOrder('${o["Order ID"]}')">
+`<button onclick="deleteOrder('${o["Order ID"]}')">
 Delete
-</button>
-`
+</button>`
 
 :
 
 ""
 
 }
-
 
 </td>
 
@@ -796,40 +783,30 @@ document.getElementById("pendingOrders").innerHTML=
 pending;
 
 
-
 document.getElementById("orderTable").innerHTML=
 html;
 
 
-}
 
+}
 
 
 };
 
 
 
-
 let script=document.createElement("script");
-
 
 
 script.src=
 
-API_URL
+API_URL+
 
-+
-"?action=adminOrders"
+"?action=adminOrders"+
 
-+
-"&role="
-+
-currentUser.role
+"&role="+currentUser.role+
 
-+
-"&callback="
-+
-callback;
+"&callback="+callback;
 
 
 
@@ -844,13 +821,7 @@ document.body.appendChild(script);
 
 
 
-// ===============================
-// LOAD USERS
-// ===============================
-
-
 function loadUsers(){
-
 
 
 let callback="users_"+Date.now();
@@ -863,13 +834,10 @@ window[callback]=function(result){
 delete window[callback];
 
 
-
 if(result.success){
 
 
-
 let box=document.getElementById("resetUser");
-
 
 
 box.innerHTML=
@@ -880,14 +848,11 @@ box.innerHTML=
 result.users.forEach(function(u){
 
 
-
 box.innerHTML+=
 
 `
-<option value="${u.id}">
-
-${u.id} - ${u.name} (${u.role})
-
+<option value="${u.username}">
+${u.name} (${u.role})
 </option>
 `;
 
@@ -906,23 +871,17 @@ ${u.id} - ${u.name} (${u.role})
 let script=document.createElement("script");
 
 
-
 script.src=
 
-API_URL
+API_URL+
 
-+
-"?action=getUsers"
+"?action=getUsers"+
 
-+
-"&callback="
-+
-callback;
+"&callback="+callback;
 
 
 
 document.body.appendChild(script);
-
 
 
 }
@@ -930,11 +889,6 @@ document.body.appendChild(script);
 
 
 
-
-
-// ===============================
-// SHOW BOX
-// ===============================
 
 
 
@@ -943,18 +897,14 @@ function showChangePassword(){
 document.getElementById("changeBox")
 .classList.remove("hidden");
 
-
 }
-
 
 
 
 function showCreateUser(){
 
-
 document.getElementById("createBox")
 .classList.remove("hidden");
-
 
 }
 
@@ -962,10 +912,8 @@ document.getElementById("createBox")
 
 function showResetPassword(){
 
-
 document.getElementById("resetBox")
 .classList.remove("hidden");
-
 
 }
 
@@ -974,26 +922,16 @@ document.getElementById("resetBox")
 
 
 
-// ===============================
-// CHANGE PASSWORD
-// ===============================
-
 
 function changePassword(){
 
 
-let oldPass=
-document.getElementById("oldPassword").value;
+let oldPass=document.getElementById("oldPassword").value;
+
+let newPass=document.getElementById("newPassword").value;
 
 
-
-let newPass=
-document.getElementById("newPassword").value;
-
-
-
-let confirm=
-document.getElementById("confirmPassword").value;
+let confirm=document.getElementById("confirmPassword").value;
 
 
 
@@ -1001,15 +939,11 @@ if(newPass!==confirm){
 
 
 document.getElementById("changeMessage").innerHTML=
-
 "❌ Password not match";
-
 
 return;
 
-
 }
-
 
 
 
@@ -1036,48 +970,30 @@ result.success
 "❌ "+result.message;
 
 
-
 };
-
-
 
 
 
 let script=document.createElement("script");
 
 
-
 script.src=
 
-API_URL
+API_URL+
 
-+
-"?action=changePassword"
+"?action=changePassword"+
 
-+
-"&userId="
-+
-currentUser.id
+"&username="+currentUser.username+
 
-+
-"&oldPassword="
-+
-encodeURIComponent(oldPass)
+"&oldPassword="+encodeURIComponent(oldPass)+
 
-+
-"&newPassword="
-+
-encodeURIComponent(newPass)
+"&newPassword="+encodeURIComponent(newPass)+
 
-+
-"&callback="
-+
-callback;
+"&callback="+callback;
 
 
 
 document.body.appendChild(script);
-
 
 
 }
@@ -1087,33 +1003,19 @@ document.body.appendChild(script);
 
 
 
-// ===============================
-// CREATE USER
-// ===============================
-
 
 function createUser(){
 
 
+let name=document.getElementById("userName").value;
 
-let name=
-document.getElementById("userName").value;
+let username=document.getElementById("userUsername").value;
 
+let password=document.getElementById("userPassword").value;
 
+let role=document.getElementById("userRole").value;
 
-let password=
-document.getElementById("userPassword").value;
-
-
-
-let role=
-document.getElementById("userRole").value;
-
-
-
-let mobile=
-document.getElementById("userMobile").value;
-
+let mobile=document.getElementById("userMobile").value;
 
 
 
@@ -1127,19 +1029,17 @@ window[callback]=function(result){
 delete window[callback];
 
 
-
 document.getElementById("createMessage").innerHTML=
 
 result.success
 
 ?
 
-"✅ User Created ID: "+result.userId
+"✅ User Created"
 
 :
 
 "❌ "+result.message;
-
 
 
 loadUsers();
@@ -1149,43 +1049,26 @@ loadUsers();
 
 
 
-
-
 let script=document.createElement("script");
-
 
 
 script.src=
 
-API_URL
+API_URL+
 
-+
-"?action=createUser"
+"?action=createUser"+
 
-+
-"&name="
-+
-encodeURIComponent(name)
+"&name="+encodeURIComponent(name)+
 
-+
-"&role="
-+
-role
+"&username="+encodeURIComponent(username)+
 
-+
-"&password="
-+
-encodeURIComponent(password)
+"&password="+encodeURIComponent(password)+
 
-+
-"&mobile="
-+
-encodeURIComponent(mobile)
+"&role="+role+
 
-+
-"&callback="
-+
-callback;
+"&mobile="+mobile+
+
+"&callback="+callback;
 
 
 
@@ -1195,27 +1078,16 @@ document.body.appendChild(script);
 
 }
 
-// ===============================
-// RESET PASSWORD
-// ===============================
+
+
+
+
 
 
 function resetPassword(){
 
 
-let userId =
-document.getElementById("resetUser").value;
-
-
-
-if(!userId){
-
-document.getElementById("resetMessage").innerHTML=
-"❌ Select User";
-
-return;
-
-}
+let username=document.getElementById("resetUser").value;
 
 
 
@@ -1227,7 +1099,6 @@ window[callback]=function(result){
 
 
 delete window[callback];
-
 
 
 document.getElementById("resetMessage").innerHTML=
@@ -1243,32 +1114,108 @@ result.success
 "❌ "+result.message;
 
 
-
 };
-
 
 
 
 let script=document.createElement("script");
 
 
+script.src=
+
+API_URL+
+
+"?action=forgotPassword"+
+
+"&username="+username+
+
+"&callback="+callback;
+
+
+
+document.body.appendChild(script);
+
+
+}
+
+
+
+
+
+
+
+function searchOrder(){
+
+
+let phone=document.getElementById("searchInput").value;
+
+
+
+let callback="search_"+Date.now();
+
+
+
+window[callback]=function(result){
+
+
+delete window[callback];
+
+
+
+let html="";
+
+
+
+result.orders.forEach(function(o){
+
+
+html+=`
+
+<tr>
+
+<td>${o["Order ID"]||""}</td>
+
+<td>${o["Customer Name"]||""}</td>
+
+<td>${o["Phone"]||""}</td>
+
+<td>${o["Product Name"]||""}</td>
+
+<td>${o["Total Price"]||""}</td>
+
+<td>${o["Order Status"]||""}</td>
+
+<td></td>
+
+</tr>
+
+`;
+
+
+});
+
+
+
+document.getElementById("orderTable").innerHTML=html;
+
+
+
+};
+
+
+
+let script=document.createElement("script");
+
 
 script.src=
 
-API_URL
+API_URL+
 
-+
-"?action=ownerResetPassword"
+"?action=searchCustomer"+
 
-+
-"&userId="
-+
-userId
+"&phone="+phone+
 
-+
-"&callback="
-+
-callback;
+"&callback="+callback;
 
 
 
@@ -1283,13 +1230,8 @@ document.body.appendChild(script);
 
 
 
-// ===============================
-// DELETE ORDER
-// ===============================
-
 
 function deleteOrder(id){
-
 
 
 if(!confirm("Delete this order?")){
@@ -1320,56 +1262,36 @@ loadOrders();
 
 
 
-
-
 let script=document.createElement("script");
-
 
 
 script.src=
 
-API_URL
+API_URL+
 
-+
-"?action=deleteOrder"
+"?action=deleteOrder"+
 
-+
-"&orderId="
-+
-id
+"&orderId="+id+
 
-+
-"&callback="
-+
-callback;
+"&callback="+callback;
 
 
 
 document.body.appendChild(script);
 
 
-
 }
 
 
 
 
-
-
-// ===============================
-// LOGOUT
-// ===============================
 
 
 function logout(){
 
-
 location.reload();
 
-
 }
-
-
 
 
 
@@ -1379,4 +1301,3 @@ location.reload();
 </body>
 
 </html>
-
