@@ -1,1 +1,580 @@
+<!DOCTYPE html>
+<html lang="bn">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SR Shopping BD Admin</title>
+
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+
+body{
+
+margin:0;
+font-family:Arial,sans-serif;
+background:#f5f5f5;
+color:#222;
+
+}
+
+
+.header{
+
+background:#111;
+color:white;
+text-align:center;
+padding:20px;
+
+}
+
+
+.header h1{
+
+margin:0;
+font-size:25px;
+
+}
+
+
+
+.container{
+
+max-width:900px;
+margin:auto;
+padding:15px;
+
+}
+
+
+
+.card{
+
+background:white;
+border-radius:15px;
+padding:20px;
+margin-bottom:15px;
+box-shadow:0 3px 12px rgba(0,0,0,.15);
+
+}
+
+
+
+input,button{
+
+width:100%;
+padding:13px;
+margin-top:10px;
+border-radius:8px;
+font-size:16px;
+
+}
+
+
+
+input{
+
+border:1px solid #ccc;
+
+}
+
+
+
+button{
+
+background:#111;
+color:white;
+border:none;
+font-weight:bold;
+
+}
+
+
+
+.logout{
+
+background:#d00000;
+
+}
+
+
+
+.hidden{
+
+display:none;
+
+}
+
+
+
+table{
+
+width:100%;
+border-collapse:collapse;
+font-size:14px;
+
+}
+
+
+
+th,td{
+
+border:1px solid #ddd;
+padding:8px;
+text-align:left;
+
+}
+
+
+
+th{
+
+background:#111;
+color:white;
+
+}
+
+
+
+.dashboard-box{
+
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+
+}
+
+
+
+.stat{
+
+background:#f8f8f8;
+padding:15px;
+border-radius:10px;
+text-align:center;
+font-weight:bold;
+
+}
+
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="header">
+
+<h1>🛍️ SR Shopping BD</h1>
+
+<p>Admin Panel</p>
+
+</div>
+
+
+
+<div class="container">
+
+
+<!-- LOGIN -->
+
+
+<div id="loginBox" class="card">
+
+
+<h2>Admin Login</h2>
+
+
+<input id="username" placeholder="Username">
+
+
+<input id="password" type="password" placeholder="Password">
+
+
+<button onclick="login()">
+
+Login
+
+</button>
+
+
+<p id="loginMessage"></p>
+
+
+</div>
+
+
+
+
+
+<!-- DASHBOARD -->
+
+
+<div id="dashboard" class="hidden">
+
+
+<div class="card">
+
+
+<h2 id="welcome"></h2>
+
+
+<button class="logout" onclick="logout()">
+
+Logout
+
+</button>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<h3>Dashboard</h3>
+
+
+<div class="dashboard-box">
+
+
+<div class="stat">
+
+Total Order
+
+<br>
+
+<span id="totalOrder">0</span>
+
+</div>
+
+
+<div class="stat">
+
+Pending
+
+<br>
+
+<span id="pendingOrder">0</span>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<h3>Orders</h3>
+
+
+<div style="overflow:auto">
+
+
+<table>
+
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+
+<th>Customer</th>
+
+<th>Product</th>
+
+<th>Amount</th>
+
+<th>Status</th>
+
+</tr>
+
+</thead>
+
+
+<tbody id="orderTable">
+
+
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+const API_URL =
+
+"https://script.google.com/macros/s/AKfycbwEl4AmzhQHDoy0yMqE0_XnUJ2Yj65-PiWnP0FADuC5Wh5Y8d8fej2lUBqndiQC2bN5/exec";
+
+
+
+let currentUser=null;
+
+
+
+
+function login(){
+
+
+let user =
+document.getElementById("username").value;
+
+
+let pass =
+document.getElementById("password").value;
+
+
+
+let callback =
+"login_"+Date.now();
+
+
+
+window[callback]=function(result){
+
+
+
+delete window[callback];
+
+
+
+if(result.success){
+
+
+currentUser=result.user;
+
+
+
+document.getElementById("loginBox").style.display="none";
+
+
+document.getElementById("dashboard").style.display="block";
+
+
+document.getElementById("welcome").innerHTML=
+
+"Welcome "+currentUser.name+" ("+currentUser.role+")";
+
+
+loadOrders();
+
+
+
+}
+
+else{
+
+
+document.getElementById("loginMessage").innerHTML=
+
+"❌ Username বা Password ভুল";
+
+
+}
+
+
+
+};
+
+
+
+
+let script=document.createElement("script");
+
+
+script.src=
+
+API_URL+
+
+"?action=adminLogin"+
+
+"&username="+encodeURIComponent(user)+
+
+"&password="+encodeURIComponent(pass)+
+
+"&callback="+callback;
+
+
+
+document.body.appendChild(script);
+
+
+
+}
+
+
+
+
+
+
+function loadOrders(){
+
+
+
+let callback="orders_"+Date.now();
+
+
+
+window[callback]=function(result){
+
+
+
+delete window[callback];
+
+
+
+if(result.success){
+
+
+let orders=result.orders;
+
+
+document.getElementById("totalOrder").innerHTML=
+
+orders.length;
+
+
+
+let pending=0;
+
+
+
+let html="";
+
+
+
+orders.forEach(function(o){
+
+
+
+if(o["Order Status"]==="Pending"){
+
+pending++;
+
+}
+
+
+
+html+=`
+
+<tr>
+
+<td>${o["Order ID"] || ""}</td>
+
+<td>${o["Customer Name"] || ""}</td>
+
+<td>${o["Product Name"] || ""}</td>
+
+<td>${o["Total Price"] || ""}</td>
+
+<td>${o["Order Status"] || ""}</td>
+
+</tr>
+
+`;
+
+
+
+});
+
+
+
+document.getElementById("pendingOrder").innerHTML=pending;
+
+
+document.getElementById("orderTable").innerHTML=html;
+
+
+
+}
+
+
+
+};
+
+
+
+
+let script=document.createElement("script");
+
+
+script.src=
+
+API_URL+
+
+"?action=adminOrders"+
+
+"&role="+currentUser.role+
+
+"&callback="+callback;
+
+
+
+document.body.appendChild(script);
+
+
+
+}
+
+
+
+
+
+
+
+function logout(){
+
+
+location.reload();
+
+
+}
+
+
+
+</script>
+
+
+</body>
+
+  </html>
