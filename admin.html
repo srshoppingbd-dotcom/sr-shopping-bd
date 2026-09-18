@@ -441,7 +441,7 @@ const API_URL =
 
 let currentUser=null;
 
-
+let resetUsers=[];
 
 
 function login(){
@@ -488,7 +488,7 @@ document.getElementById("welcome").innerHTML=
 
 
 loadOrders();
-
+loadResetUsers();
 
 
 }
@@ -534,7 +534,78 @@ document.body.appendChild(script);
 }
 
 
+function loadResetUsers(){
 
+
+let callback =
+"users_"+Date.now();
+
+
+
+window[callback]=function(result){
+
+
+delete window[callback];
+
+
+if(result.success){
+
+
+let select =
+document.getElementById("resetUsername");
+
+
+select.innerHTML =
+'<option value="">Select User</option>';
+
+
+
+result.users.forEach(function(user){
+
+
+select.innerHTML +=
+
+'<option value="'+user.username+'">'+
+
+user.name+
+
+" ("+
+
+user.role+
+
+")"+
+
+'</option>';
+
+
+});
+
+
+}
+
+
+};
+
+
+
+let script=document.createElement("script");
+
+
+script.src=
+
+API_URL+
+
+"?action=getUsers"+
+
+"&callback="+callback;
+
+
+
+document.body.appendChild(script);
+
+
+
+}
 
 
 
@@ -839,3 +910,4 @@ document.body.appendChild(script);
 </body>
 
 </html>
+
