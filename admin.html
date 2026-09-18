@@ -274,6 +274,11 @@ Logout
 
 </button>
 
+<button onclick="showResetBox()">
+
+🔄 Reset User Password
+
+</button>
 
 <div id="passwordBox" style="display:none;margin-top:15px;">
 
@@ -302,7 +307,23 @@ Save New Password
 </div>
 
 
+<div id="resetBox" style="display:none;margin-top:15px;">
 
+
+<input id="resetUsername" placeholder="Username">
+
+
+<button onclick="resetUserPassword()">
+
+Reset Password
+
+</button>
+
+
+<p id="resetMessage"></p>
+
+
+</div>
 
 
 <div class="card">
@@ -714,6 +735,85 @@ API_URL+
 "&oldPassword="+encodeURIComponent(oldPass)+
 
 "&newPassword="+encodeURIComponent(newPass)+
+
+"&callback="+callback;
+
+
+
+document.body.appendChild(script);
+
+
+
+}
+
+function showResetBox(){
+
+document.getElementById("resetBox").style.display="block";
+
+}
+
+
+
+function resetUserPassword(){
+
+
+let username =
+document.getElementById("resetUsername").value;
+
+
+
+if(!username){
+
+document.getElementById("resetMessage").innerHTML =
+"❌ Username লিখুন";
+
+return;
+
+}
+
+
+
+let callback =
+"resetPass_"+Date.now();
+
+
+
+window[callback]=function(result){
+
+
+delete window[callback];
+
+
+if(result.success){
+
+document.getElementById("resetMessage").innerHTML =
+"✅ Reset Complete. New Password: 12345678";
+
+
+}
+
+else{
+
+document.getElementById("resetMessage").innerHTML =
+"❌ "+result.message;
+
+}
+
+
+};
+
+
+
+let script=document.createElement("script");
+
+
+script.src=
+
+API_URL+
+
+"?action=ownerResetPassword"+
+
+"&username="+encodeURIComponent(username)+
 
 "&callback="+callback;
 
