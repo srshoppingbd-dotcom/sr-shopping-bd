@@ -309,9 +309,17 @@ Save New Password
 
 <div id="resetBox" style="display:none;margin-top:15px;">
 
+<select id="resetUsername">
 
-<input id="resetUsername" placeholder="Username">
+<option value="">Select User</option>
 
+<option value="owner">👑 Owner</option>
+
+<option value="manager">👨‍💼 Manager</option>
+
+<option value="delivery">🚚 Delivery</option>
+
+</select>
 
 <button onclick="resetUserPassword()">
 
