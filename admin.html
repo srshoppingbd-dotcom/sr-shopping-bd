@@ -195,14 +195,39 @@ font-weight:bold;
 
 <h2>Admin Login</h2>
 
+<label style="font-weight:bold;margin-top:15px;display:block;">
+Username
+</label>
 
-<select id="username">
+<div style="position:relative;">
+
+<select id="username"
+style="
+width:100%;
+padding:13px;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:16px;
+background:white;
+appearance:auto;
+">
 
 <option value="owner">
 👑 Owner
 </option>
 
+<option value="manager">
+👨‍💼 Manager
+</option>
+
+<option value="delivery">
+🚚 Delivery
+</option>
+
+
 </select>
+
+</div>
 
 <input id="password" type="password" placeholder="Password">
 
