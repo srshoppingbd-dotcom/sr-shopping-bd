@@ -22,31 +22,25 @@ body{
 margin:0;
 font-family:Arial,sans-serif;
 background:#f5f5f5;
-color:#222;
 
 }
+
 
 
 .header{
 
 background:#111;
 color:white;
-text-align:center;
 padding:20px;
+text-align:center;
 
 }
 
-
-.header h1{
-
-margin:0;
-
-}
 
 
 .container{
 
-max-width:1000px;
+max-width:1100px;
 margin:auto;
 padding:15px;
 
@@ -58,9 +52,9 @@ padding:15px;
 
 background:white;
 padding:20px;
-margin-bottom:15px;
 border-radius:15px;
-box-shadow:0 3px 12px rgba(0,0,0,.15);
+margin-bottom:15px;
+box-shadow:0 3px 10px #ddd;
 
 }
 
@@ -126,6 +120,7 @@ th,td{
 
 border:1px solid #ddd;
 padding:8px;
+font-size:14px;
 
 }
 
@@ -140,7 +135,7 @@ color:white;
 
 
 
-.dashboard-box{
+.grid{
 
 display:grid;
 grid-template-columns:repeat(2,1fr);
@@ -150,7 +145,7 @@ gap:10px;
 
 
 
-.stat{
+.box{
 
 background:#eee;
 padding:15px;
@@ -162,7 +157,7 @@ font-weight:bold;
 
 
 
-.message{
+.msg{
 
 margin-top:10px;
 font-weight:bold;
@@ -173,6 +168,7 @@ font-weight:bold;
 </style>
 
 </head>
+
 
 
 <body>
@@ -193,6 +189,7 @@ font-weight:bold;
 
 <!-- LOGIN -->
 
+
 <div id="loginBox" class="card">
 
 
@@ -208,21 +205,26 @@ font-weight:bold;
 👑 Owner
 </option>
 
+
 <option value="manager">
 👨‍💼 Manager
 </option>
+
 
 <option value="delivery">
 🚚 Delivery
 </option>
 
+
 </select>
+
 
 
 
 <input id="password"
 type="password"
 placeholder="Password">
+
 
 
 <button onclick="login()">
@@ -232,19 +234,20 @@ Login
 </button>
 
 
-<p id="loginMessage"
-class="message"></p>
+<p id="loginMessage" class="msg"></p>
 
 
-<a href="#"
-onclick="showForgot()">
 
-Forgot Password?
+<button onclick="showForgot()">
 
-</a>
+Forgot Password
+
+</button>
+
 
 
 </div>
+
 
 
 
@@ -256,49 +259,51 @@ Forgot Password?
 <div id="dashboard" class="hidden">
 
 
+
 <div class="card">
 
 
 <h2 id="welcome"></h2>
 
 
-<button class="logout"
-onclick="logout()">
+<button class="logout" onclick="logout()">
 
 Logout
 
 </button>
 
 
-<button onclick="showPasswordBox()">
 
-⚙️ Change Password
+<button onclick="showChangePassword()">
 
-</button>
-
-
-<button onclick="showResetBox()">
-
-🔄 Reset User Password
+Change Password
 
 </button>
+
 
 
 <button onclick="showCreateUser()">
 
-➕ Create User
+Create User
+
+</button>
+
+
+
+<button onclick="showResetPassword()">
+
+Reset User Password
 
 </button>
 
 
 </div>
-
-
+id="admin_part2"
 
 
 <!-- CHANGE PASSWORD -->
 
-<div id="passwordBox" class="card hidden">
+<div id="changeBox" class="card hidden">
 
 
 <h3>Change Password</h3>
@@ -319,51 +324,14 @@ type="password"
 placeholder="Confirm Password">
 
 
-<button onclick="changeMyPassword()">
+<button onclick="changePassword()">
 
 Save Password
 
 </button>
 
 
-<p id="passwordMessage"
-class="message"></p>
-
-
-</div>
-
-
-
-
-
-<!-- RESET USER PASSWORD -->
-
-
-<div id="resetBox" class="card hidden">
-
-
-<h3>Reset User Password</h3>
-
-
-<select id="resetUsername">
-
-<option value="">
-Select User
-</option>
-
-
-</select>
-
-
-<button onclick="resetUserPassword()">
-
-Reset Password
-
-</button>
-
-
-<p id="resetMessage"
-class="message"></p>
+<p id="changeMessage" class="msg"></p>
 
 
 </div>
@@ -376,27 +344,32 @@ class="message"></p>
 <!-- CREATE USER -->
 
 
-<div id="createUserBox" class="card hidden">
+<div id="createBox" class="card hidden">
 
 
 <h3>Create Manager / Delivery</h3>
 
 
-<input id="newName"
-placeholder="Full Name">
+
+<input id="userName"
+placeholder="Name">
 
 
-<input id="newUsername"
+<input id="userUsername"
 placeholder="Username">
 
 
-<input id="newUserPassword"
+<input id="userPassword"
 type="password"
 placeholder="Password">
 
 
+<input id="userMobile"
+placeholder="Mobile Number">
 
-<select id="newRole">
+
+
+<select id="userRole">
 
 
 <option value="manager">
@@ -413,16 +386,14 @@ placeholder="Password">
 
 
 
-<button onclick="createNewUser()">
+<button onclick="createUser()">
 
 Create User
 
 </button>
 
 
-
-<p id="createMessage"
-class="message"></p>
+<p id="createMessage" class="msg"></p>
 
 
 </div>
@@ -433,80 +404,35 @@ class="message"></p>
 
 
 
-
-<!-- FORGOT PASSWORD -->
-
-
-<div id="forgotBox" class="card hidden">
+<!-- RESET PASSWORD -->
 
 
-<h3>Forgot Password</h3>
+<div id="resetBox" class="card hidden">
 
 
-<p>
-Enter your username and contact owner for reset.
-</p>
-
-
-<input id="forgotUsername"
-placeholder="Username">
-
-
-<p id="forgotMessage"
-class="message"></p>
-
-
-</div>
+<h3>Reset User Password</h3>
 
 
 
+<select id="resetUser">
+
+<option value="">
+Select User
+</option>
+
+
+</select>
 
 
 
+<button onclick="resetPassword()">
+
+Reset
+
+</button>
 
 
-<!-- DASHBOARD SUMMARY -->
-
-
-<div class="card">
-
-
-<h3>Dashboard</h3>
-
-
-<div class="dashboard-box">
-
-
-<div class="stat">
-
-Total Orders
-
-<br>
-
-<span id="totalOrder">
-0
-</span>
-
-
-</div>
-
-
-
-<div class="stat">
-
-Pending
-
-<br>
-
-<span id="pendingOrder">
-0
-</span>
-
-
-</div>
-
-
-</div>
+<p id="resetMessage" class="msg"></p>
 
 
 </div>
@@ -519,14 +445,16 @@ Pending
 
 <!-- SEARCH -->
 
+
 <div class="card">
 
 
-<h3>Search Order</h3>
+<h3>Search Customer Order</h3>
 
 
-<input id="searchBox"
-placeholder="Phone / Name / Order ID">
+
+<input id="searchInput"
+placeholder="Phone / Order ID">
 
 
 <button onclick="searchOrder()">
@@ -544,7 +472,59 @@ Search
 
 
 
-<!-- ORDERS -->
+<!-- SUMMARY -->
+
+
+<div class="card">
+
+
+<h3>Dashboard</h3>
+
+
+<div class="grid">
+
+
+<div class="box">
+
+Total Orders
+
+<br>
+
+<span id="totalOrders">
+0
+</span>
+
+</div>
+
+
+
+<div class="box">
+
+Pending
+
+<br>
+
+<span id="pendingOrders">
+0
+</span>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- ORDER TABLE -->
 
 
 <div class="card">
@@ -553,7 +533,8 @@ Search
 <h3>Orders</h3>
 
 
-<div style="overflow:auto">
+
+<div style="overflow:auto;">
 
 
 <table>
@@ -561,9 +542,7 @@ Search
 
 <thead>
 
-
 <tr>
-
 
 <th>ID</th>
 
@@ -582,16 +561,12 @@ Search
 
 </tr>
 
-
 </thead>
-
 
 
 <tbody id="orderTable">
 
-
 </tbody>
-
 
 
 </table>
@@ -601,7 +576,6 @@ Search
 
 
 </div>
-
 
 
 
@@ -625,23 +599,14 @@ let currentUser=null;
 function login(){
 
 
-let username =
-document.getElementById("username").value;
+let username=document.getElementById("username").value;
 
-
-let password =
-document.getElementById("password").value;
+let password=document.getElementById("password").value;
 
 
 
-let btn=document.querySelector(
-"button[onclick='login()']"
-);
-
-
-btn.innerHTML="⏳ Logging in...";
-
-btn.disabled=true;
+document.getElementById("loginMessage").innerHTML=
+"⏳ Logging in...";
 
 
 
@@ -655,11 +620,6 @@ window[callback]=function(result){
 delete window[callback];
 
 
-btn.innerHTML="Login";
-
-btn.disabled=false;
-
-
 
 if(result.success){
 
@@ -667,8 +627,8 @@ if(result.success){
 currentUser=result.user;
 
 
-document.getElementById("loginBox").style.display="none";
 
+document.getElementById("loginBox").style.display="none";
 
 document.getElementById("dashboard").classList.remove("hidden");
 
@@ -694,11 +654,11 @@ else{
 
 
 document.getElementById("loginMessage").innerHTML=
-
-"❌ Wrong Username or Password";
+"❌ "+result.message;
 
 
 }
+
 
 
 };
@@ -730,9 +690,6 @@ document.body.appendChild(script);
 
 
 
-<script>
-
-
 function loadOrders(){
 
 
@@ -746,14 +703,14 @@ window[callback]=function(result){
 delete window[callback];
 
 
-
 if(result.success){
 
 
 let orders=result.orders;
 
 
-document.getElementById("totalOrder").innerHTML=
+
+document.getElementById("totalOrders").innerHTML=
 orders.length;
 
 
@@ -811,16 +768,18 @@ Delete
 
 </td>
 
+
 </tr>
 
 `;
+
 
 
 });
 
 
 
-document.getElementById("pendingOrder").innerHTML=
+document.getElementById("pendingOrders").innerHTML=
 pending;
 
 
@@ -878,12 +837,10 @@ delete window[callback];
 if(result.success){
 
 
-let select=document.getElementById(
-"resetUsername"
-);
+let box=document.getElementById("resetUser");
 
 
-select.innerHTML=
+box.innerHTML=
 "<option value=''>Select User</option>";
 
 
@@ -891,7 +848,7 @@ select.innerHTML=
 result.users.forEach(function(u){
 
 
-select.innerHTML+=
+box.innerHTML+=
 
 `
 <option value="${u.username}">
@@ -904,6 +861,7 @@ ${u.name} (${u.role})
 
 
 }
+
 
 
 };
@@ -934,18 +892,9 @@ document.body.appendChild(script);
 
 
 
-function showPasswordBox(){
+function showChangePassword(){
 
-document.getElementById("passwordBox")
-.classList.remove("hidden");
-
-}
-
-
-
-function showResetBox(){
-
-document.getElementById("resetBox")
+document.getElementById("changeBox")
 .classList.remove("hidden");
 
 }
@@ -954,16 +903,16 @@ document.getElementById("resetBox")
 
 function showCreateUser(){
 
-document.getElementById("createUserBox")
+document.getElementById("createBox")
 .classList.remove("hidden");
 
 }
 
 
 
-function showForgot(){
+function showResetPassword(){
 
-document.getElementById("forgotBox")
+document.getElementById("resetBox")
 .classList.remove("hidden");
 
 }
@@ -973,31 +922,24 @@ document.getElementById("forgotBox")
 
 
 
-function changeMyPassword(){
+
+function changePassword(){
 
 
-let oldPass=document.getElementById(
-"oldPassword"
-).value;
+let oldPass=document.getElementById("oldPassword").value;
+
+let newPass=document.getElementById("newPassword").value;
 
 
-let newPass=document.getElementById(
-"newPassword"
-).value;
-
-
-let confirm=document.getElementById(
-"confirmPassword"
-).value;
+let confirm=document.getElementById("confirmPassword").value;
 
 
 
 if(newPass!==confirm){
 
 
-document.getElementById("passwordMessage")
-.innerHTML="❌ Password not match";
-
+document.getElementById("changeMessage").innerHTML=
+"❌ Password not match";
 
 return;
 
@@ -1015,8 +957,7 @@ window[callback]=function(result){
 delete window[callback];
 
 
-document.getElementById("passwordMessage")
-.innerHTML=
+document.getElementById("changeMessage").innerHTML=
 
 result.success
 
@@ -1063,100 +1004,18 @@ document.body.appendChild(script);
 
 
 
-
-function resetUserPassword(){
-
-
-let username=document.getElementById(
-"resetUsername"
-).value;
+function createUser(){
 
 
+let name=document.getElementById("userName").value;
 
-if(!username){
+let username=document.getElementById("userUsername").value;
 
-return;
+let password=document.getElementById("userPassword").value;
 
-}
+let role=document.getElementById("userRole").value;
 
-
-
-let callback="reset_"+Date.now();
-
-
-
-window[callback]=function(result){
-
-
-delete window[callback];
-
-
-document.getElementById("resetMessage")
-.innerHTML=
-
-result.success
-
-?
-
-"✅ Reset Password: 12345678"
-
-:
-
-"❌ "+result.message;
-
-
-};
-
-
-
-let script=document.createElement("script");
-
-
-script.src=
-
-API_URL+
-
-"?action=ownerResetPassword"+
-
-"&username="+username+
-
-"&callback="+callback;
-
-
-
-document.body.appendChild(script);
-
-
-
-}
-
-
-
-
-
-
-
-function createNewUser(){
-
-
-let name=document.getElementById(
-"newName"
-).value;
-
-
-let username=document.getElementById(
-"newUsername"
-).value;
-
-
-let password=document.getElementById(
-"newUserPassword"
-).value;
-
-
-let role=document.getElementById(
-"newRole"
-).value;
+let mobile=document.getElementById("userMobile").value;
 
 
 
@@ -1170,8 +1029,7 @@ window[callback]=function(result){
 delete window[callback];
 
 
-document.getElementById("createMessage")
-.innerHTML=
+document.getElementById("createMessage").innerHTML=
 
 result.success
 
@@ -1208,6 +1066,69 @@ API_URL+
 
 "&role="+role+
 
+"&mobile="+mobile+
+
+"&callback="+callback;
+
+
+
+document.body.appendChild(script);
+
+
+
+}
+
+
+
+
+
+
+
+function resetPassword(){
+
+
+let username=document.getElementById("resetUser").value;
+
+
+
+let callback="reset_"+Date.now();
+
+
+
+window[callback]=function(result){
+
+
+delete window[callback];
+
+
+document.getElementById("resetMessage").innerHTML=
+
+result.success
+
+?
+
+"✅ New Password: 12345678"
+
+:
+
+"❌ "+result.message;
+
+
+};
+
+
+
+let script=document.createElement("script");
+
+
+script.src=
+
+API_URL+
+
+"?action=forgotPassword"+
+
+"&username="+username+
+
 "&callback="+callback;
 
 
@@ -1226,9 +1147,7 @@ document.body.appendChild(script);
 function searchOrder(){
 
 
-let search=document.getElementById(
-"searchBox"
-).value;
+let phone=document.getElementById("searchInput").value;
 
 
 
@@ -1243,10 +1162,8 @@ delete window[callback];
 
 
 
-if(result.success){
-
-
 let html="";
+
 
 
 result.orders.forEach(function(o){
@@ -1256,17 +1173,17 @@ html+=`
 
 <tr>
 
-<td>${o["Order ID"]}</td>
+<td>${o["Order ID"]||""}</td>
 
-<td>${o["Customer Name"]}</td>
+<td>${o["Customer Name"]||""}</td>
 
-<td>${o["Phone"]}</td>
+<td>${o["Phone"]||""}</td>
 
-<td>${o["Product Name"]}</td>
+<td>${o["Product Name"]||""}</td>
 
-<td>${o["Total Price"]}</td>
+<td>${o["Total Price"]||""}</td>
 
-<td>${o["Order Status"]}</td>
+<td>${o["Order Status"]||""}</td>
 
 <td></td>
 
@@ -1279,11 +1196,7 @@ html+=`
 
 
 
-document.getElementById("orderTable")
-.innerHTML=html;
-
-
-}
+document.getElementById("orderTable").innerHTML=html;
 
 
 
@@ -1298,9 +1211,9 @@ script.src=
 
 API_URL+
 
-"?action=searchOrders"+
+"?action=searchCustomer"+
 
-"&search="+encodeURIComponent(search)+
+"&phone="+phone+
 
 "&callback="+callback;
 
@@ -1339,9 +1252,7 @@ window[callback]=function(result){
 delete window[callback];
 
 
-alert(
-result.message
-);
+alert(result.message);
 
 
 loadOrders();
@@ -1370,7 +1281,6 @@ document.body.appendChild(script);
 
 
 }
-
 
 
 
