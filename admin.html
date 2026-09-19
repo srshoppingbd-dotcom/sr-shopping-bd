@@ -195,29 +195,11 @@ font-weight:bold;
 
 <h2>Admin Login</h2>
 
+<label>Staff ID</label>
 
-<label>Username</label>
-
-
-<select id="username">
-
-<option value="owner">
-👑 Owner
-</option>
-
-
-<option value="manager">
-👨‍💼 Manager
-</option>
-
-
-<option value="delivery">
-🚚 Delivery
-</option>
-
-
-</select>
-
+<input 
+id="staffId"
+placeholder="Enter Staff ID">
 
 
 
@@ -355,9 +337,9 @@ Save Password
 placeholder="Name">
 
 
-<input id="userUsername"
-placeholder="Username">
-
+<p>
+Staff ID will be generated automatically
+</p>
 
 <input id="userPassword"
 type="password"
@@ -599,7 +581,7 @@ let currentUser=null;
 function login(){
 
 
-let username=document.getElementById("username").value;
+let staffId=document.getElementById("staffId").value;
 
 let password=document.getElementById("password").value;
 
@@ -674,7 +656,7 @@ API_URL+
 
 "?action=adminLogin"+
 
-"&username="+encodeURIComponent(username)+
+"&staffId="+encodeURIComponent(staffId)+
 
 "&password="+encodeURIComponent(password)+
 
@@ -1009,7 +991,6 @@ function createUser(){
 
 let name=document.getElementById("userName").value;
 
-let username=document.getElementById("userUsername").value;
 
 let password=document.getElementById("userPassword").value;
 
@@ -1035,8 +1016,7 @@ result.success
 
 ?
 
-"✅ User Created"
-
+"✅ User Created<br>Staff ID: "+result.staffId
 :
 
 "❌ "+result.message;
@@ -1059,8 +1039,6 @@ API_URL+
 "?action=createUser"+
 
 "&name="+encodeURIComponent(name)+
-
-"&username="+encodeURIComponent(username)+
 
 "&password="+encodeURIComponent(password)+
 
@@ -1301,3 +1279,4 @@ location.reload();
 </body>
 
 </html>
+
